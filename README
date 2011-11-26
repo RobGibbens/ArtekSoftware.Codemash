@@ -1,0 +1,6 @@
+On first load, click session, get black screen.  View shows when rotated
+On first rotation, CodeMash button shows,but no Popover
+Rotating back to landscape leaves black vertical bar (tableview?)
+Clicking on Speaker navigates table view back to sessions
+In portrait view, clicking popover, selecting session bumps the toolbar down
+Speaker view doesn't have popover
