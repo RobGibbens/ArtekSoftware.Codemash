@@ -91,7 +91,6 @@
     </Compile>
     <Compile Include="UI\TabBarController.cs" />
     <Compile Include="ViewControllers\DialogViewControllers\MapDialogViewController.cs" />
-    <Compile Include="ViewControllers\DialogViewControllers\MapViewController.cs" />
     <Compile Include="ViewControllers\DialogViewControllers\ScheduleDialogViewController.cs" />
     <Compile Include="ViewControllers\DialogViewControllers\SessionDialogViewController.cs" />
     <Compile Include="ViewControllers\DialogViewControllers\SpeakerDialogViewController.cs" />
@@ -158,6 +157,10 @@
     <Compile Include="DefaultViewController.designer.cs">
       <DependentUpon>DefaultViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapViewController.cs" />
+    <Compile Include="MapViewController.designer.cs">
+      <DependentUpon>MapViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="RootViewController.xib" />
@@ -167,6 +170,7 @@
     <InterfaceDefinition Include="SpeakerBioViewController.xib" />
     <InterfaceDefinition Include="SpeakerBioLandscapeViewController.xib" />
     <InterfaceDefinition Include="DefaultViewController.xib" />
+    <InterfaceDefinition Include="MapViewController.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

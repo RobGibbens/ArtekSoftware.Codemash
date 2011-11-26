@@ -86,6 +86,20 @@ namespace ArtekSoftware.Codemash
 					tabBarController,
 					rotatingSpeakerBioViewController
 				};			
-		}			
+		}
+		
+		public void SetMap()
+		{
+			this.splitViewController.ViewControllers [1] = null;
+			MapViewController mapViewController;
+			
+			mapViewController = new MapViewController();
+			var tabBarController = new TabBarController ();
+			tabBarController.SelectedIndex = 3; 
+			this.splitViewController.ViewControllers = new UIViewController[] {
+					tabBarController,
+					mapViewController
+				};
+		}
 	}
 }

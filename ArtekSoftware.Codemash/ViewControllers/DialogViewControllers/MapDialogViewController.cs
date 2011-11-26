@@ -35,7 +35,7 @@ namespace ArtekSoftware.Codemash
 		}
 		public override void Selected (MonoTouch.Foundation.NSIndexPath indexPath)
 		{
-			//TODO AppDelegate.CurrentAppDelegate.ShowMap();
+			AppDelegate.CurrentAppDelegate.SetMap();
 			base.Selected (indexPath);
 		}
 	}
