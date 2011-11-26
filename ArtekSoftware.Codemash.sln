@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Codemash", "ArtekSoftware.Codemash\ArtekSoftware.Codemash.csproj", "{827472B0-BD73-4BCF-BE8D-D0346D43212F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catnap", "..\Catnap\catnap\src\Catnap\Catnap.csproj", "{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catnap", "Catnap\Catnap.csproj", "{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoTouch.Dialog", "..\MonoTouch.Dialog\MonoTouch.Dialog\MonoTouch.Dialog.csproj", "{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoTouch.Dialog", "MonoTouch.Dialog\MonoTouch.Dialog.csproj", "{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSharp.MonoTouch", "..\RestSharp\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj", "{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSharp.MonoTouch", "RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj", "{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +45,14 @@ Global
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.Release|iPhone.Build.0 = Release|iPhone
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.AdHoc|iPhone.ActiveCfg = Debug|Any CPU
+		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.AdHoc|iPhone.Build.0 = Debug|Any CPU
+		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.AdHoc|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.AdHoc|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
+		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.AppStore|iPhone.Build.0 = Debug|Any CPU
+		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.AppStore|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.AppStore|iPhoneSimulator.Build.0 = Debug|Any CPU
 		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
