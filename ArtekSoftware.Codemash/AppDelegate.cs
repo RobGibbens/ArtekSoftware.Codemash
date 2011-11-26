@@ -69,7 +69,8 @@ namespace ArtekSoftware.Codemash
 			this.splitViewController.ViewControllers = new UIViewController[] {
 					new TabBarController (),
 					rotatingSessionDetailViewController
-				};			
+				};
+			rotatingSessionDetailViewController.ViewWillAppear(true); 
 		}
 		
 		public void SetSpeaker (SpeakerEntity speaker)

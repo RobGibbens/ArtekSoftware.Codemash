@@ -33,11 +33,12 @@ namespace ArtekSoftware.Codemash
 
 		public override void ViewWillAppear (bool animated)
 		{
-			if (UIDevice.CurrentDevice.Orientation == UIDeviceOrientation.Portrait || UIDevice.CurrentDevice.Orientation == UIDeviceOrientation.PortraitUpsideDown) {
+			
+			if (this.InterfaceOrientation == UIInterfaceOrientation.Portrait || this.InterfaceOrientation == UIInterfaceOrientation.PortraitUpsideDown) {
 				_showView (this.PortraitViewController.View);
-			} else if (UIDevice.CurrentDevice.Orientation == UIDeviceOrientation.LandscapeLeft) {
+			} else if (this.InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft) {
 				_showView (this.LandscapeLeftViewController.View);
-			} else if (UIDevice.CurrentDevice.Orientation == UIDeviceOrientation.LandscapeRight) {
+			} else if (this.InterfaceOrientation == UIInterfaceOrientation.LandscapeRight) {
 				_showView (this.LandscapeRightViewController.View);
 			}
 		}
@@ -80,22 +81,22 @@ namespace ArtekSoftware.Codemash
 		private void DeviceRotated (NSNotification notification)
 		{
 
-			Console.WriteLine ("rotated! " + UIDevice.CurrentDevice.Orientation);
-			switch (UIDevice.CurrentDevice.Orientation) {
+			Console.WriteLine ("rotated! " + this.InterfaceOrientation);
+			switch (this.InterfaceOrientation) {
 
-			case  UIDeviceOrientation.Portrait:
+			case  UIInterfaceOrientation.Portrait:
 				_showView (PortraitViewController.View);
 				break;
 
-			case  UIDeviceOrientation.PortraitUpsideDown:
+			case  UIInterfaceOrientation.PortraitUpsideDown:
 				_showView (PortraitViewController.View);
 				break;				
 				
-			case UIDeviceOrientation.LandscapeLeft:
+			case UIInterfaceOrientation.LandscapeLeft:
 				_showView (LandscapeLeftViewController.View);
 
 				break;
-			case UIDeviceOrientation.LandscapeRight:
+			case UIInterfaceOrientation.LandscapeRight:
 				_showView (LandscapeRightViewController.View);
 				break;
 			}

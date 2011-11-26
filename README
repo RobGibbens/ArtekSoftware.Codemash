@@ -1,4 +1,5 @@
-On first load, click session, get black screen.  View shows when rotated
+
+On first load, click session, get black screen.  View shows when rotated - Fixed. DeviceOrientation should be View.InterfaceOrientation
 On first rotation, CodeMash button shows,but no Popover
 Rotating back to landscape leaves black vertical bar (tableview?)
 Clicking on Speaker navigates table view back to sessions

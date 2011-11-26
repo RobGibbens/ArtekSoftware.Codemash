@@ -71,17 +71,17 @@ namespace ArtekSoftware.Codemash
 		public UIView View {
 			get {
 				UIView currentView = null;
-				switch (UIDevice.CurrentDevice.Orientation) {
-				case UIDeviceOrientation.Portrait:
+				switch (this.InterfaceOrientation) {
+				case UIInterfaceOrientation.Portrait:
 					currentView = this.PortraitViewController.View;
 					break;
-				case UIDeviceOrientation.PortraitUpsideDown:
+				case UIInterfaceOrientation.PortraitUpsideDown:
 					currentView = this.PortraitViewController.View;
 					break;
-				case UIDeviceOrientation.LandscapeLeft:
+				case UIInterfaceOrientation.LandscapeLeft:
 					currentView = this.LandscapeLeftViewController.View;
 					break;
-				case UIDeviceOrientation.LandscapeRight:
+				case UIInterfaceOrientation.LandscapeRight:
 					currentView = this.LandscapeRightViewController.View;
 					break;
 				default:
