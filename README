@@ -1,7 +1,11 @@
 
 On first load, click session, get black screen.  View shows when rotated - Fixed. DeviceOrientation should be View.InterfaceOrientation
-On first rotation, CodeMash button shows,but no Popover
-Rotating back to landscape leaves black vertical bar (tableview?)
 Clicking on Speaker navigates table view back to sessions - Fixed. Needed to set SelectedIndex on TabBarController
+On first rotation, CodeMash button shows,but no Popover - Fixed?
+Rotating back to landscape leaves black vertical bar (tableview?) - Fixed?
+
 In portrait view, clicking popover, selecting session bumps the toolbar down
 Speaker view doesn't have popover
+When selecting a cell in tableview, popover doesn't get dismissed
+In Portrait mode, click popover button, then rotate while the table is still visible. Table is not dismissed.
+On first load, in Portrait mode, click popover button. TableView turns blue and empty.

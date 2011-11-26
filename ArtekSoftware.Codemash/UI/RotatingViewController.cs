@@ -51,8 +51,10 @@ namespace ArtekSoftware.Codemash
 
 			_removeAllViews ();
 			view.Frame = this.View.Frame;
-//			view.Frame.Y = 0;
-//			view.Frame.Height = view.Frame.Height + 20;
+			if (this.InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft || this.InterfaceOrientation == UIInterfaceOrientation.LandscapeRight)
+			{
+				view.Frame = new System.Drawing.RectangleF(0,0,this.View.Frame.Width, this.View.Frame.Height);
+			}
 			View.AddSubview (view);
 
 		}

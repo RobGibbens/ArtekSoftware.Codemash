@@ -80,9 +80,6 @@ namespace ArtekSoftware.Codemash
 			RotatingSpeakerBioViewController rotatingSpeakerBioViewController;
 		
 			rotatingSpeakerBioViewController = new RotatingSpeakerBioViewController (speaker);
-			//rotatingSpeakerBioViewController.PortraitViewController = new UIViewController () { View = new UIView () { BackgroundColor = UIColor.Purple } };
-			//rotatingSpeakerBioViewController.LandscapeLeftViewController = new UIViewController () { View = new UIView () { BackgroundColor = UIColor.Orange } };
-			//rotatingSpeakerBioViewController.LandscapeRightViewController = new UIViewController () { View = new UIView () { BackgroundColor = UIColor.Brown } };
 			var tabBarController = new TabBarController ();
 			tabBarController.SelectedIndex = 2; 
 			this.splitViewController.ViewControllers = new UIViewController[] {

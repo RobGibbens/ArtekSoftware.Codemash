@@ -67,31 +67,6 @@ namespace ArtekSoftware.Codemash
 //				((SessionDetailLandscapeViewController)this.LandscapeRightViewController).WillShowViewController (svc, vc, button);
 //			}
 		}
-		
-		public UIView View {
-			get {
-				UIView currentView = null;
-				switch (this.InterfaceOrientation) {
-				case UIInterfaceOrientation.Portrait:
-					currentView = this.PortraitViewController.View;
-					break;
-				case UIInterfaceOrientation.PortraitUpsideDown:
-					currentView = this.PortraitViewController.View;
-					break;
-				case UIInterfaceOrientation.LandscapeLeft:
-					currentView = this.LandscapeLeftViewController.View;
-					break;
-				case UIInterfaceOrientation.LandscapeRight:
-					currentView = this.LandscapeRightViewController.View;
-					break;
-				default:
-					currentView = this.LandscapeLeftViewController.View;
-					break;
-				}	
-				return currentView;
-			}
-			
-		}
 			
 		private void LoadSession ()
 		{

@@ -9,7 +9,7 @@ namespace ArtekSoftware.Codemash
 {
 	public class TabBarController : UITabBarController
 	{
-		MonoTouch.UIKit.UINavigationController navScheduleController, navSessionController, navSpeakerController, navNewsController, mapController;
+		MonoTouch.UIKit.UINavigationController navScheduleController, navSessionController, navSpeakerController, mapController;
 		
 		public override void ViewDidLoad ()
 		{
@@ -35,7 +35,6 @@ namespace ArtekSoftware.Codemash
 			navSessionController.TabBarItem = new UITabBarItem ("Sessions", UIImage.FromFile ("images/glyphicons_061_keynote.png"), 0);
 			
 			var speakersViewController = new SpeakerDialogViewController ();
-			//var speakersViewController = new SectionDialogViewController();
 			navSpeakerController = new MonoTouch.UIKit.UINavigationController ();
 			navSpeakerController.PushViewController (speakersViewController, false);
 			SetSessionBackground (navSpeakerController.NavigationBar);
@@ -43,15 +42,6 @@ namespace ArtekSoftware.Codemash
 			navSpeakerController.NavigationBar.TintColor = UIColor.Clear;
 			navSpeakerController.TabBarItem = new UITabBarItem ("Speakers", UIImage.FromFile ("images/glyphicons_042_group.png"), 0);
 
-			//var newsViewController = new MyTableViewController ();
-//			var newsViewController = new NewsDialogViewController();
-//			navNewsController = new MonoTouch.UIKit.UINavigationController ();
-//			navNewsController.PushViewController (newsViewController, false);
-//			navNewsController.NavigationBar.BarStyle = UIBarStyle.Black;
-//			navNewsController.NavigationBar.BackgroundColor = UIColor.Orange;
-//			navNewsController.NavigationBar.TintColor = UIColor.Orange;
-//			navNewsController.TabBarItem = new UITabBarItem ("News", UIImage.FromFile ("images/glyphicons_250_citation.png"), 0);
-			
 			var mapViewController = new MapDialogViewController ();
 			mapController = new MonoTouch.UIKit.UINavigationController ();
 			mapController.PushViewController (mapViewController, false);
