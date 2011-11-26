@@ -62,29 +62,31 @@ namespace ArtekSoftware.Codemash
 		
 		public void SetSession (SessionEntity session)
 		{
-			this.splitViewController.ViewControllers[1] = null;
-			
+			this.splitViewController.ViewControllers [1] = null;
+			var tabBarController = new TabBarController ();
+			tabBarController.SelectedIndex = 1; 
 			rotatingSessionDetailViewController = new RotatingSessionDetailViewController (session);
 			this.splitViewController.WeakDelegate = rotatingSessionDetailViewController;
 			this.splitViewController.ViewControllers = new UIViewController[] {
-					new TabBarController (),
+					tabBarController,
 					rotatingSessionDetailViewController
 				};
-			rotatingSessionDetailViewController.ViewWillAppear(true); 
+			rotatingSessionDetailViewController.ViewWillAppear (true); 
 		}
 		
 		public void SetSpeaker (SpeakerEntity speaker)
 		{
-			this.splitViewController.ViewControllers[1] = null;
+			this.splitViewController.ViewControllers [1] = null;
 			RotatingSpeakerBioViewController rotatingSpeakerBioViewController;
 		
 			rotatingSpeakerBioViewController = new RotatingSpeakerBioViewController (speaker);
 			//rotatingSpeakerBioViewController.PortraitViewController = new UIViewController () { View = new UIView () { BackgroundColor = UIColor.Purple } };
 			//rotatingSpeakerBioViewController.LandscapeLeftViewController = new UIViewController () { View = new UIView () { BackgroundColor = UIColor.Orange } };
 			//rotatingSpeakerBioViewController.LandscapeRightViewController = new UIViewController () { View = new UIView () { BackgroundColor = UIColor.Brown } };
-				
+			var tabBarController = new TabBarController ();
+			tabBarController.SelectedIndex = 2; 
 			this.splitViewController.ViewControllers = new UIViewController[] {
-					new TabBarController (),
+					tabBarController,
 					rotatingSpeakerBioViewController
 				};			
 		}			
