@@ -10,12 +10,12 @@ When selecting a cell in tableview, popover doesn't get dismissed - Fixed
 On first load, in Portrait mode, click popover button. TableView turns blue and empty. -Fixed
 Add to schedule...not refreshing schedule - Fixed
 Script image not showing nicely in dialog - Fixed
-
+In Portrait mode, click popover button, then rotate while the table is still visible. Table is not dismissed. - Fixed
+Start in Portrait mode, rotate to landscape, click session, rotate to portrait, toolbar gets reset to blank - Fixed
 
 POPOVER ISSUES
 In portrait view, clicking popover, selecting session bumps the toolbar down
-In Portrait mode, click popover button, then rotate while the table is still visible. Table is not dismissed.
-Start in Portrait mode, rotate to landscape, click session, rotate to portrait, toolbar gets reset to blank
+
 
 
 OTHER ISSUES

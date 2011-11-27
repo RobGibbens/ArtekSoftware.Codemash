@@ -13,8 +13,8 @@ namespace ArtekSoftware.Codemash
 		UIWindow window;
 		UISplitViewController splitViewController;
 		public static AppDelegate CurrentAppDelegate;
-		
 		private TabBarController _tabBarController;
+
 		public TabBarController TabBar {
 			get { return _tabBarController; }
 			set { _tabBarController = value; }
@@ -22,7 +22,7 @@ namespace ArtekSoftware.Codemash
 		
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
-			
+			//Console.WriteLine("AppDelegate.FinishedLaunching");
 			CopyDb ();
 			
 			var bootstrapper = new Bootstrapper ();
@@ -31,16 +31,22 @@ namespace ArtekSoftware.Codemash
 			CurrentAppDelegate = this;
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
+			//Console.WriteLine("AppDelegate.FinishedLaunching - creating new TabBarController and DetailViewController");
+			
 			this.TabBar = new TabBarController ();
 			var detailViewController = new DetailViewController ();
 			
+			//Console.WriteLine("AppDelegate.FinishedLaunching - creating new SplitViewController");
+			
 			splitViewController = new UISplitViewController ();
 			//splitViewController.WeakDelegate = detailViewController;
-			splitViewController.Delegate = new SplitDelegate();
+			splitViewController.Delegate = new SplitDelegate ();
 			splitViewController.ViewControllers = new UIViewController[] {
 				this.TabBar,
 				detailViewController
 			};
+			
+			//Console.WriteLine("AppDelegate.FinishedLaunching - setting window.RootViewController");
 			
 			window.RootViewController = splitViewController;
 
@@ -67,31 +73,55 @@ namespace ArtekSoftware.Codemash
  
 		}
 		
-		private RotatingSessionDetailViewController rotatingSessionDetailViewController;
+		//private RotatingSessionDetailViewController rotatingSessionDetailViewController;
 		
 		public void SetSession (SessionEntity session)
 		{
-			ISubstitutableDetailViewController detailViewController = null;
+			//Console.WriteLine("AppDelegate.SetSession - session is null " + (session == null).ToString());
+			
 			
 			this.TabBar.SelectedIndex = 1; 
-			rotatingSessionDetailViewController = new RotatingSessionDetailViewController (session);
 			
-			detailViewController = rotatingSessionDetailViewController;
+			//Console.WriteLine("AppDelegate.SetSession - creating new RotatingSessionDetailViewController");
+			ISubstitutableDetailViewController detailViewController = new RotatingSessionDetailViewController (session);
 			
+			//Console.WriteLine("AppDelegate.SetSession - getting existing view controller from SplitViewController");
 			var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
-			detailViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
-			detailViewController.PopOverController = existingVC.PopOverController;			
+			//Console.WriteLine("AppDelegate.SetSession - existingVC is null " + (existingVC == null).ToString());
 			
-			this.splitViewController.Delegate = new SplitDelegate();
+			//if (existingVC.RootPopoverButtonItem != null) {
+				detailViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
+//			} else {
+//				detailViewController.RootPopoverButtonItem = new UIBarButtonItem () { Title = "CodeMash" };
+//			}
+//			
+			//if (existingVC.PopOverController != null) {
+				detailViewController.PopOverController = existingVC.PopOverController;			
+//			} else {
+//				detailViewController.PopOverController = new UIPopoverController (new TabBarController ());			
+//				
+//			}
+			//Console.WriteLine("AppDelegate.SetSession - detailViewController.RootPopoverButtonItem is null" + (detailViewController.RootPopoverButtonItem == null).ToString());
+			//Console.WriteLine("AppDelegate.SetSession -detailViewController.PopOverController is null " + (detailViewController.PopOverController == null).ToString());
+			
+			//Console.WriteLine("AppDelegate.SetSession - creating new SplitDelegate");
+			this.splitViewController.Delegate = new SplitDelegate ();
+			//Console.WriteLine("AppDelegate.SetSession - setting splitViewControllers.ViewControllers");
 			this.splitViewController.ViewControllers = new UIViewController[] {
 					this.TabBar,
-					rotatingSessionDetailViewController
+					detailViewController as UIViewController
 				};
 			
+			//Console.WriteLine("AppDelegate.SetSession - setting window.RootViewController");
+			window.RootViewController = splitViewController;
+			
 			if (detailViewController.RootPopoverButtonItem != null) {
+				//Console.WriteLine("AppDelegate.SetSession - calling detailViewController.ShowRootPopoverButtonItem (detailViewController.RootPopoverButtonItem)");
 				detailViewController.ShowRootPopoverButtonItem (detailViewController.RootPopoverButtonItem);
 			}
 			if (detailViewController.PopOverController != null) {
+				//Console.WriteLine("AppDelegate.SetSession - calling detailViewController.PopOverController.Dismiss (true)");
+				
 				detailViewController.PopOverController.Dismiss (true);
 			}
 		
@@ -101,6 +131,7 @@ namespace ArtekSoftware.Codemash
 		
 		public void SetSpeaker (SpeakerEntity speaker)
 		{
+			//Console.WriteLine("AppDelegate.SetSpeaker - speaker is null " + (speaker == null).ToString());
 			ISubstitutableDetailViewController detailViewController = new RotatingSpeakerBioViewController (speaker);
 			
 			var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
@@ -109,7 +140,7 @@ namespace ArtekSoftware.Codemash
 			
 			this.TabBar.SelectedIndex = 2; 
 	
-			this.splitViewController.Delegate = new SplitDelegate();
+			this.splitViewController.Delegate = new SplitDelegate ();
 			this.splitViewController.ViewControllers = new UIViewController[] {
 					this.TabBar,
 					detailViewController as UIViewController 
