@@ -14,24 +14,31 @@ namespace ArtekSoftware.Codemash
 		UISplitViewController splitViewController;
 		public static AppDelegate CurrentAppDelegate;
 		
+		private TabBarController _tabBarController;
+		public TabBarController TabBar {
+			get { return _tabBarController; }
+			set { _tabBarController = value; }
+		}
+		
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
-			CurrentAppDelegate = this;
 			
 			CopyDb ();
 			
 			var bootstrapper = new Bootstrapper ();
 			bootstrapper.Initialize ();				
 			
+			CurrentAppDelegate = this;
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
-			var tabBarController = new TabBarController ();
+			this.TabBar = new TabBarController ();
 			var detailViewController = new DetailViewController ();
 			
 			splitViewController = new UISplitViewController ();
-			splitViewController.WeakDelegate = detailViewController;
+			//splitViewController.WeakDelegate = detailViewController;
+			splitViewController.Delegate = new SplitDelegate();
 			splitViewController.ViewControllers = new UIViewController[] {
-				tabBarController,
+				this.TabBar,
 				detailViewController
 			};
 			
@@ -51,7 +58,9 @@ namespace ArtekSoftware.Codemash
 			string rootPath = Path.Combine (Environment.CurrentDirectory, "DefaultDatabase");
 			string rootDbPath = Path.Combine (rootPath, dbname);
  
-			if (!File.Exists (db) && File.Exists (rootDbPath)) {
+			var runtimeDbExists = File.Exists (db);
+			var defaultDatabaseExists = File.Exists (rootDbPath);
+			if (!runtimeDbExists && defaultDatabaseExists) {
 				File.Copy (rootDbPath, db);
 				//TestFlightSdk.TestFlight.PassCheckpoint ("Copied default database");
 			}
@@ -62,42 +71,69 @@ namespace ArtekSoftware.Codemash
 		
 		public void SetSession (SessionEntity session)
 		{
-			this.splitViewController.ViewControllers [1] = null;
-			var tabBarController = new TabBarController ();
-			tabBarController.SelectedIndex = 1; 
+			ISubstitutableDetailViewController detailViewController = null;
+			
+			this.TabBar.SelectedIndex = 1; 
 			rotatingSessionDetailViewController = new RotatingSessionDetailViewController (session);
-			this.splitViewController.WeakDelegate = rotatingSessionDetailViewController;
+			
+			detailViewController = rotatingSessionDetailViewController;
+			
+			var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
+			detailViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
+			detailViewController.PopOverController = existingVC.PopOverController;			
+			
+			this.splitViewController.Delegate = new SplitDelegate();
 			this.splitViewController.ViewControllers = new UIViewController[] {
-					tabBarController,
+					this.TabBar,
 					rotatingSessionDetailViewController
 				};
-			rotatingSessionDetailViewController.ViewWillAppear (true); 
+			
+			if (detailViewController.RootPopoverButtonItem != null) {
+				detailViewController.ShowRootPopoverButtonItem (detailViewController.RootPopoverButtonItem);
+			}
+			if (detailViewController.PopOverController != null) {
+				detailViewController.PopOverController.Dismiss (true);
+			}
+		
 		}
+		
+		//private RotatingSpeakerBioViewController rotatingSpeakerBioViewController;
 		
 		public void SetSpeaker (SpeakerEntity speaker)
 		{
-			this.splitViewController.ViewControllers [1] = null;
-			RotatingSpeakerBioViewController rotatingSpeakerBioViewController;
-		
-			rotatingSpeakerBioViewController = new RotatingSpeakerBioViewController (speaker);
-			var tabBarController = new TabBarController ();
-			tabBarController.SelectedIndex = 2; 
+			ISubstitutableDetailViewController detailViewController = new RotatingSpeakerBioViewController (speaker);
+			
+			var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
+			detailViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
+			detailViewController.PopOverController = existingVC.PopOverController;			
+			
+			this.TabBar.SelectedIndex = 2; 
+	
+			this.splitViewController.Delegate = new SplitDelegate();
 			this.splitViewController.ViewControllers = new UIViewController[] {
-					tabBarController,
-					rotatingSpeakerBioViewController
-				};			
+					this.TabBar,
+					detailViewController as UIViewController 
+				};
+			
+			if (detailViewController.RootPopoverButtonItem != null) {
+				detailViewController.ShowRootPopoverButtonItem (detailViewController.RootPopoverButtonItem);
+			}
+			
+			if (detailViewController.PopOverController != null) {
+				detailViewController.PopOverController.Dismiss (true);
+			}
 		}
 		
-		public void SetMap()
+		public void SetMap ()
 		{
 			this.splitViewController.ViewControllers [1] = null;
 			MapViewController mapViewController;
 			
-			mapViewController = new MapViewController();
-			var tabBarController = new TabBarController ();
-			tabBarController.SelectedIndex = 3; 
+			mapViewController = new MapViewController ();
+			
+			this.TabBar.SelectedIndex = 3; 
 			this.splitViewController.ViewControllers = new UIViewController[] {
-					tabBarController,
+					this.TabBar,
 					mapViewController
 				};
 		}

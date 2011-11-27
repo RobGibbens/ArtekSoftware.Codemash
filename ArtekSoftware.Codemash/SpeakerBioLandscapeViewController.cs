@@ -81,27 +81,53 @@ namespace ArtekSoftware.Codemash
 			}
 		}
 				
-		
 		private void SetSpeaker (SpeakerEntity speaker)
 		{
-			
 			this.speakerNameLabel.Text = speaker.Name;
+			
 			this.speakerBioLabel.Text = "      " + speaker.Biography;
 			
+			HLabel bioLabel;
+			if (this.View.Subviews.Count () <= 10) {
+				bioLabel = new HLabel ();
+			} else {
+				bioLabel = (HLabel)this.View.Subviews [10];
+			}
+				
+			bioLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
+			bioLabel.Lines = 0;
+			bioLabel.LineBreakMode = UILineBreakMode.WordWrap;
+			if (!string.IsNullOrWhiteSpace (this.speakerBioLabel.Text)) {
+				bioLabel.Text = this.speakerBioLabel.Text;
+			} else {
+				bioLabel.Text = "      No information provided.";
+			}
+			bioLabel.Font = UIFont.FromName ("STHeitiTC-Light", 14);
+			bioLabel.Frame = this.speakerBioLabel.Frame;
+			bioLabel.BackgroundColor = UIColor.Clear;
+			this.View.AddSubview (bioLabel);
+			this.speakerBioLabel.Text = string.Empty;
+			
 			if (!string.IsNullOrWhiteSpace (speaker.BlogURL)) {
+				this.speakerBlogImage.Hidden = false;
 				this.speakerBlogButton.SetTitle (speaker.BlogURL, UIControlState.Normal);
 			} else {
+				this.speakerBlogImage.Hidden = true;
 				this.speakerBlogButton.SetTitle (string.Empty, UIControlState.Normal);
 			}
 			
 			if (!string.IsNullOrWhiteSpace (speaker.TwitterHandle)) {
+				this.speakerTwitterImage.Hidden = false;
 				this.speakerTwitterHandleButton.SetTitle (speaker.TwitterHandle, UIControlState.Normal);
 			} else {
+				this.speakerTwitterImage.Hidden = true;
 				this.speakerTwitterHandleButton.SetTitle (string.Empty, UIControlState.Normal);
 			}
 
 			var sessions = GetSessionsForSpeaker (speaker);
-			this.speakerSessionsTable.Delegate = new SpeakerBioLandscapeDelegate (this);
+			this.speakerSessionsTable.BackgroundColor = UIColor.Clear;
+			this.speakerSessionsTable.ScrollEnabled = false;
+			this.speakerSessionsTable.Delegate = new SpeakerBioLandscapeDelegate (this, sessions);
 			this.speakerSessionsTable.DataSource = new SpeakerBioLandscapeDataSource (sessions);
 			this.speakerSessionsTable.ReloadData ();
 			
@@ -110,24 +136,37 @@ namespace ArtekSoftware.Codemash
 			
 				if (File.Exists (profileImage)) {
 					UIImage image = UIImage.FromFile (profileImage);
+					
 					using (this.speakerProfileImage.Image) {
 						image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 						this.speakerProfileImage.Image = image;
 					}
+					
+				}
+			} else if (File.Exists ("images/Profiles/" + speaker.Name.Replace (" ", "") + ".png")) {
+				var profileImage = "images/Profiles/" + speaker.Name.Replace (" ", "") + ".png";
+				
+				UIImage image = UIImage.FromFile (profileImage);
+					
+				using (this.speakerProfileImage.Image) {
+					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+					this.speakerProfileImage.Image = image;
 				}
 			} else {
 				//var profileImage = "images/glyphicons_003_user@2x.png";
 				var profileImage = "images/Profiles/DefaultUser.png";
 				
 				UIImage image = UIImage.FromFile (profileImage);
+					
 				using (this.speakerProfileImage.Image) {
 					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					this.speakerProfileImage.Image = image;
 				}
+
 				
 			}
 		}
-		
+			
 		private List<SessionEntity> GetSessionsForSpeaker (SpeakerEntity speaker)
 		{
 			List<SessionEntity> sessions = null;
@@ -144,11 +183,8 @@ namespace ArtekSoftware.Codemash
 			
 			return sessions;
 		}		
-		
-		
-		
 	}
-	
+
 	public class SpeakerBioLandscapeDataSource : UITableViewDataSource
 	{
 		private string _section1CellId;
@@ -181,6 +217,8 @@ namespace ArtekSoftware.Codemash
 				// See the styles demo for different UITableViewCellAccessory
 				cell = new UITableViewCell (UITableViewCellStyle.Default, _section1CellId);
 				cell.Accessory = UITableViewCellAccessory.None;
+				cell.TextLabel.Font = UIFont.FromName ("STHeitiTC-Light", 14);
+				cell.BackgroundColor = UIColor.Clear;
 			}
 
 			cell.TextLabel.Text = _sessions [indexPath.Row].Title;
@@ -192,35 +230,35 @@ namespace ArtekSoftware.Codemash
 	public class SpeakerBioLandscapeDelegate : UITableViewDelegate
 	{   	
 		private SpeakerBioLandscapeViewController _controller;
+		private List<SessionEntity> _sessions;
 
-		public SpeakerBioLandscapeDelegate (SpeakerBioLandscapeViewController controller)
+		public SpeakerBioLandscapeDelegate (SpeakerBioLandscapeViewController controller, List<SessionEntity> sessions)
 		{
-			_controller = controller;	
+			_controller = controller;
+			_sessions = sessions;
 		}
 		
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-//			UITableViewController nextController = null;
-//
-//			switch (indexPath.Row) {
-//			case 0:
-//				nextController = new CheckmarkDemoTableController (UITableViewStyle.Grouped);
-//				break;
-//			case 1:
-//				nextController = new StyleDemoTableController (UITableViewStyle.Grouped);
-//				break;
-//			case 2:
-//				nextController = new EditableTableController (UITableViewStyle.Plain);
-//				break;
-//			default:
-//				break;
-//			}
-//
-//			if (nextController != null)
-//				_controller.NavigationController.PushViewController (nextController, true);
+			int selectedRow = CalculateSelectedRow (indexPath, tableView);
+			SessionEntity session = _sessions.ToList () [selectedRow];
+			AppDelegate.CurrentAppDelegate.SetSession (session);
 		}
+	
+	
+		private int CalculateSelectedRow (NSIndexPath indexPath, UITableView tableView)
+		{
+			int totalCountOfRows = 0;
+			int selectedSectionNumber = indexPath.Section;
+			
+			for (int currentSectionNumber = 0; currentSectionNumber < selectedSectionNumber; ++ currentSectionNumber) {
+				totalCountOfRows += tableView.NumberOfRowsInSection (currentSectionNumber);
+			}
+			
+			int selectedRow = totalCountOfRows + indexPath.Row;
+			
+			return selectedRow;
+		}		
 	}
-
 	
 }
-

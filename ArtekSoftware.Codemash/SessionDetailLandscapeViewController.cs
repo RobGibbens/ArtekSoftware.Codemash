@@ -57,44 +57,9 @@ namespace ArtekSoftware.Codemash
 			return true;
 		}
 		
-		[Export("splitViewController:willHideViewController:withBarButtonItem:forPopoverController:")]
-		public void WillHideViewController (UISplitViewController svc, UIViewController vc,
-			UIBarButtonItem barButtonItem, UIPopoverController pc)
-		{
-			barButtonItem.Title = "Codemash";
-//			var items = new List<UIBarButtonItem> ();
-//			items.Add (barButtonItem);
-//			if (toolbar != null) {
-//				if (toolbar.Items != null) {
-//					items.AddRange (toolbar.Items);
-//				}
-//				toolbar.SetItems (items.ToArray (), true);
-//			}
-			popoverController = pc;
-		}
-		
-		[Export("splitViewController:willShowViewController:invalidatingBarButtonItem:")]
-		public void WillShowViewController (UISplitViewController svc, UIViewController vc,
-			UIBarButtonItem button)
-		{
-			List<UIBarButtonItem> items = null;
-			// Called when the view is shown again in the split view, invalidating the button and popover controller.
-//			if (toolbar.Items != null) {
-//				items = new List<UIBarButtonItem> (toolbar.Items);
-//				items.RemoveAt (0);
-//			} else {
-//				items = new List<UIBarButtonItem> ();
-//			}
-//			toolbar.SetItems (items.ToArray (), true);
-			popoverController = null;
-		}
-		
 		public void SetSession (SessionEntity session)
 		{
 			this.Session = session;
-			
-			//this.sessionAbstractLabel = abstractLabel;
-			//_sessionAbstractLabel.Text = session.Abstract;
 			
 			this.sessionDifficultyLabel.Text = session.Difficulty;
 			this.sessionRoomLabel.Text = session.Room;
@@ -103,7 +68,6 @@ namespace ArtekSoftware.Codemash
 			this.sessionTechnologyLabel.Text = session.Technology;
 			
 			SetImageUrl ();
-			//_sessionTechnologyLabel.Text = GetTechnologyName (session.Technology);
 			
 			this.sessionTitleLabel.Text = session.Title;
 			
@@ -212,10 +176,10 @@ namespace ArtekSoftware.Codemash
 											};
 					
 						repository.Save (scheduledSession);
-						//TODO var vc = AppDelegate.CurrentAppDelegate._tabBarController.ViewControllers [0];
-						//TODO var uinc = (UINavigationController)vc;
-						//TODO var scheduleController = (ScheduledSessionDialogViewController)uinc.TopViewController;
-						//TODO scheduleController.LoadData ();
+						var vc = AppDelegate.CurrentAppDelegate.TabBar.ViewControllers [0];
+						var uinc = (UINavigationController)vc;
+						var scheduleController = (ScheduledSessionDialogViewController)uinc.TopViewController;
+						scheduleController.LoadData ();
 						//AddToQueue (scheduledSession);
 					
 						AddNotification (_session);
@@ -248,7 +212,7 @@ namespace ArtekSoftware.Codemash
 			}
 			
 			//AppDelegate.CurrentAppDelegate.ShowSpeakerDetail ();
-			//TODO AppDelegate.CurrentAppDelegate.DetailNavController.SetSpeaker (speaker);
+			AppDelegate.CurrentAppDelegate.SetSpeaker (speaker);
 		}
 		
 		protected void AddToQueue (ScheduledSessionEntity scheduledSession)

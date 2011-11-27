@@ -11,9 +11,16 @@ namespace ArtekSoftware.Codemash
 	public partial class SpeakerBioViewController : UIViewController
 	{
 		private SpeakerEntity _speaker;
+
 		public SpeakerBioViewController (SpeakerEntity speaker) : base ("SpeakerBioViewController", null)
 		{
 			_speaker = speaker;
+		}
+		
+		public UIToolbar Toolbar {
+			get {
+				return toolbar;	
+			}
 		}
 		
 		public SpeakerBioViewController () : base ("SpeakerBioViewController", null)
@@ -27,9 +34,8 @@ namespace ArtekSoftware.Codemash
 			this.speakerBlogButton.TouchUpInside += HandleSpeakerBlogButtonhandleTouchUpInside;
 			this.speakerTwitterHandleButton.TouchUpInside += HandleSpeakerTwitterHandleButtonhandleTouchUpInside;
 			
-			if (_speaker != null)
-			{
-				SetSpeaker();
+			if (_speaker != null) {
+				SetSpeaker ();
 			}
 		}
 
@@ -72,7 +78,7 @@ namespace ArtekSoftware.Codemash
 			if (this.View.Subviews.Count () == 10) {
 				bioLabel = new HLabel ();
 			} else {
-				bioLabel = (HLabel)this.View.Subviews[10];
+				bioLabel = (HLabel)this.View.Subviews [10];
 			}
 				
 			bioLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
@@ -216,6 +222,7 @@ namespace ArtekSoftware.Codemash
 	{   	
 		private SpeakerBioViewController _controller;
 		private List<SessionEntity> _sessions;
+
 		public MainTableDelegate (SpeakerBioViewController controller, List<SessionEntity> sessions)
 		{
 			_controller = controller;
@@ -226,28 +233,7 @@ namespace ArtekSoftware.Codemash
 		{
 			int selectedRow = CalculateSelectedRow (indexPath, tableView);
 			SessionEntity session = _sessions.ToList () [selectedRow];
-			//AppDelegate.CurrentAppDelegate.ShowSessionDetail ();
-			//TODO AppDelegate.CurrentAppDelegate.DetailNavController.SetSession (session);
-					
-			
-//			UITableViewController nextController = null;
-//
-//			switch (indexPath.Row) {
-//			case 0:
-//				nextController = new CheckmarkDemoTableController (UITableViewStyle.Grouped);
-//				break;
-//			case 1:
-//				nextController = new StyleDemoTableController (UITableViewStyle.Grouped);
-//				break;
-//			case 2:
-//				nextController = new EditableTableController (UITableViewStyle.Plain);
-//				break;
-//			default:
-//				break;
-//			}
-//
-//			if (nextController != null)
-//				_controller.NavigationController.PushViewController (nextController, true);
+			AppDelegate.CurrentAppDelegate.SetSession (session);
 		}
 		
 		private int CalculateSelectedRow (NSIndexPath indexPath, UITableView tableView)
@@ -262,9 +248,7 @@ namespace ArtekSoftware.Codemash
 			int selectedRow = totalCountOfRows + indexPath.Row;
 			
 			return selectedRow;
-		}		
-		
-		
+		}
 		
 	}
 

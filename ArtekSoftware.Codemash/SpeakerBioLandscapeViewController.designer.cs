@@ -12,6 +12,12 @@ namespace ArtekSoftware.Codemash
 	partial class SpeakerBioLandscapeViewController
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIImageView speakerTwitterImage { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIImageView speakerBlogImage { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UILabel speakerNameLabel { get; set; }
 
 		[Outlet]

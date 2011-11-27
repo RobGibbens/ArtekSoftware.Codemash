@@ -5,15 +5,23 @@ On first rotation, CodeMash button shows,but no Popover - Fixed?
 Rotating back to landscape leaves black vertical bar (tableview?) - Fixed?
 Alignment is wrong on session portrait elements - Fixed
 Map controller isn't wired up - Fixed enough for now
+Speaker view doesn't have popover - Fixed
+When selecting a cell in tableview, popover doesn't get dismissed - Fixed
+On first load, in Portrait mode, click popover button. TableView turns blue and empty. -Fixed
+Add to schedule...not refreshing schedule - Fixed
+Script image not showing nicely in dialog - Fixed
+
 
 POPOVER ISSUES
 In portrait view, clicking popover, selecting session bumps the toolbar down
-Speaker view doesn't have popover
-When selecting a cell in tableview, popover doesn't get dismissed
 In Portrait mode, click popover button, then rotate while the table is still visible. Table is not dismissed.
-On first load, in Portrait mode, click popover button. TableView turns blue and empty.
+Start in Portrait mode, rotate to landscape, click session, rotate to portrait, toolbar gets reset to blank
+
 
 OTHER ISSUES
 Alignment is wrong on speaker elements
 Clicking schedule element changes to Session view
+Detail view needs content
+Add to schedule not showing schedule dialog
+
 

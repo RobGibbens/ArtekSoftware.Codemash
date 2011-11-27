@@ -1,21 +1,18 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/SpeakerBioViewController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/SpeakerBioLandscapeViewController.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="80" Column="51" />
-      <File FileName="ArtekSoftware.Codemash/SessionDetailViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/DetailViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/DefaultViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/RootViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/SpeakerBioLandscapeViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/SpeakerBioViewController.cs" Line="89" Column="36" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" Line="29" Column="3" />
+      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="115" Column="46" />
+      <File FileName="ArtekSoftware.Codemash/SpeakerBioLandscapeViewController.cs" Line="92" Column="29" />
+      <File FileName="ArtekSoftware.Codemash/UI/RotatingViewController.cs" Line="45" Column="3" />
       <File FileName="ArtekSoftware.Codemash/UI/RotatingSpeakerBioViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/UI/RotatingViewController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/RotatingSessionDetailViewController.cs" line="114" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

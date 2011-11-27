@@ -3,13 +3,81 @@ using System.Drawing;
 using System.Collections.Generic;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using System.Linq;
 
 namespace ArtekSoftware.Codemash
 {
-	public partial class DetailViewController : UIViewController
+	public partial class DetailViewController : UIViewController, ISubstitutableDetailViewController
 	{
-		UIPopoverController popoverController;
 		object detailItem;
+		
+    UIPopoverController _popOverController;
+    UIBarButtonItem _rootPopoverButtonItem;
+
+    public UIPopoverController PopOverController {
+      get {
+        return this._popOverController;
+      }
+      set {
+        _popOverController = value;
+      }
+    }
+    
+    public UIBarButtonItem RootPopoverButtonItem {
+      get {
+        return this._rootPopoverButtonItem;
+      }
+      set {
+        _rootPopoverButtonItem = value;
+      }
+    }
+
+    public override void ViewDidUnload ()
+    {
+      base.ViewDidUnload ();
+      this.toolbar = null;
+    }
+
+    public void ShowRootPopoverButtonItem (UIBarButtonItem barButtonItem)
+    {
+      // Add the popover button to the toolbar.
+      
+      var itemsArray = this.toolbar.Items.ToList();
+      //NSMutableArray *itemsArray = [toolbar.items mutableCopy];
+      
+      if (itemsArray.Count == 0)
+      {
+        itemsArray.Insert(0, barButtonItem);
+      }
+      else
+      {
+        itemsArray[0] = barButtonItem;
+      }
+      //[itemsArray insertObject:barButtonItem atIndex:0];
+      
+      this.toolbar.SetItems (itemsArray.ToArray(), false);
+      //[toolbar setItems:itemsArray animated:NO];
+      
+      itemsArray = null;
+      //[itemsArray release];      
+    }
+
+    public void InvalidateRootPopoverButtonItem (UIBarButtonItem barButtonItem)
+    {
+      // Remove the popover button from the toolbar.
+      var itemsArray = this.toolbar.Items.ToList ();
+      //NSMutableArray *itemsArray = [toolbar.items mutableCopy];
+      
+      itemsArray.Remove (barButtonItem);
+      //[itemsArray removeObject:barButtonItem];
+      
+      this.toolbar.SetItems (itemsArray.ToArray (), false);
+      //[toolbar setItems:itemsArray animated:NO];
+      
+      itemsArray = null;
+      //[itemsArray release];      
+    }		
+		
 		
 		public DetailViewController () : base ("DetailViewController", null)
 		{
@@ -25,8 +93,8 @@ namespace ArtekSoftware.Codemash
 				ConfigureView ();
 			}
 			
-			if (this.popoverController != null) {
-				this.popoverController.Dismiss (true);
+			if (this._popOverController != null) {
+				this._popOverController.Dismiss (true);
 			}
 		}
 		
@@ -40,26 +108,14 @@ namespace ArtekSoftware.Codemash
 		
 		public override void DidReceiveMemoryWarning ()
 		{
-			// Releases the view if it doesn't have a superview.
 			base.DidReceiveMemoryWarning ();
-			
-			// Release any cached data, images, etc that aren't in use.
 		}
 		
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			
-			//any additional setup after loading the view, typically from a nib.
 		}
 		
-		public override void ViewDidUnload ()
-		{
-			base.ViewDidUnload ();
-			
-			// Release any retained subviews of the main view.
-			// e.g. this.myOutlet = null;
-		}
 		
 		public override bool ShouldAutorotateToInterfaceOrientation (UIInterfaceOrientation toInterfaceOrientation)
 		{
@@ -76,7 +132,7 @@ namespace ArtekSoftware.Codemash
 			items.Add (barButtonItem);
 			items.AddRange (toolbar.Items);
 			toolbar.SetItems (items.ToArray (), true);
-			popoverController = pc;
+			_popOverController = pc;
 		}
 		
 		[Export("splitViewController:willShowViewController:invalidatingBarButtonItem:")]
@@ -87,7 +143,7 @@ namespace ArtekSoftware.Codemash
 			var items = new List<UIBarButtonItem> (toolbar.Items);
 			items.RemoveAt (0);
 			toolbar.SetItems (items.ToArray (), true);
-			popoverController = null;
+			_popOverController = null;
 		}
 	
 	

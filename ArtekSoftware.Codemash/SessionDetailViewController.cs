@@ -12,8 +12,15 @@ namespace ArtekSoftware.Codemash
 {
 	public partial class SessionDetailViewController : UIViewController
 	{
-		UIPopoverController popoverController;
-
+		//UIPopoverController popoverController;
+		
+		public UIToolbar Toolbar
+		{
+			get
+			{
+				return toolbar;	
+			}
+		}
 		public SessionDetailViewController (SessionEntity session) : base ("SessionDetailViewController", null)
 		{
 			_session = session;
@@ -41,48 +48,48 @@ namespace ArtekSoftware.Codemash
 			return true;
 		}
 		
-		[Export("splitViewController:willHideViewController:withBarButtonItem:forPopoverController:")]
-		public void WillHideViewController (UISplitViewController svc, UIViewController vc,
-			UIBarButtonItem barButtonItem, UIPopoverController pc)
-		{
-			AddPopoverButton (svc, vc, barButtonItem, pc);
-		}
+//		[Export("splitViewController:willHideViewController:withBarButtonItem:forPopoverController:")]
+//		public void WillHideViewController (UISplitViewController svc, UIViewController vc,
+//			UIBarButtonItem barButtonItem, UIPopoverController pc)
+//		{
+//			AddPopoverButton (svc, vc, barButtonItem, pc);
+//		}
 
-		private void AddPopoverButton (UISplitViewController svc, UIViewController vc,
-			UIBarButtonItem barButtonItem, UIPopoverController pc)
-		{
-			if (toolbar != null && toolbar.Items != null && toolbar.Items.Count() > 0)
-			{
-				toolbar.SetItems(new List<UIBarButtonItem> ().ToArray(), true);
-			}
-			barButtonItem.Title = "Codemash";
-			
-			var items = new List<UIBarButtonItem> ();
-			items.Add (barButtonItem);
-			if (toolbar != null) {
-				if (toolbar.Items != null) {
-					items.AddRange (toolbar.Items);
-				}
-				toolbar.SetItems (items.ToArray (), true);
-			}
-			popoverController = pc;
-		}
+//		private void AddPopoverButton (UISplitViewController svc, UIViewController vc,
+//			UIBarButtonItem barButtonItem, UIPopoverController pc)
+//		{
+//			if (toolbar != null && toolbar.Items != null && toolbar.Items.Count() > 0)
+//			{
+//				toolbar.SetItems(new List<UIBarButtonItem> ().ToArray(), true);
+//			}
+//			barButtonItem.Title = "Codemash";
+//			
+//			var items = new List<UIBarButtonItem> ();
+//			items.Add (barButtonItem);
+//			if (toolbar != null) {
+//				if (toolbar.Items != null) {
+//					items.AddRange (toolbar.Items);
+//				}
+//				toolbar.SetItems (items.ToArray (), true);
+//			}
+//			popoverController = pc;
+//		}
 		
-		[Export("splitViewController:willShowViewController:invalidatingBarButtonItem:")]
-		public void WillShowViewController (UISplitViewController svc, UIViewController vc,
-			UIBarButtonItem button)
-		{
-			List<UIBarButtonItem> items = null;
-			// Called when the view is shown again in the split view, invalidating the button and popover controller.
-			if (toolbar.Items != null) {
-				items = new List<UIBarButtonItem> (toolbar.Items);
-				items.RemoveAt (0);
-			} else {
-				items = new List<UIBarButtonItem> ();
-			}
-			toolbar.SetItems (items.ToArray (), true);
-			popoverController = null;
-		}
+//		[Export("splitViewController:willShowViewController:invalidatingBarButtonItem:")]
+//		public void WillShowViewController (UISplitViewController svc, UIViewController vc,
+//			UIBarButtonItem button)
+//		{
+//			List<UIBarButtonItem> items = null;
+//			// Called when the view is shown again in the split view, invalidating the button and popover controller.
+//			if (toolbar.Items != null) {
+//				items = new List<UIBarButtonItem> (toolbar.Items);
+//				items.RemoveAt (0);
+//			} else {
+//				items = new List<UIBarButtonItem> ();
+//			}
+//			toolbar.SetItems (items.ToArray (), true);
+//			popoverController = null;
+//		}
 		
 		public void SetSession (SessionEntity session)
 		{
@@ -155,10 +162,10 @@ namespace ArtekSoftware.Codemash
 			
 			SetAddToScheduleLabel ();
 			
-			AddPopoverButton(null, null, toolbar.Items[0], new UIPopoverController(new TabBarController()));
-			if (this.popoverController != null) {
-				this.popoverController.Dismiss (true);
-			}				
+			//AddPopoverButton(null, null, toolbar.Items[0], new UIPopoverController(new TabBarController()));
+//			if (this.popoverController != null) {
+//				this.popoverController.Dismiss (true);
+//			}				
 		}
 		
 		protected void SetTechnologyImage (UIImage image)
@@ -214,10 +221,10 @@ namespace ArtekSoftware.Codemash
 											};
 					
 						repository.Save (scheduledSession);
-						//TODO var vc = AppDelegate.CurrentAppDelegate._tabBarController.ViewControllers [0];
-						//TODO var uinc = (UINavigationController)vc;
-						//TODO var scheduleController = (ScheduledSessionDialogViewController)uinc.TopViewController;
-						//TODO scheduleController.LoadData ();
+						var vc = AppDelegate.CurrentAppDelegate.TabBar.ViewControllers [0];
+						var uinc = (UINavigationController)vc;
+						var scheduleController = (ScheduledSessionDialogViewController)uinc.TopViewController;
+						scheduleController.LoadData ();
 						//AddToQueue (scheduledSession);
 					
 						AddNotification (_session);
@@ -249,8 +256,7 @@ namespace ArtekSoftware.Codemash
 				}
 			}
 			
-			//AppDelegate.CurrentAppDelegate.ShowSpeakerDetail ();
-			//TODO AppDelegate.CurrentAppDelegate.DetailNavController.SetSpeaker (speaker);
+			AppDelegate.CurrentAppDelegate.SetSpeaker (speaker);
 		}
 		
 		protected void AddToQueue (ScheduledSessionEntity scheduledSession)
