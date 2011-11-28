@@ -34,37 +34,37 @@ namespace ArtekSoftware.Codemash
 
 		public override void ViewWillAppear (bool animated)
 		{
-			Console.WriteLine ("RotatingViewController.ViewWillAppear");
+			//Console.WriteLine ("RotatingViewController.ViewWillAppear");
 			if (this.InterfaceOrientation == UIInterfaceOrientation.Portrait || this.InterfaceOrientation == UIInterfaceOrientation.PortraitUpsideDown) {
-				Console.WriteLine ("RotatingViewController.ViewWillAppear - IsPortrait");
+				//Console.WriteLine ("RotatingViewController.ViewWillAppear - IsPortrait");
 				_showView (this.PortraitViewController.View);
 			} else if (this.InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft) {
-				Console.WriteLine ("RotatingViewController.ViewWillAppear - IsLandscapeLeft");
+				//Console.WriteLine ("RotatingViewController.ViewWillAppear - IsLandscapeLeft");
 				_showView (this.LandscapeLeftViewController.View);
 			} else if (this.InterfaceOrientation == UIInterfaceOrientation.LandscapeRight) {
-				Console.WriteLine ("RotatingViewController.ViewWillAppear - IsLandscapeRight");
+				//Console.WriteLine ("RotatingViewController.ViewWillAppear - IsLandscapeRight");
 				_showView (this.LandscapeRightViewController.View);
 			}
 		}
 
 		private void _showView (UIView view)
 		{
-			Console.WriteLine ("RotatingViewController._showView - view is null " + (view == null).ToString());
+			//Console.WriteLine ("RotatingViewController._showView - view is null " + (view == null).ToString());
 			bool skip = false; //TODO
 			if (!skip) {
 				if (this.NavigationController != null) {
-					Console.WriteLine ("RotatingViewController._showView - Calling NavigationController.SetNavigationBarHidden");
+					//Console.WriteLine ("RotatingViewController._showView - Calling NavigationController.SetNavigationBarHidden");
 					NavigationController.SetNavigationBarHidden (view != PortraitViewController.View, false);
 				}
 				
-				Console.WriteLine ("RotatingViewController._showView - removing all views");
+				//Console.WriteLine ("RotatingViewController._showView - removing all views");
 				_removeAllViews ();
 				view.Frame = this.View.Frame;
 				if (this.InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft || this.InterfaceOrientation == UIInterfaceOrientation.LandscapeRight) {
-					Console.WriteLine ("RotatingViewController._showView - Is Landscape, setting view.Frame");
+					//Console.WriteLine ("RotatingViewController._showView - Is Landscape, setting view.Frame");
 					view.Frame = new System.Drawing.RectangleF (0, 0, this.View.Frame.Width, this.View.Frame.Height);
 				}
-				Console.WriteLine ("RotatingViewController._showView - Adding Subview");
+				//Console.WriteLine ("RotatingViewController._showView - Adding Subview");
 				View.AddSubview (view);
 			}
 
@@ -77,14 +77,14 @@ namespace ArtekSoftware.Codemash
 
 		public override void ViewDidLoad ()
 		{
-			Console.WriteLine ("RotatingViewController.ViewDidLoad");
+			//Console.WriteLine ("RotatingViewController.ViewDidLoad");
 			notificationObserver = NSNotificationCenter.DefaultCenter
 					.AddObserver ("UIDeviceOrientationDidChangeNotification", DeviceRotated);
 		}
 
 		public override void ViewDidAppear (bool animated)
 		{
-			Console.WriteLine ("RotatingViewController.ViewDidAppear");
+			//Console.WriteLine ("RotatingViewController.ViewDidAppear");
 			UIDevice.CurrentDevice.BeginGeneratingDeviceOrientationNotifications ();
 		}
 
@@ -95,26 +95,26 @@ namespace ArtekSoftware.Codemash
 
 		private void DeviceRotated (NSNotification notification)
 		{
-			Console.WriteLine ("RotatingViewController.DeviceRotated - Orientation is " + this.InterfaceOrientation);
+			//Console.WriteLine ("RotatingViewController.DeviceRotated - Orientation is " + this.InterfaceOrientation);
 			switch (this.InterfaceOrientation) {
 
 			case  UIInterfaceOrientation.Portrait:
-				Console.WriteLine ("RotatingViewController.DeviceRotated - showing Portrait");
+				//Console.WriteLine ("RotatingViewController.DeviceRotated - showing Portrait");
 				_showView (PortraitViewController.View);
 				break;
 
 			case  UIInterfaceOrientation.PortraitUpsideDown:
-				Console.WriteLine ("RotatingViewController.DeviceRotated - showing Portrait UpsideDown");
+				//Console.WriteLine ("RotatingViewController.DeviceRotated - showing Portrait UpsideDown");
 				_showView (PortraitViewController.View);
 				break;				
 				
 			case UIInterfaceOrientation.LandscapeLeft:
-				Console.WriteLine ("RotatingViewController.DeviceRotated - showing LandscapeLeft");
+				//Console.WriteLine ("RotatingViewController.DeviceRotated - showing LandscapeLeft");
 				_showView (LandscapeLeftViewController.View);
 
 				break;
 			case UIInterfaceOrientation.LandscapeRight:
-				Console.WriteLine ("RotatingViewController.DeviceRotated - showing LandscapeRight");
+				//Console.WriteLine ("RotatingViewController.DeviceRotated - showing LandscapeRight");
 				_showView (LandscapeRightViewController.View);
 				break;
 			}
@@ -122,7 +122,7 @@ namespace ArtekSoftware.Codemash
 
 		private void _removeAllViews ()
 		{
-			Console.WriteLine ("RotatingViewController._removeAllViews");
+			//Console.WriteLine ("RotatingViewController._removeAllViews");
 			
 			PortraitViewController.View.RemoveFromSuperview ();
 			LandscapeLeftViewController.View.RemoveFromSuperview ();

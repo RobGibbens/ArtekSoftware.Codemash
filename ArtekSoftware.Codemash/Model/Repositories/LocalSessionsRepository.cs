@@ -55,7 +55,7 @@ namespace ArtekSoftware.Codemash
 					URI = dto.URI,
 				};
 				
-				Console.WriteLine ("Saving " + entity.Title);
+				//Console.WriteLine ("Saving " + entity.Title);
 				this.Save (entity);
 				Thread.Sleep (10);
 			}
