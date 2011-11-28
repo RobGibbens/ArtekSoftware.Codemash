@@ -9,7 +9,7 @@
 		<string>images/icon2.png</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.3</string>
+	<string>0.32</string>
 	<key>MinimumOSVersion</key>
 	<string>4.0</string>
 	<key>UIDeviceFamily</key>

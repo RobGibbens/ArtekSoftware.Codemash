@@ -73,85 +73,62 @@ namespace ArtekSoftware.Codemash
  
 		}
 		
-		//private RotatingSessionDetailViewController rotatingSessionDetailViewController;
-		
 		public void SetSession (SessionEntity session)
 		{
-			//Console.WriteLine("AppDelegate.SetSession - session is null " + (session == null).ToString());
-			
-			
 			this.TabBar.SelectedIndex = 1; 
+
+			RotatingSessionDetailViewController rotatingSessionDetailViewController = new RotatingSessionDetailViewController (session);
 			
-			//Console.WriteLine("AppDelegate.SetSession - creating new RotatingSessionDetailViewController");
-			ISubstitutableDetailViewController detailViewController = new RotatingSessionDetailViewController (session);
-			
-			//Console.WriteLine("AppDelegate.SetSession - getting existing view controller from SplitViewController");
 			var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
-			//Console.WriteLine("AppDelegate.SetSession - existingVC is null " + (existingVC == null).ToString());
+			rotatingSessionDetailViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
+			rotatingSessionDetailViewController.PopOverController = existingVC.PopOverController;			
+	
+			var splitDelegate = new SplitDelegate ();
+			this.splitViewController.Delegate = splitDelegate;
 			
-			//if (existingVC.RootPopoverButtonItem != null) {
-				detailViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
-//			} else {
-//				detailViewController.RootPopoverButtonItem = new UIBarButtonItem () { Title = "CodeMash" };
-//			}
-//			
-			//if (existingVC.PopOverController != null) {
-				detailViewController.PopOverController = existingVC.PopOverController;			
-//			} else {
-//				detailViewController.PopOverController = new UIPopoverController (new TabBarController ());			
-//				
-//			}
-			//Console.WriteLine("AppDelegate.SetSession - detailViewController.RootPopoverButtonItem is null" + (detailViewController.RootPopoverButtonItem == null).ToString());
-			//Console.WriteLine("AppDelegate.SetSession -detailViewController.PopOverController is null " + (detailViewController.PopOverController == null).ToString());
-			
-			//Console.WriteLine("AppDelegate.SetSession - creating new SplitDelegate");
-			this.splitViewController.Delegate = new SplitDelegate ();
-			//Console.WriteLine("AppDelegate.SetSession - setting splitViewControllers.ViewControllers");
 			this.splitViewController.ViewControllers = new UIViewController[] {
 					this.TabBar,
-					detailViewController as UIViewController
+					rotatingSessionDetailViewController
 				};
 			
-			//Console.WriteLine("AppDelegate.SetSession - setting window.RootViewController");
 			window.RootViewController = splitViewController;
 			
-			if (detailViewController.RootPopoverButtonItem != null) {
-				//Console.WriteLine("AppDelegate.SetSession - calling detailViewController.ShowRootPopoverButtonItem (detailViewController.RootPopoverButtonItem)");
-				detailViewController.ShowRootPopoverButtonItem (detailViewController.RootPopoverButtonItem);
+			if (rotatingSessionDetailViewController.RootPopoverButtonItem != null) {
+				rotatingSessionDetailViewController.ShowRootPopoverButtonItem (rotatingSessionDetailViewController.RootPopoverButtonItem);
 			}
-			if (detailViewController.PopOverController != null) {
-				//Console.WriteLine("AppDelegate.SetSession - calling detailViewController.PopOverController.Dismiss (true)");
-				
-				detailViewController.PopOverController.Dismiss (true);
+			
+			if (rotatingSessionDetailViewController.PopOverController != null) {
+				rotatingSessionDetailViewController.PopOverController.Dismiss (true);
 			}
-		
 		}
-		
-		//private RotatingSpeakerBioViewController rotatingSpeakerBioViewController;
 		
 		public void SetSpeaker (SpeakerEntity speaker)
 		{
-			//Console.WriteLine("AppDelegate.SetSpeaker - speaker is null " + (speaker == null).ToString());
-			ISubstitutableDetailViewController detailViewController = new RotatingSpeakerBioViewController (speaker);
+			RotatingSpeakerBioViewController rotatingSpeakerBioViewController = new RotatingSpeakerBioViewController (speaker);
+
 			
 			var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
-			detailViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
-			detailViewController.PopOverController = existingVC.PopOverController;			
+			rotatingSpeakerBioViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
+			rotatingSpeakerBioViewController.PopOverController = existingVC.PopOverController;			
 			
 			this.TabBar.SelectedIndex = 2; 
 	
-			this.splitViewController.Delegate = new SplitDelegate ();
+			
+			var splitDelegate = new SplitDelegate ();
+			
+			
+			this.splitViewController.Delegate = splitDelegate;
 			this.splitViewController.ViewControllers = new UIViewController[] {
 					this.TabBar,
-					detailViewController as UIViewController 
+					rotatingSpeakerBioViewController
 				};
 			
-			if (detailViewController.RootPopoverButtonItem != null) {
-				detailViewController.ShowRootPopoverButtonItem (detailViewController.RootPopoverButtonItem);
+			if (rotatingSpeakerBioViewController.RootPopoverButtonItem != null) {
+				rotatingSpeakerBioViewController.ShowRootPopoverButtonItem (rotatingSpeakerBioViewController.RootPopoverButtonItem);
 			}
 			
-			if (detailViewController.PopOverController != null) {
-				detailViewController.PopOverController.Dismiss (true);
+			if (rotatingSpeakerBioViewController.PopOverController != null) {
+				rotatingSpeakerBioViewController.PopOverController.Dismiss (true);
 			}
 		}
 		
