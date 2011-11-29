@@ -5,6 +5,7 @@ using System.Linq;
 using MonoTouch.UIKit;
 using System.Drawing;
 using MonoTouch.Foundation;
+using MonoTouch.TestFlight;
 
 namespace ArtekSoftware.Codemash
 {
@@ -42,7 +43,7 @@ namespace ArtekSoftware.Codemash
 		void HandleHandleRefreshRequested (object sender, EventArgs e)
 		{
 			LoadData (isRefresh:true);
-			//TestFlightSdk.TestFlight.PassCheckpoint ("Refreshed Sessions");
+			//TestFlight.PassCheckpoint ("Refreshed Sessions");
 			
 		}
 		

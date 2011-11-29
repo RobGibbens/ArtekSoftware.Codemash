@@ -1,24 +1,48 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/AppDelegate.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/MapViewController.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/UI/NetworkIndicator.cs" Line="19" Column="2" />
-      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="86" Column="45" />
+      <File FileName="ArtekSoftware.Codemash/DetailViewController.cs" Line="31" Column="5" />
+      <File FileName="ArtekSoftware.Codemash/MapViewController.cs" Line="105" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="CodeMash" expanded="True">
-            <Node name="images" expanded="True">
+          <Node name="CodeMash" expanded="True" selected="True">
+            <Node name="References" expanded="True">
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
-              <Node name="alarm.png" selected="True" />
-              <Node name="Default.png" />
+              <Node name="Catnap" />
+              <Node name="RestSharp.MonoTouch" />
+              <Node name="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+            </Node>
+            <Node name="DefaultDatabase">
+              <Option id="ShowVersionControlOverlays" value="True" />
+              <Option id="ShowAllFiles" value="True" />
+            </Node>
+            <Node name="images">
+              <Option id="ShowVersionControlOverlays" value="True" />
+              <Option id="ShowAllFiles" value="True" />
+            </Node>
+            <Node name="lib">
+              <Option id="ShowVersionControlOverlays" value="True" />
+              <Option id="ShowAllFiles" value="True" />
+            </Node>
+            <Node name="MoveToLibrary" expanded="True" />
+            <Node name="UI" expanded="True">
+              <Node name="RotatingSpeakerBioViewController.cs">
+                <Option id="ShowVersionControlOverlays" value="True" />
+                <Option id="ShowAllFiles" value="True" />
+              </Node>
             </Node>
             <Node name="ViewControllers" expanded="True">
               <Node name="DialogViewControllers" expanded="True" />
             </Node>
             <Node name="DefaultViewController.xib">
+              <Option id="ShowVersionControlOverlays" value="True" />
+              <Option id="ShowAllFiles" value="True" />
+            </Node>
+            <Node name="SessionDetailLandscapeViewController.cs">
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
             </Node>
@@ -32,12 +56,12 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" line="35" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" line="32" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" line="36" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" line="33" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.CodeMash>
-    <IPhoneTestFlightSettings_27CAdHoc ApiToken="28ea2cf46ef75d633a2bce49d2adbfb7_NzYwOA" TeamToken="19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw" ReleaseNotes="Added Don to tester provisioning profile" NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="CodeMashScheduler" />
+    <IPhoneTestFlightSettings_27CAdHoc ApiToken="28ea2cf46ef75d633a2bce49d2adbfb7_NzYwOA" TeamToken="19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw" ReleaseNotes="Should fix the crash when selecting Speakers or Sessions.  Missing header image." NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="CodeMashScheduler" />
   </MonoDevelop.Ide.ItemProperties.CodeMash>
 </Properties>

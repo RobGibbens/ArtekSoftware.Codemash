@@ -2,6 +2,8 @@ using System;
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
 using System.Linq;
+using MonoTouch.TestFlight;
+using System.Threading;
 
 namespace ArtekSoftware.Codemash
 {
@@ -91,33 +93,43 @@ namespace ArtekSoftware.Codemash
 
 		public void ShowRootPopoverButtonItem (UIBarButtonItem barButtonItem)
 		{
-			//Console.WriteLine("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - barButtonItem is null " + (barButtonItem == null).ToString());
-			// Add the popover button to the toolbar.
-			//if (this.InterfaceOrientation == UIInterfaceOrientation.Portrait || this.InterfaceOrientation == UIInterfaceOrientation.PortraitUpsideDown) {
-				//Console.WriteLine("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - IsInPortrait");
-				toolbar = ((SessionDetailViewController)this.PortraitViewController).Toolbar;
-				//Console.WriteLine("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - IsInPortrait - toolbar is null " + (toolbar == null).ToString());
-				toolbar.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile ("images/SessionsHeader3.png"));
-			//}
+			//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 1");
+			
+			toolbar = ((SessionDetailViewController)this.PortraitViewController).Toolbar;
+			//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 2");
+			
+			toolbar.BackgroundColor = UIColor.FromPatternImage (UIImage.FromFile ("images/SessionsHeader3.png"));
+			//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 3");
+			
 			
 			if (toolbar != null) {
-				//Console.WriteLine("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - toolbar is null " + (toolbar == null).ToString());
+				//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 4");
+			
 				var itemsArray = this.toolbar.Items.ToList ();
-				//NSMutableArray *itemsArray = [toolbar.items mutableCopy];
-      
+				//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 5");
+				
 				if (itemsArray.Count == 0) {
+					//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 6");
 					//Console.WriteLine("RotatingSessionDetailViewController.RootPopoverButtonItem - itemsArray.Count == 0");
 					itemsArray.Insert (0, barButtonItem);
+					//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 7");
 				} else {
+					//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 8");
 					//Console.WriteLine("RotatingSessionDetailViewController.RootPopoverButtonItem - itemsArray.Count <> 0");
 					itemsArray [0] = barButtonItem;
+					//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 9");
 				}
 				//[itemsArray insertObject:barButtonItem atIndex:0];
+				//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 10");
       
 				this.toolbar.SetItems (itemsArray.ToArray (), false);
+				//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 11");
+				
 				//[toolbar setItems:itemsArray animated:NO];
       
 				itemsArray = null;
+				//TestFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 12");
+				
 				//[itemsArray release];
 			}
 		}
@@ -132,18 +144,10 @@ namespace ArtekSoftware.Codemash
 			}
 			
 			if (toolbar != null) {
-				// Remove the popover button from the toolbar.
 				var itemsArray = this.toolbar.Items.ToList ();
-				//NSMutableArray *itemsArray = [toolbar.items mutableCopy];
-      			//Console.WriteLine("RotatingSessionDetailViewController.InvalidateRootPopoverButtonItem - Removing barButtonItem");
 				itemsArray.Remove (barButtonItem);
-				//[itemsArray removeObject:barButtonItem];
-      
 				this.toolbar.SetItems (itemsArray.ToArray (), false);
-				//[toolbar setItems:itemsArray animated:NO];
-      
 				itemsArray = null;
-				//[itemsArray release];  
 			}
 		}			
 	}

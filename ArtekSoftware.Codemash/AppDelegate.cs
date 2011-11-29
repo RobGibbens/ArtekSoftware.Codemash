@@ -4,6 +4,7 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.IO;
+using MonoTouch.TestFlight;
 
 namespace ArtekSoftware.Codemash
 {
@@ -22,8 +23,11 @@ namespace ArtekSoftware.Codemash
 		
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
-			//Console.WriteLine("AppDelegate.FinishedLaunching");
+			Console.WriteLine("AppDelegate.FinishedLaunching");
 			CopyDb ();
+			
+			//TestFlight.TakeOff("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
+			
 			
 			var bootstrapper = new Bootstrapper ();
 			bootstrapper.Initialize ();				
@@ -68,7 +72,8 @@ namespace ArtekSoftware.Codemash
 			var defaultDatabaseExists = File.Exists (rootDbPath);
 			if (!runtimeDbExists && defaultDatabaseExists) {
 				File.Copy (rootDbPath, db);
-				//TestFlightSdk.TestFlight.PassCheckpoint ("Copied default database");
+			
+				//TestFlight.PassCheckpoint ("Copied default database");
 			}
  
 		}
@@ -106,17 +111,13 @@ namespace ArtekSoftware.Codemash
 		{
 			RotatingSpeakerBioViewController rotatingSpeakerBioViewController = new RotatingSpeakerBioViewController (speaker);
 
-			
 			var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
 			rotatingSpeakerBioViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
 			rotatingSpeakerBioViewController.PopOverController = existingVC.PopOverController;			
 			
 			this.TabBar.SelectedIndex = 2; 
 	
-			
-			var splitDelegate = new SplitDelegate ();
-			
-			
+			var splitDelegate = new SplitDelegate ();		
 			this.splitViewController.Delegate = splitDelegate;
 			this.splitViewController.ViewControllers = new UIViewController[] {
 					this.TabBar,
@@ -134,16 +135,29 @@ namespace ArtekSoftware.Codemash
 		
 		public void SetMap ()
 		{
-			this.splitViewController.ViewControllers [1] = null;
-			MapViewController mapViewController;
 			
-			mapViewController = new MapViewController ();
+			MapViewController mapViewController = new MapViewController ();
+			
+			var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
+			mapViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
+			mapViewController.PopOverController = existingVC.PopOverController;					
 			
 			this.TabBar.SelectedIndex = 3; 
+			
+			var splitDelegate = new SplitDelegate ();		
+			this.splitViewController.Delegate = splitDelegate;
 			this.splitViewController.ViewControllers = new UIViewController[] {
 					this.TabBar,
 					mapViewController
 				};
+			
+			if (mapViewController.RootPopoverButtonItem != null) {
+				mapViewController.ShowRootPopoverButtonItem (mapViewController.RootPopoverButtonItem);
+			}
+			
+			if (mapViewController.PopOverController != null) {
+				mapViewController.PopOverController.Dismiss (true);
+			}
 		}
 	}
 }

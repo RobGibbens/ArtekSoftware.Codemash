@@ -12,6 +12,7 @@ using Catnap;
 using Catnap.Migration;
 using Catnap.Find.Conditions;
 using System.Threading;
+using MonoTouch.TestFlight;
 
 namespace ArtekSoftware.Codemash
 {
@@ -30,7 +31,7 @@ namespace ArtekSoftware.Codemash
 		public IList<Session> GetSessions ()
 		{	
 			IList<Session> sessions;
-			//TestFlightSdk.TestFlight.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
+			//TestFlight.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
 			
 			var client = new RestClient ();
 			client.BaseUrl = "http://codemash.org";
@@ -60,7 +61,7 @@ namespace ArtekSoftware.Codemash
 			refresh.LastRefreshTime = DateTime.Now;
 			refreshRepository.Save (refresh);
 				
-			//TestFlightSdk.TestFlight.PassCheckpoint ("Finished RemoteSessionsRepository.GetSessions");
+			//TestFlight.PassCheckpoint ("Finished RemoteSessionsRepository.GetSessions");
 			
 			return sessions;
 		}

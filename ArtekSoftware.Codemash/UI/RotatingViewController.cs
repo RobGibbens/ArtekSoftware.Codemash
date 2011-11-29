@@ -8,9 +8,7 @@ namespace ArtekSoftware.Codemash
 	public class RotatingViewController : UIViewController
 	{
 		public UIViewController LandscapeLeftViewController { get; set; }
-
 		public UIViewController LandscapeRightViewController { get; set; }
-
 		public UIViewController PortraitViewController { get; set; }
 
 		private NSObject notificationObserver;

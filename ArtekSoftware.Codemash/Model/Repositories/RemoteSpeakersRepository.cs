@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using System.Linq;
+using MonoTouch.TestFlight;
 
 namespace ArtekSoftware.Codemash
 {
@@ -10,7 +11,7 @@ namespace ArtekSoftware.Codemash
 		public IList<Speaker> GetSpeakers ()
 		{	
 			List<Speaker> speakers;
-			//TestFlightSdk.TestFlight.PassCheckpoint ("Started RemoteSpeakersRepository.GetSpeakers");
+			//TestFlight.PassCheckpoint ("Started RemoteSpeakersRepository.GetSpeakers");
 			
 			var client = new RestClient ();
 			client.BaseUrl = "http://codemash.org";
@@ -26,7 +27,7 @@ namespace ArtekSoftware.Codemash
 					speakers = response.Data.Speakers.OrderBy (x => x.Name.Trim ()).ToList ();
 				}
 			}
-			//TestFlightSdk.TestFlight.PassCheckpoint ("Finished RemoteSpeakersRepository.GetSpeakers");
+			//TestFlight.PassCheckpoint ("Finished RemoteSpeakersRepository.GetSpeakers");
 			
 			return speakers;
 		
