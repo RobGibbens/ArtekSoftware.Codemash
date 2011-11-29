@@ -12,6 +12,8 @@ Add to schedule...not refreshing schedule - Fixed
 Script image not showing nicely in dialog - Fixed
 In Portrait mode, click popover button, then rotate while the table is still visible. Table is not dismissed. - Fixed
 Start in Portrait mode, rotate to landscape, click session, rotate to portrait, toolbar gets reset to blank - Fixed
+When I select the map, I can't get back to the session list. - Fixed
+Detail view needs content - Fixed for now
 
 POPOVER ISSUES
 In portrait view, clicking popover, selecting session bumps the toolbar down
@@ -19,12 +21,11 @@ In portrait view, clicking popover, selecting session bumps the toolbar down
 OTHER ISSUES
 Alignment is wrong on speaker elements
 Clicking schedule element changes to Session view
-Detail view needs content
 Add to schedule not showing schedule dialog
 
 
 REPORTED ISSUES
-When I select the map, I can't get back to the session list. 
+
 I see various crashes. Last one was after I clicked a speakers twitter handle. It launched Safari correctly. I double clicked the home key then selected the app. It crashed. 
 I added a session to my schedule. I then removed it, but it was still in the list. If I kill the app then launch again it works. 
 I tried a refresh of speakers and it crashed... 

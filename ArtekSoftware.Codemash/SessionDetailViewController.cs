@@ -14,13 +14,12 @@ namespace ArtekSoftware.Codemash
 	{
 		//UIPopoverController popoverController;
 		
-		public UIToolbar Toolbar
-		{
-			get
-			{
+		public UIToolbar Toolbar {
+			get {
 				return toolbar;	
 			}
 		}
+
 		public SessionDetailViewController (SessionEntity session) : base ("SessionDetailViewController", null)
 		{
 			_session = session;
@@ -47,49 +46,7 @@ namespace ArtekSoftware.Codemash
 		{
 			return true;
 		}
-		
-//		[Export("splitViewController:willHideViewController:withBarButtonItem:forPopoverController:")]
-//		public void WillHideViewController (UISplitViewController svc, UIViewController vc,
-//			UIBarButtonItem barButtonItem, UIPopoverController pc)
-//		{
-//			AddPopoverButton (svc, vc, barButtonItem, pc);
-//		}
 
-//		private void AddPopoverButton (UISplitViewController svc, UIViewController vc,
-//			UIBarButtonItem barButtonItem, UIPopoverController pc)
-//		{
-//			if (toolbar != null && toolbar.Items != null && toolbar.Items.Count() > 0)
-//			{
-//				toolbar.SetItems(new List<UIBarButtonItem> ().ToArray(), true);
-//			}
-//			barButtonItem.Title = "Codemash";
-//			
-//			var items = new List<UIBarButtonItem> ();
-//			items.Add (barButtonItem);
-//			if (toolbar != null) {
-//				if (toolbar.Items != null) {
-//					items.AddRange (toolbar.Items);
-//				}
-//				toolbar.SetItems (items.ToArray (), true);
-//			}
-//			popoverController = pc;
-//		}
-		
-//		[Export("splitViewController:willShowViewController:invalidatingBarButtonItem:")]
-//		public void WillShowViewController (UISplitViewController svc, UIViewController vc,
-//			UIBarButtonItem button)
-//		{
-//			List<UIBarButtonItem> items = null;
-//			// Called when the view is shown again in the split view, invalidating the button and popover controller.
-//			if (toolbar.Items != null) {
-//				items = new List<UIBarButtonItem> (toolbar.Items);
-//				items.RemoveAt (0);
-//			} else {
-//				items = new List<UIBarButtonItem> ();
-//			}
-//			toolbar.SetItems (items.ToArray (), true);
-//			popoverController = null;
-//		}
 		
 		public void SetSession (SessionEntity session)
 		{
@@ -201,8 +158,12 @@ namespace ArtekSoftware.Codemash
 		
 		protected void HandleSessionAddToScheduleButtonhandleTouchUpInside (object sender, EventArgs e)
 		{
+			AppDelegate.CurrentAppDelegate.TabBar.SelectedIndex = 0;
+			Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 1");
 			if (!IsOnSchedule ()) {
+				Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 2");
 				using (UnitOfWork.Start()) {
+					Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 3");
 					var repository = new LocalScheduledSessionsRepository ();
 					var scheduledSession = repository.GetScheduledSession (_session.URI);
 				
@@ -226,21 +187,33 @@ namespace ArtekSoftware.Codemash
 						var scheduleController = (ScheduledSessionDialogViewController)uinc.TopViewController;
 						scheduleController.LoadData ();
 						//AddToQueue (scheduledSession);
-					
+					Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 4");
 						AddNotification (_session);
+						Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 5");
 					}
+					Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 6");
 				}
 			} else {
+				Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 7");
 				using (UnitOfWork.Start()) {
+					Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 8");
 					var repository = new LocalScheduledSessionsRepository ();
 					var scheduledSession = repository.GetScheduledSession (_session.URI);
 					repository.Delete (scheduledSession.Id);
+					
+					var vc = AppDelegate.CurrentAppDelegate.TabBar.ViewControllers [0];
+					var uinc = (UINavigationController)vc;
+					var scheduleController = (ScheduledSessionDialogViewController)uinc.TopViewController;
+					scheduleController.LoadData ();
+					Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 9");
 				}
-				
+				Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 10");
 				RemoveNotification (_session);
+				Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 11");
 			}
-			
+			Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 12");
 			SetAddToScheduleLabel ();
+			Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 13");
 		}
 		
 		protected void HandleSessionSpeakerNameLabelTouchUpInside (object sender, EventArgs e)

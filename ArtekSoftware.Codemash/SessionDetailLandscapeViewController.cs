@@ -156,6 +156,7 @@ namespace ArtekSoftware.Codemash
 		
 		protected void HandleSessionAddToScheduleButtonhandleTouchUpInside (object sender, EventArgs e)
 		{
+			AppDelegate.CurrentAppDelegate.TabBar.SelectedIndex = 0;
 			if (!IsOnSchedule ()) {
 				using (UnitOfWork.Start()) {
 					var repository = new LocalScheduledSessionsRepository ();
@@ -190,6 +191,11 @@ namespace ArtekSoftware.Codemash
 					var repository = new LocalScheduledSessionsRepository ();
 					var scheduledSession = repository.GetScheduledSession (_session.URI);
 					repository.Delete (scheduledSession.Id);
+					
+										var vc = AppDelegate.CurrentAppDelegate.TabBar.ViewControllers [0];
+					var uinc = (UINavigationController)vc;
+					var scheduleController = (ScheduledSessionDialogViewController)uinc.TopViewController;
+					scheduleController.LoadData ();
 				}
 				
 				RemoveNotification (_session);
