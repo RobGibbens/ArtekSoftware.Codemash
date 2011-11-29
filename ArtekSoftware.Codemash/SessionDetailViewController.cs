@@ -12,7 +12,6 @@ namespace ArtekSoftware.Codemash
 {
 	public partial class SessionDetailViewController : UIViewController
 	{
-		//UIPopoverController popoverController;
 		
 		public UIToolbar Toolbar {
 			get {
@@ -32,6 +31,16 @@ namespace ArtekSoftware.Codemash
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			
+			var version = Convert.ToDecimal (UIDevice.CurrentDevice.SystemVersion.Split ('.').First ());
+			
+			if (version < 5) {
+				this.btnTweetThis.Hidden = true;
+			}
+			else
+			{
+				this.btnTweetThis.Hidden = false;
+			}
 			
 			this.addToScheduleImage.TouchUpInside += HandleSessionAddToScheduleButtonhandleTouchUpInside;
 			this.btnTweetThis.TouchUpInside += HandleTweetThisButtonHandleTouchUpInside;
@@ -159,11 +168,8 @@ namespace ArtekSoftware.Codemash
 		protected void HandleSessionAddToScheduleButtonhandleTouchUpInside (object sender, EventArgs e)
 		{
 			AppDelegate.CurrentAppDelegate.TabBar.SelectedIndex = 0;
-			Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 1");
 			if (!IsOnSchedule ()) {
-				Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 2");
 				using (UnitOfWork.Start()) {
-					Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 3");
 					var repository = new LocalScheduledSessionsRepository ();
 					var scheduledSession = repository.GetScheduledSession (_session.URI);
 				
@@ -186,17 +192,12 @@ namespace ArtekSoftware.Codemash
 						var uinc = (UINavigationController)vc;
 						var scheduleController = (ScheduledSessionDialogViewController)uinc.TopViewController;
 						scheduleController.LoadData ();
-						//AddToQueue (scheduledSession);
-					Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 4");
 						AddNotification (_session);
-						Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 5");
 					}
-					Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 6");
 				}
 			} else {
-				Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 7");
+				
 				using (UnitOfWork.Start()) {
-					Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 8");
 					var repository = new LocalScheduledSessionsRepository ();
 					var scheduledSession = repository.GetScheduledSession (_session.URI);
 					repository.Delete (scheduledSession.Id);
@@ -205,15 +206,10 @@ namespace ArtekSoftware.Codemash
 					var uinc = (UINavigationController)vc;
 					var scheduleController = (ScheduledSessionDialogViewController)uinc.TopViewController;
 					scheduleController.LoadData ();
-					Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 9");
 				}
-				Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 10");
 				RemoveNotification (_session);
-				Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 11");
 			}
-			Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 12");
 			SetAddToScheduleLabel ();
-			Console.WriteLine("HandleSessionAddToScheduleButtonhandleTouchUpInside - 13");
 		}
 		
 		protected void HandleSessionSpeakerNameLabelTouchUpInside (object sender, EventArgs e)

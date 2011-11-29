@@ -6,6 +6,7 @@ using MonoTouch.UIKit;
 using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.TestFlight;
+using System.Threading;
 
 namespace ArtekSoftware.Codemash
 {
@@ -30,20 +31,43 @@ namespace ArtekSoftware.Codemash
 
 		void LoadData (bool isRefresh)
 		{
+			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 1");
+			Thread.Sleep(1000);
+			
 			_sessionsDialogMapper = new SessionsDialogMapper ();
+			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 2");
+			Thread.Sleep(1000);
+			
 			_sessions = _sessionsDialogMapper.GetSessions (isRefresh:isRefresh);
+			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 3");
+			Thread.Sleep(1000);
+			
 			_sessions = _sessions.OrderBy (x => x.Start);
+			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 4");
+			Thread.Sleep(1000);
+			
 			//this.Root = null;
 			this.Root = _sessionsDialogMapper.GetSessionDialog (_sessions);
+			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 5");
+			Thread.Sleep(1000);
+			
 			
 			this.ReloadData ();
+			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 6");
+			Thread.Sleep(1000);
+			
 			this.ReloadComplete ();
+			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 7");
+			Thread.Sleep(1000);
+			
 		}
 		
 		void HandleHandleRefreshRequested (object sender, EventArgs e)
 		{
+			TestFlight.PassCheckpoint ("SessionDialogViewController.HandleRefreshRequested - 1");
 			LoadData (isRefresh:true);
-			//TestFlight.PassCheckpoint ("Refreshed Sessions");
+			TestFlight.PassCheckpoint ("SessionDialogViewController.HandleRefreshRequested - 2");
+			TestFlight.PassCheckpoint ("Refreshed Sessions");
 			
 		}
 		

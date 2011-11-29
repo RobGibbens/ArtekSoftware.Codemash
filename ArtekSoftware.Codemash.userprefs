@@ -1,13 +1,10 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
   <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/DetailViewController.cs" Line="12" Column="16" />
-      <File FileName="ArtekSoftware.Codemash/MapViewController.cs" Line="10" Column="27" />
-      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="148" Column="49" />
-      <File FileName="ArtekSoftware.Codemash/UI/RotatingSessionDetailViewController.cs" Line="135" Column="4" />
-      <File FileName="ArtekSoftware.Codemash/SessionDetailViewController.cs" Line="161" Column="4" />
-      <File FileName="ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" Line="165" Column="37" />
+      <File FileName="ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" Line="48" Column="20" />
+      <File FileName="ArtekSoftware.Codemash/SessionDetailViewController.cs" Line="31" Column="38" />
+      <File FileName="ArtekSoftware.Codemash/UI/TabBarController.cs" Line="74" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,9 +13,6 @@
             <Node name="References" expanded="True">
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
-              <Node name="Catnap" />
-              <Node name="RestSharp.MonoTouch" />
-              <Node name="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
             </Node>
             <Node name="DefaultDatabase">
               <Option id="ShowVersionControlOverlays" value="True" />
@@ -32,8 +26,12 @@
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
             </Node>
+            <Node name="Model" expanded="True">
+              <Node name="Repositories" expanded="True" />
+            </Node>
             <Node name="MoveToLibrary" expanded="True" />
             <Node name="UI" expanded="True">
+              <Node name="DialogMappers" expanded="True" />
               <Node name="RotatingSpeakerBioViewController.cs">
                 <Option id="ShowVersionControlOverlays" value="True" />
                 <Option id="ShowAllFiles" value="True" />
@@ -62,11 +60,12 @@
     <BreakpointStore>
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" line="36" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" line="33" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/SessionDetailViewController.cs" line="163" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/SessionDetailViewController.cs" line="35" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" line="41" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.CodeMash>
-    <IPhoneTestFlightSettings_27CAdHoc ApiToken="28ea2cf46ef75d633a2bce49d2adbfb7_NzYwOA" TeamToken="19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw" ReleaseNotes="Fixed Map rotation issue" NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="CodeMashScheduler" />
+    <IPhoneTestFlightSettings_27CAdHoc ApiToken="28ea2cf46ef75d633a2bce49d2adbfb7_NzYwOA" TeamToken="19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw" ReleaseNotes="Added more logging around Session Refresh to try to track down crashes." NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="CodeMashScheduler" />
   </MonoDevelop.Ide.ItemProperties.CodeMash>
 </Properties>

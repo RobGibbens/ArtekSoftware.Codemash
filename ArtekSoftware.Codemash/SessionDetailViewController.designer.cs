@@ -12,6 +12,9 @@ namespace ArtekSoftware.Codemash
 	partial class SessionDetailViewController
 	{
 		[Outlet]
+		MonoTouch.UIKit.UILabel tweetThisLabel { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIToolbar toolbar { get; set; }
 
 		[Outlet]

@@ -23,10 +23,10 @@ namespace ArtekSoftware.Codemash
 		
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
-			Console.WriteLine("AppDelegate.FinishedLaunching");
+			//Console.WriteLine("AppDelegate.FinishedLaunching");
 			CopyDb ();
 			
-			//TestFlight.TakeOff("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
+			TestFlight.TakeOff("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
 			
 			
 			var bootstrapper = new Bootstrapper ();
@@ -73,7 +73,7 @@ namespace ArtekSoftware.Codemash
 			if (!runtimeDbExists && defaultDatabaseExists) {
 				File.Copy (rootDbPath, db);
 			
-				//TestFlight.PassCheckpoint ("Copied default database");
+				TestFlight.PassCheckpoint ("Copied default database");
 			}
  
 		}

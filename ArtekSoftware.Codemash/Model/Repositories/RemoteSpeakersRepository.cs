@@ -11,7 +11,7 @@ namespace ArtekSoftware.Codemash
 		public IList<Speaker> GetSpeakers ()
 		{	
 			List<Speaker> speakers;
-			//TestFlight.PassCheckpoint ("Started RemoteSpeakersRepository.GetSpeakers");
+			TestFlight.PassCheckpoint ("Started RemoteSpeakersRepository.GetSpeakers");
 			
 			var client = new RestClient ();
 			client.BaseUrl = "http://codemash.org";
@@ -27,7 +27,7 @@ namespace ArtekSoftware.Codemash
 					speakers = response.Data.Speakers.OrderBy (x => x.Name.Trim ()).ToList ();
 				}
 			}
-			//TestFlight.PassCheckpoint ("Finished RemoteSpeakersRepository.GetSpeakers");
+			TestFlight.PassCheckpoint ("Finished RemoteSpeakersRepository.GetSpeakers");
 			
 			return speakers;
 		

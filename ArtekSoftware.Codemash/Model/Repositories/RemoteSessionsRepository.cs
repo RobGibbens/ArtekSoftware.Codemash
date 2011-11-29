@@ -31,7 +31,7 @@ namespace ArtekSoftware.Codemash
 		public IList<Session> GetSessions ()
 		{	
 			IList<Session> sessions;
-			//TestFlight.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
+			TestFlight.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
 			
 			var client = new RestClient ();
 			client.BaseUrl = "http://codemash.org";
@@ -61,7 +61,7 @@ namespace ArtekSoftware.Codemash
 			refresh.LastRefreshTime = DateTime.Now;
 			refreshRepository.Save (refresh);
 				
-			//TestFlight.PassCheckpoint ("Finished RemoteSessionsRepository.GetSessions");
+			TestFlight.PassCheckpoint ("Finished RemoteSessionsRepository.GetSessions");
 			
 			return sessions;
 		}

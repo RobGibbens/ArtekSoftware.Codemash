@@ -43,7 +43,7 @@ namespace ArtekSoftware.Codemash
 			//queueSync.Sync();
 			//var sessions = _sessionsDialogMapper.GetScheduledSessions(isRefresh:true);
 			LoadData ();
-			//TestFlight.PassCheckpoint ("Refreshed Scheduled Sessions");
+			TestFlight.PassCheckpoint ("Refreshed Scheduled Sessions");
 			
 		}
 		

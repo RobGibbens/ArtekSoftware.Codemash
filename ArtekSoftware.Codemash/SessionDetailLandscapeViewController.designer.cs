@@ -12,6 +12,9 @@ namespace ArtekSoftware.Codemash
 	partial class SessionDetailLandscapeViewController
 	{
 		[Outlet]
+		MonoTouch.UIKit.UILabel tweetThisLabel { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton addToScheduleImage { get; set; }
 
 		[Outlet]

@@ -25,6 +25,7 @@
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <MtouchArch>ARMv6_ARMv7</MtouchArch>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>

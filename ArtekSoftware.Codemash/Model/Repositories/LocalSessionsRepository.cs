@@ -11,6 +11,7 @@ using Catnap.Maps.Impl;
 using Catnap.Migration;
 using System.Threading;
 using Catnap.Find.Conditions;
+using MonoTouch.TestFlight;
 
 namespace ArtekSoftware.Codemash
 {
@@ -31,15 +32,27 @@ namespace ArtekSoftware.Codemash
 		
 		public void Cache (IList<Session> dtos)
 		{
+			TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 1");
+			Thread.Sleep(1000);
+			
 			int count = this.Count ();
 			
 			if (count > 0) {
+TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 2");
+			Thread.Sleep(1000);
+							
 				var allCurrentEntities = this.Find ();
 			
 				foreach (var entity in allCurrentEntities) {
 					this.Delete (entity.Id);
-				}	
+				}
+				
+				TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 3");
+			Thread.Sleep(1000);
+			
 			}
+			TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 4");
+			Thread.Sleep(1000);
 			
 			foreach (var dto in dtos) {
 				var entity = new SessionEntity ()
@@ -59,6 +72,9 @@ namespace ArtekSoftware.Codemash
 				this.Save (entity);
 				Thread.Sleep (10);
 			}
+			
+			TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 5");
+			Thread.Sleep(1000);
 			
 		}
 		

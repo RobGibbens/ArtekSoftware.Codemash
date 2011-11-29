@@ -38,6 +38,16 @@ namespace ArtekSoftware.Codemash
 		{
 			base.ViewDidLoad ();
 			
+			var version = Convert.ToDecimal (UIDevice.CurrentDevice.SystemVersion.Split ('.').First ());
+			
+			if (version < 5) {
+				this.btnTweetThis.Hidden = true;
+			}
+			else
+			{
+				this.btnTweetThis.Hidden = false;
+			}
+			
 			this.addToScheduleImage.TouchUpInside += HandleSessionAddToScheduleButtonhandleTouchUpInside;
 			this.btnTweetThis.TouchUpInside += HandleTweetThisButtonHandleTouchUpInside;
 			this.sessionSpeakerNameLabel.TouchUpInside += HandleSessionSpeakerNameLabelTouchUpInside;

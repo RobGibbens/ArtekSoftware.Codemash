@@ -28,7 +28,7 @@ namespace ArtekSoftware.Codemash
 			var documents = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
 
         	string db = Path.Combine (documents, "codemash.db3");
-			//TestFlight.PassCheckpoint ("Initialized CatNap");
+			TestFlight.PassCheckpoint ("Initialized CatNap");
 			
 			Catnap.SessionFactory.Initialize ("Data Source=" + db, new SqliteAdapter (typeof(Mono.Data.Sqlite.SqliteConnection)));
 		}

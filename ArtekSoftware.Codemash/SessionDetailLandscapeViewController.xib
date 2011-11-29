@@ -187,7 +187,7 @@
 						<string key="NSFrame">{{206, 410}, {584, 24}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="1021990311"/>
 						<string key="NSReuseIdentifierKey">_NS:174</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -366,6 +366,7 @@
 						<string key="NSFrame">{{75, 498}, {584, 213}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:345</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -579,6 +580,14 @@
 					</object>
 					<int key="connectionID">33</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tweetThisLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="281581603"/>
+					</object>
+					<int key="connectionID">34</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -738,7 +747,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">33</int>
+			<int key="maxID">34</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -756,7 +765,6 @@
 						<string key="sessionStartLabel">UILabel</string>
 						<string key="sessionTechnologyLabel">UILabel</string>
 						<string key="sessionTitleLabel">UILabel</string>
-						<string key="sessionTrackLabel">UILabel</string>
 						<string key="technologyImage">UIImageView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -798,10 +806,6 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="sessionTitleLabel">
 							<string key="name">sessionTitleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="sessionTrackLabel">
-							<string key="name">sessionTrackLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="technologyImage">

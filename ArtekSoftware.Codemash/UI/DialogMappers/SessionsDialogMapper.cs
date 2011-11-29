@@ -3,6 +3,8 @@ using MonoTouch.Dialog;
 using System.Collections.Generic;
 using Catnap;
 using System.Linq;
+using MonoTouch.TestFlight;
+using System.Threading;
 
 namespace ArtekSoftware.Codemash
 {
@@ -10,18 +12,35 @@ namespace ArtekSoftware.Codemash
 	{
 		public IEnumerable<SessionEntity> GetSessions (bool isRefresh)
 		{
+			TestFlight.PassCheckpoint ("SessionsDialogMapper.GetSessions - 1");
+			Thread.Sleep (1000);
+			
 			IEnumerable<SessionEntity> sessions = null;
 			
-			if (UnitOfWork.IsUnitOfWorkStarted()) {
+			if (UnitOfWork.IsUnitOfWorkStarted ()) {
+				TestFlight.PassCheckpoint ("SessionsDialogMapper.GetSessions - 2");
+				Thread.Sleep (1000);
+				
 				var localRepository = new LocalSessionsRepository ();
 				int sessionCount = localRepository.Count ();
 			
 				if (sessionCount == 0 || isRefresh) {
+					TestFlight.PassCheckpoint ("SessionsDialogMapper.GetSessions - 3");
+					Thread.Sleep (1000);	
+					
 					var networkStatusCheck = new NetworkStatusCheck ();
 					if (networkStatusCheck.IsOnline ()) {
+						TestFlight.PassCheckpoint ("SessionsDialogMapper.GetSessions - 4");
+						Thread.Sleep (1000);
+						
 						var remoteRepository = new RemoteSessionsRepository ();
 						IList<Session> sessionDtos = remoteRepository.GetSessions ();
+						TestFlight.PassCheckpoint ("SessionsDialogMapper.GetSessions - 5");
+						Thread.Sleep (1000);
+						
 						localRepository.Cache (sessionDtos);
+						TestFlight.PassCheckpoint ("SessionsDialogMapper.GetSessions - 6");
+						Thread.Sleep (1000);
 					} else {
 						ModalDialog.Alert ("Network offline", "Cannot connect to the network");
 					}
