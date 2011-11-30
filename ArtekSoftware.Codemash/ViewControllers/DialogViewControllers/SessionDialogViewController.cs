@@ -5,6 +5,7 @@ using System.Linq;
 using MonoTouch.UIKit;
 using System.Drawing;
 using MonoTouch.Foundation;
+
 using MonoTouch.TestFlight;
 using System.Threading;
 
@@ -28,39 +29,52 @@ namespace ArtekSoftware.Codemash
 			this.RefreshRequested += HandleHandleRefreshRequested;
 			
 		}
-
+		
 		void LoadData (bool isRefresh)
 		{
+			
 			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 1");
-			Thread.Sleep(1000);
+			Thread.Sleep (500);
 			
 			_sessionsDialogMapper = new SessionsDialogMapper ();
 			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 2");
-			Thread.Sleep(1000);
+			Thread.Sleep (500);
 			
 			_sessions = _sessionsDialogMapper.GetSessions (isRefresh:isRefresh);
 			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 3");
-			Thread.Sleep(1000);
+			Thread.Sleep (1000);
 			
 			_sessions = _sessions.OrderBy (x => x.Start);
 			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 4");
-			Thread.Sleep(1000);
+			Thread.Sleep (500);
 			
 			//this.Root = null;
 			this.Root = _sessionsDialogMapper.GetSessionDialog (_sessions);
 			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 5");
-			Thread.Sleep(1000);
+			Thread.Sleep (500);
 			
 			
 			this.ReloadData ();
 			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 6");
-			Thread.Sleep(1000);
+			Thread.Sleep (500);
 			
 			this.ReloadComplete ();
 			TestFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 7");
-			Thread.Sleep(1000);
+			Thread.Sleep (500);
 			
 		}
+		
+//		public override RefreshTableHeaderView MakeRefreshTableHeaderView (RectangleF rect)
+//		{
+//			List<UIImage> myImages = new List<UIImage> ();
+//			for (int i = 0; i < 24; i++) {
+//				myImages.Add (UIImage.FromFile ("images/LoadingGif/Loading" + i.ToString () + ".png"));
+//			}
+//			
+//			var table = base.MakeRefreshTableHeaderView (rect, myImages);		
+//			
+//			return table;
+//		}
 		
 		void HandleHandleRefreshRequested (object sender, EventArgs e)
 		{

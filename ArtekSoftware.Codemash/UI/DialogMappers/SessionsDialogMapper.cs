@@ -70,6 +70,8 @@ namespace ArtekSoftware.Codemash
 			return sessions.OrderBy (x => x.Start).ToList ();
 		}
 		
+		
+		
 		public RootElement GetSessionDialog (IEnumerable<SessionEntity> sessions)
 		{
 			var root = new RootElement ("Sessions");

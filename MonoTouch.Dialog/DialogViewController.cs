@@ -501,6 +501,7 @@ namespace MonoTouch.Dialog
 		
 		public override void LoadView ()
 		{
+			
 			tableView = MakeTableView (UIScreen.MainScreen.Bounds, Style);
 			tableView.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleTopMargin;
 			tableView.AutosizesSubviews = true;

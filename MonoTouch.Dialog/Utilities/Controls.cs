@@ -7,10 +7,12 @@ using MonoTouch.CoreGraphics;
 using MonoTouch.CoreAnimation;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using System.Collections.Generic;
 
 namespace MonoTouch.Dialog
 {
-	public enum RefreshViewStatus {
+	public enum RefreshViewStatus
+	{
 		ReleaseToReload,
 		PullToReload,
 		Loading
@@ -18,7 +20,8 @@ namespace MonoTouch.Dialog
 
 	// This cute method will be added to UIImage.FromResource, but for old installs 
 	// make a copy here
-	internal static class Util {
+	internal static class Util
+	{
 		public static UIImage FromResource (Assembly assembly, string name)
 		{
 			if (name == null)
@@ -28,19 +31,19 @@ namespace MonoTouch.Dialog
 			if (stream == null)
 				return null;
 			
-			IntPtr buffer = Marshal.AllocHGlobal ((int) stream.Length);
+			IntPtr buffer = Marshal.AllocHGlobal ((int)stream.Length);
 			if (buffer == IntPtr.Zero)
 				return null;
 			
-			var copyBuffer = new byte [Math.Min (1024, (int) stream.Length)];
+			var copyBuffer = new byte [Math.Min (1024, (int)stream.Length)];
 			int n;
 			IntPtr target = buffer;
-			while ((n = stream.Read (copyBuffer, 0, copyBuffer.Length)) != 0){
+			while ((n = stream.Read (copyBuffer, 0, copyBuffer.Length)) != 0) {
 				Marshal.Copy (copyBuffer, 0, target, n);
-				target = (IntPtr) ((int) target + n);
+				target = (IntPtr)((int)target + n);
 			}
 			try {
-				var data = NSData.FromBytes (buffer, (uint) stream.Length);
+				var data = NSData.FromBytes (buffer, (uint)stream.Length);
 				return UIImage.LoadFromData (data);
 			} finally {
 				Marshal.FreeHGlobal (buffer);
@@ -50,12 +53,13 @@ namespace MonoTouch.Dialog
 	
 	}
 	
-	public class RefreshTableHeaderView : UIView {
+	public class RefreshTableHeaderView : UIView
+	{
 		static UIImage arrow = Util.FromResource (null, "arrow.png");
 		UIActivityIndicatorView activity;
 		UILabel lastUpdateLabel, statusLabel;
-		UIImageView arrowView;		
-			
+		UIImageView arrowView;
+		
 		public RefreshTableHeaderView (RectangleF rect) : base (rect)
 		{
 			this.AutoresizingMask = UIViewAutoresizing.FlexibleWidth;
@@ -86,12 +90,14 @@ namespace MonoTouch.Dialog
 			AddSubview (statusLabel);
 			SetStatus (RefreshViewStatus.PullToReload);
 			
-			arrowView = new UIImageView (){
-				ContentMode = UIViewContentMode.ScaleAspectFill,
-				Image = arrow,
-				AutoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin
-			};
-			arrowView.Layer.Transform = CATransform3D.MakeRotation ((float) Math.PI, 0, 0, 1);
+			
+			arrowView = new UIImageView () {
+					ContentMode = UIViewContentMode.ScaleAspectFill,
+					Image = arrow,
+					AutoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin
+				};
+			arrowView.Layer.Transform = CATransform3D.MakeRotation ((float)Math.PI, 0, 0, 1);
+			
 			AddSubview (arrowView);
 			
 			activity = new UIActivityIndicatorView (UIActivityIndicatorViewStyle.Gray) {
@@ -107,12 +113,12 @@ namespace MonoTouch.Dialog
 			var bounds = Bounds;
 			
 			lastUpdateLabel.Frame = new RectangleF (0, bounds.Height - 30, bounds.Width, 20);
-			statusLabel.Frame = new RectangleF (0, bounds.Height-48, bounds.Width, 20);
+			statusLabel.Frame = new RectangleF (0, bounds.Height - 48, bounds.Width, 20);
 			arrowView.Frame = new RectangleF (20, bounds.Height - 65, 30, 55);
-			activity.Frame = new RectangleF (25, bounds.Height-38, 20, 20);
+			activity.Frame = new RectangleF (25, bounds.Height - 38, 20, 20);
 		}
 		
-		RefreshViewStatus status = (RefreshViewStatus) (-1);
+		RefreshViewStatus status = (RefreshViewStatus)(-1);
 		
 		public virtual void SetStatus (RefreshViewStatus status)
 		{
@@ -121,7 +127,7 @@ namespace MonoTouch.Dialog
 			
 			string s = "Release to refresh";
 	
-			switch (status){
+			switch (status) {
 			case RefreshViewStatus.Loading:
 				s = "Loading..."; 
 				break;
@@ -139,10 +145,10 @@ namespace MonoTouch.Dialog
 			context.DrawPath (CGPathDrawingMode.FillStroke);
 			statusLabel.TextColor.SetStroke ();
 			context.BeginPath ();
-			context.MoveTo (0, Bounds.Height-1);
-			context.AddLineToPoint (Bounds.Width, Bounds.Height-1);
+			context.MoveTo (0, Bounds.Height - 1);
+			context.AddLineToPoint (Bounds.Width, Bounds.Height - 1);
 			context.StrokePath ();
-		}		
+		}
 		
 		public bool IsFlipped;
 		
@@ -159,6 +165,7 @@ namespace MonoTouch.Dialog
 		}
 		
 		DateTime lastUpdateTime;
+
 		public DateTime LastUpdate {
 			get {
 				return lastUpdateTime;
@@ -168,7 +175,7 @@ namespace MonoTouch.Dialog
 					return;
 				
 				lastUpdateTime = value;
-				if (value == DateTime.MinValue){
+				if (value == DateTime.MinValue) {
 					lastUpdateLabel.Text = "Last Updated: never";
 				} else 
 					lastUpdateLabel.Text = String.Format ("Last Updated: {0:g}", value);
@@ -177,7 +184,7 @@ namespace MonoTouch.Dialog
 		
 		public void SetActivity (bool active)
 		{
-			if (active){
+			if (active) {
 				activity.StartAnimating ();
 				arrowView.Hidden = true;
 				SetStatus (RefreshViewStatus.Loading);
@@ -188,11 +195,13 @@ namespace MonoTouch.Dialog
 		}	
 	}
 	
-	public class SearchChangedEventArgs : EventArgs {
-		public SearchChangedEventArgs (string text) 
+	public class SearchChangedEventArgs : EventArgs
+	{
+		public SearchChangedEventArgs (string text)
 		{
 			Text = text;
 		}
+
 		public string Text { get; set; }
 	}
 }

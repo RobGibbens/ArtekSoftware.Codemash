@@ -42,10 +42,12 @@ namespace ArtekSoftware.Codemash
 			
 			if (version < 5) {
 				this.btnTweetThis.Hidden = true;
+				this.tweetThisLabel.Hidden = true;
 			}
 			else
 			{
 				this.btnTweetThis.Hidden = false;
+				this.tweetThisLabel.Hidden = false;
 			}
 			
 			this.addToScheduleImage.TouchUpInside += HandleSessionAddToScheduleButtonhandleTouchUpInside;
