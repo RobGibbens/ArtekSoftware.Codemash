@@ -7,8 +7,8 @@ namespace ArtekSoftware.Codemash
 	{
 		public void Sync ()
 		{
-			NetworkStatusCheck networkStatusCheck = new NetworkStatusCheck();
-			if (networkStatusCheck.IsOnline())
+			
+			if (NetworkStatusCheck.IsReachable())
 			{
 				RemoteScheduledSessionsRepository remoteScheduleRepository = new RemoteScheduledSessionsRepository();
 				LocalQueueRepository localQueueRepository = new LocalQueueRepository();

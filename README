@@ -18,13 +18,21 @@ I added a session to my schedule. I then removed it, but it was still in the lis
 Crashes when I select a session or speaker - Fixed
 Add to schedule not showing schedule dialog - Fixed
 Clicking schedule element changes to Session view - Fixed
-
-POPOVER ISSUES
-In portrait view, clicking popover, selecting session bumps the toolbar down
+Alignment is wrong on speaker elements - Fixed.
+Start by clicking a Speaker - no popover - Fixed
+Add real notification timer - Fixed
+Reset database to null dates for shipping
+Add note on default view explaining default dates and asking to refresh on initial install
 
 OTHER ISSUES
-Alignment is wrong on speaker elements
 Refresh session, then refresh speakers - no connection
+
+In portrait view, clicking popover, selecting session bumps the toolbar down
+Add spinning image in refresh - low priority
+Highlight cell when selected
+Add Google Analytics
+Use json, not xml
+Shrink images
 
 REPORTED ISSUES
 I see various crashes. Last one was after I clicked a speakers twitter handle. It launched Safari correctly. I double clicked the home key then selected the app. It crashed. 

@@ -18,10 +18,12 @@ namespace ArtekSoftware.Codemash
 
 		public SpeakerBioLandscapeViewController () : base ("SpeakerBioLandscapeViewController", null)
 		{
+			Console.WriteLine("SpeakerBioLandscapeViewController.ctor");
 		}
 		
 		public SpeakerBioLandscapeViewController (SpeakerEntity speaker) : base ("SpeakerBioLandscapeViewController", null)
 		{
+			Console.WriteLine("SpeakerBioLandscapeViewController.ctor - speaker");
 			_speaker = speaker;
 		}		
 		
@@ -36,7 +38,9 @@ namespace ArtekSoftware.Codemash
 		
 		public override void ViewDidLoad ()
 		{
+			Console.WriteLine("SpeakerBioLandscapeViewController.ViewDidLoad - 1");
 			base.ViewDidLoad ();			
+			Console.WriteLine("SpeakerBioLandscapeViewController.ViewDidLoad - 2");
 			
 			this.speakerBlogButton.TouchUpInside += HandleSpeakerBlogButtonhandleTouchUpInside;
 			this.speakerTwitterHandleButton.TouchUpInside += HandleSpeakerTwitterHandleButtonhandleTouchUpInside;
@@ -45,11 +49,15 @@ namespace ArtekSoftware.Codemash
 			{
 				this.SetSpeaker(this.Speaker);
 			}
+			Console.WriteLine("SpeakerBioLandscapeViewController.ViewDidLoad - 3");
+			
 		}
 		
 	
 		public override void ViewDidUnload ()
 		{
+			Console.WriteLine("SpeakerBioLandscapeViewController.ViewDidUnload - 1");
+			
 			base.ViewDidUnload ();
 		}
 		
@@ -61,8 +69,8 @@ namespace ArtekSoftware.Codemash
 		void HandleSpeakerTwitterHandleButtonhandleTouchUpInside (object sender, EventArgs e)
 		{
 			if (this.speakerTwitterHandleButton != null && this.speakerTwitterHandleButton.TitleLabel != null && !string.IsNullOrWhiteSpace (this.speakerTwitterHandleButton.TitleLabel.Text)) {
-				var networkStatusCheck = new NetworkStatusCheck ();
-				if (networkStatusCheck.IsOnline ()) {
+				
+				if (NetworkStatusCheck.IsReachable ()) {
 					var urlString = "http://mobile.twitter.com/" + this.speakerTwitterHandleButton.TitleLabel.Text.Replace ("@", "");
 					var url = new NSUrl (urlString);
 					UIApplication.SharedApplication.OpenUrl (url);
@@ -73,8 +81,8 @@ namespace ArtekSoftware.Codemash
 		void HandleSpeakerBlogButtonhandleTouchUpInside (object sender, EventArgs e)
 		{
 			if (this.speakerBlogButton != null && this.speakerBlogButton.TitleLabel != null && !string.IsNullOrWhiteSpace (this.speakerBlogButton.TitleLabel.Text)) {
-				var networkStatusCheck = new NetworkStatusCheck ();
-				if (networkStatusCheck.IsOnline ()) {
+				
+				if (NetworkStatusCheck.IsReachable ()) {
 					var url = new NSUrl (this.speakerBlogButton.TitleLabel.Text);
 					UIApplication.SharedApplication.OpenUrl (url);
 				}
@@ -83,6 +91,8 @@ namespace ArtekSoftware.Codemash
 				
 		private void SetSpeaker (SpeakerEntity speaker)
 		{
+			Console.WriteLine("SpeakerBioLandscapeViewController.SetSpeaker - 1");
+			
 			this.speakerNameLabel.Text = speaker.Name;
 			
 			this.speakerBioLabel.Text = "      " + speaker.Biography;

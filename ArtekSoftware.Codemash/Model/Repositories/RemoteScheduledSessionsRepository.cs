@@ -12,7 +12,7 @@ using Catnap.Migration;
 using System.Threading;
 using Catnap.Find.Conditions;
 using RestSharp;
-using MonoTouch.TestFlight;
+//using MonoTouch.TestFlight;
 
 namespace ArtekSoftware.Codemash
 {
@@ -21,9 +21,9 @@ namespace ArtekSoftware.Codemash
 		public Schedule GetSchedule (string userName)
 		{
 			Schedule schedule;
-			var networkStatusCheck = new NetworkStatusCheck ();
-			if (networkStatusCheck.IsOnline ()) {
-				TestFlight.PassCheckpoint ("Started RemoteScheduledSessionsRepository.GetSchedule");
+			
+			if (NetworkStatusCheck.IsReachable ()) {
+				//TestFlight.PassCheckpoint ("Started RemoteScheduledSessionsRepository.GetSchedule");
 				var client = new RestClient ();
 				client.BaseUrl = "http://conference.apphb.com/api/schedule/";
 			
@@ -38,7 +38,7 @@ namespace ArtekSoftware.Codemash
 						schedule = response.Data;
 					}
 				}
-				TestFlight.PassCheckpoint ("Finished RemoteScheduledSessionsRepository.GetSchedule");
+				//TestFlight.PassCheckpoint ("Finished RemoteScheduledSessionsRepository.GetSchedule");
 			
 				return schedule;
 			} else {
@@ -48,9 +48,8 @@ namespace ArtekSoftware.Codemash
 		
 		public void Save (Schedule schedule)
 		{
-			var networkStatusCheck = new NetworkStatusCheck ();
-			if (networkStatusCheck.IsOnline ()) {
-				TestFlight.PassCheckpoint ("Started RemoteScheduledSessionsRepository.Save");
+			if (NetworkStatusCheck.IsReachable ()) {
+				//TestFlight.PassCheckpoint ("Started RemoteScheduledSessionsRepository.Save");
 				
 				var client = new RestClient ();
 				client.BaseUrl = "http://conference.apphb.com/api/schedule/";
@@ -61,7 +60,7 @@ namespace ArtekSoftware.Codemash
 				using (new NetworkIndicator()) {
 					var response = client.Execute<Schedule> (request);
 				}
-				TestFlight.PassCheckpoint ("Finished RemoteScheduledSessionsRepository.Save");
+				//TestFlight.PassCheckpoint ("Finished RemoteScheduledSessionsRepository.Save");
 				
 			} else {
 			}

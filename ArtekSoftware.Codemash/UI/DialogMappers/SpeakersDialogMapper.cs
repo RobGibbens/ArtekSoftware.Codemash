@@ -12,16 +12,17 @@ namespace ArtekSoftware.Codemash
 		{
 			IEnumerable<SpeakerEntity> speakers = null;
 			
-			if (UnitOfWork.IsUnitOfWorkStarted()) {
+			if (UnitOfWork.IsUnitOfWorkStarted ()) {
 				var localRepository = new LocalSpeakersRepository ();
 				int speakerCount = localRepository.Count ();
 			
 				if (speakerCount == 0 || isRefresh) {
-					var networkStatusCheck = new NetworkStatusCheck ();
-					if (networkStatusCheck.IsOnline ()) {
+					
+					if (NetworkStatusCheck.IsReachable ()) {
 						var remoteRepository = new RemoteSpeakersRepository ();
 						IList<Speaker> speakerDtos = remoteRepository.GetSpeakers ();
-						localRepository.Cache (speakerDtos);
+						var cache = new SpeakersCacheRepository ();
+					cache.Cache (speakerDtos);
 					} else {
 						ModalDialog.Alert ("Network offline", "Cannot connect to the network");
 					}
@@ -30,21 +31,33 @@ namespace ArtekSoftware.Codemash
 				speakers = localRepository.Find ();
 				
 			} else {
+				bool shouldCache = false;
+				IList<Speaker> speakerDtos = null;
+				
 				using (UnitOfWork.Start()) {
 					var localRepository = new LocalSpeakersRepository ();
 					int speakerCount = localRepository.Count ();
 			
 					if (speakerCount == 0 || isRefresh) {
-						var networkStatusCheck = new NetworkStatusCheck ();
-						if (networkStatusCheck.IsOnline ()) {
+						
+						if (NetworkStatusCheck.IsReachable ()) {
 							var remoteRepository = new RemoteSpeakersRepository ();
-							IList<Speaker> speakerDtos = remoteRepository.GetSpeakers ();
-							localRepository.Cache (speakerDtos);
+							speakerDtos = remoteRepository.GetSpeakers ();
+							shouldCache = true;
 						} else {
 							ModalDialog.Alert ("Network offline", "Cannot connect to the network");
 						}
 					}
 			
+				}
+				
+				if (shouldCache) {
+					var cache = new SpeakersCacheRepository ();
+					cache.Cache (speakerDtos);
+				}
+				
+				using (UnitOfWork.Start()) {
+					var localRepository = new LocalSpeakersRepository ();
 					speakers = localRepository.Find ();
 				}
 			}
@@ -54,17 +67,17 @@ namespace ArtekSoftware.Codemash
 		
 		public RootElement GetSpeakerDialog (IEnumerable<SpeakerEntity> speakers, List<string> sectionTitles)
 		{
-			var root = new RootElement ("Speakers") ;
-        	foreach (var sectionTitle in sectionTitles) {               
-            	var section = new Section(sectionTitle, String.Empty);
-            	foreach (var speaker in speakers.Where(e => e.Name.Substring(0,1) == sectionTitle)) { 
+			var root = new RootElement ("Speakers");
+			foreach (var sectionTitle in sectionTitles) {               
+				var section = new Section (sectionTitle, String.Empty);
+				foreach (var speaker in speakers.Where(e => e.Name.Substring(0,1) == sectionTitle)) { 
 					var element = new SpeakerEventCell (speaker);
 					
 					section.Add (element);
-                	//section.Add(new StringElement(speaker.Name, "Title"));
-            	}
-            	root.Add(section);
-        	}
+					//section.Add(new StringElement(speaker.Name, "Title"));
+				}
+				root.Add (section);
+			}
 			
 			
 			

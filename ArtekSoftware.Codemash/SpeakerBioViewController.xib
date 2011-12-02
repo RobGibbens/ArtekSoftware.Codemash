@@ -116,7 +116,6 @@
 						<string key="NSFrame">{{75, 708}, {646, 250}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:244</string>
 						<reference key="IBUIBackgroundColor" ref="656996002"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -264,7 +263,7 @@
 						</object>
 					</object>
 				</object>
-				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>
+				<string key="NSFrameSize">{768, 1004}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="417205008"/>
@@ -273,9 +272,6 @@
 					<bytes key="NSRGB">MC4yMDM5MjE1ODYzIDAuMjAzOTIxNTg2MyAwLjIwMzkyMTU4NjMAA</bytes>
 				</object>
 				<int key="IBUIContentMode">6</int>
-				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
-					<int key="IBUIStatusBarStyle">2</int>
-				</object>
 				<string key="IBUIContentStretch">{{0, 0}, {1, 0.79999999999999982}}</string>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
@@ -556,6 +552,7 @@
 							<string>speakerSessionsTable</string>
 							<string>speakerTwitterHandleButton</string>
 							<string>speakerTwitterImage</string>
+							<string>toolbar</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -569,6 +566,7 @@
 							<string>UITableView</string>
 							<string>UIButton</string>
 							<string>UIImageView</string>
+							<string>UIToolbar</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -585,6 +583,7 @@
 							<string>speakerSessionsTable</string>
 							<string>speakerTwitterHandleButton</string>
 							<string>speakerTwitterImage</string>
+							<string>toolbar</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -627,6 +626,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">speakerTwitterImage</string>
 								<string key="candidateClassName">UIImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">toolbar</string>
+								<string key="candidateClassName">UIToolbar</string>
 							</object>
 						</object>
 					</object>

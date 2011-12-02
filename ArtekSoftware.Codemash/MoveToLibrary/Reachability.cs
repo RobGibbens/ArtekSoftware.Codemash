@@ -15,17 +15,27 @@ public enum NetworkStatus
 
 public class NetworkStatusCheck
 {
-	public bool IsOnline ()
+	public static bool IsReachable()
 	{
-		ReachabilityStatus status = new ReachabilityStatus ();
-		Thread thread = new Thread (ThreadedIsOnline);
-		thread.IsBackground = true;
-		thread.Start (status);
-
-		bool terminated = thread.Join (2000);
-
-		return terminated && status.IsOnline;
+		return IsReachable("codemash.org");
 	}
+	
+	public static bool IsReachable (string host)
+	{ 
+		return Reachability.InternetConnectionStatus () != NetworkStatus.NotReachable && Reachability.IsHostReachable (host); 
+	}
+	
+//	public bool IsOnline ()
+//	{
+//		ReachabilityStatus status = new ReachabilityStatus ();
+//		Thread thread = new Thread (ThreadedIsOnline);
+//		thread.IsBackground = true;
+//		thread.Start (status);
+//
+//		bool terminated = thread.Join (2000);
+//
+//		return terminated && status.IsOnline;
+//	}
 
 	private void ThreadedIsOnline (object state)
 	{
@@ -39,6 +49,7 @@ public class NetworkStatusCheck
 		public bool IsOnline;
 	}	
 }
+
 public static class Reachability
 {
 	/// <summary>

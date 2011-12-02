@@ -4,7 +4,8 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.IO;
-using MonoTouch.TestFlight;
+
+//using MonoTouch.TestFlight;
 
 namespace ArtekSoftware.Codemash
 {
@@ -22,12 +23,13 @@ namespace ArtekSoftware.Codemash
 		}
 		
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
-		{
+		{	
+			//StartGoogleAnalytics ();
+			
 			//Console.WriteLine("AppDelegate.FinishedLaunching");
 			CopyDb ();
 			
-			TestFlight.TakeOff("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
-			
+			//TestFlight.TakeOff("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
 			
 			var bootstrapper = new Bootstrapper ();
 			bootstrapper.Initialize ();				
@@ -73,13 +75,25 @@ namespace ArtekSoftware.Codemash
 			if (!runtimeDbExists && defaultDatabaseExists) {
 				File.Copy (rootDbPath, db);
 			
-				TestFlight.PassCheckpoint ("Copied default database");
+				//TestFlight.PassCheckpoint ("Copied default database");
 			}
  
 		}
+
+//		void StartGoogleAnalytics ()
+//		{
+//			var tracker = GoogleAnalytics.GANTracker.SharedTracker;
+//			
+//			string googleAccountId = "UA-20184526-2";
+//			int googleDispatchPeriod = 10;
+//			GoogleAnalytics.GANTrackerDelegate ganDelegate = null;
+//			
+//			tracker.StartTracker (googleAccountId, googleDispatchPeriod, ganDelegate);
+//		}
 		
 		public void SetSession (SessionEntity session)
 		{
+
 			this.TabBar.SelectedIndex = 1; 
 
 			RotatingSessionDetailViewController rotatingSessionDetailViewController = new RotatingSessionDetailViewController (session);

@@ -245,7 +245,7 @@ namespace MonoTouch.Dialog
 		
 		public override string Summary ()
 		{
-			return val ? "On" : "Off";
+			return val ? "On".GetText () : "Off".GetText ();
 		}		
 	}
 	
@@ -609,7 +609,9 @@ namespace MonoTouch.Dialog
 				NetworkActivity = false;
 				vc.NavigationItem.RightBarButtonItem = null;
 				if (web != null)
-					web.LoadHtmlString (String.Format ("<html><center><font size=+5 color='red'>An error occurred:<br>{0}</font></center></html>", args.Error.LocalizedDescription), null);
+					web.LoadHtmlString (
+						String.Format ("<html><center><font size=+5 color='red'>{0}:<br>{1}</font></center></html>",
+						"An error occurred:".GetText (), args.Error.LocalizedDescription), null);
 			};
 			vc.NavigationItem.Title = Caption;
 			vc.View.AddSubview (web);
@@ -699,6 +701,7 @@ namespace MonoTouch.Dialog
 		}
 		
 		protected UITableViewCellStyle style;
+		public NSAction AccessoryTapped;
 		public UIFont Font;
 		public UIFont SubtitleFont;
 		public UIColor TextColor;
@@ -867,6 +870,13 @@ namespace MonoTouch.Dialog
 				return;
 			root.TableView.ReloadRows (new NSIndexPath [] { IndexPath }, UITableViewRowAnimation.None);
 		}	
+		
+		internal void AccessoryTap ()
+		{
+			NSAction tapped = AccessoryTapped;
+			if (tapped != null)
+				tapped ();
+		}
 	}
 	
 	public class StyledMultilineElement : StyledStringElement, IElementSizing {
@@ -888,7 +898,7 @@ namespace MonoTouch.Dialog
 			var captionFont = Font ?? UIFont.BoldSystemFontOfSize (17);
 			float height = tableView.StringSize (Caption, captionFont, maxSize, LineBreakMode).Height;
 			
-			if (this.style == UITableViewCellStyle.Subtitle){
+			if ((this.style == UITableViewCellStyle.Subtitle) && !String.IsNullOrEmpty (Value)) {
 				var subtitleFont = SubtitleFont ?? UIFont.SystemFontOfSize (14);
 				height += tableView.StringSize (Value, subtitleFont, maxSize, LineBreakMode).Height;
 			}
@@ -1263,7 +1273,6 @@ namespace MonoTouch.Dialog
 		/// <summary>
 		///   The value of the EntryElement
 		/// </summary>
-		
 		public string Value { 
 			get {
 				return val;
@@ -1274,8 +1283,18 @@ namespace MonoTouch.Dialog
 					entry.Text = value;
 			}
 		}
-		string val;
-		
+		protected string val;
+
+		/// <summary>
+		/// The key used for reusable UITableViewCells.
+		/// </summary>
+		static NSString entryKey = new NSString ("EntryElement");
+		protected virtual NSString EntryKey {
+			get {
+				return entryKey;
+			}
+		}
+
 		/// <summary>
 		/// The type of keyboard used for input, you can change
 		/// this to use this for numeric input, email addressed,
@@ -1291,15 +1310,56 @@ namespace MonoTouch.Dialog
 					entry.KeyboardType = value;
 			}
 		}
+		
+		/// <summary>
+		/// The type of Return Key that is displayed on the
+		/// keyboard, you can change this to use this for
+		/// Done, Return, Save, etc. keys on the keyboard
+		/// </summary>
+		public UIReturnKeyType? ReturnKeyType {
+			get {
+				return returnKeyType;
+			}
+			set {
+				returnKeyType = value;
+				if (entry != null && returnKeyType.HasValue)
+					entry.ReturnKeyType = returnKeyType.Value;
+			}
+		}
+		
+		public UITextAutocapitalizationType AutocapitalizationType {
+			get {
+				return autocapitalizationType;	
+			}
+			set { 
+				autocapitalizationType = value;
+				if (entry != null)
+					entry.AutocapitalizationType = value;
+			}
+		}
+		
+		public UITextAutocorrectionType AutocorrectionType { 
+			get { 
+				return autocorrectionType;
+			}
+			set { 
+				autocorrectionType = value;
+				if (entry != null)
+					this.autocorrectionType = value;
+			}
+		}
 
 		UIKeyboardType keyboardType = UIKeyboardType.Default;
+		UIReturnKeyType? returnKeyType = null;
+		UITextAutocapitalizationType autocapitalizationType = UITextAutocapitalizationType.AllCharacters;
+		UITextAutocorrectionType autocorrectionType = UITextAutocorrectionType.Default;
 		bool isPassword, becomeResponder;
 		UITextField entry;
 		string placeholder;
 		static UIFont font = UIFont.BoldSystemFontOfSize (17);
 
 		public event EventHandler Changed;
-		
+		public event Func<bool> ShouldReturn;
 		/// <summary>
 		/// Constructs an EntryElement with the given caption, placeholder and initial value.
 		/// </summary>
@@ -1313,7 +1373,7 @@ namespace MonoTouch.Dialog
 		/// Initial value.
 		/// </param>
 		public EntryElement (string caption, string placeholder, string value) : base (caption)
-		{
+		{ 
 			Value = value;
 			this.placeholder = placeholder;
 		}
@@ -1414,6 +1474,10 @@ namespace MonoTouch.Dialog
 					FetchValue ();
 				};
 				entry.ShouldReturn += delegate {
+					
+					if (ShouldReturn != null)
+						return ShouldReturn();
+					
 					RootElement root = GetImmediateRootElement ();
 					EntryElement focus = null;
 					
@@ -1443,15 +1507,21 @@ namespace MonoTouch.Dialog
 				};
 				entry.Started += delegate {
 					EntryElement self = null;
-					var returnType = UIReturnKeyType.Default;
 					
-					foreach (var e in (Parent as Section).Elements){
-						if (e == this)
-							self = this;
-						else if (self != null && e is EntryElement)
-							returnType = UIReturnKeyType.Next;
+					if (!returnKeyType.HasValue)
+					{
+						var returnType = UIReturnKeyType.Default;
+						
+						foreach (var e in (Parent as Section).Elements){
+							if (e == this)
+								self = this;
+							else if (self != null && e is EntryElement)
+								returnType = UIReturnKeyType.Next;
+						}
+						entry.ReturnKeyType = returnType;
 					}
-					entry.ReturnKeyType = returnType;
+					else
+						entry.ReturnKeyType = returnKeyType.Value;
 				};
 			}
 			if (becomeResponder){
@@ -1459,6 +1529,9 @@ namespace MonoTouch.Dialog
 				becomeResponder = false;
 			}
 			entry.KeyboardType = KeyboardType;
+			
+			entry.AutocapitalizationType = AutocapitalizationType;
+			entry.AutocorrectionType = AutocorrectionType;
 			
 			cell.TextLabel.Text = Caption;
 			cell.ContentView.AddSubview (entry);
@@ -1546,7 +1619,9 @@ namespace MonoTouch.Dialog
 		public override UITableViewCell GetCell (UITableView tv)
 		{
 			Value = FormatDate (DateValue);
-			return base.GetCell (tv);
+			var cell = base.GetCell (tv);
+			cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+			return cell;
 		}
  
 		protected override void Dispose (bool disposing)
@@ -2199,7 +2274,7 @@ namespace MonoTouch.Dialog
 		internal Group group;
 		public bool UnevenRows;
 		public Func<RootElement, UIViewController> createOnSelected;
-		internal UITableView TableView;
+		public UITableView TableView;
 		
 		// This is used to indicate that we need the DVC to dispatch calls to
 		// WillDisplayCell so we can prepare the color of the cell before 
@@ -2316,7 +2391,7 @@ namespace MonoTouch.Dialog
 			return -1;
 		}
 			
-		internal void Prepare ()
+		public void Prepare ()
 		{
 			int current = 0;
 			foreach (Section s in Sections){				

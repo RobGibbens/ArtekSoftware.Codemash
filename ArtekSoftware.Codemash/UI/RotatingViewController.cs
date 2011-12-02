@@ -60,7 +60,8 @@ namespace ArtekSoftware.Codemash
 				view.Frame = this.View.Frame;
 				if (this.InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft || this.InterfaceOrientation == UIInterfaceOrientation.LandscapeRight) {
 					//Console.WriteLine ("RotatingViewController._showView - Is Landscape, setting view.Frame");
-					view.Frame = new System.Drawing.RectangleF (0, 0, this.View.Frame.Width, this.View.Frame.Height);
+					//view.Frame = new System.Drawing.RectangleF (0, 0, this.View.Frame.Width, this.View.Frame.Height);
+					view.Frame = new System.Drawing.RectangleF (0, 0, 703, 748);
 				}
 				//Console.WriteLine ("RotatingViewController._showView - Adding Subview");
 				View.AddSubview (view);

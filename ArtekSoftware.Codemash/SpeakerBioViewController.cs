@@ -43,8 +43,8 @@ namespace ArtekSoftware.Codemash
 		{
 			
 			if (this.speakerTwitterHandleButton != null && this.speakerTwitterHandleButton.TitleLabel != null && !string.IsNullOrWhiteSpace (this.speakerTwitterHandleButton.TitleLabel.Text)) {
-				var networkStatusCheck = new NetworkStatusCheck ();
-				if (networkStatusCheck.IsOnline ()) {
+				
+				if (NetworkStatusCheck.IsReachable ()) {
 					var urlString = "http://mobile.twitter.com/" + this.speakerTwitterHandleButton.TitleLabel.Text.Replace ("@", "");
 					var url = new NSUrl (urlString);
 					UIApplication.SharedApplication.OpenUrl (url);
@@ -55,8 +55,8 @@ namespace ArtekSoftware.Codemash
 		void HandleSpeakerBlogButtonhandleTouchUpInside (object sender, EventArgs e)
 		{
 			if (this.speakerBlogButton != null && this.speakerBlogButton.TitleLabel != null && !string.IsNullOrWhiteSpace (this.speakerBlogButton.TitleLabel.Text)) {
-				var networkStatusCheck = new NetworkStatusCheck ();
-				if (networkStatusCheck.IsOnline ()) {
+				
+				if (NetworkStatusCheck.IsReachable ()) {
 					var url = new NSUrl (this.speakerBlogButton.TitleLabel.Text);
 					UIApplication.SharedApplication.OpenUrl (url);
 				}

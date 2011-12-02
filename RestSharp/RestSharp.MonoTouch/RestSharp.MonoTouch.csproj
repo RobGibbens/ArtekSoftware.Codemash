@@ -70,6 +70,14 @@
     <WarningLevel>4</WarningLevel>
     <AssemblyName>RestSharpMonoTouch</AssemblyName>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <DefineConstants>MONOTOUCH;FRAMEWORK</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\AppStore</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyName>RestSharpMonoTouch</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

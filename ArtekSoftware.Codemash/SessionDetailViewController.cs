@@ -37,9 +37,7 @@ namespace ArtekSoftware.Codemash
 			if (version < 5) {
 				this.btnTweetThis.Hidden = true;
 				this.tweetThisLabel.Hidden = true;
-			}
-			else
-			{
+			} else {
 				this.btnTweetThis.Hidden = false;
 				this.tweetThisLabel.Hidden = false;
 			}
@@ -57,7 +55,6 @@ namespace ArtekSoftware.Codemash
 		{
 			return true;
 		}
-
 		
 		public void SetSession (SessionEntity session)
 		{
@@ -69,7 +66,11 @@ namespace ArtekSoftware.Codemash
 			this.sessionDifficultyLabel.Text = session.Difficulty;
 			this.sessionRoomLabel.Text = session.Room;
 			this.sessionSpeakerNameLabel.SetTitle (session.SpeakerName, UIControlState.Normal);
-			this.sessionStartLabel.Text = session.Start.ToString ();
+			if (session.Start == DateTime.MinValue) {
+				this.sessionStartLabel.Text = "No date/time - Please Refresh";
+			} else {
+				this.sessionStartLabel.Text = session.Start.ToString ();
+			}
 			this.sessionTechnologyLabel.Text = session.Technology;
 			
 			SetImageUrl ();
@@ -253,13 +254,15 @@ namespace ArtekSoftware.Codemash
 
 		protected void AddNotification (SessionEntity session)
 		{	
-			UILocalNotification notification = new UILocalNotification{
-				  FireDate = DateTime.Now.AddSeconds (1),
+			if (session != null && session.Start != null && session.Start != DateTime.MinValue) {
+				UILocalNotification notification = new UILocalNotification{
+				  FireDate = session.Start.AddMinutes (-10),
 				  TimeZone = NSTimeZone.LocalTimeZone,
 				  AlertBody = session.Title + " will start in 10 minutes in " + session.Room + "(WHEN CODEMASH PUBLISHES REAL DATES, THIS WON'T SHOW IMMEDIATELY",
 				  RepeatInterval = 0
 				};
-			UIApplication.SharedApplication.ScheduleLocalNotification (notification);
+				UIApplication.SharedApplication.ScheduleLocalNotification (notification);
+			}
 		}
 		
 		protected void RemoveNotification (SessionEntity session)
