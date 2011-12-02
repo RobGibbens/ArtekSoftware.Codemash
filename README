@@ -23,10 +23,10 @@ Start by clicking a Speaker - no popover - Fixed
 Add real notification timer - Fixed
 Reset database to null dates for shipping
 Add note on default view explaining default dates and asking to refresh on initial install
-
-OTHER ISSUES
 Refresh session, then refresh speakers - no connection
 
+
+OTHER ISSUES
 In portrait view, clicking popover, selecting session bumps the toolbar down
 Add spinning image in refresh - low priority
 Highlight cell when selected
