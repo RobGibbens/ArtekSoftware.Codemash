@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Catnap;
 using System.Linq;
 
-//using MonoTouch.TestFlight;
+using MonoTouch.TestFlight;
 using System.Threading;
 
 namespace ArtekSoftware.Codemash

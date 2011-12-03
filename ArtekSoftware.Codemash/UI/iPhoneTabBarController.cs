@@ -7,13 +7,15 @@ using System.Linq;
 
 namespace ArtekSoftware.Codemash
 {
-	public abstract class TabBarControllerBase : UITabBarController
-	{
-	}
-	
-	public class TabBarController : TabBarControllerBase
+	public class iPhoneTabBarController : TabBarControllerBase
 	{
 		MonoTouch.UIKit.UINavigationController navScheduleController, navSessionController, navSpeakerController, mapController;
+		
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			AppDelegate.CurrentAppDelegate.NavigationController.NavigationBarHidden = true;
+		}
 		
 		public override void ViewDidLoad ()
 		{

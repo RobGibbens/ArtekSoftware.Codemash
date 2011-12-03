@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
-//using MonoTouch.TestFlight;
+using MonoTouch.TestFlight;
 
 namespace ArtekSoftware.Codemash
 {
@@ -81,7 +81,7 @@ namespace ArtekSoftware.Codemash
 		void HandleHandleRefreshRequested (object sender, EventArgs e)
 		{
 			LoadData (isRefresh:true);
-			//TestFlight.PassCheckpoint ("Refreshed Speakers");
+			TestFlight.PassCheckpoint ("Refreshed Speakers");
 			
 		}
 
@@ -106,7 +106,7 @@ namespace ArtekSoftware.Codemash
 			SpeakerEntity speaker = _speakers.ToList () [selectedRow];
 			AppDelegate.CurrentAppDelegate.SetSpeaker (speaker);
 			
-			//TestFlight.PassCheckpoint("Selected Speaker");
+			TestFlight.PassCheckpoint("Selected Speaker");
 			
 			base.Selected (indexPath);
 		}

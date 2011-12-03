@@ -1,89 +1,24 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="AdHoc|iPhone" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/ScheduleDialogViewController.cs">
+    <Files>
+      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="45" Column="40" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneSpeakerBioViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/UI/TabBarController.cs" Line="63" Column="20" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/ScheduleDialogViewController.cs" Line="19" Column="4" />
+      <File FileName="ArtekSoftware.Codemash/UI/SessionEventCell.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/UI/iPhoneTabBarController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneMapViewController.cs" Line="29" Column="26" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Catnap" expanded="True" />
-          <Node name="CodeMash" expanded="True">
-            <Node name="References">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
+          <Node name="CodeMash" expanded="True" selected="True">
+            <Node name="UI" expanded="True" />
+            <Node name="ViewControllers" expanded="True">
+              <Node name="DialogViewControllers" expanded="True" />
             </Node>
-            <Node name="DefaultDatabase">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="images">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="lib">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="Model">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="MoveToLibrary">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="UI">
-              <Node name="RotatingSpeakerBioViewController.cs">
-                <Option id="ShowVersionControlOverlays" value="True" />
-                <Option id="ShowAllFiles" value="True" />
-              </Node>
-              <Node name="SessionEventCell.cs">
-                <Option id="ShowVersionControlOverlays" value="True" />
-                <Option id="ShowAllFiles" value="True" />
-              </Node>
-            </Node>
-            <Node name="ViewControllers">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="AppDelegate.cs">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="Default-Portrait.png">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="DefaultViewController.xib">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="DetailViewController.xib">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="Info.plist">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="MapViewController.cs">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="RootViewController.cs">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="SessionDetailLandscapeViewController.cs">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="SessionDetailViewController.cs" selected="True" />
-            <Node name="SpeakerBioLandscapeViewController.cs">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-          </Node>
-          <Node name="RestSharp.MonoTouch" expanded="True">
-            <Node name="Extensions" expanded="True" />
           </Node>
         </State>
       </Pad>

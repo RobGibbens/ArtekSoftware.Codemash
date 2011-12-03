@@ -5,7 +5,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.IO;
 
-//using MonoTouch.TestFlight;
+using MonoTouch.TestFlight;
 
 namespace ArtekSoftware.Codemash
 {
@@ -15,9 +15,10 @@ namespace ArtekSoftware.Codemash
 		UIWindow window;
 		UISplitViewController splitViewController;
 		public static AppDelegate CurrentAppDelegate;
-		private TabBarController _tabBarController;
-
-		public TabBarController TabBar {
+		private TabBarControllerBase _tabBarController;
+		public UINavigationController NavigationController;
+		
+		public TabBarControllerBase TabBar {
 			get { return _tabBarController; }
 			set { _tabBarController = value; }
 		}
@@ -29,7 +30,7 @@ namespace ArtekSoftware.Codemash
 			//Console.WriteLine("AppDelegate.FinishedLaunching");
 			CopyDb ();
 			
-			//TestFlight.TakeOff("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
+			TestFlight.TakeOff("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
 			
 			var bootstrapper = new Bootstrapper ();
 			bootstrapper.Initialize ();				
@@ -37,24 +38,29 @@ namespace ArtekSoftware.Codemash
 			CurrentAppDelegate = this;
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
-			//Console.WriteLine("AppDelegate.FinishedLaunching - creating new TabBarController and DetailViewController");
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+				this.TabBar = new iPhoneTabBarController ();
+				this.NavigationController = new UINavigationController (this.TabBar);
+				this.NavigationController.NavigationBarHidden = true;
+				window.RootViewController = this.NavigationController;
+			} else {
+				//Console.WriteLine("AppDelegate.FinishedLaunching - creating new TabBarController and DetailViewController");
 			
-			this.TabBar = new TabBarController ();
-			var detailViewController = new DetailViewController ();
+				this.TabBar = new TabBarController ();
+				var detailViewController = new DetailViewController ();
+				//Console.WriteLine("AppDelegate.FinishedLaunching - creating new SplitViewController");
+				splitViewController = new UISplitViewController ();
+				//splitViewController.WeakDelegate = detailViewController;
+				splitViewController.Delegate = new SplitDelegate ();
+				splitViewController.ViewControllers = new UIViewController[] {
+						this.TabBar,
+						detailViewController
+				};
 			
-			//Console.WriteLine("AppDelegate.FinishedLaunching - creating new SplitViewController");
+				//Console.WriteLine("AppDelegate.FinishedLaunching - setting window.RootViewController");
 			
-			splitViewController = new UISplitViewController ();
-			//splitViewController.WeakDelegate = detailViewController;
-			splitViewController.Delegate = new SplitDelegate ();
-			splitViewController.ViewControllers = new UIViewController[] {
-				this.TabBar,
-				detailViewController
-			};
-			
-			//Console.WriteLine("AppDelegate.FinishedLaunching - setting window.RootViewController");
-			
-			window.RootViewController = splitViewController;
+				window.RootViewController = splitViewController;
+			}
 
 			window.MakeKeyAndVisible ();
 			
@@ -72,10 +78,11 @@ namespace ArtekSoftware.Codemash
  
 			var runtimeDbExists = File.Exists (db);
 			var defaultDatabaseExists = File.Exists (rootDbPath);
+			
 			if (!runtimeDbExists && defaultDatabaseExists) {
 				File.Copy (rootDbPath, db);
 			
-				//TestFlight.PassCheckpoint ("Copied default database");
+				TestFlight.PassCheckpoint ("Copied default database");
 			}
  
 		}
@@ -93,84 +100,100 @@ namespace ArtekSoftware.Codemash
 		
 		public void SetSession (SessionEntity session)
 		{
-
 			this.TabBar.SelectedIndex = 1; 
-
-			RotatingSessionDetailViewController rotatingSessionDetailViewController = new RotatingSessionDetailViewController (session);
 			
-			var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
-			rotatingSessionDetailViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
-			rotatingSessionDetailViewController.PopOverController = existingVC.PopOverController;			
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+				this.NavigationController.NavigationBarHidden = false;
+				var iPhoneSessionDetailViewController = new iPhoneSessionDetailViewController (session);
+				((UINavigationController)window.RootViewController).PushViewController (iPhoneSessionDetailViewController, animated:true);
+			} else {
+				RotatingSessionDetailViewController rotatingSessionDetailViewController = new RotatingSessionDetailViewController (session);
+			
+				var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
+				rotatingSessionDetailViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
+				rotatingSessionDetailViewController.PopOverController = existingVC.PopOverController;			
 	
-			var splitDelegate = new SplitDelegate ();
-			this.splitViewController.Delegate = splitDelegate;
+				var splitDelegate = new SplitDelegate ();
+				this.splitViewController.Delegate = splitDelegate;
 			
-			this.splitViewController.ViewControllers = new UIViewController[] {
+				this.splitViewController.ViewControllers = new UIViewController[] {
 					this.TabBar,
 					rotatingSessionDetailViewController
 				};
 			
-			window.RootViewController = splitViewController;
+				window.RootViewController = splitViewController;
 			
-			if (rotatingSessionDetailViewController.RootPopoverButtonItem != null) {
-				rotatingSessionDetailViewController.ShowRootPopoverButtonItem (rotatingSessionDetailViewController.RootPopoverButtonItem);
-			}
+				if (rotatingSessionDetailViewController.RootPopoverButtonItem != null) {
+					rotatingSessionDetailViewController.ShowRootPopoverButtonItem (rotatingSessionDetailViewController.RootPopoverButtonItem);
+				}
 			
-			if (rotatingSessionDetailViewController.PopOverController != null) {
-				rotatingSessionDetailViewController.PopOverController.Dismiss (true);
+				if (rotatingSessionDetailViewController.PopOverController != null) {
+					rotatingSessionDetailViewController.PopOverController.Dismiss (true);
+				}
 			}
 		}
 		
 		public void SetSpeaker (SpeakerEntity speaker)
 		{
-			RotatingSpeakerBioViewController rotatingSpeakerBioViewController = new RotatingSpeakerBioViewController (speaker);
-
-			var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
-			rotatingSpeakerBioViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
-			rotatingSpeakerBioViewController.PopOverController = existingVC.PopOverController;			
+			this.TabBar.SelectedIndex = 2;
 			
-			this.TabBar.SelectedIndex = 2; 
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+				this.NavigationController.NavigationBarHidden = false;
+				var iPhoneSpeakerBioViewController = new iPhoneSpeakerBioViewController (speaker);
+				((UINavigationController)window.RootViewController).PushViewController (iPhoneSpeakerBioViewController, animated:true);
+			} else {			
+				RotatingSpeakerBioViewController rotatingSpeakerBioViewController = new RotatingSpeakerBioViewController (speaker);
+
+				var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
+				rotatingSpeakerBioViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
+				rotatingSpeakerBioViewController.PopOverController = existingVC.PopOverController;			 
 	
-			var splitDelegate = new SplitDelegate ();		
-			this.splitViewController.Delegate = splitDelegate;
-			this.splitViewController.ViewControllers = new UIViewController[] {
+				var splitDelegate = new SplitDelegate ();		
+				this.splitViewController.Delegate = splitDelegate;
+				this.splitViewController.ViewControllers = new UIViewController[] {
 					this.TabBar,
 					rotatingSpeakerBioViewController
 				};
 			
-			if (rotatingSpeakerBioViewController.RootPopoverButtonItem != null) {
-				rotatingSpeakerBioViewController.ShowRootPopoverButtonItem (rotatingSpeakerBioViewController.RootPopoverButtonItem);
-			}
+				if (rotatingSpeakerBioViewController.RootPopoverButtonItem != null) {
+					rotatingSpeakerBioViewController.ShowRootPopoverButtonItem (rotatingSpeakerBioViewController.RootPopoverButtonItem);
+				}
 			
-			if (rotatingSpeakerBioViewController.PopOverController != null) {
-				rotatingSpeakerBioViewController.PopOverController.Dismiss (true);
+				if (rotatingSpeakerBioViewController.PopOverController != null) {
+					rotatingSpeakerBioViewController.PopOverController.Dismiss (true);
+				}
 			}
 		}
 		
 		public void SetMap ()
 		{
+			this.TabBar.SelectedIndex = 3;
 			
-			MapViewController mapViewController = new MapViewController ();
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+				this.NavigationController.NavigationBarHidden = false;
+				var iPhoneMapViewController = new iPhoneMapViewController ();
+				((UINavigationController)window.RootViewController).PushViewController (iPhoneMapViewController, animated:true);
+			} else {	
+				MapViewController mapViewController = new MapViewController ();
 			
-			var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
-			mapViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
-			mapViewController.PopOverController = existingVC.PopOverController;					
+				var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
+				mapViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
+				mapViewController.PopOverController = existingVC.PopOverController;					
 			
-			this.TabBar.SelectedIndex = 3; 
-			
-			var splitDelegate = new SplitDelegate ();		
-			this.splitViewController.Delegate = splitDelegate;
-			this.splitViewController.ViewControllers = new UIViewController[] {
+				var splitDelegate = new SplitDelegate ();		
+				this.splitViewController.Delegate = splitDelegate;
+				this.splitViewController.ViewControllers = new UIViewController[] {
 					this.TabBar,
 					mapViewController
 				};
 			
-			if (mapViewController.RootPopoverButtonItem != null) {
-				mapViewController.ShowRootPopoverButtonItem (mapViewController.RootPopoverButtonItem);
-			}
+				if (mapViewController.RootPopoverButtonItem != null) {
+					mapViewController.ShowRootPopoverButtonItem (mapViewController.RootPopoverButtonItem);
+				}
 			
-			if (mapViewController.PopOverController != null) {
-				mapViewController.PopOverController.Dismiss (true);
+				if (mapViewController.PopOverController != null) {
+					mapViewController.PopOverController.Dismiss (true);
+				}
 			}
 		}
 	}

@@ -1,59 +1,66 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-using MonoTouch.Twitter;
+using System.Drawing;
+using System;
+using MonoTouch.Foundation;
+using System.Linq;
 using Catnap;
+using MonoTouch.Twitter;
+using System.Collections.Generic;
 using Catnap.Find.Conditions;
 using Catnap.Find;
 
 namespace ArtekSoftware.Codemash
 {
-	public partial class SessionDetailViewController : UIViewController
+	public partial class iPhoneSessionDetailViewController : UIViewController
 	{
-		
-		public UIToolbar Toolbar {
-			get {
-				return toolbar;	
-			}
-		}
+		private SessionEntity _session;
 
-		public SessionDetailViewController (SessionEntity session) : base ("SessionDetailViewController", null)
+		public iPhoneSessionDetailViewController (SessionEntity session) : base ("iPhoneSessionDetailViewController", null)
 		{
 			_session = session;
 		}
 		
-		public SessionDetailViewController () : base ("SessionDetailViewController", null)
+		public iPhoneSessionDetailViewController () : base ("iPhoneSessionDetailViewController", null)
 		{
+		}
+		
+		public override void DidReceiveMemoryWarning ()
+		{
+			base.DidReceiveMemoryWarning ();
 		}
 		
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			this.scrollView.Frame = new RectangleF(0,0, 320, 460);
+    		this.scrollView.ContentSize = new SizeF(320, 650);
 			
 			var version = Convert.ToDecimal (UIDevice.CurrentDevice.SystemVersion.Split ('.').First ());
 			
 			if (version < 5) {
 				this.btnTweetThis.Hidden = true;
-				this.tweetThisLabel.Hidden = true;
 			} else {
 				this.btnTweetThis.Hidden = false;
-				this.tweetThisLabel.Hidden = false;
 			}
 			
-			this.addToScheduleImage.TouchUpInside += HandleSessionAddToScheduleButtonhandleTouchUpInside;
+			this.btnAddToSchedule.TouchUpInside += HandleSessionAddToScheduleButtonhandleTouchUpInside;
 			this.btnTweetThis.TouchUpInside += HandleTweetThisButtonHandleTouchUpInside;
-			this.sessionSpeakerNameLabel.TouchUpInside += HandleSessionSpeakerNameLabelTouchUpInside;
+			this.sessionSpeakerNameButton.TouchUpInside += HandleSessionSpeakerNameLabelTouchUpInside;
 			
 			if (this.Session != null) {
 				this.SetSession (this.Session);
 			}
 		}
 		
+		public override void ViewDidUnload ()
+		{
+			base.ViewDidUnload ();
+		}
+		
 		public override bool ShouldAutorotateToInterfaceOrientation (UIInterfaceOrientation toInterfaceOrientation)
 		{
-			return true;
+			// Return true for supported orientations
+			return (toInterfaceOrientation != UIInterfaceOrientation.PortraitUpsideDown);
 		}
 		
 		public void SetSession (SessionEntity session)
@@ -65,7 +72,7 @@ namespace ArtekSoftware.Codemash
 			
 			this.sessionDifficultyLabel.Text = session.Difficulty;
 			this.sessionRoomLabel.Text = session.Room;
-			this.sessionSpeakerNameLabel.SetTitle (session.SpeakerName, UIControlState.Normal);
+			this.sessionSpeakerNameButton.SetTitle (session.SpeakerName, UIControlState.Normal);
 			if (session.Start == DateTime.MinValue) {
 				this.sessionStartLabel.Text = "No date/time - Please Refresh";
 			} else {
@@ -79,10 +86,10 @@ namespace ArtekSoftware.Codemash
 			this.sessionTitleLabel.Text = session.Title;
 			
 			HLabel titleLabel;
-			if (this.View.Subviews.Count () <= 19) {
+			if (this.scrollView.Subviews.Count () <= 19) {
 				titleLabel = new HLabel ();
 			} else {
-				titleLabel = (HLabel)this.View.Subviews [19];
+				titleLabel = (HLabel)this.scrollView.Subviews [19];
 			}
 			titleLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
 			titleLabel.Lines = 0;
@@ -92,22 +99,21 @@ namespace ArtekSoftware.Codemash
 			titleLabel.Frame = this.sessionTitleLabel.Frame;
 			titleLabel.BackgroundColor = UIColor.Clear;
 			
-			var countBeforeTitle = this.View.Subviews.Count ();
-			if (this.View.Subviews.Count () <= 19) {
-				this.View.AddSubview (titleLabel);
+			if (this.scrollView.Subviews.Count () <= 19) {
+				this.scrollView.AddSubview (titleLabel);
 			} else {
-				this.View.Subviews [19] = titleLabel;
+				this.scrollView.Subviews [19] = titleLabel;
 			}
 			
 			this.sessionTitleLabel.Text = string.Empty;	
 			
 			
 			HLabel abstractLabel;
-			if (this.View.Subviews.Count () <= 20) {
+			if (this.scrollView.Subviews.Count () <= 20) {
 				abstractLabel = new HLabel ();
 				//this.View.AddSubview (abstractLabel);
 			} else {
-				abstractLabel = (HLabel)this.View.Subviews [20];
+				abstractLabel = (HLabel)this.scrollView.Subviews [20];
 				//abstractLabel = (HLabel)this.View.Subviews[20]; 
 			}
 			abstractLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
@@ -118,46 +124,20 @@ namespace ArtekSoftware.Codemash
 			abstractLabel.Frame = this.sessionAbstractLabel.Frame;
 			abstractLabel.BackgroundColor = UIColor.Clear;
 			
-			var countBeforeAbstract = this.View.Subviews.Count ();
-			if (this.View.Subviews.Count () <= 20) {
-				this.View.AddSubview (abstractLabel);
+			if (this.scrollView.Subviews.Count () <= 20) {
+				this.scrollView.AddSubview (abstractLabel);
 			} else {
-				this.View.Subviews [20] = abstractLabel;
+				this.scrollView.Subviews [20] = abstractLabel;
 			}			
 			this.sessionAbstractLabel.Text = string.Empty;			
+			
+			SetImageUrl();
+			SetLocalImage (ImageUrl);
+			
 			this.View.SetNeedsLayout ();
 			this.View.LayoutIfNeeded ();
-			//_sessionTrackLabel.Text = session.Track;
-			
-			SetAddToScheduleLabel ();
-			
-			//AddPopoverButton(null, null, toolbar.Items[0], new UIPopoverController(new TabBarController()));
-//			if (this.popoverController != null) {
-//				this.popoverController.Dismiss (true);
-//			}				
+				
 		}
-		
-		protected void SetTechnologyImage (UIImage image)
-		{
-			using (this.technologyImage.Image) {
-				this.technologyImage.Image = image;
-			}
-		}
-		
-		protected void SetAddToScheduleLabel ()
-		{
-			if (IsOnSchedule ()) {
-				this.addToScheduleLabel.Text = "Remove from schedule";
-				this.addToScheduleLabel.Frame.Width = 142;
-				this.addToScheduleLabel.Frame.X = 19;
-			} else {
-				this.addToScheduleLabel.Text = "Add to schedule";
-				this.addToScheduleLabel.Frame.Width = 98;
-				this.addToScheduleLabel.Frame.X = 36;
-			}
-		}
-		
-		private SessionEntity _session;
 		
 		protected SessionEntity Session {
 			get {
@@ -212,7 +192,7 @@ namespace ArtekSoftware.Codemash
 				}
 				RemoveNotification (_session);
 			}
-			SetAddToScheduleLabel ();
+			
 		}
 		
 		protected void HandleSessionSpeakerNameLabelTouchUpInside (object sender, EventArgs e)
@@ -233,7 +213,7 @@ namespace ArtekSoftware.Codemash
 
 		protected void AddNotification (SessionEntity session)
 		{	
-			if (session != null && session.Start != null && session.Start != DateTime.MinValue) {
+			if (session != null && session.Start != DateTime.MinValue) {
 				UILocalNotification notification = new UILocalNotification{
 				  FireDate = session.Start.AddMinutes (-10),
 				  TimeZone = NSTimeZone.LocalTimeZone,
@@ -301,91 +281,74 @@ namespace ArtekSoftware.Codemash
 			}
 				
 		}
-		
-		protected void SetImageUrl ()
+		string ImageUrl;
+		void SetImageUrl ()
 		{
-			string imagePath = string.Empty;
-			if (_session.Technology.ToLower () == ".net") {
-				imagePath = "images/Technologies/DotNet.png";
-			} else if (_session.Technology.ToLower () == "ruby") {
-				imagePath = "images/Technologies/Ruby.png";
-			} else if (_session.Technology.ToLower () == "mobile") {
-				imagePath = "images/Technologies/mobile2.png";
-			} else if (_session.Technology.ToLower () == "javascript") {
-				imagePath = "images/Technologies/JavaScript.png";
-			} else if (_session.Technology.ToLower () == "design/ux") {
-				imagePath = "images/Technologies/DesignUX2.png";
-			} else if (_session.Technology.ToLower () == "java") {
-				imagePath = "images/Technologies/Java.png";
-			} else if (_session.Technology.ToLower () == "windows 8") {
-				imagePath = "images/Technologies/Windows.png";
-			} else if (_session.Technology.ToLower () == "other languages") {
-				imagePath = "images/Technologies/OtherLanguages2.png";
-			} else if (_session.Technology.ToLower () == "software process") {
-				imagePath = "images/Technologies/SoftwareProcess4.png";
+			if (this.Session.Technology.ToLower () == ".net") {
+				ImageUrl = "images/Technologies/DotNetSmall2.png";
+			} else if (this.Session.Technology.ToLower () == "ruby") {
+				ImageUrl = "images/Technologies/RubySmall.png";
+			} else if (this.Session.Technology.ToLower () == "mobile") {
+				ImageUrl = "images/Technologies/mobile2Small.png";
+			} else if (this.Session.Technology.ToLower () == "javascript") {
+				ImageUrl = "images/Technologies/JavaScriptSmall.png";
+			} else if (this.Session.Technology.ToLower () == "design/ux") {
+				ImageUrl = "images/Technologies/DesignUX2Small.png";
+			} else if (this.Session.Technology.ToLower () == "java") {
+				ImageUrl = "images/Technologies/JavaSmall.png";
+			} else if (this.Session.Technology.ToLower () == "windows 8") {
+				ImageUrl = "images/Technologies/WindowsSmall.png";
+			} else if (this.Session.Technology.ToLower () == "other languages") {
+				ImageUrl = "images/Technologies/OtherLanguages2Small.png";
+			} else if (this.Session.Technology.ToLower () == "software process") {
+				ImageUrl = "images/Technologies/SoftwareProcess4Small.png";
 			} else {
-				imagePath = "images/Technologies/Other2.png";
+				ImageUrl = "images/Technologies/Other2.png";
 			}
-			
-			UIImage image = GetLargeImage (imagePath);
-					
-			SetTechnologyImage (image);
-		}
-	
-		public static UIImage GetLargeImage (string imageUrl)
+		}	
+		string imgurl;
+		public void SetLocalImage (string url)
 		{
-			var smallImages = LargeImages;
-			UIImage image;
-			if (smallImages.ContainsKey (imageUrl)) {
-				image = smallImages [imageUrl];
-				if (image.Size.Width == 0) {
-					var imageFromFile = UIImage.FromFile (imageUrl);
-					imageFromFile = Extensions.RemoveSharpEdges (imageFromFile, Convert.ToInt32 (imageFromFile.Size.Width), 4);
-					smallImages [imageUrl] = imageFromFile;
-					image = smallImages [imageUrl];
+			if (!string.IsNullOrEmpty (url)) {
+				this.imgurl = url;
+				
+				UIImage image = GetSmallImage (url);
+				
+				using (this.technologyImage.Image) {
+					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+					this.technologyImage.Image = image;
 				}
-			} else {
-				var imageFromFile = UIImage.FromFile (imageUrl);
-				imageFromFile = Extensions.RemoveSharpEdges (imageFromFile, Convert.ToInt32 (imageFromFile.Size.Width), 4);
-				smallImages [imageUrl] = imageFromFile;
-				image = smallImages [imageUrl];
+				
+			}
+		}
+		
+		public static UIImage GetSmallImage(string imageUrl)
+		{
+			var smallImages = SmallImages;
+			UIImage image;
+			if (smallImages.ContainsKey(imageUrl))
+			{
+				image = smallImages[imageUrl];
+			}
+			else
+			{
+				smallImages[imageUrl] = UIImage.FromFile(imageUrl);
+				image = smallImages[imageUrl];
 			}
 			
 			return image;
 		}
-
-		private static Dictionary<string, UIImage> _largeImages;
-
-		public static Dictionary<string, UIImage> LargeImages {
+		
+		private static Dictionary<string, UIImage> _smallImages;
+		public static Dictionary<string, UIImage> SmallImages {
 			get {
-				if (_largeImages == null) {
-					_largeImages = new Dictionary<string, UIImage> ();
+				if (_smallImages == null) {
+					_smallImages = new Dictionary<string, UIImage>();
 				}
 				
-				return _largeImages;
+				return _smallImages;
 			}
-		}
-		
-		protected void AddToQueue (ScheduledSessionEntity scheduledSession)
-		{
-			RemoteQueueEntity queueEntity = new RemoteQueueEntity ();
-			queueEntity.AddOrRemove = "ADD";
-			queueEntity.ConferenceName = "CodeMash";
-			queueEntity.DateQueuedOn = DateTime.Now;
-			queueEntity.UserName = "gibbensr";
-			queueEntity.URI = scheduledSession.URI;
-			
-			//using (UnitOfWork.Start()) {
-			var queueRepository = new LocalQueueRepository ();
-			queueRepository.Save (queueEntity);
-			//}
-		}
-		
-		protected void AddToRemote (ScheduledSessionEntity scheduledSession)
-		{
-			var remote = new RemoteScheduledSessionsRepository ();
-			var schedule = remote.GetSchedule ("gibbensr");
-		}
-		
+		}		
 	}
 }
+

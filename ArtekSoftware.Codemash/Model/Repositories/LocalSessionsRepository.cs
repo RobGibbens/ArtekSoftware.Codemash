@@ -13,7 +13,7 @@ using System.Threading;
 using Catnap.Find.Conditions;
 using System.IO;
 using Mono.Data.Sqlite;
-//using MonoTouch.TestFlight;
+using MonoTouch.TestFlight;
 
 namespace ArtekSoftware.Codemash
 {
@@ -118,13 +118,13 @@ namespace ArtekSoftware.Codemash
 		
 //		public void Cache (IList<Session> dtos)
 //		{
-//			//TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 1");
+//			TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 1");
 //			//Thread.Sleep(1000);
 //			
 //			int count = this.Count ();
 //			
 //			if (count > 0) {
-////TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 2");
+//TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 2");
 //			//Thread.Sleep(1000);
 //							
 //				var allCurrentEntities = this.Find ();
@@ -133,11 +133,11 @@ namespace ArtekSoftware.Codemash
 //					this.Delete (entity.Id);
 //				}
 //				
-//				//TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 3");
+//				TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 3");
 //			//Thread.Sleep(1000);
 //			
 //			}
-//			//TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 4");
+//			TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 4");
 //			//Thread.Sleep(1000);
 //			
 //			foreach (var dto in dtos) {
@@ -165,7 +165,7 @@ namespace ArtekSoftware.Codemash
 //				//Thread.Sleep (10);
 //			}
 //			
-//			//TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 5");
+//			TestFlight.PassCheckpoint ("LocalSessionsRepository.Cache - 5");
 //			//Thread.Sleep(1000);
 //			
 //		}

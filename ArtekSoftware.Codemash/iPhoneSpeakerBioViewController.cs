@@ -5,47 +5,59 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.IO;
 using Catnap;
+using System.Drawing;
 
 namespace ArtekSoftware.Codemash
 {
-	public partial class SpeakerBioViewController : UIViewController
+	public partial class iPhoneSpeakerBioViewController : UIViewController
 	{
 		private SpeakerEntity _speaker;
 
-		public SpeakerBioViewController (SpeakerEntity speaker) : base ("SpeakerBioViewController", null)
+		public iPhoneSpeakerBioViewController (SpeakerEntity speaker) : base ("iPhoneSpeakerBioViewController", null)
 		{
 			_speaker = speaker;
 		}
 		
-		public UIToolbar Toolbar {
-			get {
-				return toolbar;	
-			}
+		public iPhoneSpeakerBioViewController () : base ("iPhoneSpeakerBioViewController", null)
+		{
 		}
 		
-		public SpeakerBioViewController () : base ("SpeakerBioViewController", null)
+		public override void DidReceiveMemoryWarning ()
 		{
+			base.DidReceiveMemoryWarning ();
 		}
 		
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 			
+			this.scrollView.Frame = new RectangleF(0,0, 320, 460);
+    		this.scrollView.ContentSize = new SizeF(320, 650);
+			
 			this.speakerBlogButton.TouchUpInside += HandleSpeakerBlogButtonhandleTouchUpInside;
-			this.speakerTwitterHandleButton.TouchUpInside += HandleSpeakerTwitterHandleButtonhandleTouchUpInside;
+			this.speakerTwitterButton.TouchUpInside += HandlespeakerTwitterButtonhandleTouchUpInside;
 			
 			if (_speaker != null) {
 				SetSpeaker ();
 			}
 		}
-
-		void HandleSpeakerTwitterHandleButtonhandleTouchUpInside (object sender, EventArgs e)
+		
+		public override void ViewDidUnload ()
 		{
-			
-			if (this.speakerTwitterHandleButton != null && this.speakerTwitterHandleButton.TitleLabel != null && !string.IsNullOrWhiteSpace (this.speakerTwitterHandleButton.TitleLabel.Text)) {
+			base.ViewDidUnload ();
+		}
+		
+		public override bool ShouldAutorotateToInterfaceOrientation (UIInterfaceOrientation toInterfaceOrientation)
+		{
+			return (toInterfaceOrientation != UIInterfaceOrientation.PortraitUpsideDown);
+		}
+		
+		void HandlespeakerTwitterButtonhandleTouchUpInside (object sender, EventArgs e)
+		{
+			if (this.speakerTwitterButton != null && this.speakerTwitterButton.TitleLabel != null && !string.IsNullOrWhiteSpace (this.speakerTwitterButton.TitleLabel.Text)) {
 				
 				if (NetworkStatusCheck.IsReachable ()) {
-					var urlString = "http://mobile.twitter.com/" + this.speakerTwitterHandleButton.TitleLabel.Text.Replace ("@", "");
+					var urlString = "http://mobile.twitter.com/" + this.speakerTwitterButton.TitleLabel.Text.Replace ("@", "");
 					var url = new NSUrl (urlString);
 					UIApplication.SharedApplication.OpenUrl (url);
 				}
@@ -66,14 +78,13 @@ namespace ArtekSoftware.Codemash
 		private void SetSpeaker ()
 		{
 			this.speakerNameLabel.Text = _speaker.Name;
-			
-			this.speakerBioLabel.Text = "      " + _speaker.Biography;
+			this.speakerBioLabel.Text = _speaker.Biography;
 			
 			HLabel bioLabel;
-			if (this.View.Subviews.Count () == 10) {
+			if (this.scrollView.Subviews.Count () == 11) {
 				bioLabel = new HLabel ();
 			} else {
-				bioLabel = (HLabel)this.View.Subviews [10];
+				bioLabel = (HLabel)this.scrollView.Subviews [11];
 			}
 				
 			bioLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
@@ -82,12 +93,19 @@ namespace ArtekSoftware.Codemash
 			if (!string.IsNullOrWhiteSpace (this.speakerBioLabel.Text)) {
 				bioLabel.Text = this.speakerBioLabel.Text;
 			} else {
-				bioLabel.Text = "      No information provided.";
+				bioLabel.Text = "No information provided.";
 			}
 			bioLabel.Font = UIFont.FromName ("STHeitiTC-Light", 14);
 			bioLabel.Frame = this.speakerBioLabel.Frame;
 			bioLabel.BackgroundColor = UIColor.Clear;
-			this.View.AddSubview (bioLabel);
+			
+			if (this.scrollView.Subviews.Count () == 11) {
+			this.scrollView.AddSubview (bioLabel);
+				
+			} else {
+				this.scrollView.Subviews [11] = bioLabel;
+			}			
+			
 			this.speakerBioLabel.Text = string.Empty;
 			
 			if (!string.IsNullOrWhiteSpace (_speaker.BlogURL)) {
@@ -100,17 +118,17 @@ namespace ArtekSoftware.Codemash
 			
 			if (!string.IsNullOrWhiteSpace (_speaker.TwitterHandle)) {
 				this.speakerTwitterImage.Hidden = false;
-				this.speakerTwitterHandleButton.SetTitle (_speaker.TwitterHandle, UIControlState.Normal);
+				this.speakerTwitterButton.SetTitle (_speaker.TwitterHandle, UIControlState.Normal);
 			} else {
 				this.speakerTwitterImage.Hidden = true;
-				this.speakerTwitterHandleButton.SetTitle (string.Empty, UIControlState.Normal);
+				this.speakerTwitterButton.SetTitle (string.Empty, UIControlState.Normal);
 			}
 
 			var sessions = GetSessionsForSpeaker (_speaker);
 			this.speakerSessionsTable.BackgroundColor = UIColor.Clear;
 			this.speakerSessionsTable.ScrollEnabled = false;
-			this.speakerSessionsTable.Delegate = new MainTableDelegate (this, sessions);
-			this.speakerSessionsTable.DataSource = new MainTableDataSource (sessions);
+			this.speakerSessionsTable.Delegate = new iPhoneSpeakerSessionsDelegate (this, sessions);
+			this.speakerSessionsTable.DataSource = new iPhoneSpeakerSessionsDataSource (sessions);
 			this.speakerSessionsTable.ReloadData ();
 			
 			if (!string.IsNullOrEmpty (_speaker.TwitterHandle)) {
@@ -135,7 +153,6 @@ namespace ArtekSoftware.Codemash
 					this.speakerProfileImage.Image = image;
 				}
 			} else {
-				//var profileImage = "images/glyphicons_003_user@2x.png";
 				var profileImage = "images/Profiles/DefaultUser.png";
 				
 				UIImage image = UIImage.FromFile (profileImage);
@@ -164,20 +181,16 @@ namespace ArtekSoftware.Codemash
 			}
 			
 			return sessions;
-		}
+		}		
 		
-		public override bool ShouldAutorotateToInterfaceOrientation (UIInterfaceOrientation toInterfaceOrientation)
-		{
-			return true;
-		}
 	}
 	
-	public class MainTableDataSource : UITableViewDataSource
+	public class iPhoneSpeakerSessionsDataSource : UITableViewDataSource
 	{
 		private string _section1CellId;
 		private List<SessionEntity> _sessions;
 		
-		public MainTableDataSource (List<SessionEntity> sessions)
+		public iPhoneSpeakerSessionsDataSource (List<SessionEntity> sessions)
 		{
 			_sessions = sessions;
 			_section1CellId = "cellid";
@@ -214,12 +227,12 @@ namespace ArtekSoftware.Codemash
 		}
 	}
 
-	public class MainTableDelegate : UITableViewDelegate
+	public class iPhoneSpeakerSessionsDelegate : UITableViewDelegate
 	{   	
-		private SpeakerBioViewController _controller;
+		private iPhoneSpeakerBioViewController _controller;
 		private List<SessionEntity> _sessions;
 
-		public MainTableDelegate (SpeakerBioViewController controller, List<SessionEntity> sessions)
+		public iPhoneSpeakerSessionsDelegate (iPhoneSpeakerBioViewController controller, List<SessionEntity> sessions)
 		{
 			_controller = controller;
 			_sessions = sessions;
@@ -247,5 +260,7 @@ namespace ArtekSoftware.Codemash
 		}
 		
 	}
-
+	
+	
 }
+

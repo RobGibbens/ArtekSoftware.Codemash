@@ -52,7 +52,7 @@
     <CodesignKey>iPhone Developer: Robert Gibbens (L8HT856S5P)</CodesignKey>
     <IpaPackageName />
     <MtouchI18n />
-    <CodesignProvision>B738ED8D-38C2-4C10-927F-D1AB5A58ADA0</CodesignProvision>
+    <CodesignProvision>2E335AEA-0274-4786-A217-595C8A7E1534</CodesignProvision>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <MtouchArch>ARMv6_ARMv7</MtouchArch>
@@ -92,7 +92,7 @@
     <CodesignKey>iPhone Distribution: Artek Software</CodesignKey>
     <IpaPackageName />
     <MtouchI18n />
-    <CodesignProvision>2AC01A80-3C14-43F5-9024-62DDD1B7A9F8</CodesignProvision>
+    <CodesignProvision>A5BC0263-CE39-4A91-88D2-7C13A47C2BAF</CodesignProvision>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <BuildIpa>true</BuildIpa>
@@ -130,6 +130,9 @@
     <Reference Include="monotouch" />
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Data" />
+    <Reference Include="TestFlight">
+      <HintPath>lib\TestFlight.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -225,6 +228,19 @@
     </Compile>
     <Compile Include="UI\ISubstitutableDetailViewController.cs" />
     <Compile Include="UI\SplitDelegate.cs" />
+    <Compile Include="iPhoneSessionDetailViewController.cs" />
+    <Compile Include="iPhoneSessionDetailViewController.designer.cs">
+      <DependentUpon>iPhoneSessionDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="iPhoneSpeakerBioViewController.cs" />
+    <Compile Include="iPhoneSpeakerBioViewController.designer.cs">
+      <DependentUpon>iPhoneSpeakerBioViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\iPhoneTabBarController.cs" />
+    <Compile Include="iPhoneMapViewController.cs" />
+    <Compile Include="iPhoneMapViewController.designer.cs">
+      <DependentUpon>iPhoneMapViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="RootViewController.xib" />
@@ -235,6 +251,9 @@
     <InterfaceDefinition Include="SpeakerBioLandscapeViewController.xib" />
     <InterfaceDefinition Include="DefaultViewController.xib" />
     <InterfaceDefinition Include="MapViewController.xib" />
+    <InterfaceDefinition Include="iPhoneSessionDetailViewController.xib" />
+    <InterfaceDefinition Include="iPhoneSpeakerBioViewController.xib" />
+    <InterfaceDefinition Include="iPhoneMapViewController.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -416,6 +435,10 @@
     <Content Include="images\LoadingGif\Loading7.png" />
     <Content Include="images\LoadingGif\Loading8.png" />
     <Content Include="images\LoadingGif\Loading9.png" />
+    <Content Include="Default.png" />
+    <Content Include="Default%402x.png" />
+    <Content Include="images\AppStore\AppStoreImage.png" />
+    <Content Include="images\iPhoneSpeakerTitleBackground.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Catnap\Catnap.csproj">
