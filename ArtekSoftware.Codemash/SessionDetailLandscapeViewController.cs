@@ -74,10 +74,10 @@ namespace ArtekSoftware.Codemash
 			this.sessionDifficultyLabel.Text = session.Difficulty;
 			this.sessionRoomLabel.Text = session.Room;
 			this.sessionSpeakerNameLabel.SetTitle (session.SpeakerName, UIControlState.Normal);
-			if (session.Start == DateTime.MinValue) {
+			if (session.StartDate == DateTime.MinValue) {
 				this.sessionStartLabel.Text = "No Date/Time - Please Refresh";
 			} else {
-				this.sessionStartLabel.Text = session.Start.ToString ();
+				this.sessionStartLabel.Text = session.StartDate.ToString ("h:mm tt");
 			}
 			this.sessionTechnologyLabel.Text = session.Technology;
 			
@@ -101,7 +101,6 @@ namespace ArtekSoftware.Codemash
 			titleLabel.Frame = this.sessionTitleLabel.Frame;
 			titleLabel.BackgroundColor = UIColor.Clear;
 			
-			var countBeforeTitle = this.View.Subviews.Count ();
 			if (this.View.Subviews.Count () <= 18) {
 				this.View.AddSubview (titleLabel);
 			} else {
@@ -128,7 +127,6 @@ namespace ArtekSoftware.Codemash
 			abstractLabel.Frame = this.sessionAbstractLabel.Frame;
 			abstractLabel.BackgroundColor = UIColor.Clear;
 			
-			var countBeforeAbstract = this.View.Subviews.Count ();
 			if (this.View.Subviews.Count () <= 19) {
 				this.View.AddSubview (abstractLabel);
 			} else {
@@ -258,12 +256,12 @@ namespace ArtekSoftware.Codemash
 
 		protected void AddNotification (SessionEntity session)
 		{	
-			if (session != null && session.Start != null && session.Start != DateTime.MinValue)
+			if (session != null && session.StartDate != DateTime.MinValue)
 			{
 				UILocalNotification notification = new UILocalNotification{
-					  FireDate = session.Start.AddMinutes (-10),
+					  FireDate = session.StartDate.AddMinutes (-10),
 					  TimeZone = NSTimeZone.LocalTimeZone,
-					  AlertBody = session.Title + " will start in 10 minutes in " + session.Room + "(WHEN CODEMASH PUBLISHES REAL DATES, THIS WON'T SHOW IMMEDIATELY",
+					  AlertBody = session.Title + " will start in 10 minutes in " + session.Room,
 					  RepeatInterval = 0
 					};
 				UIApplication.SharedApplication.ScheduleLocalNotification (notification);

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
-//using MonoTouch.TestFlight;
+
 
 namespace ArtekSoftware.Codemash
 {
@@ -43,7 +43,7 @@ namespace ArtekSoftware.Codemash
 			//queueSync.Sync();
 			//var sessions = _sessionsDialogMapper.GetScheduledSessions(isRefresh:true);
 			LoadData ();
-			//TestFlight.PassCheckpoint ("Refreshed Scheduled Sessions");
+			TestFlightProxy.PassCheckpoint ("Refreshed Scheduled Sessions");
 			
 		}
 		
@@ -52,6 +52,7 @@ namespace ArtekSoftware.Codemash
 			base.LoadView ();
 			TableView.BackgroundColor = UIColor.FromPatternImage(SessionInfoCell.CellBackground);
 		}
+		
 		private int CalculateSelectedRow (NSIndexPath indexPath, UITableView tableView)
 		{
 			int totalCountOfRows = 0;

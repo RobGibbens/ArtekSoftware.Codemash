@@ -12,7 +12,7 @@ namespace ArtekSoftware.Codemash
 		public SessionEventCell (SessionEntity session)
 		{
 			this.Title = session.Title;
-			this.DateRoom = session.Start.ToShortTimeString () + " | " + session.Room;
+			this.DateRoom = session.StartDate.ToString ("h:mm tt") + " | " + session.Room;
 			this.Speaker = session.SpeakerName;
 			this.Session = session;
 			
