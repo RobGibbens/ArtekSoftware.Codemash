@@ -241,6 +241,7 @@
     <Compile Include="iPhoneMapViewController.designer.cs">
       <DependentUpon>iPhoneMapViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoveToLibrary\TestFlightProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="RootViewController.xib" />
@@ -261,6 +262,7 @@
     <Folder Include="lib\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="ViewControllers\DialogViewControllers\" />
+    <Folder Include="DefaultDatabase\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\Profiles\abarylko.png" />
@@ -409,7 +411,6 @@
     <Content Include="images\whiteArrow.png" />
     <Content Include="Default-Portrait.png" />
     <Content Include="Default-Landscape.png" />
-    <Content Include="DefaultDatabase\codemash.db3" />
     <Content Include="images\SessionsHeader3.png" />
     <Content Include="images\LoadingGif\Loading0.png" />
     <Content Include="images\LoadingGif\Loading1.png" />

@@ -5,7 +5,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.IO;
 
-using MonoTouch.TestFlight;
+
 
 namespace ArtekSoftware.Codemash
 {
@@ -28,9 +28,9 @@ namespace ArtekSoftware.Codemash
 			//StartGoogleAnalytics ();
 			
 			//Console.WriteLine("AppDelegate.FinishedLaunching");
-			CopyDb ();
+			//CopyDb ();
 			
-			TestFlight.TakeOff("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
+			TestFlightProxy.TakeOff("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
 			
 			var bootstrapper = new Bootstrapper ();
 			bootstrapper.Initialize ();				
@@ -82,7 +82,7 @@ namespace ArtekSoftware.Codemash
 			if (!runtimeDbExists && defaultDatabaseExists) {
 				File.Copy (rootDbPath, db);
 			
-				TestFlight.PassCheckpoint ("Copied default database");
+				TestFlightProxy.PassCheckpoint ("Copied default database");
 			}
  
 		}

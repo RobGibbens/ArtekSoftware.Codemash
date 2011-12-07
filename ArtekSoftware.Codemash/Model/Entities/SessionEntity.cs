@@ -23,7 +23,18 @@ namespace ArtekSoftware.Codemash
 		
 		public string Abstract { get; set; }
 		
-		public DateTime Start  { get; set; }
+		public DateTime StartDate { 
+			get
+			{
+				DateTime startDate = DateTime.MinValue;
+				
+				DateTime.TryParse(this.Start, out startDate);
+				
+				return startDate;
+			}
+		}
+		
+		public string Start  { get; set; }
 		
 		public string Room  { get; set; }
 		

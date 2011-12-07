@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Catnap;
 using System.Linq;
 
-using MonoTouch.TestFlight;
+
 using System.Threading;
 
 namespace ArtekSoftware.Codemash
@@ -63,7 +63,7 @@ namespace ArtekSoftware.Codemash
 				}
 			}
 			
-			return sessions.OrderBy (x => x.Start).ToList ();
+			return sessions.OrderBy (x => x.StartDate).ToList ();
 		}
 		
 		public RootElement GetSessionDialog (IEnumerable<SessionEntity> sessions)
@@ -72,7 +72,7 @@ namespace ArtekSoftware.Codemash
 			
 			var query = (
 		        from session in sessions
-		        group session by session.Start.DayOfWeek into sessionGroup
+		        group session by session.StartDate.DayOfWeek into sessionGroup
 		        select new { 
 							DayOfWeek = sessionGroup.Key, 
 							Sessions = sessionGroup 

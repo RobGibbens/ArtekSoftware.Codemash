@@ -10,7 +10,7 @@ using Catnap.Migration;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
-using MonoTouch.TestFlight;
+
 
 namespace ArtekSoftware.Codemash
 {
@@ -28,7 +28,7 @@ namespace ArtekSoftware.Codemash
 			var documents = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
 
         	string db = Path.Combine (documents, "codemash.db3");
-			TestFlight.PassCheckpoint ("Initialized CatNap");
+			TestFlightProxy.PassCheckpoint ("Initialized CatNap");
 			
 			Catnap.SessionFactory.Initialize ("Data Source=" + db, new SqliteAdapter (typeof(Mono.Data.Sqlite.SqliteConnection)));
 		}
@@ -43,7 +43,7 @@ namespace ArtekSoftware.Codemash
                     .Map (new ValuePropertyMap<SessionEntity, string> (x => x.URI))
                     .Map (new ValuePropertyMap<SessionEntity, string> (x => x.Title))
                     .Map (new ValuePropertyMap<SessionEntity, string> (x => x.Abstract))
-                    .Map (new ValuePropertyMap<SessionEntity, DateTime> (x => x.Start))
+                    .Map (new ValuePropertyMap<SessionEntity, string> (x => x.Start))
                     .Map (new ValuePropertyMap<SessionEntity, string> (x => x.Room))
                     .Map (new ValuePropertyMap<SessionEntity, string> (x => x.Difficulty))
                     .Map (new ValuePropertyMap<SessionEntity, string> (x => x.SpeakerName))
@@ -68,7 +68,7 @@ namespace ArtekSoftware.Codemash
                     .Map (new ValuePropertyMap<ScheduledSessionEntity, string> (x => x.URI))
                     .Map (new ValuePropertyMap<ScheduledSessionEntity, string> (x => x.Title))
                     .Map (new ValuePropertyMap<ScheduledSessionEntity, string> (x => x.Abstract))
-                    .Map (new ValuePropertyMap<ScheduledSessionEntity, DateTime> (x => x.Start))
+                    .Map (new ValuePropertyMap<ScheduledSessionEntity, string> (x => x.Start))
                     .Map (new ValuePropertyMap<ScheduledSessionEntity, string> (x => x.Room))
                     .Map (new ValuePropertyMap<ScheduledSessionEntity, string> (x => x.Difficulty))
                     .Map (new ValuePropertyMap<ScheduledSessionEntity, string> (x => x.SpeakerName))

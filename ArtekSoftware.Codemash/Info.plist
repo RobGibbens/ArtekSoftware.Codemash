@@ -10,20 +10,18 @@
 		<string>images/AppStore/AppStoreImage.png</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.1.0</string>
+	<string>1.2.1</string>
 	<key>MinimumOSVersion</key>
 	<string>4.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
-		<string>1</string>
-		<string>2</string>
+		<integer>1</integer>
+		<integer>2</integer>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

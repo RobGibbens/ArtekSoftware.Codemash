@@ -74,7 +74,7 @@ namespace ArtekSoftware.Codemash
 			this.sessionDifficultyLabel.Text = session.Difficulty;
 			this.sessionRoomLabel.Text = session.Room;
 			this.sessionSpeakerNameLabel.SetTitle (session.SpeakerName, UIControlState.Normal);
-			if (session.Start == DateTime.MinValue) {
+			if (session.StartDate == DateTime.MinValue) {
 				this.sessionStartLabel.Text = "No Date/Time - Please Refresh";
 			} else {
 				this.sessionStartLabel.Text = session.Start.ToString ();
@@ -258,10 +258,10 @@ namespace ArtekSoftware.Codemash
 
 		protected void AddNotification (SessionEntity session)
 		{	
-			if (session != null && session.Start != null && session.Start != DateTime.MinValue)
+			if (session != null && session.StartDate != DateTime.MinValue)
 			{
 				UILocalNotification notification = new UILocalNotification{
-					  FireDate = session.Start.AddMinutes (-10),
+					  FireDate = session.StartDate.AddMinutes (-10),
 					  TimeZone = NSTimeZone.LocalTimeZone,
 					  AlertBody = session.Title + " will start in 10 minutes in " + session.Room + "(WHEN CODEMASH PUBLISHES REAL DATES, THIS WON'T SHOW IMMEDIATELY",
 					  RepeatInterval = 0
