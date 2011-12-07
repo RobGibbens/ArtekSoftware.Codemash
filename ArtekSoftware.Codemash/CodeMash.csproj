@@ -440,6 +440,7 @@
     <Content Include="Default%402x.png" />
     <Content Include="images\AppStore\AppStoreImage.png" />
     <Content Include="images\iPhoneSpeakerTitleBackground.png" />
+    <Content Include="images\iPhoneDetailBackground.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Catnap\Catnap.csproj">
