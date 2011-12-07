@@ -46,13 +46,17 @@
 							<object class="IBUIImageView" id="140569119">
 								<reference key="NSNextResponder" ref="120428730"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 80}, {320, 770}}</string>
+								<string key="NSFrame">{{0, 67}, {320, 783}}</string>
 								<reference key="NSSuperview" ref="120428730"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="1037258068"/>
 								<string key="NSReuseIdentifierKey">_NS:567</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">iPhoneDetailBackground.png</string>
+								</object>
 							</object>
 							<object class="IBUIImageView" id="545930926">
 								<reference key="NSNextResponder" ref="120428730"/>
@@ -111,7 +115,7 @@
 								<string key="NSFrame">{{68, 22}, {184, 37}}</string>
 								<reference key="NSSuperview" ref="120428730"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="1037258068"/>
+								<reference key="NSNextKeyView" ref="140569119"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -195,7 +199,7 @@
 								<string key="NSFrame">{{20, 294}, {280, 465}}</string>
 								<reference key="NSSuperview" ref="120428730"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="140569119"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:418</string>
 								<reference key="IBUIBackgroundColor" ref="708415779"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -549,6 +553,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="iPhoneDetailBackground.png">{320, 650}</string>
 			<string key="images/TwitterIOS.png">{16, 16}</string>
 			<string key="images/glyphicons_307_rss.png">{16, 16}</string>
 			<string key="images/iPhoneSpeakerTitleBackground.png">{16, 16}</string>

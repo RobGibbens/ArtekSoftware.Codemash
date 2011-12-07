@@ -8,7 +8,6 @@
             <Node name="images" expanded="True">
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
-              <Node name="iPhoneVertical.png" selected="True" />
             </Node>
             <Node name="Model" expanded="True">
               <Node name="Entities" expanded="True" />
@@ -25,6 +24,7 @@
             <Node name="ViewControllers" expanded="True">
               <Node name="DialogViewControllers" expanded="True" />
             </Node>
+            <Node name="iPhoneSpeakerBioViewController.xib" selected="True" />
           </Node>
         </State>
       </Pad>

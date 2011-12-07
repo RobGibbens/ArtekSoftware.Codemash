@@ -42,6 +42,21 @@
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">268</int>
 						<array class="NSMutableArray" key="NSSubviews">
+							<object class="IBUIImageView" id="484768406">
+								<reference key="NSNextResponder" ref="621626465"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{-9, 65}, {329, 777}}</string>
+								<reference key="NSSuperview" ref="621626465"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<string key="NSReuseIdentifierKey">_NS:567</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">iPhoneDetailBackground.png</string>
+								</object>
+							</object>
 							<object class="IBUIImageView" id="904216766">
 								<reference key="NSNextResponder" ref="621626465"/>
 								<int key="NSvFlags">292</int>
@@ -206,7 +221,7 @@
 								<string key="NSFrame">{{8, 267}, {304, 129}}</string>
 								<reference key="NSSuperview" ref="621626465"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="484768406"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -307,7 +322,7 @@
 								<reference key="IBUIFont" ref="108827532"/>
 							</object>
 						</array>
-						<string key="NSFrameSize">{320, 650}</string>
+						<string key="NSFrameSize">{320, 850}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="904216766"/>
@@ -477,6 +492,7 @@
 							<reference ref="6191835"/>
 							<reference ref="904216766"/>
 							<reference ref="102281114"/>
+							<reference ref="484768406"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -484,11 +500,13 @@
 						<int key="objectID">4</int>
 						<reference key="object" ref="909304645"/>
 						<reference key="parent" ref="621626465"/>
+						<string key="objectName">title</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5</int>
 						<reference key="object" ref="899890801"/>
 						<reference key="parent" ref="621626465"/>
+						<string key="objectName">start</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
@@ -500,41 +518,55 @@
 						<int key="objectID">12</int>
 						<reference key="object" ref="377510423"/>
 						<reference key="parent" ref="621626465"/>
+						<string key="objectName">room</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">13</int>
 						<reference key="object" ref="13789687"/>
 						<reference key="parent" ref="621626465"/>
+						<string key="objectName">technology</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">14</int>
 						<reference key="object" ref="194371085"/>
 						<reference key="parent" ref="621626465"/>
+						<string key="objectName">difficulty</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
 						<reference key="object" ref="1041430901"/>
 						<reference key="parent" ref="621626465"/>
+						<string key="objectName">abstract</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">21</int>
 						<reference key="object" ref="365420851"/>
 						<reference key="parent" ref="621626465"/>
+						<string key="objectName">speakerName</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">28</int>
 						<reference key="object" ref="401586342"/>
 						<reference key="parent" ref="621626465"/>
+						<string key="objectName">addToScheduleButton</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">29</int>
 						<reference key="object" ref="6191835"/>
 						<reference key="parent" ref="621626465"/>
+						<string key="objectName">tweetThisButton</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">34</int>
 						<reference key="object" ref="904216766"/>
 						<reference key="parent" ref="621626465"/>
+						<string key="objectName">titleBackground</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">35</int>
+						<reference key="object" ref="484768406"/>
+						<reference key="parent" ref="621626465"/>
+						<string key="objectName">background</string>
 					</object>
 				</array>
 			</object>
@@ -553,6 +585,7 @@
 				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -561,7 +594,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">34</int>
+			<int key="maxID">35</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -639,6 +672,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="iPhoneDetailBackground.png">{320, 650}</string>
 			<string key="images/FavoriteSession.png">{16, 16}</string>
 			<string key="images/Technologies/RubySmall.png">{16, 16}</string>
 			<string key="images/TwitterIOS.png">{16, 16}</string>
