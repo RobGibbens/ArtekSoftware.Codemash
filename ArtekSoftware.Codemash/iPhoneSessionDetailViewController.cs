@@ -76,7 +76,7 @@ namespace ArtekSoftware.Codemash
 			if (session.StartDate == DateTime.MinValue) {
 				this.sessionStartLabel.Text = "No date/time - Please Refresh";
 			} else {
-				this.sessionStartLabel.Text = session.Start.ToString ();
+				this.sessionStartLabel.Text = session.StartDate.ToString ("h:mm tt");
 			}
 			this.sessionTechnologyLabel.Text = session.Technology;
 			
@@ -86,10 +86,10 @@ namespace ArtekSoftware.Codemash
 			this.sessionTitleLabel.Text = session.Title;
 			
 			HLabel titleLabel;
-			if (this.scrollView.Subviews.Count () <= 20) {
+			if (this.scrollView.Subviews.Count () <= 22) {
 				titleLabel = new HLabel ();
 			} else {
-				titleLabel = (HLabel)this.scrollView.Subviews [20];
+				titleLabel = (HLabel)this.scrollView.Subviews [22];
 			}
 			titleLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
 			titleLabel.Lines = 0;
@@ -99,21 +99,21 @@ namespace ArtekSoftware.Codemash
 			titleLabel.Frame = this.sessionTitleLabel.Frame;
 			titleLabel.BackgroundColor = UIColor.Clear;
 			
-			if (this.scrollView.Subviews.Count () <= 20) {
+			if (this.scrollView.Subviews.Count () <= 22) {
 				this.scrollView.AddSubview (titleLabel);
 			} else {
-				this.scrollView.Subviews [20] = titleLabel;
+				this.scrollView.Subviews [22] = titleLabel;
 			}
 			
 			this.sessionTitleLabel.Text = string.Empty;	
 			
 			
 			HLabel abstractLabel;
-			if (this.scrollView.Subviews.Count () <= 21) {
+			if (this.scrollView.Subviews.Count () <= 23) {
 				abstractLabel = new HLabel ();
 				//this.View.AddSubview (abstractLabel);
 			} else {
-				abstractLabel = (HLabel)this.scrollView.Subviews [21];
+				abstractLabel = (HLabel)this.scrollView.Subviews [23];
 				//abstractLabel = (HLabel)this.View.Subviews[20]; 
 			}
 			abstractLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
@@ -124,12 +124,14 @@ namespace ArtekSoftware.Codemash
 			abstractLabel.Frame = this.sessionAbstractLabel.Frame;
 			abstractLabel.BackgroundColor = UIColor.Clear;
 			
-			if (this.scrollView.Subviews.Count () <= 21) {
+			if (this.scrollView.Subviews.Count () <= 23) {
 				this.scrollView.AddSubview (abstractLabel);
 			} else {
-				this.scrollView.Subviews [21] = abstractLabel;
+				this.scrollView.Subviews [23] = abstractLabel;
 			}			
 			this.sessionAbstractLabel.Text = string.Empty;			
+			
+			SetAddToScheduleLabel ();
 			
 			SetImageUrl();
 			SetLocalImage (ImageUrl);
@@ -138,6 +140,41 @@ namespace ArtekSoftware.Codemash
 			this.View.LayoutIfNeeded ();
 				
 		}
+		
+		protected void SetAddToScheduleLabel ()
+		{
+			if (IsOnSchedule ()) {
+				this.addToScheduleLabel.Text = "Remove from schedule";
+			} else {
+				this.addToScheduleLabel.Text = "Add to schedule";
+			}
+		}
+		
+		protected bool IsOnSchedule ()
+		{
+			IEnumerable<ScheduledSessionEntity> sessions = null;
+			
+			if (UnitOfWork.IsUnitOfWorkStarted ()) {
+				var repo = new LocalScheduledSessionsRepository ();
+				var criteria = new Criteria ();
+				criteria.Add (Condition.Equal<ScheduledSessionEntity> (x => x.Title, _session.Title));
+				sessions = repo.Find (criteria);			
+			} else {
+				using (UnitOfWork.Start()) {
+					var repo = new LocalScheduledSessionsRepository ();
+					var criteria = new Criteria ();
+					criteria.Add (Condition.Equal<ScheduledSessionEntity> (x => x.Title, _session.Title));
+					sessions = repo.Find (criteria);
+				}
+			}
+			
+			if (sessions != null && sessions.Count () > 0) {
+				return true;
+			} else {
+				return false;
+			}
+				
+		}		
 		
 		protected SessionEntity Session {
 			get {
@@ -150,7 +187,8 @@ namespace ArtekSoftware.Codemash
 		
 		protected void HandleSessionAddToScheduleButtonhandleTouchUpInside (object sender, EventArgs e)
 		{
-			AppDelegate.CurrentAppDelegate.TabBar.SelectedIndex = 0;
+			AppDelegate.CurrentAppDelegate.TabBar.SelectedIndex = 1;
+			
 			if (!IsOnSchedule ()) {
 				using (UnitOfWork.Start()) {
 					var repository = new LocalScheduledSessionsRepository ();
@@ -193,6 +231,7 @@ namespace ArtekSoftware.Codemash
 				RemoveNotification (_session);
 			}
 			
+			SetAddToScheduleLabel();
 		}
 		
 		protected void HandleSessionSpeakerNameLabelTouchUpInside (object sender, EventArgs e)
@@ -256,31 +295,7 @@ namespace ArtekSoftware.Codemash
 			}
 		}
 		
-		protected bool IsOnSchedule ()
-		{
-			IEnumerable<ScheduledSessionEntity> sessions = null;
-			
-			if (UnitOfWork.IsUnitOfWorkStarted ()) {
-				var repo = new LocalScheduledSessionsRepository ();
-				var criteria = new Criteria ();
-				criteria.Add (Condition.Equal<ScheduledSessionEntity> (x => x.Title, _session.Title));
-				sessions = repo.Find (criteria);			
-			} else {
-				using (UnitOfWork.Start()) {
-					var repo = new LocalScheduledSessionsRepository ();
-					var criteria = new Criteria ();
-					criteria.Add (Condition.Equal<ScheduledSessionEntity> (x => x.Title, _session.Title));
-					sessions = repo.Find (criteria);
-				}
-			}
-			
-			if (sessions != null && sessions.Count () > 0) {
-				return true;
-			} else {
-				return false;
-			}
-				
-		}
+
 		string ImageUrl;
 		void SetImageUrl ()
 		{

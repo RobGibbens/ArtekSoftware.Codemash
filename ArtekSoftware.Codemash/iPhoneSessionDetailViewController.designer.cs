@@ -42,6 +42,12 @@ namespace ArtekSoftware.Codemash
 		MonoTouch.UIKit.UILabel sessionDifficultyLabel { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UILabel tweetThisLabel { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UILabel sessionAbstractLabel { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel addToScheduleLabel { get; set; }
 	}
 }

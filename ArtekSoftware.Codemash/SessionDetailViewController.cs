@@ -69,7 +69,7 @@ namespace ArtekSoftware.Codemash
 			if (session.StartDate == DateTime.MinValue) {
 				this.sessionStartLabel.Text = "No date/time - Please Refresh";
 			} else {
-				this.sessionStartLabel.Text = session.Start.ToString ();
+				this.sessionStartLabel.Text = session.StartDate.ToString ("h:mm tt");
 			}
 			this.sessionTechnologyLabel.Text = session.Technology;
 			

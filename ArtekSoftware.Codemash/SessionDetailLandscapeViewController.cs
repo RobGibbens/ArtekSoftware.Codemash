@@ -77,7 +77,7 @@ namespace ArtekSoftware.Codemash
 			if (session.StartDate == DateTime.MinValue) {
 				this.sessionStartLabel.Text = "No Date/Time - Please Refresh";
 			} else {
-				this.sessionStartLabel.Text = session.Start.ToString ();
+				this.sessionStartLabel.Text = session.StartDate.ToString ("h:mm tt");
 			}
 			this.sessionTechnologyLabel.Text = session.Technology;
 			
@@ -101,7 +101,6 @@ namespace ArtekSoftware.Codemash
 			titleLabel.Frame = this.sessionTitleLabel.Frame;
 			titleLabel.BackgroundColor = UIColor.Clear;
 			
-			var countBeforeTitle = this.View.Subviews.Count ();
 			if (this.View.Subviews.Count () <= 18) {
 				this.View.AddSubview (titleLabel);
 			} else {
@@ -128,7 +127,6 @@ namespace ArtekSoftware.Codemash
 			abstractLabel.Frame = this.sessionAbstractLabel.Frame;
 			abstractLabel.BackgroundColor = UIColor.Clear;
 			
-			var countBeforeAbstract = this.View.Subviews.Count ();
 			if (this.View.Subviews.Count () <= 19) {
 				this.View.AddSubview (abstractLabel);
 			} else {
