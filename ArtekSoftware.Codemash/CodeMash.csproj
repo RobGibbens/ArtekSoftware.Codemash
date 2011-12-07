@@ -92,7 +92,7 @@
     <CodesignKey>iPhone Distribution: Artek Software</CodesignKey>
     <IpaPackageName />
     <MtouchI18n />
-    <CodesignProvision>A5BC0263-CE39-4A91-88D2-7C13A47C2BAF</CodesignProvision>
+    <CodesignProvision>EE1811F6-C238-4F77-8F39-74EFA876A79F</CodesignProvision>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <BuildIpa>true</BuildIpa>
@@ -142,6 +142,7 @@
     <None Include="images\Technologies\SoftwareProcess4.jpg" />
     <None Include="images\.DS_Store" />
     <None Include="images\Profile.PNG" />
+    <None Include="DefaultDatabase\codemash.db3" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
