@@ -22,6 +22,13 @@ namespace ArtekSoftware.Codemash
 			
 			this.scrollView.Frame = new RectangleF (0, 0, 320, 460);
 			this.scrollView.ContentSize = new SizeF (1000, 1000);
+			
+			this.scrollView.MinimumZoomScale = 1.0f;
+			this.scrollView.MaximumZoomScale = 5.0f;
+			
+			this.scrollView.ViewForZoomingInScrollView = delegate(UIScrollView scrollView) {
+				return this.mapImage;
+			};
 		}
 		
 		public override void ViewDidUnload ()
