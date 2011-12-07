@@ -42,21 +42,6 @@
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">268</int>
 						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIImageView" id="484768406">
-								<reference key="NSNextResponder" ref="621626465"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{-9, 65}, {329, 777}}</string>
-								<reference key="NSSuperview" ref="621626465"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
-								<string key="NSReuseIdentifierKey">_NS:567</string>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">iPhoneDetailBackground.png</string>
-								</object>
-							</object>
 							<object class="IBUIImageView" id="904216766">
 								<reference key="NSNextResponder" ref="621626465"/>
 								<int key="NSvFlags">292</int>
@@ -70,6 +55,21 @@
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">images/iPhoneSpeakerTitleBackground.png</string>
+								</object>
+							</object>
+							<object class="IBUIImageView" id="484768406">
+								<reference key="NSNextResponder" ref="621626465"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{-9, 65}, {329, 777}}</string>
+								<reference key="NSSuperview" ref="621626465"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="904216766"/>
+								<string key="NSReuseIdentifierKey">_NS:567</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">images/iPhoneDetailBackground.png</string>
 								</object>
 							</object>
 							<object class="IBUILabel" id="909304645">
@@ -221,7 +221,7 @@
 								<string key="NSFrame">{{8, 267}, {304, 129}}</string>
 								<reference key="NSSuperview" ref="621626465"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="484768406"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -325,7 +325,7 @@
 						<string key="NSFrameSize">{320, 850}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="904216766"/>
+						<reference key="NSNextKeyView" ref="484768406"/>
 						<string key="NSReuseIdentifierKey">_NS:190</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -490,8 +490,8 @@
 							<reference ref="365420851"/>
 							<reference ref="401586342"/>
 							<reference ref="6191835"/>
-							<reference ref="904216766"/>
 							<reference ref="102281114"/>
+							<reference ref="904216766"/>
 							<reference ref="484768406"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
@@ -672,10 +672,10 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="iPhoneDetailBackground.png">{320, 650}</string>
 			<string key="images/FavoriteSession.png">{16, 16}</string>
 			<string key="images/Technologies/RubySmall.png">{16, 16}</string>
 			<string key="images/TwitterIOS.png">{16, 16}</string>
+			<string key="images/iPhoneDetailBackground.png">{16, 16}</string>
 			<string key="images/iPhoneSpeakerTitleBackground.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>

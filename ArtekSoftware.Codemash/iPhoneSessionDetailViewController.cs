@@ -86,10 +86,10 @@ namespace ArtekSoftware.Codemash
 			this.sessionTitleLabel.Text = session.Title;
 			
 			HLabel titleLabel;
-			if (this.scrollView.Subviews.Count () <= 19) {
+			if (this.scrollView.Subviews.Count () <= 20) {
 				titleLabel = new HLabel ();
 			} else {
-				titleLabel = (HLabel)this.scrollView.Subviews [19];
+				titleLabel = (HLabel)this.scrollView.Subviews [20];
 			}
 			titleLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
 			titleLabel.Lines = 0;
@@ -99,21 +99,21 @@ namespace ArtekSoftware.Codemash
 			titleLabel.Frame = this.sessionTitleLabel.Frame;
 			titleLabel.BackgroundColor = UIColor.Clear;
 			
-			if (this.scrollView.Subviews.Count () <= 19) {
+			if (this.scrollView.Subviews.Count () <= 20) {
 				this.scrollView.AddSubview (titleLabel);
 			} else {
-				this.scrollView.Subviews [19] = titleLabel;
+				this.scrollView.Subviews [20] = titleLabel;
 			}
 			
 			this.sessionTitleLabel.Text = string.Empty;	
 			
 			
 			HLabel abstractLabel;
-			if (this.scrollView.Subviews.Count () <= 20) {
+			if (this.scrollView.Subviews.Count () <= 21) {
 				abstractLabel = new HLabel ();
 				//this.View.AddSubview (abstractLabel);
 			} else {
-				abstractLabel = (HLabel)this.scrollView.Subviews [20];
+				abstractLabel = (HLabel)this.scrollView.Subviews [21];
 				//abstractLabel = (HLabel)this.View.Subviews[20]; 
 			}
 			abstractLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
@@ -124,10 +124,10 @@ namespace ArtekSoftware.Codemash
 			abstractLabel.Frame = this.sessionAbstractLabel.Frame;
 			abstractLabel.BackgroundColor = UIColor.Clear;
 			
-			if (this.scrollView.Subviews.Count () <= 20) {
+			if (this.scrollView.Subviews.Count () <= 21) {
 				this.scrollView.AddSubview (abstractLabel);
 			} else {
-				this.scrollView.Subviews [20] = abstractLabel;
+				this.scrollView.Subviews [21] = abstractLabel;
 			}			
 			this.sessionAbstractLabel.Text = string.Empty;			
 			
@@ -217,7 +217,7 @@ namespace ArtekSoftware.Codemash
 				UILocalNotification notification = new UILocalNotification{
 				  FireDate = session.StartDate.AddMinutes (-10),
 				  TimeZone = NSTimeZone.LocalTimeZone,
-				  AlertBody = session.Title + " will start in 10 minutes in " + session.Room + "(WHEN CODEMASH PUBLISHES REAL DATES, THIS WON'T SHOW IMMEDIATELY",
+				  AlertBody = session.Title + " will start in 10 minutes in " + session.Room,
 				  RepeatInterval = 0
 				};
 				UIApplication.SharedApplication.ScheduleLocalNotification (notification);

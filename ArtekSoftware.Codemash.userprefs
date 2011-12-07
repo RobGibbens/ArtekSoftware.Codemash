@@ -1,6 +1,12 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs">
+    <Files>
+      <File FileName="ArtekSoftware.Codemash/iPhoneSpeakerBioViewController.cs" Line="106" Column="33" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" Line="223" Column="35" />
+      <File FileName="ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" Line="266" Column="82" />
+      <File FileName="ArtekSoftware.Codemash/SessionDetailViewController.cs" Line="240" Column="81" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">

@@ -263,7 +263,7 @@ namespace ArtekSoftware.Codemash
 				UILocalNotification notification = new UILocalNotification{
 					  FireDate = session.StartDate.AddMinutes (-10),
 					  TimeZone = NSTimeZone.LocalTimeZone,
-					  AlertBody = session.Title + " will start in 10 minutes in " + session.Room + "(WHEN CODEMASH PUBLISHES REAL DATES, THIS WON'T SHOW IMMEDIATELY",
+					  AlertBody = session.Title + " will start in 10 minutes in " + session.Room,
 					  RepeatInterval = 0
 					};
 				UIApplication.SharedApplication.ScheduleLocalNotification (notification);

@@ -43,21 +43,6 @@
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">274</int>
 						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIImageView" id="140569119">
-								<reference key="NSNextResponder" ref="120428730"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 67}, {320, 783}}</string>
-								<reference key="NSSuperview" ref="120428730"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="1037258068"/>
-								<string key="NSReuseIdentifierKey">_NS:567</string>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">iPhoneDetailBackground.png</string>
-								</object>
-							</object>
 							<object class="IBUIImageView" id="545930926">
 								<reference key="NSNextResponder" ref="120428730"/>
 								<int key="NSvFlags">292</int>
@@ -71,6 +56,21 @@
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">images/iPhoneSpeakerTitleBackground.png</string>
+								</object>
+							</object>
+							<object class="IBUIImageView" id="140569119">
+								<reference key="NSNextResponder" ref="120428730"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{0, 67}, {320, 783}}</string>
+								<reference key="NSSuperview" ref="120428730"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="1037258068"/>
+								<string key="NSReuseIdentifierKey">_NS:567</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">images/iPhoneDetailBackground.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="595161853">
@@ -398,7 +398,6 @@
 						<reference key="object" ref="120428730"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="595161853"/>
-							<reference ref="545930926"/>
 							<reference ref="256783920"/>
 							<reference ref="102607473"/>
 							<reference ref="265265400"/>
@@ -406,6 +405,7 @@
 							<reference ref="1037258068"/>
 							<reference ref="909321075"/>
 							<reference ref="301355794"/>
+							<reference ref="545930926"/>
 							<reference ref="140569119"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
@@ -553,9 +553,9 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="iPhoneDetailBackground.png">{320, 650}</string>
 			<string key="images/TwitterIOS.png">{16, 16}</string>
 			<string key="images/glyphicons_307_rss.png">{16, 16}</string>
+			<string key="images/iPhoneDetailBackground.png">{16, 16}</string>
 			<string key="images/iPhoneSpeakerTitleBackground.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>

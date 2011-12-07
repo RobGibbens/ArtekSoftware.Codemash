@@ -81,10 +81,10 @@ namespace ArtekSoftware.Codemash
 			this.speakerBioLabel.Text = _speaker.Biography;
 			
 			HLabel bioLabel;
-			if (this.scrollView.Subviews.Count () == 11) {
+			if (this.scrollView.Subviews.Count () == 12) {
 				bioLabel = new HLabel ();
 			} else {
-				bioLabel = (HLabel)this.scrollView.Subviews [11];
+				bioLabel = (HLabel)this.scrollView.Subviews [12];
 			}
 				
 			bioLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
@@ -99,11 +99,11 @@ namespace ArtekSoftware.Codemash
 			bioLabel.Frame = this.speakerBioLabel.Frame;
 			bioLabel.BackgroundColor = UIColor.Clear;
 			
-			if (this.scrollView.Subviews.Count () == 11) {
+			if (this.scrollView.Subviews.Count () == 12) {
 			this.scrollView.AddSubview (bioLabel);
 				
 			} else {
-				this.scrollView.Subviews [11] = bioLabel;
+				this.scrollView.Subviews [12] = bioLabel;
 			}			
 			
 			this.speakerBioLabel.Text = string.Empty;
