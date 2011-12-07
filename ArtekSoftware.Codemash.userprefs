@@ -1,30 +1,21 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/MoveToLibrary/TestFlightProxy.cs">
-    <Files>
-      <File FileName="ArtekSoftware.Codemash/Model/Entities/SessionEntity.cs" Line="33" Column="22" />
-      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" Line="49" Column="25" />
-      <File FileName="ArtekSoftware.Codemash/UI/DialogMappers/ScheduledSessionsDialogMapper.cs" Line="43" Column="47" />
-      <File FileName="ArtekSoftware.Codemash/UI/DialogMappers/SessionsDialogMapper.cs" Line="75" Column="45" />
-      <File FileName="ArtekSoftware.Codemash/UI/SessionEventCell.cs" Line="15" Column="57" />
-      <File FileName="ArtekSoftware.Codemash/MoveToLibrary/Bootstrapper.cs" Line="40" Column="14" />
-      <File FileName="ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" Line="264" Column="36" />
-      <File FileName="ArtekSoftware.Codemash/SessionDetailViewController.cs" Line="238" Column="35" />
-      <File FileName="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" Line="219" Column="43" />
-      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="8" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/MoveToLibrary/TestFlightProxy.cs" Line="24" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="CodeMash" expanded="True">
+            <Node name="images" expanded="True">
+              <Option id="ShowVersionControlOverlays" value="True" />
+              <Option id="ShowAllFiles" value="True" />
+              <Node name="iPhoneVertical.png" selected="True" />
+            </Node>
             <Node name="Model" expanded="True">
               <Node name="Entities" expanded="True" />
             </Node>
             <Node name="MoveToLibrary" expanded="True">
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
-              <Node name="TestFlightProxy.cs" selected="True" />
             </Node>
             <Node name="UI" expanded="True">
               <Option id="ShowVersionControlOverlays" value="True" />
