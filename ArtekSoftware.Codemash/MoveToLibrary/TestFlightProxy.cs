@@ -1,5 +1,5 @@
 using System;
-using MonoTouch.TestFlight;
+//using MonoTouch.TestFlight;
 
 namespace ArtekSoftware.Codemash
 {
@@ -8,14 +8,14 @@ namespace ArtekSoftware.Codemash
 		public static void TakeOff(string teamToken)
 		{
 #if !DEBUG && !SIMULATOR
-			TestFlight.TakeOff(teamToken);
+			//TestFlight.TakeOff(teamToken);
 #endif
 		}
 		
 		public static void PassCheckpoint(string checkpointName)
 		{
 #if !DEBUG && !SIMULATOR
-			TestFlight.PassCheckpoint(checkpointName);
+			//TestFlight.PassCheckpoint(checkpointName);
 #endif
 		}
 	}

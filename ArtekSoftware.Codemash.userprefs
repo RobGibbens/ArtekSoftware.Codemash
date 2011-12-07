@@ -1,19 +1,21 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="AdHoc|iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/AppDelegate.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="AppStore|iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/iPhoneSpeakerBioViewController.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/iPhoneSpeakerBioViewController.cs" Line="106" Column="33" />
-      <File FileName="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" Line="141" Column="5" />
-      <File FileName="ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" Line="304" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/SessionDetailViewController.cs" Line="76" Column="19" />
-      <File FileName="ArtekSoftware.Codemash/MapViewController.cs" Line="44" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/iPhoneMapViewController.cs" Line="17" Column="4" />
-      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="15" Column="48" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneSpeakerBioViewController.cs" Line="51" Column="4" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" Line="59" Column="3" />
+      <File FileName="ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/SessionDetailViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/MapViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneMapViewController.cs" Line="41" Column="45" />
+      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="31" Column="25" />
+      <File FileName="ArtekSoftware.Codemash/MoveToLibrary/TestFlightProxy.cs" Line="2" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="CodeMash" expanded="True">
+          <Node name="CodeMash" expanded="True" selected="True">
+            <Node name="References" expanded="True" />
             <Node name="DefaultDatabase" expanded="True">
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
@@ -21,7 +23,7 @@
             <Node name="images" expanded="True">
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
-              <Node name="codeMashSpeakerBioLandscape.png" />
+              <Node name="AppStore" expanded="True" />
             </Node>
             <Node name="Model" expanded="True">
               <Node name="Entities" expanded="True" />

@@ -8,9 +8,11 @@
 	<array>
 		<string>images/icon2.png</string>
 		<string>images/AppStore/AppStoreImage.png</string>
+		<string>images/AppStore/RetinaDisplay.png</string>
+		<string>images/AppStore/iPhone.png</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.2.2</string>
+	<string>2.0.0</string>
 	<key>MinimumOSVersion</key>
 	<string>4.0</string>
 	<key>UIDeviceFamily</key>
@@ -21,7 +23,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

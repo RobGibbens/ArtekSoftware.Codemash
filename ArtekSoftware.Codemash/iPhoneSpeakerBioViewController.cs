@@ -49,7 +49,7 @@ namespace ArtekSoftware.Codemash
 		
 		public override bool ShouldAutorotateToInterfaceOrientation (UIInterfaceOrientation toInterfaceOrientation)
 		{
-			return (toInterfaceOrientation != UIInterfaceOrientation.PortraitUpsideDown);
+			return false;
 		}
 		
 		void HandlespeakerTwitterButtonhandleTouchUpInside (object sender, EventArgs e)
