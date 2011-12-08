@@ -33,9 +33,6 @@ namespace ArtekSoftware.Codemash
 		MonoTouch.UIKit.UIImageView speakerProfileImage { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView speakerSessionsTable { get; set; }
-
-		[Outlet]
 		MonoTouch.UIKit.UIScrollView scrollView { get; set; }
 	}
 }

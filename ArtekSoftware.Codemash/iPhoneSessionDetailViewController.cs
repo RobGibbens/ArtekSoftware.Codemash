@@ -33,7 +33,7 @@ namespace ArtekSoftware.Codemash
 		{
 			base.ViewDidLoad ();
 			this.scrollView.Frame = new RectangleF(0,0, 320, 460);
-    		this.scrollView.ContentSize = new SizeF(320, 650);
+    		this.scrollView.ContentSize = new SizeF(320, 1050);
 			
 			var version = Convert.ToDecimal (UIDevice.CurrentDevice.SystemVersion.Split ('.').First ());
 			
@@ -76,7 +76,7 @@ namespace ArtekSoftware.Codemash
 			if (session.StartDate == DateTime.MinValue) {
 				this.sessionStartLabel.Text = "No date/time - Please Refresh";
 			} else {
-				this.sessionStartLabel.Text = session.StartDate.ToString ("h:mm tt");
+				this.sessionStartLabel.Text = session.StartDate.DayOfWeek.ToString() + " " + session.StartDate.ToString ("h:mm tt");
 			}
 			this.sessionTechnologyLabel.Text = session.Technology;
 			
@@ -120,7 +120,7 @@ namespace ArtekSoftware.Codemash
 			abstractLabel.Lines = 0;
 			abstractLabel.LineBreakMode = UILineBreakMode.WordWrap;
 			abstractLabel.Text = session.Abstract;
-			abstractLabel.Font = UIFont.FromName ("STHeitiTC-Light", 16);
+			abstractLabel.Font = UIFont.FromName ("STHeitiTC-Light", 14);
 			abstractLabel.Frame = this.sessionAbstractLabel.Frame;
 			abstractLabel.BackgroundColor = UIColor.Clear;
 			
