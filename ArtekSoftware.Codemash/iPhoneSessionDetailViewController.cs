@@ -120,7 +120,7 @@ namespace ArtekSoftware.Codemash
 			abstractLabel.Lines = 0;
 			abstractLabel.LineBreakMode = UILineBreakMode.WordWrap;
 			abstractLabel.Text = session.Abstract;
-			abstractLabel.Font = UIFont.FromName ("STHeitiTC-Light", 16);
+			abstractLabel.Font = UIFont.FromName ("STHeitiTC-Light", 14);
 			abstractLabel.Frame = this.sessionAbstractLabel.Frame;
 			abstractLabel.BackgroundColor = UIColor.Clear;
 			

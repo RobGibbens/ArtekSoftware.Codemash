@@ -1,8 +1,11 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="AdHoc|iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/UI/DialogMappers/ScheduledSessionsDialogMapper.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" Line="36" Column="54" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" Line="123" Column="63" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneSpeakerBioViewController.cs" Line="30" Column="38" />
+      <File FileName="ArtekSoftware.Codemash/UI/DialogMappers/ScheduledSessionsDialogMapper.cs" Line="29" Column="4" />
+      <File FileName="ArtekSoftware.Codemash/UI/DialogMappers/SessionsDialogMapper.cs" Line="73" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,6 +16,9 @@
                 <Option id="ShowVersionControlOverlays" value="True" />
                 <Option id="ShowAllFiles" value="True" />
               </Node>
+            </Node>
+            <Node name="UI" expanded="True">
+              <Node name="DialogMappers" expanded="True" />
             </Node>
           </Node>
         </State>

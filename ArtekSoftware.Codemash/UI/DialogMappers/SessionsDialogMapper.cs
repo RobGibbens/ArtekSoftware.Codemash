@@ -72,16 +72,17 @@ namespace ArtekSoftware.Codemash
 			
 			var query = (
 		        from session in sessions
-		        group session by session.StartDate.DayOfWeek into sessionGroup
+		        group session by (session.StartDate) into sessionGroup
 		        select new { 
-							DayOfWeek = sessionGroup.Key, 
+							StartDate = sessionGroup.Key, 
+				           	SectionName = sessionGroup.Key.DayOfWeek + " " + sessionGroup.Key.ToString("h:mm tt"),
 							Sessions = sessionGroup 
 							}
 					).
-		            OrderBy (letter => letter.DayOfWeek);
+		            OrderBy (letter => letter.StartDate);
 
 			foreach (var sessionGroup in query) {
-				var section = new Section (sessionGroup.DayOfWeek.ToString ());
+				var section = new Section (sessionGroup.SectionName.ToString ());
 				
 				
 				foreach (var session in sessionGroup.Sessions) {

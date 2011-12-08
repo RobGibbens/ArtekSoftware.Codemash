@@ -32,7 +32,7 @@ namespace ArtekSoftware.Codemash
 			base.ViewDidLoad ();
 			
 			this.scrollView.Frame = new RectangleF(0,0, 320, 460);
-    		this.scrollView.ContentSize = new SizeF(320, 1050);
+    		this.scrollView.ContentSize = new SizeF(320, 750);
 			
 			this.speakerBlogButton.TouchUpInside += HandleSpeakerBlogButtonhandleTouchUpInside;
 			this.speakerTwitterButton.TouchUpInside += HandlespeakerTwitterButtonhandleTouchUpInside;
@@ -100,8 +100,7 @@ namespace ArtekSoftware.Codemash
 			bioLabel.BackgroundColor = UIColor.Clear;
 			
 			if (this.scrollView.Subviews.Count () == 12) {
-			this.scrollView.AddSubview (bioLabel);
-				
+				this.scrollView.AddSubview (bioLabel);
 			} else {
 				this.scrollView.Subviews [12] = bioLabel;
 			}			
@@ -125,11 +124,15 @@ namespace ArtekSoftware.Codemash
 			}
 
 			var sessions = GetSessionsForSpeaker (_speaker);
-			this.speakerSessionsTable.BackgroundColor = UIColor.Clear;
-			this.speakerSessionsTable.ScrollEnabled = false;
-			this.speakerSessionsTable.Delegate = new iPhoneSpeakerSessionsDelegate (this, sessions);
-			this.speakerSessionsTable.DataSource = new iPhoneSpeakerSessionsDataSource (sessions);
-			this.speakerSessionsTable.ReloadData ();
+			var frame = new RectangleF(20, 192, 280, 89);
+			var sessionsTable = new UITableView(frame);
+			
+			sessionsTable.BackgroundColor = UIColor.Clear;
+			sessionsTable.ScrollEnabled = false;
+			sessionsTable.Delegate = new iPhoneSpeakerSessionsDelegate (this, sessions);
+			sessionsTable.DataSource = new iPhoneSpeakerSessionsDataSource (sessions);
+			sessionsTable.ReloadData ();
+			this.scrollView.AddSubview(sessionsTable);
 			
 			if (!string.IsNullOrEmpty (_speaker.TwitterHandle)) {
 				var profileImage = "images/Profiles/" + _speaker.TwitterHandle.Replace ("@", "") + ".png";
