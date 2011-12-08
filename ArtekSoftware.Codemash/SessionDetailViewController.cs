@@ -69,7 +69,7 @@ namespace ArtekSoftware.Codemash
 			if (session.StartDate == DateTime.MinValue) {
 				this.sessionStartLabel.Text = "No date/time - Please Refresh";
 			} else {
-				this.sessionStartLabel.Text = session.StartDate.ToString ("h:mm tt");
+				this.sessionStartLabel.Text = session.StartDate.DayOfWeek + " " + session.StartDate.ToString ("h:mm tt");
 			}
 			this.sessionTechnologyLabel.Text = session.Technology;
 			
@@ -150,10 +150,12 @@ namespace ArtekSoftware.Codemash
 				this.addToScheduleLabel.Text = "Remove from schedule";
 				this.addToScheduleLabel.Frame.Width = 142;
 				this.addToScheduleLabel.Frame.X = 19;
+				this.addToScheduleImage.SetImage(UIImage.FromFile("images/FavoritedSession.png"), UIControlState.Normal);
 			} else {
 				this.addToScheduleLabel.Text = "Add to schedule";
 				this.addToScheduleLabel.Frame.Width = 98;
 				this.addToScheduleLabel.Frame.X = 36;
+				this.addToScheduleImage.SetImage(UIImage.FromFile("images/FavoriteSession.png"), UIControlState.Normal);
 			}
 		}
 		

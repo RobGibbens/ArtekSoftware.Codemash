@@ -15,7 +15,13 @@ namespace ArtekSoftware.Codemash
 		
 		public ScheduledSessionDialogViewController () : base(null)
 		{
-			this.Autorotate = true;
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+				this.Autorotate = false;
+			}
+			else
+			{
+				this.Autorotate = true;
+			}
 			
 			LoadData ();
 			
@@ -75,7 +81,6 @@ namespace ArtekSoftware.Codemash
 			
 			base.Selected (indexPath);
 		}
-		
 		
 	}
 }

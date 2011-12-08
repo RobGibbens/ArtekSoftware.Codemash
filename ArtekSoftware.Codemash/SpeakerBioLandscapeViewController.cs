@@ -228,6 +228,7 @@ namespace ArtekSoftware.Codemash
 				cell = new UITableViewCell (UITableViewCellStyle.Default, _section1CellId);
 				cell.Accessory = UITableViewCellAccessory.None;
 				cell.TextLabel.Font = UIFont.FromName ("STHeitiTC-Light", 14);
+				cell.TextLabel.TextColor = UIColor.Orange;
 				cell.BackgroundColor = UIColor.Clear;
 			}
 

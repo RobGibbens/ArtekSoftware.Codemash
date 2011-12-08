@@ -267,6 +267,7 @@
 						<string key="NSFrame">{{215, 549}, {584, 24}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="264114994"/>
 						<string key="NSReuseIdentifierKey">_NS:174</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -394,6 +395,7 @@
 						<string key="NSFrame">{{84, 673}, {651, 286}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:345</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -428,7 +430,10 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUINormalTitle">SpeakerLabel</string>
 						<reference key="IBUIHighlightedTitleColor" ref="688929467"/>
-						<reference key="IBUINormalTitleColor" ref="733382142"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC45MzM0NjUxMDEgMC40NjU2MDU1MDgyIDAuMDAxNzg5NDEyMDMzAA</bytes>
+						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="604712053"/>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<string key="name">STHeitiTC-Light</string>

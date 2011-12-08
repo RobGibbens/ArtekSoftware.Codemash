@@ -145,8 +145,10 @@ namespace ArtekSoftware.Codemash
 		{
 			if (IsOnSchedule ()) {
 				this.addToScheduleLabel.Text = "Remove from schedule";
+				this.btnAddToSchedule.SetImage(UIImage.FromFile("images/FavoritedSession.png"), UIControlState.Normal);
 			} else {
 				this.addToScheduleLabel.Text = "Add to schedule";
+				this.btnAddToSchedule.SetImage(UIImage.FromFile("images/FavoriteSession.png"), UIControlState.Normal);
 			}
 		}
 		

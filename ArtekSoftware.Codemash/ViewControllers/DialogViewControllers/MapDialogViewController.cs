@@ -10,7 +10,13 @@ namespace ArtekSoftware.Codemash
 	{
 		public MapDialogViewController () : base(null)
 		{
-			this.Autorotate = true;
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+				this.Autorotate = false;
+			}
+			else
+			{
+				this.Autorotate = true;
+			}
 			
 			var root = new RootElement ("Map");
 			var conferenceCenter = new StyledStringElement("Conference Center");

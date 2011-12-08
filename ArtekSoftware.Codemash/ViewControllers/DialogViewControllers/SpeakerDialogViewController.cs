@@ -16,7 +16,14 @@ namespace ArtekSoftware.Codemash
 		
 		public SpeakerDialogViewController () : base (null)
 		{
-			this.Autorotate = true;
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+				this.Autorotate = false;
+			}
+			else
+			{
+				this.Autorotate = true;
+			}
+			
 			this.RefreshRequested += HandleHandleRefreshRequested;
 			this.Style = UITableViewStyle.Plain;
 			this.TableView.RowHeight = 64;

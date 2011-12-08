@@ -443,6 +443,7 @@
     <Content Include="Default%402x.png" />
     <Content Include="Default-Portrait.png" />
     <Content Include="Default-Landscape.png" />
+    <Content Include="images\FavoritedSession.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Catnap\Catnap.csproj">

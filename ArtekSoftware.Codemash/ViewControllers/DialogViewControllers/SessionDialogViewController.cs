@@ -18,7 +18,13 @@ namespace ArtekSoftware.Codemash
 		
 		public SessionDialogViewController () : base(null)
 		{
-			this.Autorotate = true;
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+				this.Autorotate = false;
+			}
+			else
+			{
+				this.Autorotate = true;
+			}
 			
 			LoadData (isRefresh:false);
 			
