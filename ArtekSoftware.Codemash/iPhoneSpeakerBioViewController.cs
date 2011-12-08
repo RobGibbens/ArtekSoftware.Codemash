@@ -32,7 +32,7 @@ namespace ArtekSoftware.Codemash
 			base.ViewDidLoad ();
 			
 			this.scrollView.Frame = new RectangleF(0,0, 320, 460);
-    		this.scrollView.ContentSize = new SizeF(320, 650);
+    		this.scrollView.ContentSize = new SizeF(320, 1050);
 			
 			this.speakerBlogButton.TouchUpInside += HandleSpeakerBlogButtonhandleTouchUpInside;
 			this.speakerTwitterButton.TouchUpInside += HandlespeakerTwitterButtonhandleTouchUpInside;

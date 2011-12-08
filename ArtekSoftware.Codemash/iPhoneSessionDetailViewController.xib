@@ -218,7 +218,7 @@
 							<object class="IBUILabel" id="1041430901">
 								<reference key="NSNextResponder" ref="621626465"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{10, 281}, {304, 129}}</string>
+								<string key="NSFrame">{{10, 281}, {304, 514}}</string>
 								<reference key="NSSuperview" ref="621626465"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -375,7 +375,7 @@
 								<reference key="IBUIFont" ref="541171962"/>
 							</object>
 						</array>
-						<string key="NSFrameSize">{320, 850}</string>
+						<string key="NSFrameSize">{320, 1050}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="484768406"/>
