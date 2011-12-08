@@ -54,7 +54,7 @@
     <CodesignKey>iPhone Developer: Robert Gibbens (L8HT856S5P)</CodesignKey>
     <IpaPackageName />
     <MtouchI18n />
-    <CodesignProvision>2E335AEA-0274-4786-A217-595C8A7E1534</CodesignProvision>
+    <CodesignProvision>FE4D752C-D73A-451C-A775-B1970DA99695</CodesignProvision>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <MtouchArch>ARMv6_ARMv7</MtouchArch>
@@ -141,6 +141,7 @@
     <None Include="images\Technologies\SoftwareProcess4.jpg" />
     <None Include="images\.DS_Store" />
     <None Include="images\Profile.PNG" />
+    <None Include="DefaultDatabase\codemash.db3" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -438,6 +439,10 @@
     <Content Include="images\iPhoneDetailBackground.png" />
     <Content Include="images\AppStore\RetinaDisplay.png" />
     <Content Include="images\AppStore\iPhone.png" />
+    <Content Include="Default.png" />
+    <Content Include="Default%402x.png" />
+    <Content Include="Default-Portrait.png" />
+    <Content Include="Default-Landscape.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Catnap\Catnap.csproj">
