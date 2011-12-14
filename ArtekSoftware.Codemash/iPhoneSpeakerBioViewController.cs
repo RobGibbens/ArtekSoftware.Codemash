@@ -124,8 +124,8 @@ namespace ArtekSoftware.Codemash
 			}
 
 			var sessions = GetSessionsForSpeaker (_speaker);
-			var frame = new RectangleF(20, 192, 280, 89);
-			var sessionsTable = new UITableView(frame);
+			var sessionsFrame = new RectangleF(20, 192, 280, 89);
+			var sessionsTable = new UITableView(sessionsFrame, UITableViewStyle.Plain);
 			
 			sessionsTable.BackgroundColor = UIColor.Clear;
 			sessionsTable.ScrollEnabled = false;

@@ -4,6 +4,8 @@ using MonoTouch.UIKit;
 using System.Drawing;
 using MonoTouch.CoreGraphics;
 using System.Collections.Generic;
+using MonoTouch.Dialog.Utilities;
+using System.IO;
 
 namespace ArtekSoftware.Codemash
 {
@@ -137,40 +139,42 @@ namespace ArtekSoftware.Codemash
 			}
 		}
 		
-		public static UIImage GetSmallImage(string imageUrl)
-		{
-			var smallImages = SmallImages;
-			UIImage image;
-			if (smallImages.ContainsKey(imageUrl))
-			{
-				image = smallImages[imageUrl];
-			}
-			else
-			{
-				smallImages[imageUrl] = UIImage.FromFile(imageUrl);
-				image = smallImages[imageUrl];
-			}
-			
-			return image;
-		}
+//		public static UIImage GetSmallImage(string imageUrl)
+//		{
+//			var smallImages = SmallImages;
+//			UIImage image;
+//			if (smallImages.ContainsKey(imageUrl))
+//			{
+//				image = smallImages[imageUrl];
+//			}
+//			else
+//			{
+//				smallImages[imageUrl] = UIImage.FromFile(imageUrl);
+//				image = smallImages[imageUrl];
+//			}
+//			
+//			return image;
+//		}
 		
-		private static Dictionary<string, UIImage> _smallImages;
-		public static Dictionary<string, UIImage> SmallImages {
-			get {
-				if (_smallImages == null) {
-					_smallImages = new Dictionary<string, UIImage>();
-				}
-				
-				return _smallImages;
-			}
-		}
+//		private static Dictionary<string, UIImage> _smallImages;
+//		public static Dictionary<string, UIImage> SmallImages {
+//			get {
+//				if (_smallImages == null) {
+//					_smallImages = new Dictionary<string, UIImage>();
+//				}
+//				
+//				return _smallImages;
+//			}
+//		}
 		
 		public void SetLocalImage (string url)
 		{
 			if (!string.IsNullOrEmpty (url)) {
 				this.imgurl = url;
-				
-				UIImage image = GetSmallImage (url);
+
+				var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
+				var image = ImageLoader.DefaultRequestImage (imageBackground, null);
+				//UIImage image = GetSmallImage (url);
 					
 				using (imageView.Image) {
 					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
@@ -180,17 +184,17 @@ namespace ArtekSoftware.Codemash
 			}
 		}
 		
-		public void SetImage (string url)
-		{
-			this.imgurl = url;
-			if (!string.IsNullOrEmpty (url)) {
-				if (!SimpleImageStore.Current.RequestImage (url, this)) {
-					imageView.Image = UIImage.FromBundle ("img/gravatar");
-				}
-			} else {
-				imageView.Image = UIImage.FromBundle ("img/gravatar");
-			}
-		}
+//		public void SetImage (string url)
+//		{
+//			this.imgurl = url;
+//			if (!string.IsNullOrEmpty (url)) {
+//				if (!SimpleImageStore.Current.RequestImage (url, this)) {
+//					imageView.Image = UIImage.FromBundle ("img/gravatar");
+//				}
+//			} else {
+//				imageView.Image = UIImage.FromBundle ("img/gravatar");
+//			}
+//		}
 		
 		private SessionEntity _session;
 

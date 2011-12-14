@@ -7,6 +7,8 @@ using MonoTouch.Twitter;
 using Catnap;
 using Catnap.Find.Conditions;
 using Catnap.Find;
+using System.IO;
+using MonoTouch.Dialog.Utilities;
 
 namespace ArtekSoftware.Codemash
 {
@@ -150,12 +152,12 @@ namespace ArtekSoftware.Codemash
 				this.addToScheduleLabel.Text = "Remove from schedule";
 				this.addToScheduleLabel.Frame.Width = 142;
 				this.addToScheduleLabel.Frame.X = 19;
-				this.addToScheduleImage.SetImage(UIImage.FromFile("images/FavoritedSession.png"), UIControlState.Normal);
+				this.addToScheduleImage.SetImage (UIImage.FromFile ("images/FavoritedSession.png"), UIControlState.Normal);
 			} else {
 				this.addToScheduleLabel.Text = "Add to schedule";
 				this.addToScheduleLabel.Frame.Width = 98;
 				this.addToScheduleLabel.Frame.X = 36;
-				this.addToScheduleImage.SetImage(UIImage.FromFile("images/FavoriteSession.png"), UIControlState.Normal);
+				this.addToScheduleImage.SetImage (UIImage.FromFile ("images/FavoriteSession.png"), UIControlState.Normal);
 			}
 		}
 		
@@ -328,66 +330,70 @@ namespace ArtekSoftware.Codemash
 			} else {
 				imagePath = "images/Technologies/Other2.png";
 			}
-			
-			UIImage image = GetLargeImage (imagePath);
+			var imageBackground = new Uri ("file://" + Path.GetFullPath (imagePath));
+			var image = ImageLoader.DefaultRequestImage (imageBackground, null);
+			//UIImage image = GetSmallImage (url);
+				
+			image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+
 					
 			SetTechnologyImage (image);
 		}
 	
-		public static UIImage GetLargeImage (string imageUrl)
-		{
-			var smallImages = LargeImages;
-			UIImage image;
-			if (smallImages.ContainsKey (imageUrl)) {
-				image = smallImages [imageUrl];
-				if (image.Size.Width == 0) {
-					var imageFromFile = UIImage.FromFile (imageUrl);
-					imageFromFile = Extensions.RemoveSharpEdges (imageFromFile, Convert.ToInt32 (imageFromFile.Size.Width), 4);
-					smallImages [imageUrl] = imageFromFile;
-					image = smallImages [imageUrl];
-				}
-			} else {
-				var imageFromFile = UIImage.FromFile (imageUrl);
-				imageFromFile = Extensions.RemoveSharpEdges (imageFromFile, Convert.ToInt32 (imageFromFile.Size.Width), 4);
-				smallImages [imageUrl] = imageFromFile;
-				image = smallImages [imageUrl];
-			}
-			
-			return image;
-		}
+//		public static UIImage GetLargeImage (string imageUrl)
+//		{
+//			var smallImages = LargeImages;
+//			UIImage image;
+//			if (smallImages.ContainsKey (imageUrl)) {
+//				image = smallImages [imageUrl];
+//				if (image.Size.Width == 0) {
+//					var imageFromFile = UIImage.FromFile (imageUrl);
+//					imageFromFile = Extensions.RemoveSharpEdges (imageFromFile, Convert.ToInt32 (imageFromFile.Size.Width), 4);
+//					smallImages [imageUrl] = imageFromFile;
+//					image = smallImages [imageUrl];
+//				}
+//			} else {
+//				var imageFromFile = UIImage.FromFile (imageUrl);
+//				imageFromFile = Extensions.RemoveSharpEdges (imageFromFile, Convert.ToInt32 (imageFromFile.Size.Width), 4);
+//				smallImages [imageUrl] = imageFromFile;
+//				image = smallImages [imageUrl];
+//			}
+//			
+//			return image;
+//		}
 
-		private static Dictionary<string, UIImage> _largeImages;
-
-		public static Dictionary<string, UIImage> LargeImages {
-			get {
-				if (_largeImages == null) {
-					_largeImages = new Dictionary<string, UIImage> ();
-				}
-				
-				return _largeImages;
-			}
-		}
+//		private static Dictionary<string, UIImage> _largeImages;
+//
+//		public static Dictionary<string, UIImage> LargeImages {
+//			get {
+//				if (_largeImages == null) {
+//					_largeImages = new Dictionary<string, UIImage> ();
+//				}
+//				
+//				return _largeImages;
+//			}
+//		}
 		
-		protected void AddToQueue (ScheduledSessionEntity scheduledSession)
-		{
-			RemoteQueueEntity queueEntity = new RemoteQueueEntity ();
-			queueEntity.AddOrRemove = "ADD";
-			queueEntity.ConferenceName = "CodeMash";
-			queueEntity.DateQueuedOn = DateTime.Now;
-			queueEntity.UserName = "gibbensr";
-			queueEntity.URI = scheduledSession.URI;
-			
-			//using (UnitOfWork.Start()) {
-			var queueRepository = new LocalQueueRepository ();
-			queueRepository.Save (queueEntity);
-			//}
-		}
+//		protected void AddToQueue (ScheduledSessionEntity scheduledSession)
+//		{
+//			RemoteQueueEntity queueEntity = new RemoteQueueEntity ();
+//			queueEntity.AddOrRemove = "ADD";
+//			queueEntity.ConferenceName = "CodeMash";
+//			queueEntity.DateQueuedOn = DateTime.Now;
+//			queueEntity.UserName = "gibbensr";
+//			queueEntity.URI = scheduledSession.URI;
+//			
+//			//using (UnitOfWork.Start()) {
+//			var queueRepository = new LocalQueueRepository ();
+//			queueRepository.Save (queueEntity);
+//			//}
+//		}
 		
-		protected void AddToRemote (ScheduledSessionEntity scheduledSession)
-		{
-			var remote = new RemoteScheduledSessionsRepository ();
-			var schedule = remote.GetSchedule ("gibbensr");
-		}
+//		protected void AddToRemote (ScheduledSessionEntity scheduledSession)
+//		{
+//			var remote = new RemoteScheduledSessionsRepository ();
+//			var schedule = remote.GetSchedule ("gibbensr");
+//		}
 		
 	}
 }

@@ -28,7 +28,7 @@ namespace ArtekSoftware.Codemash
 			//Console.WriteLine("AppDelegate.FinishedLaunching");
 			CopyDb ();
 			
-			TestFlightProxy.TakeOff("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
+			TestFlightProxy.TakeOff ("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
 			
 			var bootstrapper = new Bootstrapper ();
 			bootstrapper.Initialize ();				
@@ -133,32 +133,34 @@ namespace ArtekSoftware.Codemash
 		
 		public void SetSpeaker (SpeakerEntity speaker)
 		{
-			this.TabBar.SelectedIndex = 2;
+			if (speaker != null) {
+				this.TabBar.SelectedIndex = 2;
 			
-			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
-				this.NavigationController.NavigationBarHidden = false;
-				var iPhoneSpeakerBioViewController = new iPhoneSpeakerBioViewController (speaker);
-				((UINavigationController)window.RootViewController).PushViewController (iPhoneSpeakerBioViewController, animated:true);
-			} else {			
-				RotatingSpeakerBioViewController rotatingSpeakerBioViewController = new RotatingSpeakerBioViewController (speaker);
+				if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+					this.NavigationController.NavigationBarHidden = false;
+					var iPhoneSpeakerBioViewController = new iPhoneSpeakerBioViewController (speaker);
+					((UINavigationController)window.RootViewController).PushViewController (iPhoneSpeakerBioViewController, animated:true);
+				} else {			
+					RotatingSpeakerBioViewController rotatingSpeakerBioViewController = new RotatingSpeakerBioViewController (speaker);
 
-				var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
-				rotatingSpeakerBioViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
-				rotatingSpeakerBioViewController.PopOverController = existingVC.PopOverController;			 
+					var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
+					rotatingSpeakerBioViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
+					rotatingSpeakerBioViewController.PopOverController = existingVC.PopOverController;			 
 	
-				var splitDelegate = new SplitDelegate ();		
-				this.splitViewController.Delegate = splitDelegate;
-				this.splitViewController.ViewControllers = new UIViewController[] {
+					var splitDelegate = new SplitDelegate ();		
+					this.splitViewController.Delegate = splitDelegate;
+					this.splitViewController.ViewControllers = new UIViewController[] {
 					this.TabBar,
 					rotatingSpeakerBioViewController
 				};
 			
-				if (rotatingSpeakerBioViewController.RootPopoverButtonItem != null) {
-					rotatingSpeakerBioViewController.ShowRootPopoverButtonItem (rotatingSpeakerBioViewController.RootPopoverButtonItem);
-				}
+					if (rotatingSpeakerBioViewController.RootPopoverButtonItem != null) {
+						rotatingSpeakerBioViewController.ShowRootPopoverButtonItem (rotatingSpeakerBioViewController.RootPopoverButtonItem);
+					}
 			
-				if (rotatingSpeakerBioViewController.PopOverController != null) {
-					rotatingSpeakerBioViewController.PopOverController.Dismiss (true);
+					if (rotatingSpeakerBioViewController.PopOverController != null) {
+						rotatingSpeakerBioViewController.PopOverController.Dismiss (true);
+					}
 				}
 			}
 		}

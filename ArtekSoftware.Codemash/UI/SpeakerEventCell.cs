@@ -4,6 +4,7 @@ using MonoTouch.UIKit;
 using System.Drawing;
 using MonoTouch.CoreGraphics;
 using System.IO;
+using MonoTouch.Dialog.Utilities;
 
 namespace ArtekSoftware.Codemash
 {
@@ -14,11 +15,6 @@ namespace ArtekSoftware.Codemash
 			this.Name = speaker.Name;
 			this.DateRoom = "";
 			this.TwitterName = speaker.TwitterHandle;
-			
-			if (!string.IsNullOrEmpty (this.TwitterName)) {
-				var twitterName = this.TwitterName.Replace ("@", "");
-				this.ImageUrl = "http://api.twitter.com/1/users/profile_image?screen_name=" + twitterName + "&size=bigger";
-			}
 			this.Speaker = speaker;
 		}
 		
@@ -56,32 +52,32 @@ namespace ArtekSoftware.Codemash
 			cell.btnTitle.SetTitle (Name, UIControlState.Normal);
 			cell.txtDate.Text = TwitterName;
 			cell.txtRoom.Text = DateRoom;
-			cell.SetImage (ImageUrl);
+			cell.SetImage ();
 			cell.SetNeedsLayout ();
 		}
 		
-		public override bool Matches (string text)
-		{
-			bool matches = false;
-			if (!string.IsNullOrWhiteSpace (text)) {
-				var searchValue = text.ToLower ();
-				
-				matches = (this.Speaker.TwitterHandle != null && this.Speaker.TwitterHandle.ToLower ().Contains (searchValue));
-				if (!matches) {
-					matches = (this.Speaker.Name != null && this.Speaker.Name.ToLower ().Contains (searchValue));	
-				}
-				if (!matches) {
-					matches = (this.Speaker.BlogURL != null && this.Speaker.BlogURL.ToLower ().Contains (searchValue));	
-				}
-				if (!matches) {
-					matches = (this.Speaker.Biography != null && this.Speaker.Biography.ToLower ().Contains (searchValue));	
-				}
-
-			
-			}
-			
-			return matches;
-		}			
+//		public override bool Matches (string text)
+//		{
+//			bool matches = false;
+//			if (!string.IsNullOrWhiteSpace (text)) {
+//				var searchValue = text.ToLower ();
+//				
+//				matches = (this.Speaker.TwitterHandle != null && this.Speaker.TwitterHandle.ToLower ().Contains (searchValue));
+//				if (!matches) {
+//					matches = (this.Speaker.Name != null && this.Speaker.Name.ToLower ().Contains (searchValue));	
+//				}
+//				if (!matches) {
+//					matches = (this.Speaker.BlogURL != null && this.Speaker.BlogURL.ToLower ().Contains (searchValue));	
+//				}
+//				if (!matches) {
+//					matches = (this.Speaker.Biography != null && this.Speaker.Biography.ToLower ().Contains (searchValue));	
+//				}
+//
+//			
+//			}
+//			
+//			return matches;
+//		}			
 		
 		#region IElementSizing implementation
 		public float GetHeight (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -126,47 +122,45 @@ namespace ArtekSoftware.Codemash
 			if (!string.IsNullOrEmpty (url)) {
 				this.imgurl = url;
 				
-				UIImage image = UIImage.FromFile (url);
+				var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
+				var image = ImageLoader.DefaultRequestImage (imageBackground, null);
+				//UIImage image = GetSmallImage (url);
 					
 				using (imageView.Image) {
 					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					imageView.Image = image;
-				}
+				}				
+
 			}
 		}
 		
-		public void SetImage (string url)
+		public void SetImage ()
 		{
-			this.imgurl = url;
 			UIImage image = null;
 			
-			if (!string.IsNullOrEmpty (url)) {
-				if (!SimpleImageStore.Current.RequestImage (url, this)) {
-					var profileImage = "images/Profiles/" + this._speaker.TwitterHandle.Replace ("@", "") + ".png";
-					if (File.Exists (profileImage)) {
-						image = UIImage.FromFile (profileImage);						
-					
-					} else if (File.Exists ("images/Profiles/" + _speaker.Name.Replace (" ", "") + ".png")) {
-						profileImage = "images/Profiles/" + _speaker.Name.Replace (" ", "") + ".png";
-				
-						image = UIImage.FromFile (profileImage);
-					} else {
-						//image = UIImage.FromFile ("images/glyphicons_003_user.png");
-						image = UIImage.FromFile ("images/Profiles/DefaultUser.png");
-						//imageView.Image = UIImage.FromBundle ("img/gravatar");
-					}
-				}
 
-				
-			} else if (File.Exists ("images/Profiles/" + _speaker.Name.Replace (" ", "") + ".png")) {
-				var profileImage = "images/Profiles/" + _speaker.Name.Replace (" ", "") + ".png";
-				
-				image = UIImage.FromFile (profileImage);				
+			string profileImage = string.Empty;
 			
+			if (!string.IsNullOrWhiteSpace(_speaker.TwitterHandle))
+			{
+				profileImage = "images/Profiles/" + this._speaker.TwitterHandle.Replace ("@", "") + ".png";
+			}	
+			
+			if (profileImage != string.Empty && File.Exists (profileImage)) {
+				var imageBackground = new Uri ("file://" + Path.GetFullPath (profileImage));
+				image = ImageLoader.DefaultRequestImage (imageBackground, null);
+			} else if (File.Exists ("images/Profiles/" + _speaker.Name.Replace (" ", "") + ".png")) {
+				profileImage = "images/Profiles/" + _speaker.Name.Replace (" ", "") + ".png";
+				var imageBackground = new Uri ("file://" + Path.GetFullPath (profileImage));
+				image = ImageLoader.DefaultRequestImage (imageBackground, null);
 			} else {
-				//image = UIImage.FromFile ("images/glyphicons_003_user.png");
-				image = UIImage.FromFile ("images/Profiles/DefaultUser.png");
+				profileImage = "images/Profiles/DefaultUser.png";
+				var imageBackground = new Uri ("file://" + Path.GetFullPath (profileImage));
+				image = ImageLoader.DefaultRequestImage (imageBackground, null);
 			}
+			
+			this.imgurl = profileImage;
+			
 			
 			if (image != null) {
 				using (imageView.Image) {

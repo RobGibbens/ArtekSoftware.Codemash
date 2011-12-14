@@ -26,7 +26,7 @@
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <MtouchArch>ARMv6_ARMv7</MtouchArch>
     <MtouchProfiling>true</MtouchProfiling>
-    <MtouchUseSGen>true</MtouchUseSGen>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -54,7 +54,7 @@
     <CodesignKey>iPhone Developer: Robert Gibbens (L8HT856S5P)</CodesignKey>
     <IpaPackageName />
     <MtouchI18n />
-    <CodesignProvision>FE4D752C-D73A-451C-A775-B1970DA99695</CodesignProvision>
+    <CodesignProvision>D4639C58-E5C4-4248-A6AC-7BBF1008C9CB</CodesignProvision>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <MtouchArch>ARMv6_ARMv7</MtouchArch>
@@ -68,7 +68,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer: Robert Gibbens (L8HT856S5P)</CodesignKey>
-    <CodesignProvision>B738ED8D-38C2-4C10-927F-D1AB5A58ADA0</CodesignProvision>
+    <CodesignProvision>D4639C58-E5C4-4248-A6AC-7BBF1008C9CB</CodesignProvision>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
     <MtouchI18n />
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
@@ -94,7 +94,7 @@
     <CodesignKey>iPhone Distribution: Artek Software</CodesignKey>
     <IpaPackageName />
     <MtouchI18n />
-    <CodesignProvision>EE1811F6-C238-4F77-8F39-74EFA876A79F</CodesignProvision>
+    <CodesignProvision>141665B2-4885-431C-9180-A23FF47806C1</CodesignProvision>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <BuildIpa>true</BuildIpa>

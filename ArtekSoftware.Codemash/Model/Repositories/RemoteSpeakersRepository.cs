@@ -18,7 +18,7 @@ namespace ArtekSoftware.Codemash
 			
 			var request = new RestRequest ();
 			request.Resource = "rest/speakers";
-			request.RequestFormat = DataFormat.Xml;
+			request.RequestFormat = DataFormat.Json;
 			using (new NetworkIndicator()) {
 				var response = client.Execute<SpeakersList> (request);
 			

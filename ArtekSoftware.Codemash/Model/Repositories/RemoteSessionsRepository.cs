@@ -13,7 +13,6 @@ using Catnap.Migration;
 using Catnap.Find.Conditions;
 using System.Threading;
 
-
 namespace ArtekSoftware.Codemash
 {
 	public class RemoteSessionsRepository
@@ -30,6 +29,16 @@ namespace ArtekSoftware.Codemash
 
 		public IList<Session> GetSessions ()
 		{	
+			var regularSessions = GetRegularSessions();
+			var precompilerSessions = GetPrecompilerSessions();
+			
+			var combinedSessions = regularSessions.Union(precompilerSessions);
+			
+			return combinedSessions.ToList();
+		}
+		
+		private IList<Session> GetRegularSessions ()
+		{
 			IList<Session> sessions;
 			TestFlightProxy.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
 			
@@ -38,12 +47,9 @@ namespace ArtekSoftware.Codemash
 			
 			var request = new RestRequest ();
 			request.Resource = "rest/sessions";
-			request.RequestFormat = DataFormat.Xml;
+			request.RequestFormat = DataFormat.Json;
 			using (new NetworkIndicator()) {
 				var response = client.Execute<SessionsList> (request);
-//			var asyncHandle = client.ExecuteAsync<SessionsList>(request, response2 => {
-//    			Console.WriteLine(response2.Data.Sessions.Count);
-//			});
 				sessions = new List<Session> ();
 				if (response != null && response.Data != null && response.Data.Sessions != null) {
 					sessions = response.Data.Sessions.OrderBy (x => x.Title.Trim ()).ToList ();
@@ -52,18 +58,40 @@ namespace ArtekSoftware.Codemash
 			
 			foreach (var session in sessions) {
 				session.Title = session.Title.Trim ();
-				//Thread.Sleep (1);
 			}
-				
-			//var refreshRepository = new LocalRefreshRepository ();
-			//var refresh = refreshRepository.GetSession ();
-			//refresh.LastRefreshTime = DateTime.Now;
-			//refreshRepository.Save (refresh);
 				
 			TestFlightProxy.PassCheckpoint ("Finished RemoteSessionsRepository.GetSessions");
 			
 			return sessions;
 		}
+		
+		private IList<Session> GetPrecompilerSessions ()
+		{
+			IList<Session> sessions;
+			TestFlightProxy.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
+			
+			var client = new RestClient ();
+			client.BaseUrl = "http://codemash.org";
+			
+			var request = new RestRequest ();
+			request.Resource = "rest/precompiler";
+			request.RequestFormat = DataFormat.Json;
+			using (new NetworkIndicator()) {
+				var response = client.Execute<SessionsList> (request);
+				sessions = new List<Session> ();
+				if (response != null && response.Data != null && response.Data.Sessions != null) {
+					sessions = response.Data.Sessions.OrderBy (x => x.Title.Trim ()).ToList ();
+				}
+			}
+			
+			foreach (var session in sessions) {
+				session.Title = session.Title.Trim ();
+			}
+				
+			TestFlightProxy.PassCheckpoint ("Finished RemoteSessionsRepository.GetSessions");
+			
+			return sessions;
+		}		
 
 	}
 }

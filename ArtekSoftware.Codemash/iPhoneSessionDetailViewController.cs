@@ -8,6 +8,8 @@ using MonoTouch.Twitter;
 using System.Collections.Generic;
 using Catnap.Find.Conditions;
 using Catnap.Find;
+using System.IO;
+using MonoTouch.Dialog.Utilities;
 
 namespace ArtekSoftware.Codemash
 {
@@ -328,8 +330,9 @@ namespace ArtekSoftware.Codemash
 		{
 			if (!string.IsNullOrEmpty (url)) {
 				this.imgurl = url;
-				
-				UIImage image = GetSmallImage (url);
+				var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
+				var image = ImageLoader.DefaultRequestImage (imageBackground, null);
+				//UIImage image = GetSmallImage (url);
 				
 				using (this.technologyImage.Image) {
 					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
@@ -339,22 +342,22 @@ namespace ArtekSoftware.Codemash
 			}
 		}
 		
-		public static UIImage GetSmallImage(string imageUrl)
-		{
-			var smallImages = SmallImages;
-			UIImage image;
-			if (smallImages.ContainsKey(imageUrl))
-			{
-				image = smallImages[imageUrl];
-			}
-			else
-			{
-				smallImages[imageUrl] = UIImage.FromFile(imageUrl);
-				image = smallImages[imageUrl];
-			}
-			
-			return image;
-		}
+//		public static UIImage GetSmallImage(string imageUrl)
+//		{
+//			var smallImages = SmallImages;
+//			UIImage image;
+//			if (smallImages.ContainsKey(imageUrl))
+//			{
+//				image = smallImages[imageUrl];
+//			}
+//			else
+//			{
+//				smallImages[imageUrl] = UIImage.FromFile(imageUrl);
+//				image = smallImages[imageUrl];
+//			}
+//			
+//			return image;
+//		}
 		
 		private static Dictionary<string, UIImage> _smallImages;
 		public static Dictionary<string, UIImage> SmallImages {
