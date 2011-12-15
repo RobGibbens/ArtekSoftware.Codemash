@@ -20,7 +20,7 @@ namespace ArtekSoftware.Codemash
 			
 			var root = new RootElement ("Map");
 			var conferenceCenter = new StyledStringElement("Conference Center");
-			conferenceCenter.BackgroundColor = UIColor.FromPatternImage (SessionInfoCell.CellBackground);
+			//TODO:conferenceCenter.BackgroundColor = UIColor.FromPatternImage (SessionInfoCell.CellBackground);
 			conferenceCenter.Font = UIFont.FromName ("STHeitiTC-Medium", 14);
 			conferenceCenter.TextColor = UIColor.White;
 			root.Add (
@@ -37,7 +37,7 @@ namespace ArtekSoftware.Codemash
 		public override void LoadView ()
 		{
 			base.LoadView ();
-			TableView.BackgroundColor = UIColor.FromPatternImage(SessionInfoCell.CellBackground);
+			//TODO:TableView.BackgroundColor = UIColor.FromPatternImage(SessionInfoCell.CellBackground);
 		}
 		public override void Selected (MonoTouch.Foundation.NSIndexPath indexPath)
 		{

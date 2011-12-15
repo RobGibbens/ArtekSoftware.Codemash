@@ -1,4 +1,4 @@
-using System;
+ using System;
 using MonoTouch.Dialog;
 using MonoTouch.UIKit;
 using System.Drawing;
@@ -127,7 +127,7 @@ namespace ArtekSoftware.Codemash
 				//UIImage image = GetSmallImage (url);
 					
 				using (imageView.Image) {
-					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+					////TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					imageView.Image = image;
 				}				
 
@@ -164,7 +164,7 @@ namespace ArtekSoftware.Codemash
 			
 			if (image != null) {
 				using (imageView.Image) {
-					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+					////TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					imageView.Image = image;
 				}
 			}
@@ -179,7 +179,9 @@ namespace ArtekSoftware.Codemash
 		
 		public SpeakerInfoCell (string cellId):base(UITableViewCellStyle.Default, cellId)
 		{
-			this.ContentView.BackgroundColor = UIColor.FromPatternImage (SessionInfoCell.CellBackground);
+			//TODO: this.ContentView.BackgroundColor = UIColor.FromPatternImage (SessionInfoCell.CellBackground);
+			this.ContentView.BackgroundColor = UIColor.Black;
+			
 			btnTitle = UIButton.FromType (UIButtonType.Custom);
 			btnTitle.Font = UIFont.FromName ("STHeitiTC-Medium", 14);
 			btnTitle.SetTitleColor (UIColor.White, UIControlState.Normal);
@@ -263,7 +265,7 @@ namespace ArtekSoftware.Codemash
 				return;
 			
 			if (image != null) {
-				imageView.Image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+				//imageView.//TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 			}
 			this.SetNeedsDisplay ();
 		}

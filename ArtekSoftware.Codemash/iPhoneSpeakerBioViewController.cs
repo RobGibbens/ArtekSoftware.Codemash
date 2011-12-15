@@ -141,7 +141,7 @@ namespace ArtekSoftware.Codemash
 					UIImage image = UIImage.FromFile (profileImage);
 					
 					using (this.speakerProfileImage.Image) {
-						image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+						//TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 						this.speakerProfileImage.Image = image;
 					}
 					
@@ -152,7 +152,7 @@ namespace ArtekSoftware.Codemash
 				UIImage image = UIImage.FromFile (profileImage);
 					
 				using (this.speakerProfileImage.Image) {
-					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+					//TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					this.speakerProfileImage.Image = image;
 				}
 			} else {
@@ -161,7 +161,7 @@ namespace ArtekSoftware.Codemash
 				UIImage image = UIImage.FromFile (profileImage);
 					
 				using (this.speakerProfileImage.Image) {
-					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+					//TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					this.speakerProfileImage.Image = image;
 				}
 

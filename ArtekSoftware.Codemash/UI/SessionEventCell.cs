@@ -54,7 +54,7 @@ namespace ArtekSoftware.Codemash
 			cell.SetLocalImage (ImageUrl);
 			
 			
-			//cell.SetImage (ImageUrl);
+			//TODO: cell.SetImage (ImageUrl);
 			cell.SetNeedsLayout ();
 		}
 
@@ -83,25 +83,26 @@ namespace ArtekSoftware.Codemash
 			}
 		}
 		
-		public override bool Matches (string text)
-		{
-			bool matches = false;
-			if (!string.IsNullOrWhiteSpace (text)) {
-				var searchValue = text.ToLower ();
-				
-				matches = (this.Session.Technology != null && this.Session.Technology.ToLower ().Contains (searchValue));
-				if (!matches) {
-					matches = (this.Session.SpeakerName != null && this.Session.SpeakerName.ToLower ().Contains (searchValue));	
-				}				
-				if (!matches) {
-					matches = (this.Session.Title != null && this.Session.Title.ToLower ().Contains (searchValue));	
-				}					
-
-			
-			}
-			
-			return matches;
-		}
+		//TODO:
+//		public override bool Matches (string text)
+//		{
+//			bool matches = false;
+//			if (!string.IsNullOrWhiteSpace (text)) {
+//				var searchValue = text.ToLower ();
+//				
+//				matches = (this.Session.Technology != null && this.Session.Technology.ToLower ().Contains (searchValue));
+//				if (!matches) {
+//					matches = (this.Session.SpeakerName != null && this.Session.SpeakerName.ToLower ().Contains (searchValue));	
+//				}				
+//				if (!matches) {
+//					matches = (this.Session.Title != null && this.Session.Title.ToLower ().Contains (searchValue));	
+//				}					
+//
+//			
+//			}
+//			
+//			return matches;
+//		}
 		#region IElementSizing implementation
 		public float GetHeight (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
 		{
@@ -123,21 +124,22 @@ namespace ArtekSoftware.Codemash
 		public UIImageView imageView;
 		string imgurl;
 
-		static SessionInfoCell ()
-		{
-			using (var rgb = CGColorSpace.CreateDeviceRGB()) {
-				float [] colorsBottom = {
-					1, 1, 1, .5f,
-					0.93f, 0.93f, 0.93f, .5f
-				};
-				bottomGradient = new CGGradient (rgb, colorsBottom, null);
-				float [] colorsTop = {
-					0.93f, 0.93f, 0.93f, .5f,
-					1, 1, 1, 0.5f
-				};
-				topGradient = new CGGradient (rgb, colorsTop, null);
-			}
-		}
+		//TODO:
+//		static SessionInfoCell ()
+//		{
+//			using (var rgb = CGColorSpace.CreateDeviceRGB()) {
+//				float [] colorsBottom = {
+//					1, 1, 1, .5f,
+//					0.93f, 0.93f, 0.93f, .5f
+//				};
+//				bottomGradient = new CGGradient (rgb, colorsBottom, null);
+//				float [] colorsTop = {
+//					0.93f, 0.93f, 0.93f, .5f,
+//					1, 1, 1, 0.5f
+//				};
+//				topGradient = new CGGradient (rgb, colorsTop, null);
+//			}
+//		}
 		
 //		public static UIImage GetSmallImage(string imageUrl)
 //		{
@@ -171,15 +173,16 @@ namespace ArtekSoftware.Codemash
 		{
 			if (!string.IsNullOrEmpty (url)) {
 				this.imgurl = url;
-
-				var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
-				var image = ImageLoader.DefaultRequestImage (imageBackground, null);
-				//UIImage image = GetSmallImage (url);
-					
-				using (imageView.Image) {
-					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
-					imageView.Image = image;
-				}
+				
+				//ImageLoader.DefaultLoader = new ImageLoader(20, 4*1024*1024);
+				//var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
+				//var image = ImageLoader.DefaultRequestImage (imageBackground, null);
+				//TODO: UIImage image = GetSmallImage (url);
+				//imageView.Image = ImageLoader.DefaultRequestImage (imageBackground, null);	
+				//using (imageView.Image) {
+					//TODO: //TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+					//imageView.Image = image;
+				//}
 				
 			}
 		}
@@ -203,20 +206,25 @@ namespace ArtekSoftware.Codemash
 			_session = session;
 		}
 		
-		private static UIImage _cellBackground;
-		public static UIImage CellBackground {
-			get {
-				if (_cellBackground == null) {
-					_cellBackground = UIImage.FromFile ("images/CellBackground2.png");
-				}
-				
-				return _cellBackground;
-			}
-		}
+		//TODO:
+//		private static UIImage _cellBackground;
+//		public static UIImage CellBackground {
+//			get {
+//				if (_cellBackground == null) {
+//					var url = "images/CellBackground2.png";
+//					var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
+//					_cellBackground = ImageLoader.DefaultRequestImage (imageBackground, null);
+//					//_cellBackground = UIImage.FromFile (url);
+//				}
+//				
+//				return _cellBackground;
+//			}
+//		}
 
 		public SessionInfoCell (string cellId):base(UITableViewCellStyle.Default, cellId)
 		{
-			this.ContentView.BackgroundColor = UIColor.FromPatternImage (SessionInfoCell.CellBackground);
+			//TODO: this.ContentView.BackgroundColor = UIColor.FromPatternImage (SessionInfoCell.CellBackground);
+			this.ContentView.BackgroundColor = UIColor.Black;
 			
 			btnTitle = UIButton.FromType (UIButtonType.Custom);
 			btnTitle.Frame = new RectangleF (60, 4, 240, 25);
@@ -262,22 +270,23 @@ namespace ArtekSoftware.Codemash
 			float opinionHeight = txtRoom.Text == null ? 50 : this.StringSize (txtRoom.Text, SessionInfoCell.SmallFont, new SizeF (240, float.MaxValue), UILineBreakMode.WordWrap).Height;
 			txtRoom.Frame = new RectangleF (60, 50, 240, opinionHeight);
 		}
-
-		public override void Draw (RectangleF rect)
-		{
-			base.Draw (rect);
-
-			var context = UIGraphics.GetCurrentContext ();
-
-			var bounds = Bounds;
-			var midx = bounds.Width / 2;
-
-			UIColor.White.SetColor ();
-			context.FillRect (bounds);
-
-			context.DrawLinearGradient (bottomGradient, new PointF (midx, bounds.Height - 17), new PointF (midx, bounds.Height), 0);
-			context.DrawLinearGradient (topGradient, new PointF (midx, 1), new PointF (midx, 3), 0);
-		}
+		
+		//TODO:
+//		public override void Draw (RectangleF rect)
+//		{
+//			base.Draw (rect);
+//
+//			var context = UIGraphics.GetCurrentContext ();
+//
+//			var bounds = Bounds;
+//			var midx = bounds.Width / 2;
+//
+//			UIColor.White.SetColor ();
+//			context.FillRect (bounds);
+//
+//			context.DrawLinearGradient (bottomGradient, new PointF (midx, bounds.Height - 17), new PointF (midx, bounds.Height), 0);
+//			context.DrawLinearGradient (topGradient, new PointF (midx, 1), new PointF (midx, 3), 0);
+//		}
 		
 		
 
@@ -287,7 +296,7 @@ namespace ArtekSoftware.Codemash
 			if (imgurl != url)
 				return;
 
-			imageView.Image = Graphics.RemoveSharpEdges (image);
+			//TODO:imageView.Image = Graphics.RemoveSharpEdges (image);
 			this.SetNeedsDisplay ();
 		}
 		#endregion

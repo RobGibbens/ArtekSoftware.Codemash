@@ -56,7 +56,8 @@ namespace ArtekSoftware.Codemash
 		public override void LoadView ()
 		{
 			base.LoadView ();
-			TableView.BackgroundColor = UIColor.FromPatternImage(SessionInfoCell.CellBackground);
+			//TODO: TableView.BackgroundColor = UIColor.FromPatternImage(SessionInfoCell.CellBackground);
+			TableView.BackgroundColor = UIColor.Black;
 		}
 		
 		private int CalculateSelectedRow (NSIndexPath indexPath, UITableView tableView)

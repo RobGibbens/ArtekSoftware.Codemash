@@ -359,7 +359,7 @@ namespace ArtekSoftware.Codemash
 			var imageBackground = new Uri ("file://" + Path.GetFullPath (imagePath));
 			var image = ImageLoader.DefaultRequestImage (imageBackground, null);
 
-			image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+			//TODO://TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					
 			SetTechnologyImage (image);
 		}

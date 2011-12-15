@@ -1,18 +1,14 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="AdHoc|iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/AppDelegate.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoTouch.Dialog/Utilities/ImageLoader.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/Entitlements.plist" />
-      <File FileName="ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/UI/SessionEventCell.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/UI/SpeakerEventCell.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="139" Column="43" />
+      <File FileName="ArtekSoftware.Codemash/UI/SessionEventCell.cs" Line="181" Column="1" />
+      <File FileName="MonoTouch.Dialog/Utilities/ImageLoader.cs" Line="217" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="CodeMash" expanded="True" selected="True">
+          <Node name="CodeMash" expanded="True">
             <Node name="DefaultDatabase">
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
@@ -21,17 +17,14 @@
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
             </Node>
-            <Node name="UI" expanded="True">
-              <Node name="DialogMappers" expanded="True" />
-            </Node>
-            <Node name="ViewControllers" expanded="True">
-              <Node name="DialogViewControllers" expanded="True" />
-            </Node>
+            <Node name="UI" expanded="True" />
           </Node>
           <Node name="MonoTouch.Dialog" expanded="True">
             <Node name="Elements" expanded="True" />
             <Node name="OldElements" expanded="True" />
-            <Node name="Utilities" expanded="True" />
+            <Node name="Utilities" expanded="True">
+              <Node name="ImageLoader.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -50,10 +43,11 @@
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" line="160" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" line="333" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SpeakerEventCell.cs" line="125" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="181" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.CodeMash>
-    <IPhoneTestFlightSettings_27CAdHoc ApiToken="28ea2cf46ef75d633a2bce49d2adbfb7_NzYwOA" TeamToken="19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw" ReleaseNotes="Precompiler sessions.  UI enhancements" NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="CodeMashScheduler" />
+    <IPhoneTestFlightSettings_27CAdHoc ApiToken="28ea2cf46ef75d633a2bce49d2adbfb7_NzYwOA" TeamToken="19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw" ReleaseNotes="Removed cell images, removed rounded images, trying to correct smooth scrolling" NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="CodeMashScheduler" />
   </MonoDevelop.Ide.ItemProperties.CodeMash>
 </Properties>

@@ -335,7 +335,7 @@ namespace ArtekSoftware.Codemash
 				//UIImage image = GetSmallImage (url);
 				
 				using (this.technologyImage.Image) {
-					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
+					//TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					this.technologyImage.Image = image;
 				}
 				
