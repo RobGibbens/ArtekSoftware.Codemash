@@ -1,32 +1,11 @@
-using System;
 using System.Collections.Generic;
-using RestSharp;
 using System.Linq;
-using Catnap.Common.Logging;
-using Catnap.Database;
-using Catnap.Find;
-using Catnap.Maps;
-using Catnap.Adapters;
-using Catnap.Maps.Impl;
-using Catnap;
-using Catnap.Migration;
-using Catnap.Find.Conditions;
-using System.Threading;
+using RestSharp;
 
 namespace ArtekSoftware.Codemash
 {
 	public class RemoteSessionsRepository
 	{
-		
-		private DateTime RandomDay ()
-		{
-			DateTime start = new DateTime (2011, 1, 11);
-			Random gen = new Random (DateTime.Now.Millisecond);
-
-			int range = 2; //((TimeSpan)(DateTime.Today - start)).Days;           
-			return start.AddDays (gen.Next (range));
-		}
-
 		public IList<Session> GetSessions ()
 		{	
 			var regularSessions = GetRegularSessions();

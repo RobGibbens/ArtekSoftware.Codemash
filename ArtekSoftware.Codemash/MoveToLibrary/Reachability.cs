@@ -1,10 +1,8 @@
 using System;
 using System.Net;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using MonoTouch.SystemConfiguration;
 using MonoTouch.CoreFoundation;
-using System.Threading;
+using MonoTouch.Foundation;
+using MonoTouch.SystemConfiguration;
 
 public enum NetworkStatus
 {

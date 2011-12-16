@@ -1,11 +1,9 @@
 using System;
-using MonoTouch.Dialog;
 using System.Collections.Generic;
-using Catnap;
 using System.Linq;
-
-
 using System.Threading;
+using Catnap;
+using MonoTouch.Dialog;
 
 namespace ArtekSoftware.Codemash
 {
@@ -26,7 +24,7 @@ namespace ArtekSoftware.Codemash
 						var remoteRepository = new RemoteSessionsRepository ();
 						IList<Session> sessionDtos = remoteRepository.GetSessions ();
 						var cacheRepository = new SessionsCacheRepository ();
-					cacheRepository.Cache (sessionDtos);
+						cacheRepository.Cache (sessionDtos);
 					} else {
 						ModalDialog.Alert ("Network offline", "Cannot connect to the network");
 					}

@@ -1,14 +1,5 @@
 using System;
-using Catnap.Common.Logging;
-using Catnap.Database;
-using Catnap.Find;
-using Catnap.Maps;
-using Catnap.Adapters;
-using Catnap.Maps.Impl;
 using Catnap;
-using Catnap.Migration;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ArtekSoftware.Codemash
 {
@@ -22,4 +13,3 @@ namespace ArtekSoftware.Codemash
 		public string EntityName { get; set; }
 	}
 }
-

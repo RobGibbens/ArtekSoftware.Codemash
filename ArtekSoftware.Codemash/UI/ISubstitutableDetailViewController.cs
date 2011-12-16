@@ -12,4 +12,3 @@ namespace ArtekSoftware.Codemash
       void InvalidateRootPopoverButtonItem(UIBarButtonItem barButtonItem);
     }
 }
-

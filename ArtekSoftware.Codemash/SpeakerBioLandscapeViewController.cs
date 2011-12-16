@@ -1,14 +1,10 @@
-using MonoTouch.UIKit;
-using System.Drawing;
 using System;
-using MonoTouch.Foundation;
-using System.Linq;
 using System.Collections.Generic;
-using Catnap;
-using MonoTouch.Twitter;
-using Catnap.Find.Conditions;
-using Catnap.Find;
 using System.IO;
+using System.Linq;
+using Catnap;
+using MonoTouch.Foundation;
+using MonoTouch.UIKit;
 
 namespace ArtekSoftware.Codemash
 {

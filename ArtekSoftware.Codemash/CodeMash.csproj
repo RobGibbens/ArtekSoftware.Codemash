@@ -171,7 +171,6 @@
     <Compile Include="Model\Entities\ScheduledSessionEntity.cs" />
     <Compile Include="Model\Entities\SessionEntity.cs" />
     <Compile Include="Model\Entities\SpeakerEntity.cs" />
-    <Compile Include="Model\Enums\Technologies.cs" />
     <Compile Include="Model\Repositories\LocalQueueRepository.cs" />
     <Compile Include="Model\Repositories\LocalRefreshRepository.cs" />
     <Compile Include="Model\Repositories\LocalScheduledSessionsRepository.cs" />
@@ -181,7 +180,6 @@
     <Compile Include="Model\Repositories\RemoteSessionsRepository.cs" />
     <Compile Include="Model\Repositories\RemoteSpeakersRepository.cs" />
     <Compile Include="Model\Repositories\RemoteTwitterRepository.cs" />
-    <Compile Include="UI\DialogMappers\NewsDialogMapper.cs" />
     <Compile Include="UI\DialogMappers\ScheduledSessionsDialogMapper.cs" />
     <Compile Include="UI\DialogMappers\SessionsDialogMapper.cs" />
     <Compile Include="UI\DialogMappers\SpeakersDialogMapper.cs" />
