@@ -21,7 +21,7 @@ namespace ArtekSoftware.Codemash
 		}
 	}
 	
-	public abstract class SessionEventElement : Element, IElementSizing
+	public abstract class SessionEventElement : Element, IElementSizing, IImageUpdated
 	{
 		protected string Title, DateRoom, Speaker, ImageUrl;
 		protected SessionEntity Session;
@@ -31,33 +31,56 @@ namespace ArtekSoftware.Codemash
 		}
 		
 		string _cellIdentifier = "SessionViewCell";
+		SessionInfoCell _cell;
 
 		public override UITableViewCell GetCell (UITableView tv)
 		{
-			var cell = tv.DequeueReusableCell (_cellIdentifier) as SessionInfoCell;
-			if (cell == null) {
-				cell = new SessionInfoCell (_cellIdentifier);
+			_cell = tv.DequeueReusableCell (_cellIdentifier) as SessionInfoCell;
+			if (_cell == null) {
+				_cell = new SessionInfoCell (_cellIdentifier);
 			}
 
-			_loadDataIntoCell (cell);
-			return cell;
+			_loadDataIntoCell ();
+			return _cell;
 		}
 
-		private void _loadDataIntoCell (SessionInfoCell cell)
+		private void _loadDataIntoCell ()
 		{
-			cell.SetSession (this.Session);
-			cell.btnTitle.SetTitle (Title, UIControlState.Normal);
-			cell.txtSpeaker.Text = Speaker;
-			cell.txtRoom.Text = DateRoom;
+			_cell.SetSession (this.Session);
+			_cell.btnTitle.SetTitle (Title, UIControlState.Normal);
+			_cell.txtSpeaker.Text = Speaker;
+			_cell.txtRoom.Text = DateRoom;
 			
 			SetImageUrl ();
-			cell.SetLocalImage (ImageUrl);
-			
-			
-			//cell.SetImage (ImageUrl);
-			cell.SetNeedsLayout ();
-		}
+			SetLocalImage (ImageUrl);
 
+			_cell.SetNeedsLayout ();
+		}
+		
+		public void SetLocalImage (string url)
+		{
+			if (!string.IsNullOrEmpty (url)) {
+				var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
+				var image = ImageLoader.DefaultRequestImage (imageBackground, this);
+				if (image != null)
+				{
+					_cell.imageView.Image = image;
+				}
+					
+			}
+		}		
+		
+		public void UpdatedImage (Uri uri)
+		{
+			var image = ImageLoader.DefaultRequestImage (uri, this);			
+
+			_cell.btnAvatar.BackgroundColor = UIColor.FromPatternImage (image);
+			_cell.ImageView.Image = image;
+
+			_cell.SetNeedsLayout ();
+			_cell.SetNeedsDisplay ();
+		}
+		
 		void SetImageUrl ()
 		{
 			if (this.Session.Technology.ToLower () == ".net") {
@@ -82,26 +105,7 @@ namespace ArtekSoftware.Codemash
 				ImageUrl = "images/Technologies/Other2.png";
 			}
 		}
-		
-		public override bool Matches (string text)
-		{
-			bool matches = false;
-			if (!string.IsNullOrWhiteSpace (text)) {
-				var searchValue = text.ToLower ();
-				
-				matches = (this.Session.Technology != null && this.Session.Technology.ToLower ().Contains (searchValue));
-				if (!matches) {
-					matches = (this.Session.SpeakerName != null && this.Session.SpeakerName.ToLower ().Contains (searchValue));	
-				}				
-				if (!matches) {
-					matches = (this.Session.Title != null && this.Session.Title.ToLower ().Contains (searchValue));	
-				}					
 
-			
-			}
-			
-			return matches;
-		}
 		#region IElementSizing implementation
 		public float GetHeight (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
 		{
@@ -113,7 +117,7 @@ namespace ArtekSoftware.Codemash
 
 	}
 	
-	class SessionInfoCell : UITableViewCell , IImageUpdated
+	class SessionInfoCell : UITableViewCell
 	{
 
 		static CGGradient bottomGradient, topGradient;
@@ -123,78 +127,6 @@ namespace ArtekSoftware.Codemash
 		public UIImageView imageView;
 		string imgurl;
 
-		static SessionInfoCell ()
-		{
-			using (var rgb = CGColorSpace.CreateDeviceRGB()) {
-				float [] colorsBottom = {
-					1, 1, 1, .5f,
-					0.93f, 0.93f, 0.93f, .5f
-				};
-				bottomGradient = new CGGradient (rgb, colorsBottom, null);
-				float [] colorsTop = {
-					0.93f, 0.93f, 0.93f, .5f,
-					1, 1, 1, 0.5f
-				};
-				topGradient = new CGGradient (rgb, colorsTop, null);
-			}
-		}
-		
-//		public static UIImage GetSmallImage(string imageUrl)
-//		{
-//			var smallImages = SmallImages;
-//			UIImage image;
-//			if (smallImages.ContainsKey(imageUrl))
-//			{
-//				image = smallImages[imageUrl];
-//			}
-//			else
-//			{
-//				smallImages[imageUrl] = UIImage.FromFile(imageUrl);
-//				image = smallImages[imageUrl];
-//			}
-//			
-//			return image;
-//		}
-		
-//		private static Dictionary<string, UIImage> _smallImages;
-//		public static Dictionary<string, UIImage> SmallImages {
-//			get {
-//				if (_smallImages == null) {
-//					_smallImages = new Dictionary<string, UIImage>();
-//				}
-//				
-//				return _smallImages;
-//			}
-//		}
-		
-		public void SetLocalImage (string url)
-		{
-			if (!string.IsNullOrEmpty (url)) {
-				this.imgurl = url;
-
-				var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
-				var image = ImageLoader.DefaultRequestImage (imageBackground, null);
-				//UIImage image = GetSmallImage (url);
-					
-				using (imageView.Image) {
-					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
-					imageView.Image = image;
-				}
-				
-			}
-		}
-		
-//		public void SetImage (string url)
-//		{
-//			this.imgurl = url;
-//			if (!string.IsNullOrEmpty (url)) {
-//				if (!SimpleImageStore.Current.RequestImage (url, this)) {
-//					imageView.Image = UIImage.FromBundle ("img/gravatar");
-//				}
-//			} else {
-//				imageView.Image = UIImage.FromBundle ("img/gravatar");
-//			}
-//		}
 		
 		private SessionEntity _session;
 
@@ -204,6 +136,7 @@ namespace ArtekSoftware.Codemash
 		}
 		
 		private static UIImage _cellBackground;
+
 		public static UIImage CellBackground {
 			get {
 				if (_cellBackground == null) {
@@ -275,22 +208,9 @@ namespace ArtekSoftware.Codemash
 			UIColor.White.SetColor ();
 			context.FillRect (bounds);
 
-			context.DrawLinearGradient (bottomGradient, new PointF (midx, bounds.Height - 17), new PointF (midx, bounds.Height), 0);
-			context.DrawLinearGradient (topGradient, new PointF (midx, 1), new PointF (midx, 3), 0);
+			//context.DrawLinearGradient (bottomGradient, new PointF (midx, bounds.Height - 17), new PointF (midx, bounds.Height), 0);
+			//context.DrawLinearGradient (topGradient, new PointF (midx, 1), new PointF (midx, 3), 0);
 		}
-		
-		
-
-		#region IImageUpdated implementation
-		public void UpdatedImage (string url, UIImage image)
-		{
-			if (imgurl != url)
-				return;
-
-			imageView.Image = Graphics.RemoveSharpEdges (image);
-			this.SetNeedsDisplay ();
-		}
-		#endregion
 
 		public override void PrepareForReuse ()
 		{
