@@ -358,45 +358,10 @@ namespace ArtekSoftware.Codemash
 			
 			var imageBackground = new Uri ("file://" + Path.GetFullPath (imagePath));
 			var image = ImageLoader.DefaultRequestImage (imageBackground, null);
-
-			image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					
 			SetTechnologyImage (image);
 		}
-	
-//		public static UIImage GetLargeImage (string imageUrl)
-//		{
-//			var smallImages = LargeImages;
-//			UIImage image;
-//			if (smallImages.ContainsKey (imageUrl)) {
-//				image = smallImages [imageUrl];
-//				if (image.Size.Width == 0) {
-//					var imageFromFile = UIImage.FromFile (imageUrl);
-//					imageFromFile = Extensions.RemoveSharpEdges (imageFromFile, Convert.ToInt32 (imageFromFile.Size.Width), 4);
-//					smallImages [imageUrl] = imageFromFile;
-//					image = smallImages [imageUrl];
-//				}
-//			} else {
-//				var imageFromFile = UIImage.FromFile (imageUrl);
-//				imageFromFile = Extensions.RemoveSharpEdges (imageFromFile, Convert.ToInt32 (imageFromFile.Size.Width), 4);
-//				smallImages [imageUrl] = imageFromFile;
-//				image = smallImages [imageUrl];
-//			}
-//			
-//			return image;
-//		}
 
-//		private static Dictionary<string, UIImage> _largeImages;
-//
-//		public static Dictionary<string, UIImage> LargeImages {
-//			get {
-//				if (_largeImages == null) {
-//					_largeImages = new Dictionary<string, UIImage> ();
-//				}
-//				
-//				return _largeImages;
-//			}
-//		}		
 	}
 }
 

@@ -304,7 +304,7 @@ namespace ArtekSoftware.Codemash
 		void SetImageUrl ()
 		{
 			if (this.Session.Technology.ToLower () == ".net") {
-				ImageUrl = "images/Technologies/DotNetSmall2.png";
+				ImageUrl = "images/Technologies/DotNetSmall.png";
 			} else if (this.Session.Technology.ToLower () == "ruby") {
 				ImageUrl = "images/Technologies/RubySmall.png";
 			} else if (this.Session.Technology.ToLower () == "mobile") {
@@ -332,43 +332,14 @@ namespace ArtekSoftware.Codemash
 				this.imgurl = url;
 				var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
 				var image = ImageLoader.DefaultRequestImage (imageBackground, null);
-				//UIImage image = GetSmallImage (url);
 				
 				using (this.technologyImage.Image) {
-					image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					this.technologyImage.Image = image;
 				}
 				
 			}
 		}
 		
-//		public static UIImage GetSmallImage(string imageUrl)
-//		{
-//			var smallImages = SmallImages;
-//			UIImage image;
-//			if (smallImages.ContainsKey(imageUrl))
-//			{
-//				image = smallImages[imageUrl];
-//			}
-//			else
-//			{
-//				smallImages[imageUrl] = UIImage.FromFile(imageUrl);
-//				image = smallImages[imageUrl];
-//			}
-//			
-//			return image;
-//		}
-		
-		private static Dictionary<string, UIImage> _smallImages;
-		public static Dictionary<string, UIImage> SmallImages {
-			get {
-				if (_smallImages == null) {
-					_smallImages = new Dictionary<string, UIImage>();
-				}
-				
-				return _smallImages;
-			}
-		}		
 	}
 }
 

@@ -193,14 +193,9 @@
     <Compile Include="UI\SessionEventCell.cs" />
     <Compile Include="UI\SpeakerEventCell.cs" />
     <Compile Include="MoveToLibrary\Bootstrapper.cs" />
-    <Compile Include="MoveToLibrary\Extensions.cs" />
-    <Compile Include="MoveToLibrary\Graphics.cs" />
-    <Compile Include="MoveToLibrary\IImageUpdated.cs" />
-    <Compile Include="MoveToLibrary\LRUCache.cs" />
     <Compile Include="MoveToLibrary\ModalHelper.cs" />
     <Compile Include="MoveToLibrary\QueueSync.cs" />
     <Compile Include="MoveToLibrary\Reachability.cs" />
-    <Compile Include="MoveToLibrary\Twitter.cs" />
     <Compile Include="MoveToLibrary\UrlConnection.cs" />
     <Compile Include="SessionDetailLandscapeViewController.cs" />
     <Compile Include="SessionDetailLandscapeViewController.designer.cs">
