@@ -82,9 +82,18 @@ namespace ArtekSoftware.Codemash
 		            OrderBy (letter => letter.StartDate);
 
 			foreach (var sessionGroup in query) {
-				var section = new Section (sessionGroup.SectionName.ToString ());
+				string sectionTitle;
+				if (sessionGroup.SectionName == "Monday 12:00 AM")
+				{
+					sectionTitle = "Time Not Posted - Refresh";
+				}
+				else
+				{
+					sectionTitle = sessionGroup.SectionName.ToString ();
+				}
 				
-				
+				var section = new Section (sectionTitle);
+
 				foreach (var session in sessionGroup.Sessions) {
 					//var element = new MultilineElement(session.Title);
 					//var element = new SessionCell(session);

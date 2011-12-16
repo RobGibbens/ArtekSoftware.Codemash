@@ -69,10 +69,6 @@ namespace ArtekSoftware.Codemash
 		{
 			this.Session = session;
 			
-			//this.sessionAbstractLabel = abstractLabel;
-			//_sessionAbstractLabel.Text = session.Abstract;
-			
-			this.sessionDifficultyLabel.Text = session.Difficulty;
 			this.sessionRoomLabel.Text = session.Room;
 			this.sessionSpeakerNameButton.SetTitle (session.SpeakerName, UIControlState.Normal);
 			if (session.StartDate == DateTime.MinValue) {
@@ -80,18 +76,17 @@ namespace ArtekSoftware.Codemash
 			} else {
 				this.sessionStartLabel.Text = session.StartDate.DayOfWeek.ToString() + " " + session.StartDate.ToString ("h:mm tt");
 			}
-			this.sessionTechnologyLabel.Text = session.Technology;
+			this.sessionTechnologyLabel.Text = session.Technology + " / " + session.Difficulty;
 			
 			SetImageUrl ();
-			//_sessionTechnologyLabel.Text = GetTechnologyName (session.Technology);
 			
 			this.sessionTitleLabel.Text = session.Title;
 			
 			HLabel titleLabel;
-			if (this.scrollView.Subviews.Count () <= 22) {
+			if (this.scrollView.Subviews.Count () <= 21) {
 				titleLabel = new HLabel ();
 			} else {
-				titleLabel = (HLabel)this.scrollView.Subviews [22];
+				titleLabel = (HLabel)this.scrollView.Subviews [21];
 			}
 			titleLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
 			titleLabel.Lines = 0;
@@ -101,21 +96,21 @@ namespace ArtekSoftware.Codemash
 			titleLabel.Frame = this.sessionTitleLabel.Frame;
 			titleLabel.BackgroundColor = UIColor.Clear;
 			
-			if (this.scrollView.Subviews.Count () <= 22) {
+			if (this.scrollView.Subviews.Count () <= 21) {
 				this.scrollView.AddSubview (titleLabel);
 			} else {
-				this.scrollView.Subviews [22] = titleLabel;
+				this.scrollView.Subviews [21] = titleLabel;
 			}
 			
 			this.sessionTitleLabel.Text = string.Empty;	
 			
 			
 			HLabel abstractLabel;
-			if (this.scrollView.Subviews.Count () <= 23) {
+			if (this.scrollView.Subviews.Count () <= 22) {
 				abstractLabel = new HLabel ();
 				//this.View.AddSubview (abstractLabel);
 			} else {
-				abstractLabel = (HLabel)this.scrollView.Subviews [23];
+				abstractLabel = (HLabel)this.scrollView.Subviews [22];
 				//abstractLabel = (HLabel)this.View.Subviews[20]; 
 			}
 			abstractLabel.VerticalAlignment = HLabel.VerticalAlignments.Top;
@@ -126,10 +121,10 @@ namespace ArtekSoftware.Codemash
 			abstractLabel.Frame = this.sessionAbstractLabel.Frame;
 			abstractLabel.BackgroundColor = UIColor.Clear;
 			
-			if (this.scrollView.Subviews.Count () <= 23) {
+			if (this.scrollView.Subviews.Count () <= 22) {
 				this.scrollView.AddSubview (abstractLabel);
 			} else {
-				this.scrollView.Subviews [23] = abstractLabel;
+				this.scrollView.Subviews [22] = abstractLabel;
 			}			
 			this.sessionAbstractLabel.Text = string.Empty;			
 			

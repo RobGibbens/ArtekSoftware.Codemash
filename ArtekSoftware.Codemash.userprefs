@@ -1,9 +1,16 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="AdHoc|iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/UI/SessionEventCell.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/UI/DialogMappers/SessionsDialogMapper.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/UI/SessionEventCell.cs" Line="77" Column="4" />
-      <File FileName="ArtekSoftware.Codemash/UI/SpeakerEventCell.cs" Line="74" Column="17" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" Line="60" Column="4" />
+      <File FileName="ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/SessionDetailViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/SpeakerBioViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/SpeakerBioLandscapeViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneSpeakerBioViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/UI/SessionEventCell.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" Line="58" Column="44" />
+      <File FileName="ArtekSoftware.Codemash/UI/DialogMappers/SessionsDialogMapper.cs" Line="88" Column="31" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,8 +24,12 @@
               <Option id="ShowVersionControlOverlays" value="True" />
               <Option id="ShowAllFiles" value="True" />
             </Node>
-            <Node name="MoveToLibrary" expanded="True" />
-            <Node name="UI" expanded="True" />
+            <Node name="UI" expanded="True">
+              <Node name="DialogMappers" expanded="True" />
+            </Node>
+            <Node name="ViewControllers" expanded="True">
+              <Node name="DialogViewControllers" expanded="True" />
+            </Node>
           </Node>
           <Node name="MonoTouch.Dialog" expanded="True">
             <Node name="Elements" expanded="True" />
@@ -44,20 +55,18 @@
       <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="62" />
       <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="54" />
       <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="55" />
-      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="293" />
-      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="296" />
-      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="210" />
-      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="211" />
-      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="213" />
-      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="215" />
-      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="216" />
-      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="162" />
-      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="76" />
-      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="152" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="292" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="295" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="210" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="212" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="214" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="215" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="161" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="75" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.CodeMash>
-    <IPhoneTestFlightSettings_27CAdHoc ApiToken="28ea2cf46ef75d633a2bce49d2adbfb7_NzYwOA" TeamToken="19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw" ReleaseNotes="Actual performance enhancements.  I'LL BE SUBMITTING TO THE APP STORE TONIGHT. PLEASE SMOKE TEST." NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="CodeMashScheduler" />
+    <IPhoneTestFlightSettings_27CAdHoc ApiToken="28ea2cf46ef75d633a2bce49d2adbfb7_NzYwOA" TeamToken="19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw" ReleaseNotes="Fixed iPad issue showing iPhone version. Actual performance enhancements.  I'LL BE SUBMITTING TO THE APP STORE TONIGHT. PLEASE SMOKE TEST." NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="CodeMashScheduler" />
   </MonoDevelop.Ide.ItemProperties.CodeMash>
 </Properties>
