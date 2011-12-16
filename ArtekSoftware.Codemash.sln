@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoTouch.Dialog", "MonoTou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSharp.MonoTouch", "RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj", "{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoTouch.Dialog.Extensions", "MonoTouch.Dialog.Extensions\MonoTouch.Dialog.Extensions.csproj", "{FCAC0668-BF8E-480C-BC00-19B8967C50EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionsSample", "..\..\Downloads\SuperYeti-MonoTouch.Dialog.Extensions-4f825e6\ExtensionsSample\ExtensionsSample.csproj", "{59D4E86B-956A-42AF-BC37-DD20EE33D16F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -34,6 +38,20 @@ Global
 		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.Release|iPhone.Build.0 = Release|iPhone
 		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.AdHoc|iPhone.ActiveCfg = Debug|iPhone
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.AdHoc|iPhone.Build.0 = Debug|iPhone
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.AdHoc|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.AdHoc|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.AppStore|iPhone.ActiveCfg = Debug|iPhone
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.AppStore|iPhone.Build.0 = Debug|iPhone
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.Debug|iPhone.Build.0 = Debug|iPhone
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.Release|iPhone.ActiveCfg = Release|iPhone
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.Release|iPhone.Build.0 = Release|iPhone
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{59D4E86B-956A-42AF-BC37-DD20EE33D16F}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.AdHoc|iPhone.ActiveCfg = AdHoc|iPhone
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.AdHoc|iPhone.Build.0 = AdHoc|iPhone
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.AdHoc|iPhoneSimulator.ActiveCfg = AdHoc|iPhoneSimulator
@@ -76,6 +94,20 @@ Global
 		{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}.Release|iPhone.Build.0 = Release|iPhone
 		{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.AdHoc|iPhone.ActiveCfg = AdHoc|iPhone
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.AdHoc|iPhone.Build.0 = AdHoc|iPhone
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.AdHoc|iPhoneSimulator.ActiveCfg = AdHoc|iPhoneSimulator
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.AdHoc|iPhoneSimulator.Build.0 = AdHoc|iPhoneSimulator
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.AppStore|iPhone.ActiveCfg = Debug|iPhone
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.AppStore|iPhone.Build.0 = Debug|iPhone
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.Debug|iPhone.Build.0 = Debug|iPhone
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.Release|iPhone.ActiveCfg = Release|iPhone
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.Release|iPhone.Build.0 = Release|iPhone
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{FCAC0668-BF8E-480C-BC00-19B8967C50EE}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = ArtekSoftware.Codemash\CodeMash.csproj

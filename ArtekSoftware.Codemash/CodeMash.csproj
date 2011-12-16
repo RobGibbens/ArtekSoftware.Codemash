@@ -458,5 +458,9 @@
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MonoTouch.Dialog.Extensions\MonoTouch.Dialog.Extensions.csproj">
+      <Project>{FCAC0668-BF8E-480C-BC00-19B8967C50EE}</Project>
+      <Name>MonoTouch.Dialog.Extensions</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

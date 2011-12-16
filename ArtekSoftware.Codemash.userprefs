@@ -1,30 +1,28 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoTouch.Dialog/Utilities/ImageLoader.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/UI/SessionEventCell.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/UI/SessionEventCell.cs" Line="181" Column="1" />
-      <File FileName="MonoTouch.Dialog/Utilities/ImageLoader.cs" Line="217" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/UI/SessionEventCell.cs" Line="61" Column="27" />
+      <File FileName="../../../../Developer/MonoTouch/Source/mono/mcs/class/corlib/System.Threading/Monitor.cs" Line="203" Column="4" />
+      <File FileName="MonoTouch.Dialog.Extensions/ImageStore.cs" Line="285" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="CodeMash" expanded="True">
-            <Node name="DefaultDatabase">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
+            <Node name="UI" expanded="True">
+              <Node name="SessionEventCell.cs" selected="True" />
             </Node>
-            <Node name="images">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
+            <Node name="ViewControllers" expanded="True">
+              <Node name="DialogViewControllers" expanded="True" />
             </Node>
-            <Node name="UI" expanded="True" />
           </Node>
-          <Node name="MonoTouch.Dialog" expanded="True">
-            <Node name="Elements" expanded="True" />
-            <Node name="OldElements" expanded="True" />
-            <Node name="Utilities" expanded="True">
-              <Node name="ImageLoader.cs" selected="True" />
-            </Node>
+          <Node name="ExtensionsSample" expanded="True">
+            <Node name="MainWindow.xib" expanded="True" />
+          </Node>
+          <Node name="MonoTouch.Dialog.Extensions" expanded="True">
+            <Option id="ShowVersionControlOverlays" value="True" />
+            <Option id="ShowAllFiles" value="True" />
           </Node>
         </State>
       </Pad>
@@ -43,7 +41,8 @@
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" line="160" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" line="333" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SpeakerEventCell.cs" line="125" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="181" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="231" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/MonoTouch.Dialog.Extensions/ImageStore.cs" line="243" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

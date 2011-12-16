@@ -91,7 +91,7 @@ namespace ArtekSoftware.Codemash
 
 	}
 	
-	class SpeakerInfoCell : UITableViewCell , IImageUpdated
+	class SpeakerInfoCell : UITableViewCell
 	{
 
 		static CGGradient bottomGradient, topGradient;

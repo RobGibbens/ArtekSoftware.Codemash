@@ -5,11 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}</ProjectGuid>
+    <ProjectGuid>{FCAC0668-BF8E-480C-BC00-19B8967C50EE}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>MonoTouch.Dialog</RootNamespace>
-    <AssemblyName>MonoTouch.Dialog</AssemblyName>
+    <RootNamespace>MonoTouch.Dialog.Extensions</RootNamespace>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
     <ReleaseVersion>0.25</ReleaseVersion>
   </PropertyGroup>
@@ -23,6 +22,8 @@
     <WarningLevel>4</WarningLevel>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <AssemblyName>MonoTouch.LRUImageStore</AssemblyName>
+    <MtouchUseArmv7>false</MtouchUseArmv7>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -31,6 +32,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchLink>None</MtouchLink>
+    <AssemblyName>MonoTouch.LRUImageStore</AssemblyName>
+    <MtouchUseArmv7>false</MtouchUseArmv7>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,6 +45,8 @@
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
+    <AssemblyName>MonoTouch.LRUImageStore</AssemblyName>
+    <MtouchUseArmv7>false</MtouchUseArmv7>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -50,32 +55,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <AssemblyName>MonoTouch.LRUImageStore</AssemblyName>
+    <MtouchUseArmv7>false</MtouchUseArmv7>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AdHoc|iPhone' ">
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin</OutputPath>
+    <OutputPath>bin\iPhone\AdHoc</OutputPath>
     <WarningLevel>4</WarningLevel>
+    <AssemblyName>MonoTouchDialogExtensions</AssemblyName>
     <CodesignKey>iPhone Developer</CodesignKey>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
-    <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchUseArmv7>false</MtouchUseArmv7>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AdHoc|iPhoneSimulator' ">
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\AdHoc</OutputPath>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhoneSimulator' ">
-    <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\AppStore</OutputPath>
-    <WarningLevel>4</WarningLevel>
+    <AssemblyName>MonoTouchDialogExtensions</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -85,30 +82,34 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="Elements.cs" />
-    <Compile Include="DialogViewController.cs" />
-    <Compile Include="Reflect.cs" />
-    <Compile Include="Utilities\Graphics.cs" />
-    <Compile Include="OldElements\LoadMoreElement.cs" />
-    <Compile Include="Utilities\ImageLoader.cs" />
-    <Compile Include="Utilities\LRUCache.cs" />
-    <Compile Include="Elements\MessageElement.cs" />
-    <Compile Include="Elements\OwnerDrawnElement.cs" />
-    <Compile Include="Elements\ActivityElement.cs" />
-    <Compile Include="Elements\ElementBadge.cs" />
-    <Compile Include="Utilities\Controls.cs" />
-    <Compile Include="Utilities\GlassButton.cs" />
-    <Compile Include="Utilities\LocalizationExtensions.cs" />
+    <Compile Include="IndexedLinkedList.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="UrlImageStringCell.cs" />
+    <Compile Include="SpiffyDialogViewController.cs" />
+    <Compile Include="Locale.cs" />
+    <Compile Include="Images\Images.cs" />
+    <Compile Include="MultilineEntryElement.cs" />
+    <Compile Include="InchFractionElement.cs" />
+    <Compile Include="InchFractionPickerModel.cs" />
+    <Compile Include="Fraction.cs" />
+    <Compile Include="ElementExtensions.cs" />
+    <Compile Include="Graphics.cs" />
+    <Compile Include="ImageStore.cs" />
+    <Compile Include="LRUCache.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
-    <Folder Include="Utilities\" />
-    <Folder Include="OldElements\" />
-    <Folder Include="Elements\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\arrow.png">
-      <LogicalName>arrow.png</LogicalName>
-    </EmbeddedResource>
+    <Content Include="Images\default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonoTouch.Dialog\MonoTouch.Dialog.csproj">
+      <Project>{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}</Project>
+      <Name>MonoTouch.Dialog</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\menu-shadow.png" />
   </ItemGroup>
 </Project>
