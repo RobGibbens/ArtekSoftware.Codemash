@@ -1,13 +1,9 @@
 using System;
-using MonoTouch.Dialog;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.UIKit;
-using System.Drawing;
+using MonoTouch.Dialog;
 using MonoTouch.Foundation;
-
-
-using System.Threading;
+using MonoTouch.UIKit;
 
 namespace ArtekSoftware.Codemash
 {

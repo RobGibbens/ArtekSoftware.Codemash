@@ -1,16 +1,10 @@
 using System;
-using Catnap.Common.Logging;
-using Catnap.Database;
-using Catnap.Find;
-using Catnap.Maps;
-using Catnap.Adapters;
-using Catnap.Maps.Impl;
-using Catnap;
-using Catnap.Migration;
-using System.Collections.Generic;
-using System.Linq;
 using System.IO;
-
+using Catnap;
+using Catnap.Adapters;
+using Catnap.Common.Logging;
+using Catnap.Maps;
+using Catnap.Maps.Impl;
 
 namespace ArtekSoftware.Codemash
 {

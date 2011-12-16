@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
-using RestSharp;
 using System.Linq;
-
+using RestSharp;
 
 namespace ArtekSoftware.Codemash
 {

@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using MonoTouch.Twitter;
-using Catnap;
-using Catnap.Find.Conditions;
-using Catnap.Find;
 using System.IO;
+using System.Linq;
+using Catnap;
+using Catnap.Find;
+using Catnap.Find.Conditions;
 using MonoTouch.Dialog.Utilities;
+using MonoTouch.Foundation;
+using MonoTouch.Twitter;
+using MonoTouch.UIKit;
 
 namespace ArtekSoftware.Codemash
 {
@@ -332,10 +332,6 @@ namespace ArtekSoftware.Codemash
 			}
 			var imageBackground = new Uri ("file://" + Path.GetFullPath (imagePath));
 			var image = ImageLoader.DefaultRequestImage (imageBackground, null);
-			//UIImage image = GetSmallImage (url);
-				
-			//TODO: //TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
-
 					
 			SetTechnologyImage (image);
 		}

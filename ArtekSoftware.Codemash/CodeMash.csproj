@@ -171,7 +171,6 @@
     <Compile Include="Model\Entities\ScheduledSessionEntity.cs" />
     <Compile Include="Model\Entities\SessionEntity.cs" />
     <Compile Include="Model\Entities\SpeakerEntity.cs" />
-    <Compile Include="Model\Enums\Technologies.cs" />
     <Compile Include="Model\Repositories\LocalQueueRepository.cs" />
     <Compile Include="Model\Repositories\LocalRefreshRepository.cs" />
     <Compile Include="Model\Repositories\LocalScheduledSessionsRepository.cs" />
@@ -181,7 +180,6 @@
     <Compile Include="Model\Repositories\RemoteSessionsRepository.cs" />
     <Compile Include="Model\Repositories\RemoteSpeakersRepository.cs" />
     <Compile Include="Model\Repositories\RemoteTwitterRepository.cs" />
-    <Compile Include="UI\DialogMappers\NewsDialogMapper.cs" />
     <Compile Include="UI\DialogMappers\ScheduledSessionsDialogMapper.cs" />
     <Compile Include="UI\DialogMappers\SessionsDialogMapper.cs" />
     <Compile Include="UI\DialogMappers\SpeakersDialogMapper.cs" />
@@ -193,14 +191,9 @@
     <Compile Include="UI\SessionEventCell.cs" />
     <Compile Include="UI\SpeakerEventCell.cs" />
     <Compile Include="MoveToLibrary\Bootstrapper.cs" />
-    <Compile Include="MoveToLibrary\Extensions.cs" />
-    <Compile Include="MoveToLibrary\Graphics.cs" />
-    <Compile Include="MoveToLibrary\IImageUpdated.cs" />
-    <Compile Include="MoveToLibrary\LRUCache.cs" />
     <Compile Include="MoveToLibrary\ModalHelper.cs" />
     <Compile Include="MoveToLibrary\QueueSync.cs" />
     <Compile Include="MoveToLibrary\Reachability.cs" />
-    <Compile Include="MoveToLibrary\Twitter.cs" />
     <Compile Include="MoveToLibrary\UrlConnection.cs" />
     <Compile Include="SessionDetailLandscapeViewController.cs" />
     <Compile Include="SessionDetailLandscapeViewController.designer.cs">
@@ -435,7 +428,6 @@
     <Content Include="images\LoadingGif\Loading8.png" />
     <Content Include="images\LoadingGif\Loading9.png" />
     <Content Include="images\AppStore\AppStoreImage.png" />
-    <Content Include="images\iPhoneSpeakerTitleBackground.png" />
     <Content Include="images\iPhoneDetailBackground.png" />
     <Content Include="images\AppStore\RetinaDisplay.png" />
     <Content Include="images\AppStore\iPhone.png" />
@@ -444,6 +436,7 @@
     <Content Include="Default-Portrait.png" />
     <Content Include="Default-Landscape.png" />
     <Content Include="images\FavoritedSession.png" />
+    <Content Include="images\iPhoneSpeakerTitleBackground2.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Catnap\Catnap.csproj">

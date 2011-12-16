@@ -1,17 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Catnap;
-using System.Collections.Generic;
-using Catnap.Common.Logging;
 using Catnap.Database;
 using Catnap.Find;
-using Catnap.Maps;
-using Catnap.Adapters;
-using Catnap.Maps.Impl;
-using Catnap.Migration;
 using Catnap.Find.Conditions;
 using Mono.Data.Sqlite;
-using System.IO;
 
 namespace ArtekSoftware.Codemash
 {

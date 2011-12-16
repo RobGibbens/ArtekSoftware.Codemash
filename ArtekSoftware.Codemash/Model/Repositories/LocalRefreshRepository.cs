@@ -1,8 +1,7 @@
-using System;
+using System.Linq;
 using Catnap;
 using Catnap.Find;
 using Catnap.Find.Conditions;
-using System.Linq;
 
 namespace ArtekSoftware.Codemash
 {

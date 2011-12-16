@@ -1,14 +1,10 @@
 using System;
-using MonoTouch.Dialog;
-using MonoTouch.UIKit;
 using System.Drawing;
-using MonoTouch.CoreGraphics;
-using System.Collections.Generic;
-using MonoTouch.Dialog.Utilities;
 using System.IO;
-using System.Threading;
-using MonoTouch.Foundation;
-using MonoTouch.Dialog.Extensions;
+using MonoTouch.CoreGraphics;
+using MonoTouch.Dialog;
+using MonoTouch.Dialog.Utilities;
+using MonoTouch.UIKit;
 
 namespace ArtekSoftware.Codemash
 {
@@ -24,7 +20,7 @@ namespace ArtekSoftware.Codemash
 		}
 	}
 	
-	public abstract class SessionEventElement : Element, IElementSizing
+	public abstract class SessionEventElement : Element, IElementSizing, IImageUpdated
 	{
 		protected string Title, DateRoom, Speaker, ImageUrl;
 		protected SessionEntity Session;
@@ -34,33 +30,56 @@ namespace ArtekSoftware.Codemash
 		}
 		
 		string _cellIdentifier = "SessionViewCell";
+		SessionInfoCell _cell;
 
 		public override UITableViewCell GetCell (UITableView tv)
 		{
-			var cell = tv.DequeueReusableCell (_cellIdentifier) as SessionInfoCell;
-			if (cell == null) {
-				cell = new SessionInfoCell (_cellIdentifier, tv);
+			_cell = tv.DequeueReusableCell (_cellIdentifier) as SessionInfoCell;
+			if (_cell == null) {
+				_cell = new SessionInfoCell (_cellIdentifier);
 			}
 
-			_loadDataIntoCell (cell);
-			return cell;
+			_loadDataIntoCell ();
+			return _cell;
 		}
 
-		private void _loadDataIntoCell (SessionInfoCell cell)
+		private void _loadDataIntoCell ()
 		{
-			cell.SetSession (this.Session);
-			cell.btnTitle.SetTitle (Title, UIControlState.Normal);
-			cell.txtSpeaker.Text = Speaker;
-			cell.txtRoom.Text = DateRoom;
+			_cell.SetSession (this.Session);
+			_cell.btnTitle.SetTitle (Title, UIControlState.Normal);
+			_cell.txtSpeaker.Text = Speaker;
+			_cell.txtRoom.Text = DateRoom;
 			
 			SetImageUrl ();
-			cell.SetLocalImage (ImageUrl);
-			
-			
-			//TODO: cell.SetImage (ImageUrl);
-			cell.SetNeedsLayout ();
-		}
+			SetLocalImage (ImageUrl);
 
+			_cell.SetNeedsLayout ();
+		}
+		
+		public void SetLocalImage (string url)
+		{
+			if (!string.IsNullOrEmpty (url)) {
+				var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
+				var image = ImageLoader.DefaultRequestImage (imageBackground, this);
+				if (image != null)
+				{
+					_cell.imageView.Image = image;
+				}
+					
+			}
+		}		
+		
+		public void UpdatedImage (Uri uri)
+		{
+			var image = ImageLoader.DefaultRequestImage (uri, this);			
+
+			_cell.btnAvatar.BackgroundColor = UIColor.FromPatternImage (image);
+			_cell.ImageView.Image = image;
+
+			_cell.SetNeedsLayout ();
+			_cell.SetNeedsDisplay ();
+		}
+		
 		void SetImageUrl ()
 		{
 			if (this.Session.Technology.ToLower () == ".net") {
@@ -82,10 +101,9 @@ namespace ArtekSoftware.Codemash
 			} else if (this.Session.Technology.ToLower () == "software process") {
 				ImageUrl = "images/Technologies/SoftwareProcess4Small.png";
 			} else {
-				ImageUrl = "images/Technologies/Other2Small.png";
+				ImageUrl = "images/Technologies/Other2.png";
 			}
 		}
-		
 
 		#region IElementSizing implementation
 		public float GetHeight (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -98,38 +116,39 @@ namespace ArtekSoftware.Codemash
 
 	}
 	
-	class SessionInfoCell : UITableViewCell, MonoTouch.Dialog.Extensions.IImageUpdated
+	class SessionInfoCell : UITableViewCell
 	{
 
-		//static CGGradient bottomGradient, topGradient;
+		static CGGradient bottomGradient, topGradient;
 		public UIButton btnTitle, btnAvatar;
 		public UILabel txtRoom, txtSpeaker;
 		public static UIFont SmallFont = UIFont.SystemFontOfSize (13f);
-		//public UIImageView imageView;
+		public UIImageView imageView;
 		string imgurl;
-		private SessionEntity _session;
-		private UITableView _tableView;
-		
-		//TODO:
-//		private static UIImage _cellBackground;
-//		public static UIImage CellBackground {
-//			get {
-//				if (_cellBackground == null) {
-//					var url = "images/CellBackground2.png";
-//					var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
-//					_cellBackground = ImageLoader.DefaultRequestImage (imageBackground, null);
-//					//_cellBackground = UIImage.FromFile (url);
-//				}
-//				
-//				return _cellBackground;
-//			}
-//		}
 
-		public SessionInfoCell (string cellId, UITableView tableView):base(UITableViewCellStyle.Default, cellId)
+		
+		private SessionEntity _session;
+
+		public void SetSession (SessionEntity session)
 		{
-			//TODO: this.ContentView.BackgroundColor = UIColor.FromPatternImage (SessionInfoCell.CellBackground);
-			this.ContentView.BackgroundColor = UIColor.Black;
-			_tableView = tableView;
+			_session = session;
+		}
+		
+		private static UIImage _cellBackground;
+
+		public static UIImage CellBackground {
+			get {
+				if (_cellBackground == null) {
+					_cellBackground = UIImage.FromFile ("images/CellBackground2.png");
+				}
+				
+				return _cellBackground;
+			}
+		}
+
+		public SessionInfoCell (string cellId):base(UITableViewCellStyle.Default, cellId)
+		{
+			this.ContentView.BackgroundColor = UIColor.FromPatternImage (SessionInfoCell.CellBackground);
 			
 			btnTitle = UIButton.FromType (UIButtonType.Custom);
 			btnTitle.Frame = new RectangleF (60, 4, 240, 25);
@@ -150,11 +169,9 @@ namespace ArtekSoftware.Codemash
 			btnAvatar = UIButton.FromType (UIButtonType.Custom);
 			btnAvatar.Frame = new Rectangle (10, 10, 40, 40);
 			
-			ImageView.Frame = new Rectangle (0, 0, 48, 48);
+			imageView = new UIImageView (new Rectangle (0, 0, 48, 48));
 			
-			//imageView = new UIImageView (new Rectangle (0, 0, 48, 48));
-			
-			//btnAvatar.AddSubview (imageView);
+			btnAvatar.AddSubview (imageView);
 			btnAvatar.TouchUpInside += HandleUserSelected;
 			
 			this.AddSubview (txtSpeaker);
@@ -163,11 +180,6 @@ namespace ArtekSoftware.Codemash
 			this.AddSubview (btnAvatar);
 
 			this.SelectionStyle = UITableViewCellSelectionStyle.None;
-		}
-
-		public void SetSession (SessionEntity session)
-		{
-			_session = session;
 		}
 		
 		void HandleUserSelected (object sender, EventArgs e)
@@ -183,109 +195,29 @@ namespace ArtekSoftware.Codemash
 			txtRoom.Frame = new RectangleF (60, 50, 240, opinionHeight);
 		}
 
-		public void UpdatedImage (string url, UIImage image)
+		public override void Draw (RectangleF rect)
 		{
-			if (imgurl != url)
-				return;
+			base.Draw (rect);
 
-			this.SetNeedsDisplay ();
+			var context = UIGraphics.GetCurrentContext ();
+
+			var bounds = Bounds;
+			var midx = bounds.Width / 2;
+
+			UIColor.White.SetColor ();
+			context.FillRect (bounds);
+
+			//context.DrawLinearGradient (bottomGradient, new PointF (midx, bounds.Height - 17), new PointF (midx, bounds.Height), 0);
+			//context.DrawLinearGradient (topGradient, new PointF (midx, 1), new PointF (midx, 3), 0);
 		}
 
 		public override void PrepareForReuse ()
 		{
 			base.PrepareForReuse ();
 			this.imgurl = null;
-			this.ImageView.Image = null;
-			//imageView.Image = null;
+			imageView.Image = null;
 		}
-		
-		UIImage imgBG;
-		//ImageLoader _imageLoader = new ImageLoader(20, 4*1024*1024);
-		public void SetLocalImage (string url)
-		{
-			if (!string.IsNullOrEmpty (url)) {
-				this.imgurl = url;
-				int imageId = 0;
-				//var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
-				
-				imgBG = ImageStore.RequestImage(imageId, "file://" + Path.GetFullPath (url), this);
-				//ThreadPool.QueueUserWorkItem (RequestImage, this);
-
-				//var imageLoader = new ImageLoader();
-				//_imageLoader.RequestImage(imageBackground, this);
-				//var image = ImageLoader.DefaultRequestImage (imageBackground, null);
-				//imageView.Image = ImageLoader.DefaultRequestImage (imageBackground, null);	
-				//using (imageView.Image) {
-				//	imageView.Image = image;
-				//}
-				
-			}
-		}
-		
-		void MonoTouch.Dialog.Extensions.IImageUpdated.UpdatedImage (long onId)
-		{
-			// Discard notifications that might have been queued for an old cell
-			//if(this.id != onId)
-				//return;
-
-			imgBG = ImageStore.GetImage (onId);
-			this.ImageView.Image = imgBG;
-//			InvokeOnMainThread (delegate {
-//
-//						RefreshImage (sessionInfoCell); 
-//						//_tableView.ReloadData ();
-//					});
-			//ShowMe(root, imgBG);
-			
-		}
-		
-		
-		private void RequestImage (object state)
-		{
-			
-			
-			using (NSAutoreleasePool pool = new NSAutoreleasePool()) { 
-				SessionInfoCell sessionInfoCell = state as SessionInfoCell;
-				if (sessionInfoCell != null) {
-					//NSUrl imageUrl = NSUrl.FromString (controller.ImageUri);
-					//NSData imageData = NSData.FromUrl (imageUrl);
-					//controller.ImageThumbnail.Image = UIImage.LoadFromData (imageData);
-					//var imageBackground = new Uri ("file://" + Path.GetFullPath (sessionInfoCell.imgurl));
-					//var image = ImageLoader.DefaultRequestImage (imageBackground, null);
-				
-					//sessionInfoCell.imageView = new UIImageView (new Rectangle (0, 0, 48, 48));
-					//sessionInfoCell.btnAvatar.AddSubview(sessionInfoCell.imageView);
-					//btnAvatar.AddSubview (imageView);
-				
-					//sessionInfoCell.btnAvatar.BackgroundColor = UIColor.FromPatternImage(image);
-					UIImage image = null;
-					if (!string.IsNullOrEmpty (sessionInfoCell.imgurl)) {
-						
-						image = UIImage.FromFile (sessionInfoCell.imgurl);
-												using (sessionInfoCell.ImageView.Image) {
-							sessionInfoCell.ImageView.Image = image;
-						}
-					}
-					//images.Add (controller.ImageUri, controller.ImageThumbnail.Image);
-
-					InvokeOnMainThread (delegate {
-
-						RefreshImage (sessionInfoCell); 
-						//_tableView.ReloadData ();
-					});
-				}
-			}
-		}
-
-		private void RefreshImage (SessionInfoCell sessionInfoCell)
-		{
-			sessionInfoCell.SetNeedsDisplay ();
-			UIView.BeginAnimations ("imageThumbnailTransitionIn");
-			UIView.SetAnimationDuration (0.5f);
-			
-			sessionInfoCell.ImageView.Alpha = 1.0f;
-			UIView.CommitAnimations ();
-		}		
-		
 	}	
+	
 }
+

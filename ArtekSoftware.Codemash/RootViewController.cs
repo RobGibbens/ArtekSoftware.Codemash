@@ -1,7 +1,6 @@
-using System;
 using System.Drawing;
-using MonoTouch.UIKit;
 using MonoTouch.Foundation;
+using MonoTouch.UIKit;
 
 namespace ArtekSoftware.Codemash
 {

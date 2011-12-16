@@ -54,7 +54,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">images/iPhoneSpeakerTitleBackground.png</string>
+									<string key="NSResourceName">images/iPhoneSpeakerTitleBackground2.png</string>
 								</object>
 							</object>
 							<object class="IBUIImageView" id="484768406">
@@ -78,7 +78,7 @@
 								<string key="NSFrame">{{8, 8}, {230, 62}}</string>
 								<reference key="NSSuperview" ref="621626465"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="899890801"/>
+								<reference key="NSNextKeyView" ref="102281114"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -139,10 +139,10 @@
 							<object class="IBUIImageView" id="102281114">
 								<reference key="NSNextResponder" ref="621626465"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{245, 197}, {71, 63}}</string>
+								<string key="NSFrame">{{243, 5}, {71, 63}}</string>
 								<reference key="NSSuperview" ref="621626465"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="1041430901"/>
+								<reference key="NSNextKeyView" ref="899890801"/>
 								<string key="NSReuseIdentifierKey">_NS:567</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -179,7 +179,7 @@
 								<string key="NSFrame">{{10, 218}, {305, 21}}</string>
 								<reference key="NSSuperview" ref="621626465"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="194371085"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -194,31 +194,10 @@
 								<reference key="IBUIFontDescription" ref="767200140"/>
 								<reference key="IBUIFont" ref="303024900"/>
 							</object>
-							<object class="IBUILabel" id="194371085">
-								<reference key="NSNextResponder" ref="621626465"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{11, 252}, {297, 21}}</string>
-								<reference key="NSSuperview" ref="621626465"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="102281114"/>
-								<string key="NSReuseIdentifierKey">_NS:328</string>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">7</int>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Difficulty</string>
-								<reference key="IBUITextColor" ref="140544605"/>
-								<nil key="IBUIHighlightedColor"/>
-								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">10</float>
-								<reference key="IBUIFontDescription" ref="767200140"/>
-								<reference key="IBUIFont" ref="303024900"/>
-							</object>
 							<object class="IBUILabel" id="1041430901">
 								<reference key="NSNextResponder" ref="621626465"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{10, 281}, {304, 514}}</string>
+								<string key="NSFrame">{{10, 247}, {304, 548}}</string>
 								<reference key="NSSuperview" ref="621626465"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -448,14 +427,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">sessionDifficultyLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="194371085"/>
-					</object>
-					<int key="connectionID">25</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">sessionAbstractLabel</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="1041430901"/>
@@ -554,9 +525,7 @@
 							<reference ref="377510423"/>
 							<reference ref="904216766"/>
 							<reference ref="484768406"/>
-							<reference ref="102281114"/>
 							<reference ref="13789687"/>
-							<reference ref="194371085"/>
 							<reference ref="1041430901"/>
 							<reference ref="365420851"/>
 							<reference ref="401586342"/>
@@ -564,6 +533,7 @@
 							<reference ref="549733687"/>
 							<reference ref="41553708"/>
 							<reference ref="899890801"/>
+							<reference ref="102281114"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -596,12 +566,6 @@
 						<reference key="object" ref="13789687"/>
 						<reference key="parent" ref="621626465"/>
 						<string key="objectName">technology</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">14</int>
-						<reference key="object" ref="194371085"/>
-						<reference key="parent" ref="621626465"/>
-						<string key="objectName">difficulty</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
@@ -659,7 +623,6 @@
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="21.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="27.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -769,7 +732,7 @@
 			<string key="images/Technologies/RubySmall.png">{16, 16}</string>
 			<string key="images/TwitterIOS.png">{16, 16}</string>
 			<string key="images/iPhoneDetailBackground.png">{16, 16}</string>
-			<string key="images/iPhoneSpeakerTitleBackground.png">{16, 16}</string>
+			<string key="images/iPhoneSpeakerTitleBackground2.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

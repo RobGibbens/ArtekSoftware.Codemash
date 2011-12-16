@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using Catnap;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-using System.IO;
-using Catnap;
-using System.Drawing;
 
 namespace ArtekSoftware.Codemash
 {
@@ -141,7 +141,6 @@ namespace ArtekSoftware.Codemash
 					UIImage image = UIImage.FromFile (profileImage);
 					
 					using (this.speakerProfileImage.Image) {
-						//TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 						this.speakerProfileImage.Image = image;
 					}
 					
@@ -152,7 +151,6 @@ namespace ArtekSoftware.Codemash
 				UIImage image = UIImage.FromFile (profileImage);
 					
 				using (this.speakerProfileImage.Image) {
-					//TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					this.speakerProfileImage.Image = image;
 				}
 			} else {
@@ -161,7 +159,6 @@ namespace ArtekSoftware.Codemash
 				UIImage image = UIImage.FromFile (profileImage);
 					
 				using (this.speakerProfileImage.Image) {
-					//TODO : image = Extensions.RemoveSharpEdges (image, Convert.ToInt32 (image.Size.Width), 4);
 					this.speakerProfileImage.Image = image;
 				}
 

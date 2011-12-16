@@ -1,11 +1,9 @@
 using System;
-using MonoTouch.Dialog;
 using System.Collections.Generic;
-using Catnap;
 using System.Linq;
-
-
 using System.Threading;
+using Catnap;
+using MonoTouch.Dialog;
 
 namespace ArtekSoftware.Codemash
 {
@@ -26,7 +24,7 @@ namespace ArtekSoftware.Codemash
 						var remoteRepository = new RemoteSessionsRepository ();
 						IList<Session> sessionDtos = remoteRepository.GetSessions ();
 						var cacheRepository = new SessionsCacheRepository ();
-					cacheRepository.Cache (sessionDtos);
+						cacheRepository.Cache (sessionDtos);
 					} else {
 						ModalDialog.Alert ("Network offline", "Cannot connect to the network");
 					}
@@ -82,9 +80,18 @@ namespace ArtekSoftware.Codemash
 		            OrderBy (letter => letter.StartDate);
 
 			foreach (var sessionGroup in query) {
-				var section = new Section (sessionGroup.SectionName.ToString ());
+				string sectionTitle;
+				if (sessionGroup.SectionName == "Monday 12:00 AM")
+				{
+					sectionTitle = "Time Not Posted - Refresh";
+				}
+				else
+				{
+					sectionTitle = sessionGroup.SectionName.ToString ();
+				}
 				
-				
+				var section = new Section (sectionTitle);
+
 				foreach (var session in sessionGroup.Sessions) {
 					//var element = new MultilineElement(session.Title);
 					//var element = new SessionCell(session);
