@@ -163,6 +163,40 @@ namespace ArtekSoftware.Codemash
 			}
 		}
 		
+		public void SetLocationMap()
+		{
+			this.TabBar.SelectedIndex = 3;
+			
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+				this.NavigationController.NavigationBarHidden = false;
+				var mapFlipViewController = new iPhoneMapFlipViewController();
+				((UINavigationController)window.RootViewController).PushViewController (mapFlipViewController, animated:true);
+			} else {	
+				RotatingLocationMapViewController rotatingLocationMapViewController = new RotatingLocationMapViewController ();
+			
+				var existingVC = this.splitViewController.ViewControllers [1] as ISubstitutableDetailViewController;
+				rotatingLocationMapViewController.RootPopoverButtonItem = existingVC.RootPopoverButtonItem;
+				rotatingLocationMapViewController.PopOverController = existingVC.PopOverController;					
+			
+				var splitDelegate = new SplitDelegate ();		
+				this.splitViewController.Delegate = splitDelegate;
+				this.splitViewController.ViewControllers = new UIViewController[] {
+					this.TabBar,
+					rotatingLocationMapViewController
+				};
+			
+				if (rotatingLocationMapViewController.RootPopoverButtonItem != null) {
+					rotatingLocationMapViewController.ShowRootPopoverButtonItem (rotatingLocationMapViewController.RootPopoverButtonItem);
+				}
+			
+				if (rotatingLocationMapViewController.PopOverController != null) {
+					rotatingLocationMapViewController.PopOverController.Dismiss (true);
+				}				
+				
+			}
+			
+		}
+		
 		public void SetMap ()
 		{
 			this.TabBar.SelectedIndex = 3;

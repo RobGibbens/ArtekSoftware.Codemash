@@ -130,7 +130,6 @@ namespace ArtekSoftware.Codemash
 
 		protected void OnDeviceRotated ()
 		{
-
 		}
 
 		public override void ViewDidDisappear (bool animated)

@@ -15,30 +15,46 @@ namespace ArtekSoftware.Codemash
 				this.Autorotate = true;
 			}
 			
-			var root = new RootElement ("Map");
+			var root = new RootElement ("Maps");
 			var conferenceCenter = new StyledStringElement("Conference Center");
-			//TODO:conferenceCenter.BackgroundColor = UIColor.FromPatternImage (SessionInfoCell.CellBackground);
 			conferenceCenter.Font = UIFont.FromName ("STHeitiTC-Medium", 14);
 			conferenceCenter.TextColor = UIColor.White;
+			conferenceCenter.BackgroundColor = UIColor.FromPatternImage(SessionInfoCell.CellBackground);
+			var location = new StyledStringElement("Location Map");
+			location.Font = UIFont.FromName ("STHeitiTC-Medium", 14);
+			location.TextColor = UIColor.White;
+			location.BackgroundColor = UIColor.FromPatternImage(SessionInfoCell.CellBackground);
+			this.Style = UITableViewStyle.Plain;
+			
 			root.Add (
 				new Section() { 
-					conferenceCenter
+					conferenceCenter,
+					location
 				}
 			);
 			//this.TableView.RowHeight = 64;
 			this.Root = root;
-			//this.TableView.BackgroundColor = UIColor.FromPatternImage(SessionInfoCell.CellBackground);
+			this.TableView.BackgroundColor = UIColor.FromPatternImage(SessionInfoCell.CellBackground);
 			this.EnableSearch = false;
 			this.Style = UITableViewStyle.Plain;
 		}
+		
 		public override void LoadView ()
 		{
 			base.LoadView ();
-			//TODO:TableView.BackgroundColor = UIColor.FromPatternImage(SessionInfoCell.CellBackground);
+			TableView.BackgroundColor = UIColor.FromPatternImage(SessionInfoCell.CellBackground);
 		}
+		
 		public override void Selected (MonoTouch.Foundation.NSIndexPath indexPath)
 		{
-			AppDelegate.CurrentAppDelegate.SetMap();
+			if (indexPath.Row == 0)
+			{
+				AppDelegate.CurrentAppDelegate.SetMap();
+			}
+			else if (indexPath.Row == 1)
+			{
+				AppDelegate.CurrentAppDelegate.SetLocationMap();
+			}
 			base.Selected (indexPath);
 		}
 	}

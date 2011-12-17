@@ -1,44 +1,23 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="AppStore|iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/MoveToLibrary/ModalHelper.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/MapDialogViewController.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/Model/Entities/SessionEntity.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/UI/DialogMappers/SessionsDialogMapper.cs" Line="29" Column="15" />
-      <File FileName="ArtekSoftware.Codemash/MoveToLibrary/ModalHelper.cs" Line="17" Column="4" />
+      <File FileName="ArtekSoftware.Codemash/MapFlipViewController.cs" Line="31" Column="40" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/MapKitViewController.cs" Line="88" Column="4" />
+      <File FileName="ArtekSoftware.Codemash/MapFlipLandscapeViewController.cs" Line="31" Column="10" />
+      <File FileName="ArtekSoftware.Codemash/UI/SessionEventCell.cs" Line="216" Column="28" />
+      <File FileName="ArtekSoftware.Codemash/UI/RotatingLocationMapViewController.cs" Line="51" Column="45" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/MapDialogViewController.cs" Line="12" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="CodeMash" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="Data" expanded="True" />
-            <Node name="DefaultDatabase" expanded="True">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="images">
-              <Option id="ShowVersionControlOverlays" value="True" />
-              <Option id="ShowAllFiles" value="True" />
-            </Node>
-            <Node name="Model" expanded="True">
-              <Node name="DTOs" expanded="True" />
-              <Node name="Entities" expanded="True" />
-              <Node name="Repositories" expanded="True" />
-            </Node>
-            <Node name="MoveToLibrary" expanded="True">
-              <Node name="ModalHelper.cs" selected="True" />
-            </Node>
-            <Node name="UI" expanded="True">
-              <Node name="DialogMappers" expanded="True" />
-            </Node>
+          <Node name="CodeMash" expanded="True" selected="True">
+            <Node name="UI" expanded="True" />
             <Node name="ViewControllers" expanded="True">
               <Node name="DialogViewControllers" expanded="True" />
             </Node>
-          </Node>
-          <Node name="MonoTouch.Dialog" expanded="True">
-            <Node name="Elements" expanded="True" />
-            <Node name="OldElements" expanded="True" />
-            <Node name="Utilities" expanded="True" />
+            <Node name="MapViewController.cs" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -61,12 +40,10 @@
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="292" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="295" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="210" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="212" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="214" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="215" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="161" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="75" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" line="172" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/MapFlipViewController.cs" line="22" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

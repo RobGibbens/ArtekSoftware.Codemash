@@ -16,7 +16,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
+    <DefineConstants>DEBUG;SIMULATOR;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -235,6 +235,21 @@
       <DependentUpon>iPhoneMapViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="MoveToLibrary\TestFlightProxy.cs" />
+    <Compile Include="ViewControllers\MapKitViewController.cs" />
+    <Compile Include="ViewControllers\DialogViewControllers\MapKitDialogViewController.cs" />
+    <Compile Include="ViewControllers\MapLocationViewController.cs" />
+    <Compile Include="MoveToLibrary\MapHelper.cs" />
+    <Compile Include="ViewControllers\iPhoneMapFlipViewController.cs" />
+    <Compile Include="MapFlipViewController.cs" />
+    <Compile Include="MapFlipViewController.designer.cs">
+      <DependentUpon>MapFlipViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\IMapFlipViewController.cs" />
+    <Compile Include="UI\RotatingLocationMapViewController.cs" />
+    <Compile Include="MapFlipLandscapeViewController.cs" />
+    <Compile Include="MapFlipLandscapeViewController.designer.cs">
+      <DependentUpon>MapFlipLandscapeViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="RootViewController.xib" />
@@ -248,6 +263,8 @@
     <InterfaceDefinition Include="iPhoneSessionDetailViewController.xib" />
     <InterfaceDefinition Include="iPhoneSpeakerBioViewController.xib" />
     <InterfaceDefinition Include="iPhoneMapViewController.xib" />
+    <InterfaceDefinition Include="MapFlipViewController.xib" />
+    <InterfaceDefinition Include="MapFlipLandscapeViewController.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -450,10 +467,6 @@
     <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MonoTouch.Dialog.Extensions\MonoTouch.Dialog.Extensions.csproj">
-      <Project>{FCAC0668-BF8E-480C-BC00-19B8967C50EE}</Project>
-      <Name>MonoTouch.Dialog.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
