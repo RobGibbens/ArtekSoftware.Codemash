@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using Catnap;
 
 namespace ArtekSoftware.Codemash
 {
@@ -79,7 +80,7 @@ namespace ArtekSoftware.Codemash
 				File.Copy (rootDbPath, db);
 			
 				TestFlightProxy.PassCheckpoint ("Copied default database");
-			}
+			} 
  
 		}
 
@@ -163,13 +164,13 @@ namespace ArtekSoftware.Codemash
 			}
 		}
 		
-		public void SetLocationMap()
+		public void SetLocationMap ()
 		{
 			this.TabBar.SelectedIndex = 3;
 			
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
 				this.NavigationController.NavigationBarHidden = false;
-				var mapFlipViewController = new iPhoneMapFlipViewController();
+				var mapFlipViewController = new iPhoneMapFlipViewController ();
 				((UINavigationController)window.RootViewController).PushViewController (mapFlipViewController, animated:true);
 			} else {	
 				RotatingLocationMapViewController rotatingLocationMapViewController = new RotatingLocationMapViewController ();

@@ -8,7 +8,6 @@ using MonoTouch.MapKit;  // required
 using MonoTouch.CoreLocation;
 using System.Linq;  // required
 
-
 namespace ArtekSoftware.Codemash
 {
 	public class MapKitViewController : UIViewController
