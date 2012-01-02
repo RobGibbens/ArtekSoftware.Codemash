@@ -1,36 +1,27 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="AdHoc|iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/ViewControllers/MapKitViewController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/AppDelegate.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/MapFlipViewController.cs" Line="15" Column="12" />
-      <File FileName="ArtekSoftware.Codemash/ViewControllers/MapKitViewController.cs" Line="19" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/MapFlipLandscapeViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/UI/SessionEventCell.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/UI/RotatingLocationMapViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/MapDialogViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/UI/DialogMappers/SessionsDialogMapper.cs" Line="1" Column="1" />
-      <File FileName="Catnap/Session.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/iPhoneMapViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/ViewControllers/iPhoneMapFlipViewController.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/ViewControllers/MapLocationViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="286" Column="2" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/SessionDetailViewControllerBase.cs" Line="166" Column="7" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="CodeMash" expanded="True">
-            <Node name="DefaultDatabase" expanded="True">
-              <Node name="codemash.db3" selected="True" />
+          <Node name="CodeMash" expanded="True" selected="True">
+            <Node name="References" expanded="True" />
+            <Node name="Model" expanded="True">
+              <Node name="Commands" expanded="True" />
             </Node>
-            <Node name="UI" expanded="True">
-              <Node name="DialogMappers" expanded="True" />
-            </Node>
+            <Node name="UI" expanded="True" />
             <Node name="ViewControllers" expanded="True" />
-            <Node name="MapViewController.cs" expanded="True" />
           </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
         <State expanded="True" selected="True" />
       </Pad>
     </Pads>
@@ -53,8 +44,17 @@
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="75" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" line="172" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/MapFlipViewController.cs" line="22" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/AppDelegate.cs" line="23" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/ViewControllers/MapKitViewController.cs" line="27" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.MonoQueue/MonoQueue/Data/Bootstrapper.cs" line="53" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteScheduledSessionsRepository.cs" line="52" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.MonoQueue/MonoQueue/MessageBus.cs" line="134" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.MonoQueue/MonoQueue/MessageBus.cs" line="133" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.MonoQueue/MonoQueue/MessageBus.cs" line="151" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Commands/AddSessionToRemoteScheduleCommand.cs" line="40" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Commands/RemoveSessionFromRemoteScheduleCommand.cs" line="25" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" line="279" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" line="237" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/ViewControllers/SessionDetailViewControllerBase.cs" line="177" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

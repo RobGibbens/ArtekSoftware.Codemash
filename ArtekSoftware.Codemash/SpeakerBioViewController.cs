@@ -5,16 +5,19 @@ using System.Linq;
 using Catnap;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
 	public partial class SpeakerBioViewController : UIViewController
 	{
 		private SpeakerEntity _speaker;
-
+		private INetworkStatusCheck _networkStatusCheck;
+		
 		public SpeakerBioViewController (SpeakerEntity speaker) : base ("SpeakerBioViewController", null)
 		{
 			_speaker = speaker;
+			_networkStatusCheck = new NetworkStatusCheck();
 		}
 		
 		public UIToolbar Toolbar {
@@ -44,7 +47,7 @@ namespace ArtekSoftware.Codemash
 			
 			if (this.speakerTwitterHandleButton != null && this.speakerTwitterHandleButton.TitleLabel != null && !string.IsNullOrWhiteSpace (this.speakerTwitterHandleButton.TitleLabel.Text)) {
 				
-				if (NetworkStatusCheck.IsReachable ()) {
+				if (_networkStatusCheck.IsReachable ()) {
 					var urlString = "http://mobile.twitter.com/" + this.speakerTwitterHandleButton.TitleLabel.Text.Replace ("@", "");
 					var url = new NSUrl (urlString);
 					UIApplication.SharedApplication.OpenUrl (url);
@@ -56,7 +59,7 @@ namespace ArtekSoftware.Codemash
 		{
 			if (this.speakerBlogButton != null && this.speakerBlogButton.TitleLabel != null && !string.IsNullOrWhiteSpace (this.speakerBlogButton.TitleLabel.Text)) {
 				
-				if (NetworkStatusCheck.IsReachable ()) {
+				if (_networkStatusCheck.IsReachable ()) {
 					var url = new NSUrl (this.speakerBlogButton.TitleLabel.Text);
 					UIApplication.SharedApplication.OpenUrl (url);
 				}

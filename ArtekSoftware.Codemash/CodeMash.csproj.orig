@@ -132,9 +132,6 @@
     <Reference Include="monotouch" />
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Data" />
-    <Reference Include="monotouch-localytics">
-      <HintPath>lib\monotouch-localytics.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -156,7 +153,6 @@
     <Compile Include="DetailViewController.designer.cs">
       <DependentUpon>DetailViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\TabBarController.cs" />
     <Compile Include="ViewControllers\DialogViewControllers\MapDialogViewController.cs" />
     <Compile Include="ViewControllers\DialogViewControllers\ScheduleDialogViewController.cs" />
     <Compile Include="ViewControllers\DialogViewControllers\SessionDialogViewController.cs" />
@@ -237,6 +233,12 @@
       <DependentUpon>iPhoneMapViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="MoveToLibrary\TestFlightProxy.cs" />
+<<<<<<< HEAD
+    <Compile Include="MoveToLibrary\PageSecurity.cs" />
+    <Compile Include="Model\Repositories\LocalSettingsRepository.cs" />
+    <Compile Include="Model\Entities\SettingsEntity.cs" />
+    <Compile Include="UI\iPadTabBarController.cs" />
+=======
     <Compile Include="ViewControllers\MapKitViewController.cs" />
     <Compile Include="ViewControllers\DialogViewControllers\MapKitDialogViewController.cs" />
     <Compile Include="ViewControllers\MapLocationViewController.cs" />
@@ -252,11 +254,7 @@
     <Compile Include="MapFlipLandscapeViewController.designer.cs">
       <DependentUpon>MapFlipLandscapeViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="MoveToLibrary\NetworkStatusCheck.cs" />
-    <Compile Include="Model\Commands\AddSessionToRemoteScheduleCommand.cs" />
-    <Compile Include="Model\Commands\RemoveSessionFromRemoteScheduleCommand.cs" />
-    <Compile Include="ViewControllers\SessionDetailViewControllerBase.cs" />
-    <Compile Include="UI\TechnologyImages.cs" />
+>>>>>>> develop
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="RootViewController.xib" />
@@ -280,7 +278,6 @@
     <Folder Include="ViewControllers\" />
     <Folder Include="ViewControllers\DialogViewControllers\" />
     <Folder Include="DefaultDatabase\" />
-    <Folder Include="Model\Commands\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\Profiles\abarylko.png" />
@@ -461,8 +458,12 @@
     <Content Include="Default-Portrait.png" />
     <Content Include="Default-Landscape.png" />
     <Content Include="images\FavoritedSession.png" />
+<<<<<<< HEAD
+    <Content Include="images\glyphicons_019_cogwheel.png" />
+=======
     <Content Include="images\iPhoneSpeakerTitleBackground2.png" />
     <Content Include="DefaultDatabase\codemash.db3" />
+>>>>>>> develop
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Catnap\Catnap.csproj">
@@ -476,10 +477,6 @@
     <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ArtekSoftware.MonoQueue\MonoQueue\MonoQueue.csproj">
-      <Project>{BF69FF23-6841-4762-957D-EE47376335BA}</Project>
-      <Name>MonoQueue</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

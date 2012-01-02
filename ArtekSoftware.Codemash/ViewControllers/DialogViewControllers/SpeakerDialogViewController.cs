@@ -4,6 +4,7 @@ using System.Linq;
 using MonoTouch.Dialog;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
@@ -12,9 +13,11 @@ namespace ArtekSoftware.Codemash
 		private IEnumerable<SpeakerEntity> _speakers;
 		private SpeakersDialogMapper _speakersDialogMapper;
 		private List<string> sectionTitles;
+		private INetworkStatusCheck _networkStatusCheck;
 		
 		public SpeakerDialogViewController () : base (null)
 		{
+			_networkStatusCheck = new NetworkStatusCheck();
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
 				this.Autorotate = false;
 			}
@@ -75,7 +78,7 @@ namespace ArtekSoftware.Codemash
 		
 		void LoadData (bool isRefresh)
 		{
-			_speakersDialogMapper = new SpeakersDialogMapper ();
+			_speakersDialogMapper = new SpeakersDialogMapper (_networkStatusCheck);
 			_speakers = _speakersDialogMapper.GetSpeakers (isRefresh:isRefresh);
 			sectionTitles = _speakers.Select (x => x.Name.Substring (0, 1)).Distinct ().OrderBy (x => x).ToList ();
 			this.Root = _speakersDialogMapper.GetSpeakerDialog (_speakers, sectionTitles);

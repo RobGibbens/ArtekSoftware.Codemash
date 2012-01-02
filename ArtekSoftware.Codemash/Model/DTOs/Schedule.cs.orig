@@ -1,0 +1,22 @@
+using System;
+
+namespace ArtekSoftware.Codemash
+{
+	public class Schedule
+	{
+		public Schedule ()
+		{
+			Id = Guid.NewGuid();
+		}
+		
+		public Guid Id { get; set; }
+
+		public string ConferenceName { get; set; }
+<<<<<<< HEAD
+		public string UserName {get;set;}
+		public List<string> SessionUris {get;set;}
+		//public string[] SessionURIs { get; set; } 
+=======
+>>>>>>> develop
+	}
+}

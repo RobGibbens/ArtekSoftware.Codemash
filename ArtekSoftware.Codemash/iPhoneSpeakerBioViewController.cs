@@ -6,20 +6,24 @@ using System.Linq;
 using Catnap;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
 	public partial class iPhoneSpeakerBioViewController : UIViewController
 	{
 		private SpeakerEntity _speaker;
-
+		private INetworkStatusCheck _networkStatusCheck;
+		
 		public iPhoneSpeakerBioViewController (SpeakerEntity speaker) : base ("iPhoneSpeakerBioViewController", null)
 		{
 			_speaker = speaker;
+			_networkStatusCheck = new NetworkStatusCheck();
 		}
 		
 		public iPhoneSpeakerBioViewController () : base ("iPhoneSpeakerBioViewController", null)
 		{
+			_networkStatusCheck = new NetworkStatusCheck();
 		}
 		
 		public override void DidReceiveMemoryWarning ()
@@ -56,7 +60,7 @@ namespace ArtekSoftware.Codemash
 		{
 			if (this.speakerTwitterButton != null && this.speakerTwitterButton.TitleLabel != null && !string.IsNullOrWhiteSpace (this.speakerTwitterButton.TitleLabel.Text)) {
 				
-				if (NetworkStatusCheck.IsReachable ()) {
+				if (_networkStatusCheck.IsReachable ()) {
 					var urlString = "http://mobile.twitter.com/" + this.speakerTwitterButton.TitleLabel.Text.Replace ("@", "");
 					var url = new NSUrl (urlString);
 					UIApplication.SharedApplication.OpenUrl (url);
@@ -68,7 +72,7 @@ namespace ArtekSoftware.Codemash
 		{
 			if (this.speakerBlogButton != null && this.speakerBlogButton.TitleLabel != null && !string.IsNullOrWhiteSpace (this.speakerBlogButton.TitleLabel.Text)) {
 				
-				if (NetworkStatusCheck.IsReachable ()) {
+				if (_networkStatusCheck.IsReachable ()) {
 					var url = new NSUrl (this.speakerBlogButton.TitleLabel.Text);
 					UIApplication.SharedApplication.OpenUrl (url);
 				}

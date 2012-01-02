@@ -3,6 +3,8 @@ using System.IO;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using Catnap;
+using MonoQueue;
+using Localytics;
 
 namespace ArtekSoftware.Codemash
 {
@@ -15,16 +17,44 @@ namespace ArtekSoftware.Codemash
 		private TabBarControllerBase _tabBarController;
 		public UINavigationController NavigationController;
 		
+		private static IMessageBus _messageBus;
+		
+		public static IMessageBus MessageBus
+		{
+			get
+			{
+//				if (_messageBus == null)
+//				{
+//					int checkPendingMessagesMilliseconds = 10000;
+//					ISerializer serializer = new Serializer ();
+//					INetworkStatusCheck networkStatusCheck = new NetworkStatusCheck();
+//					_messageBus = new MessageBus(networkStatusCheck, serializer, checkPendingMessagesMilliseconds);
+//				}
+				
+				return _messageBus;
+			}
+		}
+		
 		public TabBarControllerBase TabBar {
 			get { return _tabBarController; }
 			set { _tabBarController = value; }
 		}
 		
+		string YOUR_LOCALYTICS_APP_KEY = "db527378f483397d685863d-51e8089a-33ee-11e1-a1cc-008545fe83d2";
+		
+		public static void LogToAnalytics(string message)
+		{
+			Localytics.LocalyticsSession.SharedLocalyticsSession.TagEvent(message);
+			Localytics.LocalyticsSession.SharedLocalyticsSession.Upload();
+		}
+		
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{	
-			//StartGoogleAnalytics ();
+			Localytics.LocalyticsSession.SharedLocalyticsSession.StartSession(YOUR_LOCALYTICS_APP_KEY);
+			Localytics.LocalyticsSession.SharedLocalyticsSession.Open();
 			
-			//Console.WriteLine("AppDelegate.FinishedLaunching");
+			LogToAnalytics("App launched");
+			
 			CopyDb ();
 			
 			TestFlightProxy.TakeOff ("19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw");
@@ -33,6 +63,7 @@ namespace ArtekSoftware.Codemash
 			bootstrapper.Initialize ();				
 			
 			CurrentAppDelegate = this;
+			
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
@@ -60,6 +91,7 @@ namespace ArtekSoftware.Codemash
 			}
 
 			window.MakeKeyAndVisible ();
+			var bus = AppDelegate.MessageBus;
 			
 			return true;
 		}
@@ -80,20 +112,10 @@ namespace ArtekSoftware.Codemash
 				File.Copy (rootDbPath, db);
 			
 				TestFlightProxy.PassCheckpoint ("Copied default database");
+				LogToAnalytics("Copied default database");
 			} 
  
 		}
-
-//		void StartGoogleAnalytics ()
-//		{
-//			var tracker = GoogleAnalytics.GANTracker.SharedTracker;
-//			
-//			string googleAccountId = "UA-20184526-2";
-//			int googleDispatchPeriod = 10;
-//			GoogleAnalytics.GANTrackerDelegate ganDelegate = null;
-//			
-//			tracker.StartTracker (googleAccountId, googleDispatchPeriod, ganDelegate);
-//		}
 		
 		public void SetSession (SessionEntity session)
 		{
@@ -128,6 +150,8 @@ namespace ArtekSoftware.Codemash
 					rotatingSessionDetailViewController.PopOverController.Dismiss (true);
 				}
 			}
+			
+			LogToAnalytics("Viewed session " + session.URI);
 		}
 		
 		public void SetSpeaker (SpeakerEntity speaker)
@@ -149,9 +173,9 @@ namespace ArtekSoftware.Codemash
 					var splitDelegate = new SplitDelegate ();		
 					this.splitViewController.Delegate = splitDelegate;
 					this.splitViewController.ViewControllers = new UIViewController[] {
-					this.TabBar,
-					rotatingSpeakerBioViewController
-				};
+						this.TabBar,
+						rotatingSpeakerBioViewController
+					};
 			
 					if (rotatingSpeakerBioViewController.RootPopoverButtonItem != null) {
 						rotatingSpeakerBioViewController.ShowRootPopoverButtonItem (rotatingSpeakerBioViewController.RootPopoverButtonItem);
@@ -161,7 +185,11 @@ namespace ArtekSoftware.Codemash
 						rotatingSpeakerBioViewController.PopOverController.Dismiss (true);
 					}
 				}
+				
+				LogToAnalytics("Viewed speaker " + speaker.SpeakerURI);
+				
 			}
+			
 		}
 		
 		public void SetLocationMap ()
@@ -196,6 +224,7 @@ namespace ArtekSoftware.Codemash
 				
 			}
 			
+			LogToAnalytics("Viewed location map");
 		}
 		
 		public void SetMap ()
@@ -228,6 +257,38 @@ namespace ArtekSoftware.Codemash
 					mapViewController.PopOverController.Dismiss (true);
 				}
 			}
+			
+			LogToAnalytics("Viewed conference venue map");
 		}
+	
+	
+		public override void WillEnterForeground (UIApplication application)
+		{
+			Localytics.LocalyticsSession.SharedLocalyticsSession.Resume();
+			Localytics.LocalyticsSession.SharedLocalyticsSession.Upload();
+		}
+		
+		public override void DidEnterBackground (UIApplication application)
+		{
+			CloseLocalyticsSession();
+		}
+		
+		public override void WillTerminate (UIApplication application)
+		{
+			CloseLocalyticsSession();
+		}
+		
+		void CloseLocalyticsSession()
+		{
+			Localytics.LocalyticsSession.SharedLocalyticsSession.Close();
+			Localytics.LocalyticsSession.SharedLocalyticsSession.Upload();
+		}	
+	
 	}
+
+	/// EXTREMELY IMPORTANT: You must include a subclass of these classes
+	/// due to a known issue in MonoTouch as of 3.2.4.  The issue is expected
+	/// to be resolved in the next major release of MonoTouch.
+	class SubLocalyticsSession : LocalyticsSession {}
+	class SubUploaderThread : UploaderThread {}
 }

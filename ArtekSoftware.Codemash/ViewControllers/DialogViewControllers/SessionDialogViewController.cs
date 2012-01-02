@@ -4,6 +4,7 @@ using System.Linq;
 using MonoTouch.Dialog;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
@@ -11,9 +12,11 @@ namespace ArtekSoftware.Codemash
 	{
 		private IEnumerable<SessionEntity> _sessions;
 		private SessionsDialogMapper _sessionsDialogMapper;
+		private INetworkStatusCheck _networkStatusCheck;
 		
 		public SessionDialogViewController () : base(null)
 		{
+			_networkStatusCheck = new NetworkStatusCheck();
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
 				this.Autorotate = false;
 			}
@@ -38,7 +41,7 @@ namespace ArtekSoftware.Codemash
 			TestFlightProxy.PassCheckpoint ("SessionDialogViewController.LoadData - 1");
 			//Thread.Sleep (500);
 			
-			_sessionsDialogMapper = new SessionsDialogMapper ();
+			_sessionsDialogMapper = new SessionsDialogMapper (_networkStatusCheck);
 			TestFlightProxy.PassCheckpoint ("SessionDialogViewController.LoadData - 2");
 			//Thread.Sleep (500);
 			

@@ -1,0 +1,125 @@
+﻿<Properties GitUserInfo="UsingGIT">
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/UI/iPhoneTabBarController.cs">
+    <Files>
+      <File FileName="ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" Line="31" Column="29" />
+      <File FileName="ArtekSoftware.Codemash/UI/iPhoneTabBarController.cs" Line="104" Column="40" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" Line="90" Column="27" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" Line="227" Column="28" />
+      <File FileName="ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" Line="44" Column="36" />
+      <File FileName="ArtekSoftware.Codemash/Model/Repositories/RemoteScheduledSessionsRepository.cs" Line="62" Column="34" />
+      <File FileName="RestSharp/RestSharp/RestRequest.cs" Line="264" Column="8" />
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="AdHoc|iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/ViewControllers/MapKitViewController.cs">
+    <Files>
+      <File FileName="ArtekSoftware.Codemash/MapFlipViewController.cs" Line="15" Column="12" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/MapKitViewController.cs" Line="19" Column="3" />
+      <File FileName="ArtekSoftware.Codemash/MapFlipLandscapeViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/UI/SessionEventCell.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/UI/RotatingLocationMapViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/MapDialogViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/UI/DialogMappers/SessionsDialogMapper.cs" Line="1" Column="1" />
+      <File FileName="Catnap/Session.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneMapViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/iPhoneMapFlipViewController.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/MapLocationViewController.cs" Line="1" Column="1" />
+>>>>>>> develop
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="CodeMash" expanded="True">
+<<<<<<< HEAD
+            <Node name="Data" expanded="True" />
+            <Node name="DefaultDatabase" expanded="True">
+              <Option id="ShowVersionControlOverlays" value="True" />
+              <Option id="ShowAllFiles" value="True" />
+            </Node>
+            <Node name="Model" expanded="True">
+              <Node name="DTOs" expanded="True" />
+              <Node name="Entities" expanded="True" />
+              <Node name="Repositories" expanded="True" />
+            </Node>
+            <Node name="MoveToLibrary" expanded="True" />
+            <Node name="UI" expanded="True">
+              <Node name="DialogMappers" expanded="True" />
+              <Node name="iPhoneTabBarController.cs" selected="True" />
+            </Node>
+            <Node name="ViewControllers" expanded="True">
+              <Node name="DialogViewControllers" expanded="True" />
+            </Node>
+          </Node>
+          <Node name="MonoTouch.Dialog" expanded="True">
+            <Node name="Utilities" expanded="True" />
+=======
+            <Node name="DefaultDatabase" expanded="True">
+              <Node name="codemash.db3" selected="True" />
+            </Node>
+            <Node name="UI" expanded="True">
+              <Node name="DialogMappers" expanded="True" />
+            </Node>
+            <Node name="ViewControllers" expanded="True" />
+            <Node name="MapViewController.cs" expanded="True" />
+>>>>>>> develop
+          </Node>
+          <Node name="RestSharp.MonoTouch" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+<<<<<<< HEAD
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/MonoTouch.Dialog/Utilities/Controls.cs" line="93" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/Catnap/Session.cs" line="71" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="114" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="108" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="131" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" line="160" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SpeakerDialogViewController.cs" line="23" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/iPhoneTabBarController.cs" line="86" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/iPhoneTabBarController.cs" line="124" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Data/DatabaseMigrator.cs" line="21" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/MoveToLibrary/Bootstrapper.cs" line="98" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/MoveToLibrary/Bootstrapper.cs" line="23" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/iPhoneTabBarController.cs" line="134" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/iPhoneTabBarController.cs" line="147" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteScheduledSessionsRepository.cs" line="52" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" line="260" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" line="249" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" line="242" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/iPhoneSessionDetailViewController.cs" line="219" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteScheduledSessionsRepository.cs" line="62" />
+=======
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/MonoTouch.Dialog/Utilities/Controls.cs" line="93" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/Catnap/Session.cs" line="71" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="114" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="108" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="131" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SpeakerEventCell.cs" line="125" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="62" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="54" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="55" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="292" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="295" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="210" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="214" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/SessionEventCell.cs" line="75" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" line="172" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/MapFlipViewController.cs" line="22" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/AppDelegate.cs" line="23" />
+      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/ViewControllers/MapKitViewController.cs" line="27" />
+>>>>>>> develop
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.CodeMash>
+    <IPhoneTestFlightSettings_27CAdHoc ApiToken="28ea2cf46ef75d633a2bce49d2adbfb7_NzYwOA" TeamToken="19a8eedfedeed47cf1f6d74fd7ab561c_MTkxNDIwMTEtMDktMjkgMjE6MTc6MTAuNjM0NTAw" ReleaseNotes="Added location map" NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="CodeMashScheduler" />
+  </MonoDevelop.Ide.ItemProperties.CodeMash>
+</Properties>
