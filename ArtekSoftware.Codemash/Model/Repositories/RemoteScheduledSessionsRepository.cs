@@ -13,10 +13,12 @@ namespace ArtekSoftware.Codemash
 		
 		public Schedule GetSchedule (string userName)
 		{
+			ITestFlightProxy testFlight = new TestFlightProxy();
+			
 			Schedule schedule;
 			
 			if (_networkStatusCheck.IsReachable ()) {
-				TestFlightProxy.PassCheckpoint ("Started RemoteScheduledSessionsRepository.GetSchedule");
+				testFlight.PassCheckpoint ("Started RemoteScheduledSessionsRepository.GetSchedule");
 				var client = new RestClient ();
 				client.BaseUrl = "http://conference.apphb.com/api/schedule/";
 			
@@ -31,7 +33,7 @@ namespace ArtekSoftware.Codemash
 						schedule = response.Data;
 					}
 				}
-				TestFlightProxy.PassCheckpoint ("Finished RemoteScheduledSessionsRepository.GetSchedule");
+				testFlight.PassCheckpoint ("Finished RemoteScheduledSessionsRepository.GetSchedule");
 			
 				return schedule;
 			} else {
@@ -48,9 +50,10 @@ namespace ArtekSoftware.Codemash
 			//{userName}/{conferenceName}/Sessions/add
 			//ObjectContent<string> sessionUri, string userName, string conferenceName
 			//http://conference.apphb.com/
+			ITestFlightProxy testFlight = new TestFlightProxy();
 			
 			if (_networkStatusCheck.IsReachable ()) {
-				TestFlightProxy.PassCheckpoint ("Started RemoteScheduledSessionsRepository.Save");
+				testFlight.PassCheckpoint ("Started RemoteScheduledSessionsRepository.Save");
 				
 				var client = new RestClient ();
 				client.BaseUrl = "http://conference.apphb.com/api/schedule/";
@@ -64,7 +67,7 @@ namespace ArtekSoftware.Codemash
 				using (new NetworkIndicator()) {
 					var response = client.Execute<Schedule> (request);
 				}
-				TestFlightProxy.PassCheckpoint ("Finished RemoteScheduledSessionsRepository.Save");
+				testFlight.PassCheckpoint ("Finished RemoteScheduledSessionsRepository.Save");
 				
 			} else {
 			}

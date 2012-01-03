@@ -89,8 +89,10 @@ namespace ArtekSoftware.Codemash
 
 		void HandleHandleRefreshRequested (object sender, EventArgs e)
 		{
+			ITestFlightProxy testFlight = new TestFlightProxy();
+			
 			LoadData (isRefresh:true);
-			TestFlightProxy.PassCheckpoint ("Refreshed Speakers");
+			testFlight.PassCheckpoint ("Refreshed Speakers");
 			
 		}
 
@@ -113,9 +115,11 @@ namespace ArtekSoftware.Codemash
 			int selectedRow = CalculateSelectedRow(indexPath, this.TableView);
 			
 			SpeakerEntity speaker = _speakers.ToList () [selectedRow];
-			AppDelegate.CurrentAppDelegate.SetSpeaker (speaker);
+			AppDelegate.CurrentAppDelegate.Navigation.SetSpeaker (speaker);
 			
-			TestFlightProxy.PassCheckpoint("Selected Speaker");
+			ITestFlightProxy testFlight = new TestFlightProxy();
+			
+			testFlight.PassCheckpoint("Selected Speaker");
 			
 			base.Selected (indexPath);
 		}

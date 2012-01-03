@@ -9,26 +9,9 @@ using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
-	public class Bootstrapper
+	public class EntityMapper
 	{
-		public void Initialize ()
-		{
-			InitializeCatnap ();
-			MapEntities ();
-			CreateDatabase ();
-		}
-		
-		private void InitializeCatnap ()
-		{
-			var documents = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
-
-			string db = Path.Combine (documents, "codemash.db3");
-			TestFlightProxy.PassCheckpoint ("Initialized CatNap");
-			
-			Catnap.SessionFactory.Initialize ("Data Source=" + db, new SqliteAdapter (typeof(Mono.Data.Sqlite.SqliteConnection)));
-		}
-		
-		private void MapEntities ()
+		public void Mapper ()
 		{
 			var errorMessageEntity = new ErrorMessageEntity ();
 			var pendingMessageEntity = new PendingMessageEntity ();
@@ -96,13 +79,6 @@ namespace ArtekSoftware.Codemash
                     .Map (new ValuePropertyMap<PendingMessageEntity, int> (x => x.RetryCount))					
             );
 		}
-		
-		private void CreateDatabase ()
-		{
-			using (UnitOfWork.Start()) {
-				DatabaseMigrator.Execute ();
-			}
-		}
-
 	}
 }
+

@@ -230,7 +230,7 @@ namespace ArtekSoftware.Codemash
 		{
 			int selectedRow = CalculateSelectedRow (indexPath, tableView);
 			SessionEntity session = _sessions.ToList () [selectedRow];
-			AppDelegate.CurrentAppDelegate.SetSession (session);
+			AppDelegate.CurrentAppDelegate.Navigation.SetSession (session);
 		}
 		
 		private int CalculateSelectedRow (NSIndexPath indexPath, UITableView tableView)

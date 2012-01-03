@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EB337F32-D077-4EB8-B100-F19039CC1F75}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ArtekSoftware.Codemash.Tests</RootNamespace>
+    <AssemblyName>ArtekSoftware.Codemash.Tests</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ReleaseVersion>0.25</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Should">
+      <HintPath>..\packages\Should.1.1.12.0\lib\Should.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>bin\Debug\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="monotouch">
+      <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\monotouch.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\System.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\System.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\System.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>lib\Moq.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AddSessionToRemoteScheduleCommandTests.cs" />
+    <Compile Include="Fakes\RestClient\RestClientOk.cs" />
+    <Compile Include="Fakes\NetworkStatusCheck\NetworkStatusCheckOnline.cs" />
+    <Compile Include="Fakes\NetworkStatusCheck\NetworkStatusCheckOffline.cs" />
+    <Compile Include="Fakes\TestFlight\TestFlightProxyConsole.cs" />
+    <Compile Include="Fakes\RestClient\RestClientServiceUnavailable.cs" />
+    <Compile Include="NetworkStatusCheckTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ArtekSoftware.MonoQueue\MonoQueue\MonoQueue.csproj">
+      <Project>{BF69FF23-6841-4762-957D-EE47376335BA}</Project>
+      <Name>MonoQueue</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
+      <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
+      <Name>RestSharp.MonoTouch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArtekSoftware.Codemash\CodeMash.csproj">
+      <Project>{827472B0-BD73-4BCF-BE8D-D0346D43212F}</Project>
+      <Name>CodeMash</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Folder Include="Fakes\" />
+    <Folder Include="Fakes\RestClient\" />
+    <Folder Include="Fakes\NetworkStatusCheck\" />
+    <Folder Include="Fakes\TestFlight\" />
+  </ItemGroup>
+</Project>

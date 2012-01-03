@@ -7,13 +7,19 @@ namespace ArtekSoftware.Codemash
 	{
 		public NetworkIndicator ()
 		{
-			UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
+			if (UIApplication.SharedApplication !=  null)
+			{
+				UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
+			}
 		}
 
 		public void Dispose ()
 		{
-			UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
-			GC.SuppressFinalize (this);
+			if (UIApplication.SharedApplication !=  null)
+			{
+				UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
+				GC.SuppressFinalize (this);
+			}
 		}
 	}
 }

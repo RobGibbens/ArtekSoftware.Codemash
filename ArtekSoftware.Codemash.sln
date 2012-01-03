@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoQueue", "..\ArtekSoftwa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoQueue.Tests", "..\ArtekSoftware.MonoQueue\MonoQueue.Tests\MonoQueue.Tests.csproj", "{EB337F32-D077-4EB8-B100-F19039CC1F75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Codemash.Tests", "ArtekSoftware.Codemash.Tests\ArtekSoftware.Codemash.Tests.csproj", "{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -66,6 +68,20 @@ Global
 		{BF69FF23-6841-4762-957D-EE47376335BA}.Release|iPhone.Build.0 = Release|Any CPU
 		{BF69FF23-6841-4762-957D-EE47376335BA}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{BF69FF23-6841-4762-957D-EE47376335BA}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.AdHoc|iPhone.ActiveCfg = Debug|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.AdHoc|iPhone.Build.0 = Debug|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.AdHoc|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.AdHoc|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.AppStore|iPhone.Build.0 = Debug|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.Release|iPhone.Build.0 = Release|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{CD12B13B-58CE-40FD-97F3-7DCC5DC0394A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.AdHoc|iPhone.ActiveCfg = Release|Any CPU
 		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.AdHoc|iPhone.Build.0 = Release|Any CPU
 		{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}.AdHoc|iPhoneSimulator.ActiveCfg = Debug|Any CPU

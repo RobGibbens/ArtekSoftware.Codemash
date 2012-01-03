@@ -22,8 +22,10 @@ namespace ArtekSoftware.Codemash
 		
 		public override void Execute ()
 		{
+			ITestFlightProxy testFlight = new TestFlightProxy();
+			
 			if (_networkStatusCheck.IsReachable ()) {
-				TestFlightProxy.PassCheckpoint ("Started RemoveSessionFromRemoteScheduleCommand.Execute");
+				testFlight.PassCheckpoint ("Started RemoveSessionFromRemoteScheduleCommand.Execute");
 				
 				var client = new RestClient ();
 				client.BaseUrl = "http://conference.apphb.com/api/schedule";
@@ -44,7 +46,7 @@ namespace ArtekSoftware.Codemash
 					}
 				}
 				
-				TestFlightProxy.PassCheckpoint ("Finished AddSessionToRemoteScheduleCommand.Execute");
+				testFlight.PassCheckpoint ("Finished AddSessionToRemoteScheduleCommand.Execute");
 				
 			}
 		}

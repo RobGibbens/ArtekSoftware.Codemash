@@ -169,7 +169,7 @@ namespace ArtekSoftware.Codemash
 		void HandleUserSelected (object sender, EventArgs e)
 		{
 			var user = btnTitle.Title (UIControlState.Normal);
-			AppDelegate.CurrentAppDelegate.SetSpeaker (_speaker);
+			AppDelegate.CurrentAppDelegate.Navigation.SetSpeaker (_speaker);
 		}
 
 		public override void SetNeedsLayout ()

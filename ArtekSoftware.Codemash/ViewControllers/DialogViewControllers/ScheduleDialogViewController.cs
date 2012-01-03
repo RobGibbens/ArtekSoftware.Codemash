@@ -48,7 +48,9 @@ namespace ArtekSoftware.Codemash
 			//queueSync.Sync();
 			//var sessions = _sessionsDialogMapper.GetScheduledSessions(isRefresh:true);
 			LoadData ();
-			TestFlightProxy.PassCheckpoint ("Refreshed Scheduled Sessions");
+			ITestFlightProxy testFlight = new TestFlightProxy();
+			
+			testFlight.PassCheckpoint ("Refreshed Scheduled Sessions");
 			
 		}
 		
@@ -77,7 +79,7 @@ namespace ArtekSoftware.Codemash
 		{
 			int selectedRow = CalculateSelectedRow (indexPath, this.TableView);
 			ScheduledSessionEntity session = _sessions.ToList () [selectedRow];
-			AppDelegate.CurrentAppDelegate.SetSession (session);
+			AppDelegate.CurrentAppDelegate.Navigation.SetSession (session);
 			
 			base.Selected (indexPath);
 		}

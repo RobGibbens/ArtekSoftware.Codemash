@@ -22,6 +22,10 @@ namespace ArtekSoftware.Codemash
 	
 		public bool IsReachable (string host)
 		{ 
+			if (host != null && host.ToLower ().StartsWith("http://"))
+			{
+				host = host.ToLower ().Replace ("http://", "");
+			}
 			return Reachability.InternetConnectionStatus () != NetworkStatus.NotReachable && Reachability.IsHostReachable (host); 
 		}
 

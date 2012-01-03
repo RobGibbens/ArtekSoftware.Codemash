@@ -185,7 +185,7 @@ namespace ArtekSoftware.Codemash
 		void HandleUserSelected (object sender, EventArgs e)
 		{
 			var user = btnTitle.Title (UIControlState.Normal);
-			AppDelegate.CurrentAppDelegate.SetSession (_session);
+			AppDelegate.CurrentAppDelegate.Navigation.SetSession (_session);
 		}
 
 		public override void SetNeedsLayout ()

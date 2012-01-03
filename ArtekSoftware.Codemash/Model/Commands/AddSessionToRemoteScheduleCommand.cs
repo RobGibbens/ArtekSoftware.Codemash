@@ -14,19 +14,23 @@ namespace ArtekSoftware.Codemash
 		public int ScheduleId { get; set; }
 		private Uri Endpoint { get; set; }
 		private INetworkStatusCheck _networkStatusCheck;
+		private ITestFlightProxy _testFlight;
+		private IRestClient _restClient;
 		
-		public AddSessionToRemoteScheduleCommand (INetworkStatusCheck networkStatusCheck)
+		public AddSessionToRemoteScheduleCommand (INetworkStatusCheck networkStatusCheck, ITestFlightProxy testFlight, IRestClient restClient)
 		{
 			_networkStatusCheck = networkStatusCheck;
+			_testFlight = testFlight;
+			_restClient = restClient;
 		}
 		
 		public override void Execute ()
 		{
 			if (_networkStatusCheck.IsReachable ()) {
-				TestFlightProxy.PassCheckpoint ("Started RemoteScheduledSessionsRepository.Save");
+				_testFlight.PassCheckpoint ("Started RemoteScheduledSessionsRepository.Save");
 				
-				var client = new RestClient ();
-				client.BaseUrl = "http://conference.apphb.com/api/schedule";
+				//var client = new RestClient ();
+				_restClient.BaseUrl = "http://conference.apphb.com/api/schedule";
 			
 				var request = new RestRequest ("{userName}/{conferenceName}/Sessions/add", Method.POST);
 				request.AddParameter(new Parameter() { Name = "userName", Type = ParameterType.UrlSegment, Value = "RobGibbens"  }); //TODO : Get username
@@ -37,14 +41,14 @@ namespace ArtekSoftware.Codemash
 				request.RequestFormat = DataFormat.Json;
 				
 				using (new NetworkIndicator()) {
-					var response = client.Execute (request);
+					var response = _restClient.Execute (request);
 					if (response.StatusCode != System.Net.HttpStatusCode.OK)
 					{
 						throw new ApplicationException("Error sending AddSessionToRemoteScheduleCommand - " + this.SessionUri);
 					}
 				}
 				
-				TestFlightProxy.PassCheckpoint ("Finished AddSessionToRemoteScheduleCommand.Execute");
+				_testFlight.PassCheckpoint ("Finished AddSessionToRemoteScheduleCommand.Execute");
 				
 			}
 		}

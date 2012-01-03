@@ -185,7 +185,7 @@ namespace ArtekSoftware.Codemash
 				}
 			}
 			
-			AppDelegate.CurrentAppDelegate.SetSpeaker (speaker);
+			AppDelegate.CurrentAppDelegate.Navigation.SetSpeaker (speaker);
 		}
 		
 		protected void HandleSessionAddToScheduleButtonhandleTouchUpInside (object sender, EventArgs e)
@@ -221,7 +221,7 @@ namespace ArtekSoftware.Codemash
 						
 						AddToQueue (scheduledSession);
 						
-						AppDelegate.LogToAnalytics("Added session to schedule " + _session.URI);
+						AppDelegate.CurrentAppDelegate.Analytics.Log("Added session to schedule " + _session.URI);
 					}
 				}
 			} else {
@@ -238,7 +238,7 @@ namespace ArtekSoftware.Codemash
 					scheduleController.LoadData ();
 				}
 				RemoveNotification (_session);
-				AppDelegate.LogToAnalytics("Removed session from schedule " + _session.URI);
+				AppDelegate.CurrentAppDelegate.Analytics.Log ("Removed session from schedule " + _session.URI);
 				
 			}
 			
@@ -360,14 +360,9 @@ namespace ArtekSoftware.Codemash
 			}		
 		}
 
-		//TODO : This isn't on iPad
-		string imgurl;
-
-		//TODO : This isn't on iPad
 		public void SetLocalImage (string url)
 		{
 			if (!string.IsNullOrEmpty (url)) {
-				this.imgurl = url;
 				var imageBackground = new Uri ("file://" + Path.GetFullPath (url));
 				var image = ImageLoader.DefaultRequestImage (imageBackground, null);
 				
