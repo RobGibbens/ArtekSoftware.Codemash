@@ -18,8 +18,10 @@ namespace ArtekSoftware.Codemash
 		
 		private IList<Session> GetRegularSessions ()
 		{
+			ITestFlightProxy testFlight = new TestFlightProxy();
+			
 			IList<Session> sessions;
-			TestFlightProxy.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
+			testFlight.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
 			
 			var client = new RestClient ();
 			client.BaseUrl = "http://codemash.org";
@@ -39,15 +41,17 @@ namespace ArtekSoftware.Codemash
 				session.Title = session.Title.Trim ();
 			}
 				
-			TestFlightProxy.PassCheckpoint ("Finished RemoteSessionsRepository.GetSessions");
+			testFlight.PassCheckpoint ("Finished RemoteSessionsRepository.GetSessions");
 			
 			return sessions;
 		}
 		
 		private IList<Session> GetPrecompilerSessions ()
 		{
+			ITestFlightProxy testFlight = new TestFlightProxy();
+			
 			IList<Session> sessions;
-			TestFlightProxy.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
+			testFlight.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
 			
 			var client = new RestClient ();
 			client.BaseUrl = "http://codemash.org";
@@ -67,7 +71,7 @@ namespace ArtekSoftware.Codemash
 				session.Title = session.Title.Trim ();
 			}
 				
-			TestFlightProxy.PassCheckpoint ("Finished RemoteSessionsRepository.GetSessions");
+			testFlight.PassCheckpoint ("Finished RemoteSessionsRepository.GetSessions");
 			
 			return sessions;
 		}		

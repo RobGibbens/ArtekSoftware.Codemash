@@ -4,6 +4,7 @@ using System.Linq;
 using MonoTouch.Dialog;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
@@ -11,9 +12,11 @@ namespace ArtekSoftware.Codemash
 	{
 		private IEnumerable<SessionEntity> _sessions;
 		private SessionsDialogMapper _sessionsDialogMapper;
+		private INetworkStatusCheck _networkStatusCheck;
 		
 		public SessionDialogViewController () : base(null)
 		{
+			_networkStatusCheck = new NetworkStatusCheck();
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
 				this.Autorotate = false;
 			}
@@ -34,34 +37,34 @@ namespace ArtekSoftware.Codemash
 		
 		void LoadData (bool isRefresh)
 		{
+			ITestFlightProxy testFlight = new TestFlightProxy();
 			
-			TestFlightProxy.PassCheckpoint ("SessionDialogViewController.LoadData - 1");
+			testFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 1");
 			//Thread.Sleep (500);
 			
-			_sessionsDialogMapper = new SessionsDialogMapper ();
-			TestFlightProxy.PassCheckpoint ("SessionDialogViewController.LoadData - 2");
+			_sessionsDialogMapper = new SessionsDialogMapper (_networkStatusCheck);
+			testFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 2");
 			//Thread.Sleep (500);
 			
 			_sessions = _sessionsDialogMapper.GetSessions (isRefresh:isRefresh);
-			TestFlightProxy.PassCheckpoint ("SessionDialogViewController.LoadData - 3");
+			testFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 3");
 			//Thread.Sleep (1000);
 			
 			_sessions = _sessions.OrderBy (x => x.StartDate);
-			TestFlightProxy.PassCheckpoint ("SessionDialogViewController.LoadData - 4");
+			testFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 4");
 			//Thread.Sleep (500);
 			
 			//this.Root = null;
 			this.Root = _sessionsDialogMapper.GetSessionDialog (_sessions);
-			TestFlightProxy.PassCheckpoint ("SessionDialogViewController.LoadData - 5");
+			testFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 5");
 			//Thread.Sleep (500);
 			
-			
 			this.ReloadData ();
-			TestFlightProxy.PassCheckpoint ("SessionDialogViewController.LoadData - 6");
+			testFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 6");
 			//Thread.Sleep (500);
 			
 			this.ReloadComplete ();
-			TestFlightProxy.PassCheckpoint ("SessionDialogViewController.LoadData - 7");
+			testFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 7");
 			//Thread.Sleep (500);
 			
 		}
@@ -80,10 +83,12 @@ namespace ArtekSoftware.Codemash
 		
 		void HandleHandleRefreshRequested (object sender, EventArgs e)
 		{
-			TestFlightProxy.PassCheckpoint ("SessionDialogViewController.HandleRefreshRequested - 1");
+			ITestFlightProxy testFlight = new TestFlightProxy();
+			
+			testFlight.PassCheckpoint ("SessionDialogViewController.HandleRefreshRequested - 1");
 			LoadData (isRefresh:true);
-			TestFlightProxy.PassCheckpoint ("SessionDialogViewController.HandleRefreshRequested - 2");
-			TestFlightProxy.PassCheckpoint ("Refreshed Sessions");
+			testFlight.PassCheckpoint ("SessionDialogViewController.HandleRefreshRequested - 2");
+			testFlight.PassCheckpoint ("Refreshed Sessions");
 			
 		}
 		
@@ -107,7 +112,7 @@ namespace ArtekSoftware.Codemash
 
 			SessionEntity session = _sessions.ToList () [selectedRow];
 			
-			AppDelegate.CurrentAppDelegate.SetSession (session);
+			AppDelegate.CurrentAppDelegate.Navigation.SetSession (session);
 			
 			base.Selected (indexPath);
 		}

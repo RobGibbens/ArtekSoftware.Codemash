@@ -55,42 +55,44 @@ namespace ArtekSoftware.Codemash
 		
 		public void ShowRootPopoverButtonItem (UIBarButtonItem barButtonItem)
 		{
-			TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 1");
+			ITestFlightProxy testFlight = new TestFlightProxy();
+			
+			testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 1");
 			
 			toolbar = ((IMapFlipPadViewController)this.PortraitViewController).Toolbar;
-			TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 2");
+			testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 2");
 			
 			toolbar.BackgroundColor = UIColor.FromPatternImage (UIImage.FromFile ("images/SessionsHeader3.png"));
-			TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 3");
+			testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 3");
 			
 			
 			if (toolbar != null) {
-				TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 4");
+				testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 4");
 			
 				var itemsArray = this.toolbar.Items.ToList ();
-				TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 5");
+				testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 5");
 				
 				if (itemsArray.Count == 0) {
-					TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 6");
+					testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 6");
 					//Console.WriteLine("RotatingLocationMapViewController.RootPopoverButtonItem - itemsArray.Count == 0");
 					itemsArray.Insert (0, barButtonItem);
-					TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 7");
+					testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 7");
 				} else {
-					TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 8");
+					testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 8");
 					//Console.WriteLine("RotatingLocationMapViewController.RootPopoverButtonItem - itemsArray.Count <> 0");
 					itemsArray [0] = barButtonItem;
-					TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 9");
+					testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 9");
 				}
 				//[itemsArray insertObject:barButtonItem atIndex:0];
-				TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 10");
+				testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 10");
       
 				this.toolbar.SetItems (itemsArray.ToArray (), false);
-				TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 11");
+				testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 11");
 				
 				//[toolbar setItems:itemsArray animated:NO];
       
 				itemsArray = null;
-				TestFlightProxy.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 12");
+				testFlight.PassCheckpoint ("RotatingLocationMapViewController.ShowRootPopoverButtonItem - 12");
 				
 				//[itemsArray release];
 			}

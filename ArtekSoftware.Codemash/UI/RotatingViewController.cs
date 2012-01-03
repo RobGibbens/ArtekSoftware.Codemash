@@ -44,7 +44,7 @@ namespace ArtekSoftware.Codemash
 				_showView (this.LandscapeRightViewController.View);
 			}
 		}
-
+		
 		private void _showView (UIView view)
 		{
 			//Console.WriteLine ("RotatingViewController._showView - view is null " + (view == null).ToString());

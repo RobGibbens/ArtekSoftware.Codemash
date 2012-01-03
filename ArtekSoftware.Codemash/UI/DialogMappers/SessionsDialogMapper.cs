@@ -4,11 +4,19 @@ using System.Linq;
 using System.Threading;
 using Catnap;
 using MonoTouch.Dialog;
+using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
 	public class SessionsDialogMapper
 	{
+		private INetworkStatusCheck _networkStatusCheck;
+
+		public SessionsDialogMapper (INetworkStatusCheck networkStatusCheck)
+		{
+			_networkStatusCheck = networkStatusCheck;
+		}
+
 		public IEnumerable<SessionEntity> GetSessions (bool isRefresh)
 		{
 			IEnumerable<SessionEntity> sessions = null;
@@ -20,7 +28,7 @@ namespace ArtekSoftware.Codemash
 			
 				if (sessionCount == 0 || isRefresh) {
 
-					if (NetworkStatusCheck.IsReachable ()) {
+					if (_networkStatusCheck.IsReachable ()) {
 						var remoteRepository = new RemoteSessionsRepository ();
 						IList<Session> sessionDtos = remoteRepository.GetSessions ();
 						var cacheRepository = new SessionsCacheRepository ();
@@ -40,7 +48,7 @@ namespace ArtekSoftware.Codemash
 					int sessionCount = localRepository.Count ();
 			
 					if (sessionCount == 0 || isRefresh) {
-						if (NetworkStatusCheck.IsReachable ()) {
+						if (_networkStatusCheck.IsReachable ()) {
 							var remoteRepository = new RemoteSessionsRepository ();
 							sessionDtos = remoteRepository.GetSessions ();
 							shouldCache = true;
@@ -73,7 +81,7 @@ namespace ArtekSoftware.Codemash
 		        group session by (session.StartDate) into sessionGroup
 		        select new { 
 							StartDate = sessionGroup.Key, 
-				           	SectionName = sessionGroup.Key.DayOfWeek + " " + sessionGroup.Key.ToString("h:mm tt"),
+				           	SectionName = sessionGroup.Key.DayOfWeek + " " + sessionGroup.Key.ToString ("h:mm tt"),
 							Sessions = sessionGroup 
 							}
 					).
@@ -81,12 +89,9 @@ namespace ArtekSoftware.Codemash
 
 			foreach (var sessionGroup in query) {
 				string sectionTitle;
-				if (sessionGroup.SectionName == "Monday 12:00 AM")
-				{
+				if (sessionGroup.SectionName == "Monday 12:00 AM") {
 					sectionTitle = "Time Not Posted - Refresh";
-				}
-				else
-				{
+				} else {
 					sectionTitle = sessionGroup.SectionName.ToString ();
 				}
 				

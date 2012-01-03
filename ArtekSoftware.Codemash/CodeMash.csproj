@@ -132,6 +132,9 @@
     <Reference Include="monotouch" />
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Data" />
+    <Reference Include="monotouch-localytics">
+      <HintPath>lib\monotouch-localytics.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -189,11 +192,7 @@
     <Compile Include="UI\RotatingViewController.cs" />
     <Compile Include="UI\SessionEventCell.cs" />
     <Compile Include="UI\SpeakerEventCell.cs" />
-    <Compile Include="MoveToLibrary\Bootstrapper.cs" />
-    <Compile Include="MoveToLibrary\ModalHelper.cs" />
-    <Compile Include="MoveToLibrary\QueueSync.cs" />
     <Compile Include="MoveToLibrary\Reachability.cs" />
-    <Compile Include="MoveToLibrary\UrlConnection.cs" />
     <Compile Include="SessionDetailLandscapeViewController.cs" />
     <Compile Include="SessionDetailLandscapeViewController.designer.cs">
       <DependentUpon>SessionDetailLandscapeViewController.cs</DependentUpon>
@@ -235,7 +234,6 @@
     </Compile>
     <Compile Include="MoveToLibrary\TestFlightProxy.cs" />
     <Compile Include="ViewControllers\MapKitViewController.cs" />
-    <Compile Include="ViewControllers\DialogViewControllers\MapKitDialogViewController.cs" />
     <Compile Include="ViewControllers\MapLocationViewController.cs" />
     <Compile Include="MoveToLibrary\MapHelper.cs" />
     <Compile Include="ViewControllers\iPhoneMapFlipViewController.cs" />
@@ -249,6 +247,21 @@
     <Compile Include="MapFlipLandscapeViewController.designer.cs">
       <DependentUpon>MapFlipLandscapeViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoveToLibrary\NetworkStatusCheck.cs" />
+    <Compile Include="Model\Commands\AddSessionToRemoteScheduleCommand.cs" />
+    <Compile Include="Model\Commands\RemoveSessionFromRemoteScheduleCommand.cs" />
+    <Compile Include="ViewControllers\SessionDetailViewControllerBase.cs" />
+    <Compile Include="UI\TechnologyImages.cs" />
+    <Compile Include="UI\ModalHelper.cs" />
+    <Compile Include="MoveToLibrary\CatnapBoostrapper.cs" />
+    <Compile Include="MoveToLibrary\EntityMapper.cs" />
+    <Compile Include="MoveToLibrary\DatabaseMigrationBootstrapper.cs" />
+    <Compile Include="MoveToLibrary\INavigation.cs" />
+    <Compile Include="UI\Navigation.cs" />
+    <Compile Include="MoveToLibrary\IAnalytics.cs" />
+    <Compile Include="MoveToLibrary\LocalyticsAnalytics.cs" />
+    <Compile Include="MoveToLibrary\IDefaultDatabaseManager.cs" />
+    <Compile Include="MoveToLibrary\DefaultDatabaseManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="RootViewController.xib" />
@@ -272,6 +285,7 @@
     <Folder Include="ViewControllers\" />
     <Folder Include="ViewControllers\DialogViewControllers\" />
     <Folder Include="DefaultDatabase\" />
+    <Folder Include="Model\Commands\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\Profiles\abarylko.png" />
@@ -467,6 +481,10 @@
     <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ArtekSoftware.MonoQueue\MonoQueue\MonoQueue.csproj">
+      <Project>{BF69FF23-6841-4762-957D-EE47376335BA}</Project>
+      <Name>MonoQueue</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

@@ -89,42 +89,44 @@ namespace ArtekSoftware.Codemash
 
 		public void ShowRootPopoverButtonItem (UIBarButtonItem barButtonItem)
 		{
-			TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 1");
+			ITestFlightProxy testFlight = new TestFlightProxy();
+			
+			testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 1");
 			
 			toolbar = ((SessionDetailViewController)this.PortraitViewController).Toolbar;
-			TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 2");
+			testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 2");
 			
 			toolbar.BackgroundColor = UIColor.FromPatternImage (UIImage.FromFile ("images/SessionsHeader3.png"));
-			TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 3");
+			testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 3");
 			
 			
 			if (toolbar != null) {
-				TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 4");
+				testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 4");
 			
 				var itemsArray = this.toolbar.Items.ToList ();
-				TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 5");
+				testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 5");
 				
 				if (itemsArray.Count == 0) {
-					TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 6");
+					testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 6");
 					//Console.WriteLine("RotatingSessionDetailViewController.RootPopoverButtonItem - itemsArray.Count == 0");
 					itemsArray.Insert (0, barButtonItem);
-					TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 7");
+					testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 7");
 				} else {
-					TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 8");
+					testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 8");
 					//Console.WriteLine("RotatingSessionDetailViewController.RootPopoverButtonItem - itemsArray.Count <> 0");
 					itemsArray [0] = barButtonItem;
-					TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 9");
+					testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 9");
 				}
 				//[itemsArray insertObject:barButtonItem atIndex:0];
-				TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 10");
+				testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 10");
       
 				this.toolbar.SetItems (itemsArray.ToArray (), false);
-				TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 11");
+				testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 11");
 				
 				//[toolbar setItems:itemsArray animated:NO];
       
 				itemsArray = null;
-				TestFlightProxy.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 12");
+				testFlight.PassCheckpoint ("RotatingSessionDetailViewController.ShowRootPopoverButtonItem - 12");
 				
 				//[itemsArray release];
 			}

@@ -3,50 +3,9 @@ using System.Net;
 using MonoTouch.CoreFoundation;
 using MonoTouch.Foundation;
 using MonoTouch.SystemConfiguration;
+using ArtekSoftware.Codemash;
 
-public enum NetworkStatus
-{
-	NotReachable,
-	ReachableViaCarrierDataNetwork,
-	ReachableViaWiFiNetwork
-}
 
-public class NetworkStatusCheck
-{
-	public static bool IsReachable()
-	{
-		return IsReachable("codemash.org");
-	}
-	
-	public static bool IsReachable (string host)
-	{ 
-		return Reachability.InternetConnectionStatus () != NetworkStatus.NotReachable && Reachability.IsHostReachable (host); 
-	}
-	
-//	public bool IsOnline ()
-//	{
-//		ReachabilityStatus status = new ReachabilityStatus ();
-//		Thread thread = new Thread (ThreadedIsOnline);
-//		thread.IsBackground = true;
-//		thread.Start (status);
-//
-//		bool terminated = thread.Join (2000);
-//
-//		return terminated && status.IsOnline;
-//	}
-
-	private void ThreadedIsOnline (object state)
-	{
-		using (NSAutoreleasePool pool = new NSAutoreleasePool()) {
-			((ReachabilityStatus)state).IsOnline = Reachability.RemoteHostStatus () != NetworkStatus.NotReachable;
-		}
-	}
-
-	private class ReachabilityStatus
-	{
-		public bool IsOnline;
-	}	
-}
 
 public static class Reachability
 {

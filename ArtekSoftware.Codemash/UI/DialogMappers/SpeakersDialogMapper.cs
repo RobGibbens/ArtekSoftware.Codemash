@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using Catnap;
 using MonoTouch.Dialog;
+using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
 	public class SpeakersDialogMapper
 	{
+		private INetworkStatusCheck _networkStatusCheck;
+
+		public SpeakersDialogMapper (INetworkStatusCheck networkStatusCheck)
+		{
+			_networkStatusCheck = networkStatusCheck;
+		}		
+		
 		public IEnumerable<SpeakerEntity> GetSpeakers (bool isRefresh)
 		{
 			IEnumerable<SpeakerEntity> speakers = null;
@@ -18,7 +26,7 @@ namespace ArtekSoftware.Codemash
 			
 				if (speakerCount == 0 || isRefresh) {
 					
-					if (NetworkStatusCheck.IsReachable ()) {
+					if (_networkStatusCheck.IsReachable ()) {
 						var remoteRepository = new RemoteSpeakersRepository ();
 						IList<Speaker> speakerDtos = remoteRepository.GetSpeakers ();
 						var cache = new SpeakersCacheRepository ();
@@ -40,7 +48,7 @@ namespace ArtekSoftware.Codemash
 			
 					if (speakerCount == 0 || isRefresh) {
 						
-						if (NetworkStatusCheck.IsReachable ()) {
+						if (_networkStatusCheck.IsReachable ()) {
 							var remoteRepository = new RemoteSpeakersRepository ();
 							speakerDtos = remoteRepository.GetSpeakers ();
 							shouldCache = true;

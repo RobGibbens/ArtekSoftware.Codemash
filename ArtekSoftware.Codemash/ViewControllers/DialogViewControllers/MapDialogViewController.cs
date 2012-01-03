@@ -49,11 +49,11 @@ namespace ArtekSoftware.Codemash
 		{
 			if (indexPath.Row == 0)
 			{
-				AppDelegate.CurrentAppDelegate.SetMap();
+				AppDelegate.CurrentAppDelegate.Navigation.SetMap();
 			}
 			else if (indexPath.Row == 1)
 			{
-				AppDelegate.CurrentAppDelegate.SetLocationMap();
+				AppDelegate.CurrentAppDelegate.Navigation.SetLocationMap();
 			}
 			base.Selected (indexPath);
 		}

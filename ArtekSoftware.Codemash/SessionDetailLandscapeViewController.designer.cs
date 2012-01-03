@@ -12,10 +12,13 @@ namespace ArtekSoftware.Codemash
 	partial class SessionDetailLandscapeViewController
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIScrollView scrollView { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UILabel tweetThisLabel { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton addToScheduleImage { get; set; }
+		MonoTouch.UIKit.UIButton btnAddToSchedule { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel addToScheduleLabel { get; set; }
@@ -27,7 +30,7 @@ namespace ArtekSoftware.Codemash
 		MonoTouch.UIKit.UIButton btnTweetThis { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton sessionSpeakerNameLabel { get; set; }
+		MonoTouch.UIKit.UIButton sessionSpeakerNameButton { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel sessionTitleLabel { get; set; }
