@@ -1,6 +1,6 @@
 using System;
 using MonoTouch.Foundation;
-using MonoQueue;
+////using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
@@ -11,7 +11,12 @@ namespace ArtekSoftware.Codemash
 		ReachableViaCarrierDataNetwork,
 		ReachableViaWiFiNetwork
 	}
-
+	
+	public interface INetworkStatusCheck
+	{
+		bool IsReachable();
+		bool IsReachable(string host);
+	}
 	[Serializable]
 	public class NetworkStatusCheck : INetworkStatusCheck
 	{

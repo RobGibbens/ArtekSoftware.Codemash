@@ -77,10 +77,6 @@
     <Compile Include="NetworkStatusCheckTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ArtekSoftware.MonoQueue\MonoQueue\MonoQueue.csproj">
-      <Project>{BF69FF23-6841-4762-957D-EE47376335BA}</Project>
-      <Name>MonoQueue</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
