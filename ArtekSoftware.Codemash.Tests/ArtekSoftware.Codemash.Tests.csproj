@@ -38,9 +38,6 @@
     <Reference Include="mscorlib">
       <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\mscorlib.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>bin\Debug\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\Mono.Data.Sqlite.dll</HintPath>
     </Reference>
@@ -65,6 +62,9 @@
     <Reference Include="Moq">
       <HintPath>lib\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>lib\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,13 +77,13 @@
     <Compile Include="NetworkStatusCheckTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
-      <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
-      <Name>RestSharp.MonoTouch</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ArtekSoftware.Codemash\CodeMash.csproj">
       <Project>{827472B0-BD73-4BCF-BE8D-D0346D43212F}</Project>
       <Name>CodeMash</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
+      <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
+      <Name>RestSharp.MonoTouch</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

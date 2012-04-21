@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Tests>
+    <TestRecord Name="ArtekSoftware">
+      <Tests>
+        <TestRecord Name="Codemash">
+          <Tests>
+            <TestRecord Name="Tests">
+              <Tests>
+                <TestRecord Name="AddSessionToRemoteScheduleCommandTests">
+                  <Tests>
+                    <TestRecord Name="ExecuteMethod">
+                      <Tests>
+                        <TestRecord Name="stuff">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2012-04-21T09:25:28</TestDate>
+                              <Passed>0</Passed>
+                              <Errors>0</Errors>
+                              <Failures>0</Failures>
+                              <Inconclusive>0</Inconclusive>
+                              <NotRunnable>0</NotRunnable>
+                              <Skipped>0</Skipped>
+                              <Ignored>0</Ignored>
+                              <Time />
+                              <Message>Object reference not set to an instance of an object</Message>
+                              <StackTrace>  at MonoDevelop.NUnit.UnitTestResult.CreateFailure (System.String message, System.Exception ex) [0x00014] in /Users/builder/data/lanes/monodevelop-mac-2.9.4/9b3ec72c/source/monodevelop/main/src/addins/NUnit/Services/UnitTestResult.cs:67 
+  at MonoDevelop.NUnit.NUnitAssemblyTestSuite.RunUnitTest (MonoDevelop.NUnit.UnitTest test, System.String suiteName, System.String pathName, System.String testName, MonoDevelop.NUnit.TestContext testContext) [0x001e5] in /Users/builder/data/lanes/monodevelop-mac-2.9.4/9b3ec72c/source/monodevelop/main/src/addins/NUnit/Services/NUnitAssemblyTestSuite.cs:403 
+  at MonoDevelop.NUnit.NUnitTestCase.OnRun (MonoDevelop.NUnit.TestContext testContext) [0x00000] in /Users/builder/data/lanes/monodevelop-mac-2.9.4/9b3ec72c/source/monodevelop/main/src/addins/NUnit/Services/NUnitTestCase.cs:55 
+  at MonoDevelop.NUnit.UnitTest.Run (MonoDevelop.NUnit.TestContext testContext) [0x0001c] in /Users/builder/data/lanes/monodevelop-mac-2.9.4/9b3ec72c/source/monodevelop/main/src/addins/NUnit/Services/UnitTest.cs:361 </StackTrace>
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                      </Tests>
+                    </TestRecord>
+                  </Tests>
+                </TestRecord>
+              </Tests>
+            </TestRecord>
+          </Tests>
+        </TestRecord>
+      </Tests>
+    </TestRecord>
+  </Tests>
+</TestRecord>

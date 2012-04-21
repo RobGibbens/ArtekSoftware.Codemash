@@ -14,8 +14,8 @@
 //   limitations under the License. 
 #endregion
 
+using System.Globalization;
 using System.IO;
-using Newtonsoft.Json.Linq;
 using System.Text;
 
 namespace RestSharp.Extensions
@@ -72,15 +72,6 @@ namespace RestSharp.Extensions
 				output.Write(buffer, 0, read);
 			}
 		}
-		/// <summary>
-		/// Gets string value from JToken
-		/// </summary>
-		/// <param name="token"></param>
-		/// <returns></returns>
-		public static string AsString(this JToken token)
-		{
-			return token.Type == JTokenType.String ? token.Value<string>() : token.ToString();
-		}
 
 		/// <summary>
 		/// Converts a byte array to a string, using its byte order mark to convert it to the right encoding.
@@ -90,11 +81,16 @@ namespace RestSharp.Extensions
 		/// <returns>The byte as a string.</returns>
 		public static string AsString(this byte[] buffer)
 		{
-			if (buffer == null || buffer.Length == 0)
-				return "";
+            if (buffer == null) return "";
 
 			// Ansi as default
 			Encoding encoding = Encoding.UTF8;
+
+#if FRAMEWORK
+			return encoding.GetString(buffer);
+#else
+			if (buffer == null || buffer.Length == 0)
+				return "";
 
 			/*
 				EF BB BF		UTF-8 
@@ -116,16 +112,7 @@ namespace RestSharp.Extensions
 			{
 				encoding = Encoding.BigEndianUnicode; // utf-16be
 			}
-#if FRAMEWORK
-			else if (buffer[0] == 0 && buffer[1] == 0 && buffer[2] == 0xfe && buffer[3] == 0xff)
-			{
-				encoding = Encoding.UTF32;
-			}
-			else if (buffer[0] == 0x2b && buffer[1] == 0x2f && buffer[2] == 0x76)
-			{
-				encoding = Encoding.UTF7;
-			}
-#endif
+
 			using (MemoryStream stream = new MemoryStream())
 			{
 				stream.Write(buffer, 0, buffer.Length);
@@ -135,7 +122,7 @@ namespace RestSharp.Extensions
 					return reader.ReadToEnd();
 				}
 			}
+#endif
 		}
-
 	}
 }

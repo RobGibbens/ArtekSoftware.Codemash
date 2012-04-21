@@ -23,6 +23,10 @@ using System.Text;
 using System.Security.Cryptography.X509Certificates;
 using RestSharp.Extensions;
 
+#if WINDOWS_PHONE
+using RestSharp.Compression.ZLib;
+#endif
+
 namespace RestSharp
 {
 	/// <summary>
@@ -99,6 +103,10 @@ namespace RestSharp
 		/// </summary>
 		public ICredentials Credentials { get; set; }
 		/// <summary>
+		/// The System.Net.CookieContainer to be used for the request
+		/// </summary>
+		public CookieContainer CookieContainer { get; set; }
+		/// <summary>
 		/// Collection of files to be sent with request
 		/// </summary>
 		public IList<HttpFile> Files { get; private set; }
@@ -174,7 +182,9 @@ namespace RestSharp
 			_restrictedHeaderActions.Add("Content-Type", (r, v) => r.ContentType = v);
 			_restrictedHeaderActions.Add("Date", (r, v) => { /* Set by system */ });
 			_restrictedHeaderActions.Add("Host", (r, v) => { /* Set by system */ });
-			_restrictedHeaderActions.Add("Range", (r, v) => { /* Ignore */ });
+#if FRAMEWORK
+			_restrictedHeaderActions.Add("Range", (r, v) => { AddRange(r, v); });
+#endif
 		}
 
 		private const string FormBoundary = "-----------------------------28947758029299";
@@ -225,22 +235,27 @@ namespace RestSharp
 
 		private void AppendCookies(HttpWebRequest webRequest)
 		{
-			webRequest.CookieContainer = new CookieContainer();
+			webRequest.CookieContainer = this.CookieContainer ?? new CookieContainer();
 			foreach (var httpCookie in Cookies)
 			{
-				var cookie = new Cookie
+#if FRAMEWORK
+                var cookie = new Cookie
 				{
 					Name = httpCookie.Name,
 					Value = httpCookie.Value,
 					Domain = webRequest.RequestUri.Host
 				};
-#if FRAMEWORK
 				webRequest.CookieContainer.Add(cookie);
 #else
+                var cookie = new Cookie
+				{
+					Name = httpCookie.Name,
+					Value = httpCookie.Value
+				};
 				var uri = webRequest.RequestUri;
 				webRequest.CookieContainer.Add(new Uri(string.Format("{0}://{1}", uri.Scheme, uri.Host)), cookie);
 #endif
-			}
+            }
 		}
 
 		private string EncodeParameters()
@@ -309,7 +324,14 @@ namespace RestSharp
 #endif
 				response.ContentType = webResponse.ContentType;
 				response.ContentLength = webResponse.ContentLength;
-				response.RawBytes = webResponse.GetResponseStream().ReadAsBytes();
+#if WINDOWS_PHONE
+                if (string.Equals(webResponse.Headers[HttpRequestHeader.ContentEncoding], "gzip", StringComparison.OrdinalIgnoreCase))
+                    response.RawBytes = new GZipStream(webResponse.GetResponseStream()).ReadAsBytes();
+                else
+                    response.RawBytes = webResponse.GetResponseStream().ReadAsBytes();
+#else
+                response.RawBytes = webResponse.GetResponseStream().ReadAsBytes();
+#endif
 				//response.Content = GetString(response.RawBytes);
 				response.StatusCode = webResponse.StatusCode;
 				response.StatusDescription = webResponse.StatusDescription;
@@ -348,5 +370,20 @@ namespace RestSharp
 				webResponse.Close();
 			}
 		}
+
+#if FRAMEWORK
+		private void AddRange(HttpWebRequest r, string range)
+		{
+			System.Text.RegularExpressions.Match m = System.Text.RegularExpressions.Regex.Match(range, "=(\\d+)-(\\d+)$");
+			if (!m.Success)
+			{
+				return;
+			}
+
+			int from = Convert.ToInt32(m.Groups[1].Value);
+			int to = Convert.ToInt32(m.Groups[2].Value);
+			r.AddRange(from, to);
+		}
+#endif
 	}
 }
