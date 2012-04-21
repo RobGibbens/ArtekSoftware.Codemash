@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMash", "ArtekSoftware.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catnap", "Catnap\Catnap.csproj", "{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoTouch.Dialog", "MonoTouch.Dialog\MonoTouch.Dialog.csproj", "{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Codemash.Tests", "ArtekSoftware.Codemash.Tests\ArtekSoftware.Codemash.Tests.csproj", "{EB337F32-D077-4EB8-B100-F19039CC1F75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSharp.MonoTouch", "RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj", "{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}"
@@ -25,20 +23,6 @@ Global
 		STATIC_ONLY NO_EXPRESSIONS|Any CPU = STATIC_ONLY NO_EXPRESSIONS|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.AdHoc|iPhone.ActiveCfg = AdHoc|iPhone
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.AdHoc|iPhone.Build.0 = AdHoc|iPhone
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.AdHoc|iPhoneSimulator.ActiveCfg = AdHoc|iPhoneSimulator
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.AdHoc|iPhoneSimulator.Build.0 = AdHoc|iPhoneSimulator
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.AppStore|iPhone.Build.0 = AppStore|iPhone
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.Debug|iPhone.Build.0 = Debug|iPhone
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.Release|iPhone.ActiveCfg = Release|iPhone
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.Release|iPhone.Build.0 = Release|iPhone
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.AdHoc|iPhone.ActiveCfg = AdHoc|iPhone
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.AdHoc|iPhone.Build.0 = AdHoc|iPhone
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.AdHoc|iPhoneSimulator.ActiveCfg = AdHoc|iPhoneSimulator

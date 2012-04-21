@@ -1,27 +1,22 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash.Tests/Fakes/RestClient/RestClientOk.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/AppDelegate.cs">
     <Files>
       <File FileName="ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" Line="7" Column="19" />
       <File FileName="ArtekSoftware.Codemash/Model/DTOs/Session.cs" Line="4" Column="33" />
       <File FileName="ArtekSoftware.Codemash/IServiceClient.cs" Line="11" Column="7" />
-      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="5" Column="7" />
-      <File FileName="ArtekSoftware.Codemash.Tests/Fakes/RestClient/RestClientOk.cs" Line="6" Column="41" />
-      <File FileName="ArtekSoftware.Codemash.Tests/Fakes/RestClient/RestClientServiceUnavailable.cs" Line="30" Column="19" />
+      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="63" Column="7" />
+      <File FileName="ArtekSoftware.Codemash.Tests/Fakes/RestClient/RestClientOk.cs" Line="167" Column="5" />
+      <File FileName="ArtekSoftware.Codemash.Tests/Fakes/RestClient/RestClientServiceUnavailable.cs" Line="10" Column="10" />
+      <File FileName="RestSharp/RestSharp/RestClient.cs" Line="73" Column="36" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/MapDialogViewController.cs" Line="26" Column="42" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/ScheduleDialogViewController.cs" Line="21" Column="5" />
+      <File FileName="ArtekSoftware.Codemash.Tests/AddSessionToRemoteScheduleCommandTests.cs" Line="12" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="ArtekSoftware.Codemash.Tests" expanded="True">
-            <Node name="Fakes" expanded="True">
-              <Node name="RestClient" expanded="True">
-                <Node name="RestClientOk.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-          <Node name="CodeMash" expanded="True">
-            <Node name="References" expanded="True" />
-          </Node>
+          <Node name="ArtekSoftware.Codemash.Tests" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
