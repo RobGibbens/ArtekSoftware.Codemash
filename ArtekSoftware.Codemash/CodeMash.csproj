@@ -135,6 +135,13 @@
     <Reference Include="monotouch-localytics">
       <HintPath>lib\monotouch-localytics.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>lib\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>lib\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoTouch.Dialog-1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -262,6 +269,7 @@
     <Compile Include="MoveToLibrary\LocalyticsAnalytics.cs" />
     <Compile Include="MoveToLibrary\IDefaultDatabaseManager.cs" />
     <Compile Include="MoveToLibrary\DefaultDatabaseManager.cs" />
+    <Compile Include="IServiceClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="RootViewController.xib" />
@@ -470,17 +478,13 @@
     <Content Include="DefaultDatabase\codemash.db3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Catnap\Catnap.csproj">
-      <Project>{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}</Project>
-      <Name>Catnap</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MonoTouch.Dialog\MonoTouch.Dialog.csproj">
-      <Project>{3FFBFFF8-5560-4EDE-82E5-3FFDFBBA8A50}</Project>
-      <Name>MonoTouch.Dialog</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Catnap\Catnap.csproj">
+      <Project>{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}</Project>
+      <Name>Catnap</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

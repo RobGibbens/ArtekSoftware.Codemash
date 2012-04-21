@@ -1,49 +1,28 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/MoveToLibrary/EntityMapper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/AppDelegate.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="6" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" Line="15" Column="22" />
-      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SpeakerDialogViewController.cs" Line="16" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/SpeakerBioViewController.cs" Line="15" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/SpeakerBioLandscapeViewController.cs" Line="15" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/iPhoneSpeakerBioViewController.cs" Line="16" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/MoveToLibrary/NetworkStatusCheck.cs" Line="18" Column="33" />
-      <File FileName="ArtekSoftware.Codemash/Model/Commands/AddSessionToRemoteScheduleCommand.cs" Line="21" Column="6" />
-      <File FileName="ArtekSoftware.Codemash/Model/Commands/RemoveSessionFromRemoteScheduleCommand.cs" Line="23" Column="36" />
-      <File FileName="ArtekSoftware.Codemash/ViewControllers/SessionDetailViewControllerBase.cs" Line="9" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/UI/DialogMappers/SessionsDialogMapper.cs" Line="7" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/UI/DialogMappers/SpeakersDialogMapper.cs" Line="6" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/SessionDetailLandscapeViewController.cs" Line="12" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/SessionDetailViewController.cs" Line="12" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/Model/Repositories/RemoteScheduledSessionsRepository.cs" Line="2" Column="3" />
-      <File FileName="ArtekSoftware.Codemash/MoveToLibrary/EntityMapper.cs" Line="18" Column="4" />
+      <File FileName="ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" Line="7" Column="19" />
+      <File FileName="ArtekSoftware.Codemash/Model/DTOs/Session.cs" Line="4" Column="33" />
+      <File FileName="ArtekSoftware.Codemash/IServiceClient.cs" Line="11" Column="7" />
+      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="63" Column="7" />
+      <File FileName="ArtekSoftware.Codemash.Tests/Fakes/RestClient/RestClientOk.cs" Line="167" Column="5" />
+      <File FileName="ArtekSoftware.Codemash.Tests/Fakes/RestClient/RestClientServiceUnavailable.cs" Line="10" Column="10" />
+      <File FileName="RestSharp/RestSharp/RestClient.cs" Line="73" Column="36" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/MapDialogViewController.cs" Line="26" Column="42" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/ScheduleDialogViewController.cs" Line="21" Column="5" />
+      <File FileName="ArtekSoftware.Codemash.Tests/AddSessionToRemoteScheduleCommandTests.cs" Line="12" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="ArtekSoftware.Codemash.Tests">
-            <Option id="ShowVersionControlOverlays" value="True" />
-            <Option id="ShowAllFiles" value="False" />
-          </Node>
-          <Node name="CodeMash" expanded="True">
-            <Node name="Model" expanded="True">
-              <Node name="Commands" expanded="True" />
-              <Node name="Repositories" expanded="True" />
-            </Node>
-            <Node name="MoveToLibrary" expanded="True">
-              <Node name="EntityMapper.cs" selected="True" />
-            </Node>
-            <Node name="UI" expanded="True">
-              <Node name="DialogMappers" expanded="True" />
-            </Node>
-            <Node name="ViewControllers" expanded="True">
-              <Node name="DialogViewControllers" expanded="True" />
-            </Node>
-          </Node>
+          <Node name="ArtekSoftware.Codemash.Tests" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
         <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
@@ -55,9 +34,6 @@
           <Value>this.ParentViewController</Value>
           <Value>this</Value>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
@@ -91,6 +67,8 @@
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Commands/AddSessionToRemoteScheduleCommand.cs" line="44" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash.Tests/NetworkStatusCheckTests.cs" line="19" />
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/ViewControllers/SessionDetailViewControllerBase.cs" line="177" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" line="64" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" line="66" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

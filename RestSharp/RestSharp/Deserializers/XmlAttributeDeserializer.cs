@@ -19,6 +19,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
 using RestSharp.Extensions;
 
@@ -36,7 +37,7 @@ namespace RestSharp.Deserializers
 			Culture = CultureInfo.InvariantCulture;
 		}
 
-		public T Deserialize<T>(RestResponse response) where T : new()
+		public T Deserialize<T>(IRestResponse response)
 		{
 			if (response.Content == null)
 				return default(T);
@@ -54,7 +55,7 @@ namespace RestSharp.Deserializers
 				RemoveNamespace(doc);
 			}
 
-			var x = new T();
+            var x = Activator.CreateInstance<T>();
 			var objType = x.GetType();
 
 			if (objType.IsSubclassOfRawGeneric(typeof(List<>)))
@@ -140,13 +141,18 @@ namespace RestSharp.Deserializers
 					}
 				}
 
-				if (type.IsPrimitive)
+				if (type == typeof(bool))
 				{
-					prop.SetValue(x, value.ChangeType(type), null);
+					var toConvert = value.ToString().ToLower();
+					prop.SetValue(x, XmlConvert.ToBoolean(toConvert), null);
+				}
+				else if (type.IsPrimitive)
+				{
+					prop.SetValue(x, value.ChangeType(type, Culture), null);
 				}
 				else if (type.IsEnum)
 				{
-					var converted = Enum.Parse(type, value.ToString(), false);
+					var converted = type.FindEnumValue(value.ToString(), Culture);
 					prop.SetValue(x, converted, null);
 				}
 				else if (type == typeof(Uri))
@@ -166,14 +172,14 @@ namespace RestSharp.Deserializers
 					}
 					else
 					{
-						value = DateTime.Parse(value.ToString());
+						value = DateTime.Parse(value.ToString(), Culture);
 					}
 
 					prop.SetValue(x, value, null);
 				}
 				else if (type == typeof(Decimal))
 				{
-					value = Decimal.Parse(value.ToString());
+					value = Decimal.Parse(value.ToString(), Culture);
 					prop.SetValue(x, value, null);
 				}
 				else if (type == typeof(Guid))

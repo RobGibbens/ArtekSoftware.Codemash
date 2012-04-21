@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;MONODROID</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;MONODROID;FRAMEWORK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -27,14 +27,14 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;MONODROID</DefineConstants>
+    <DefineConstants>TRACE;MONODROID;FRAMEWORK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
-    <Reference Include="Newtonsoft.Json.Android">
-      <HintPath>..\References\Newtonsoft.Json.Android.dll</HintPath>
+    <Reference Include="Newtonsoft.Json.MonoDroid">
+      <HintPath>..\References\Newtonsoft.Json.MonoDroid.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -96,6 +96,9 @@
     <Compile Include="..\RestSharp\RestResponse.cs">
       <Link>RestResponse.cs</Link>
     </Compile>
+    <Compile Include="..\RestSharp\SimpleJson.cs">
+      <Link>SimpleJson.cs</Link>
+    </Compile>
     <Compile Include="..\RestSharp\Validation\Require.cs">
       <Link>Validation\Require.cs</Link>
     </Compile>
@@ -125,6 +128,9 @@
     </Compile>
     <Compile Include="..\RestSharp\Extensions\XmlExtensions.cs">
       <Link>Extensions\XmlExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RestSharp\Extensions\ResponseExtensions.cs">
+      <Link>Extensions\ResponseExtensions.cs</Link>
     </Compile>
     <Compile Include="..\RestSharp\Deserializers\DeserializeAsAttribute.cs">
       <Link>Deserializers\DeserializeAsAttribute.cs</Link>
@@ -239,6 +245,9 @@
     </Compile>
     <Compile Include="..\RestSharp\RestRequestAsyncHandle.cs">
       <Link>RestRequestAsyncHandle.cs</Link>
+    </Compile>
+    <Compile Include="..\RestSharp\Deserializers\DotNetXmlDeserializer.cs">
+      <Link>Deserializers\DotNetXmlDeserializer.cs</Link>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

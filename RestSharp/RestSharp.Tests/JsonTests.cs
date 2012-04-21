@@ -30,7 +30,9 @@ namespace RestSharp.Tests
 {
 	public class JsonTests
 	{
-		private const string GuidString = "AC1FC4BC-087A-4242-B8EE-C53EBE9887A5";
+		  private const string AlternativeCulture = "pt-PT";
+
+		  private const string GuidString = "AC1FC4BC-087A-4242-B8EE-C53EBE9887A5";
 
 		[Fact]
 		public void Can_Deserialize_4sq_Json_With_Root_Element_Specified()
@@ -49,6 +51,12 @@ namespace RestSharp.Tests
 		public void Can_Deserialize_Lists_of_Simple_Types()
 		{
 			var doc = File.ReadAllText(Path.Combine("SampleData", "jsonlists.txt"));
+			var json = new JsonDeserializer ();
+
+			var output = json.Deserialize<JsonLists> (new RestResponse { Content = doc });
+
+			Assert.NotEmpty (output.Names);
+			Assert.NotEmpty (output.Numbers);
 		}
 
 		[Fact]
@@ -120,18 +128,19 @@ namespace RestSharp.Tests
 		[Fact]
 		public void Can_Deserialize_Custom_Formatted_Date()
 		{
+			 var culture = CultureInfo.InvariantCulture;
 			var format = "dd yyyy MMM, hh:mm ss tt";
 			var date = new DateTime(2010, 2, 8, 11, 11, 11);
 
 			var formatted = new
 			{
-				StartDate = date.ToString(format)
+				StartDate = date.ToString(format, culture)
 			};
 
 			var data = JsonConvert.SerializeObject(formatted);
 			var response = new RestResponse { Content = data };
 
-			var json = new JsonDeserializer { DateFormat = format };
+			var json = new JsonDeserializer { DateFormat = format, Culture = culture };
 
 			var output = json.Deserialize<PersonForJson>(response);
 
@@ -146,6 +155,23 @@ namespace RestSharp.Tests
 			var json = new JsonDeserializer();
 			var output = json.Deserialize<List<status>>(response);
 			Assert.Equal(4, output.Count);
+		}
+
+		[Fact]
+		public void Can_Deserialize_Various_Enum_Values ()
+		{
+			var data = File.ReadAllText (Path.Combine ("SampleData", "jsonenums.txt"));
+			var response = new RestResponse { Content = data };
+			var json = new JsonDeserializer ();
+			var output = json.Deserialize<JsonEnumsTestStructure>(response);
+
+			Assert.Equal (output.Upper, Disposition.Friendly);
+			Assert.Equal (output.Lower, Disposition.Friendly);
+			Assert.Equal (output.CamelCased, Disposition.SoSo);
+			Assert.Equal (output.Underscores, Disposition.SoSo);
+			Assert.Equal (output.LowerUnderscores, Disposition.SoSo);
+			Assert.Equal (output.Dashes, Disposition.SoSo);
+			Assert.Equal (output.LowerDashes, Disposition.SoSo);
 		}
 
 		[Fact]
@@ -195,6 +221,7 @@ namespace RestSharp.Tests
 			Assert.Equal(new Guid(GuidString), p.Guid);
 
 			Assert.Equal(Order.Third, p.Order);
+			Assert.Equal(Disposition.SoSo, p.Disposition);
 
 			Assert.NotNull(p.Friends);
 			Assert.Equal(10, p.Friends.Count);
@@ -207,6 +234,15 @@ namespace RestSharp.Tests
 			Assert.Equal("Foe 1", p.Foes["dict1"].Nickname);
 			Assert.Equal("Foe 2", p.Foes["dict2"].Nickname);
 		}
+
+		  [Fact]
+		  public void Can_Deserialize_With_Default_Root_Alternative_Culture()
+		  {
+				using (new CultureChange(AlternativeCulture))
+				{
+					 Can_Deserialize_With_Default_Root();
+				}
+		  }
 
 		[Fact]
 		public void Can_Deserialize_Names_With_Underscores_With_Default_Root()
@@ -237,6 +273,15 @@ namespace RestSharp.Tests
 			Assert.Equal("Foe 2", p.Foes["dict2"].Nickname);
 		}
 
+		  [Fact]
+		  public void Can_Deserialize_Names_With_Underscores_With_Default_Root_Alternative_Culture()
+		  {
+				using (new CultureChange(AlternativeCulture))
+				{
+					 Can_Deserialize_Names_With_Underscores_With_Default_Root();
+				}
+		  }
+
 		[Fact]
 		public void Can_Deserialize_Names_With_Dashes_With_Default_Root()
 		{
@@ -266,6 +311,15 @@ namespace RestSharp.Tests
 			Assert.Equal("Foe 2", p.Foes["dict2"].Nickname);
 		}
 
+		  [Fact]
+		  public void Can_Deserialize_Names_With_Dashes_With_Default_Root_Alternative_Culture()
+		  {
+				using (new CultureChange(AlternativeCulture))
+				{
+					 Can_Deserialize_Names_With_Dashes_With_Default_Root();
+				}
+		  }
+
 		[Fact]
 		public void Ignore_Protected_Property_That_Exists_In_Data()
 		{
@@ -289,6 +343,24 @@ namespace RestSharp.Tests
 		}
 
 		[Fact]
+		  public void Can_Deserialize_TimeSpan()
+		  {
+				var doc = File.ReadAllText(Path.Combine("SampleData", "timespans.txt"));
+				var d = new JsonDeserializer();
+				var response = new RestResponse { Content = doc };
+				var payload = d.Deserialize<TimeSpanTestStructure>(response);
+
+				Assert.Equal(new TimeSpan(468006), payload.Tick);
+				Assert.Equal(new TimeSpan(0, 0, 0, 0, 125), payload.Millisecond);
+				Assert.Equal(new TimeSpan(0, 0, 8), payload.Second);
+				Assert.Equal(new TimeSpan(0, 55, 2), payload.Minute);
+				Assert.Equal(new TimeSpan(21, 30, 7), payload.Hour);
+				Assert.Null(payload.NullableWithoutValue);
+				Assert.NotNull(payload.NullableWithValue);
+				Assert.Equal(new TimeSpan(21, 30, 7), payload.NullableWithValue.Value);
+		  }
+
+		[Fact]
 		public void Can_Deserialize_Iso_Json_Dates()
 		{
 			var doc = CreateIsoDateJson();
@@ -300,14 +372,14 @@ namespace RestSharp.Tests
 		}
 
 		[Fact]
-		public void Can_Deserialize_JScript_Json_Dates()
+		public void Can_Deserialize_Unix_Json_Dates()
 		{
-			var doc = CreateJScriptDateJson();
+			var doc = CreateUnixDateJson();
 			var d = new JsonDeserializer();
 			var response = new RestResponse { Content = doc };
 			var bd = d.Deserialize<Birthdate>(response);
 
-			Assert.Equal(new DateTime(1910, 9, 25, 9, 30, 25, DateTimeKind.Utc), bd.Value);
+			Assert.Equal(new DateTime(2011, 6, 30, 8, 15, 46, DateTimeKind.Utc), bd.Value);
 		}
 
 		[Fact]
@@ -501,12 +573,12 @@ namespace RestSharp.Tests
 			return JsonConvert.SerializeObject(bd, new IsoDateTimeConverter());
 		}
 
-		private string CreateJScriptDateJson()
+		private string CreateUnixDateJson()
 		{
-			var bd = new Birthdate();
-			bd.Value = new DateTime(1910, 9, 25, 9, 30, 25, DateTimeKind.Utc);
+			var doc = new JObject();
+			doc["Value"] = 1309421746;
 
-			return JsonConvert.SerializeObject(bd, new JavaScriptDateTimeConverter());
+			return doc.ToString();
 		}
 
 		private string CreateJson()
@@ -522,7 +594,8 @@ namespace RestSharp.Tests
 			doc["ReadOnly"] = "dummy";
 			doc["Url"] = "http://example.com";
 			doc["UrlPath"] = "/foo/bar";
-			doc["Order"] = "Third";
+			doc["Order"] = "third";
+			doc["Disposition"] = "so_so";
 
 			doc["Guid"] = new Guid(GuidString).ToString();
 			doc["EmptyGuid"] = "";

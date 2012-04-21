@@ -33,6 +33,7 @@ namespace ArtekSoftware.Codemash
 			
 			ITestFlightProxy testFlightProxy = new TestFlightProxy ();
 			testFlightProxy.TakeOff ();
+
 			
 			IDefaultDatabaseManager defaultDatabaseManager = new DefaultDatabaseManager(this.Analytics, testFlightProxy);
 			defaultDatabaseManager.CopyDefaultDatabase();
