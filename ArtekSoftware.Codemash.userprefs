@@ -1,38 +1,54 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/AppDelegate.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Artek.Conference.RemoteData/RemoteSessionsRepository.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" Line="7" Column="19" />
-      <File FileName="ArtekSoftware.Codemash/Model/DTOs/Session.cs" Line="4" Column="33" />
-      <File FileName="ArtekSoftware.Codemash/IServiceClient.cs" Line="11" Column="7" />
-      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="63" Column="7" />
-      <File FileName="ArtekSoftware.Codemash.Tests/Fakes/RestClient/RestClientOk.cs" Line="167" Column="5" />
-      <File FileName="ArtekSoftware.Codemash.Tests/Fakes/RestClient/RestClientServiceUnavailable.cs" Line="10" Column="10" />
-      <File FileName="RestSharp/RestSharp/RestClient.cs" Line="73" Column="36" />
-      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/MapDialogViewController.cs" Line="26" Column="42" />
-      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/ScheduleDialogViewController.cs" Line="21" Column="5" />
-      <File FileName="ArtekSoftware.Codemash.Tests/AddSessionToRemoteScheduleCommandTests.cs" Line="12" Column="28" />
+      <File FileName="Artek.Conference.RemoteData/RemoteSessionsRepository.cs" Line="85" Column="6" />
+      <File FileName="Artek.Conference.RemoteData/SessionsList.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Conference.RemoteData.Tests.Integration/Class12.cs" Line="17" Column="3" />
+      <File FileName="ArtekSoftware.Conference.Common/TestFlightProxy.cs" Line="4" Column="33" />
+      <File FileName="ArtekSoftware.Codemash.Tests/AddSessionToRemoteScheduleCommandTests.cs" Line="19" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="ArtekSoftware.Codemash.Tests" expanded="True" />
+          <Node name="ArtekSoftware.Codemash.Tests" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+          <Node name="ArtekSoftware.Conference.RemoteData" expanded="True">
+            <Node name="RemoteSessionsRepository.cs" selected="True" />
+          </Node>
+          <Node name="ArtekSoftware.Conference.RemoteData.Tests.Integration" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="ArtekSoftware.Conference.RemoteData.Tests.Integration" expanded="True">
+            <Node name="ArtekSoftware" expanded="True">
+              <Node name="Conference" expanded="True">
+                <Node name="RemoteData" expanded="True">
+                  <Node name="Tests" expanded="True">
+                    <Node name="Integration" expanded="True">
+                      <Node name="Class12" expanded="True">
+                        <Node name="sessions_should_return_valid_data" selected="True" />
+                      </Node>
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>nsUrl</Value>
-          <Value>sender</Value>
-          <Value>e</Value>
-          <Value>request1</Value>
-          <Value>this.ParentViewController</Value>
           <Value>this</Value>
+          <Value>response.Content</Value>
+          <Value>response.ErrorException</Value>
         </State>
       </Pad>
     </Pads>
@@ -69,6 +85,11 @@
       <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/ViewControllers/SessionDetailViewControllerBase.cs" line="177" />
       <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" line="64" />
       <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" line="66" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/AppDelegate.cs" line="141" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/AppDelegate.cs" line="144" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/ArtekSoftware.Conference.RemoteData.Tests.Integration/Class12.cs" line="27" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/Artek.Conference.RemoteData/RemoteSessionsRepository.cs" line="82" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/Artek.Conference.RemoteData/RemoteSessionsRepository.cs" line="88" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

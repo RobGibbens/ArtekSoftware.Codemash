@@ -5,6 +5,7 @@ using System.Threading;
 using Catnap;
 using MonoTouch.Dialog;
 ////using MonoQueue;
+using RestSharp;
 
 namespace ArtekSoftware.Codemash
 {
@@ -29,7 +30,9 @@ namespace ArtekSoftware.Codemash
 				if (sessionCount == 0 || isRefresh) {
 
 					if (_networkStatusCheck.IsReachable ()) {
-						var remoteRepository = new RemoteSessionsRepository ();
+						ITestFlightProxy testFlightProxy = new TestFlightProxy();
+						IRestClient restClient = new RestClient();
+						var remoteRepository = new RemoteSessionsRepository (testFlightProxy, restClient);
 						IList<Session> sessionDtos = remoteRepository.GetSessions ();
 						var cacheRepository = new SessionsCacheRepository ();
 						cacheRepository.Cache (sessionDtos);
@@ -49,7 +52,9 @@ namespace ArtekSoftware.Codemash
 			
 					if (sessionCount == 0 || isRefresh) {
 						if (_networkStatusCheck.IsReachable ()) {
-							var remoteRepository = new RemoteSessionsRepository ();
+							ITestFlightProxy testFlightProxy = new TestFlightProxy();
+							IRestClient restClient = new RestClient();
+							var remoteRepository = new RemoteSessionsRepository (testFlightProxy, restClient);
 							sessionDtos = remoteRepository.GetSessions ();
 							shouldCache = true;
 						} else {
