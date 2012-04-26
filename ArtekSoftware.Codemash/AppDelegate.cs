@@ -137,7 +137,7 @@ namespace ArtekSoftware.Codemash
 			var request = new RestRequest ();
 			request.Resource = "MobiDevDay-2012/sessions?format=json";
 			request.RequestFormat = DataFormat.Json;
-			using (new NetworkIndicator()) {
+			//using (new NetworkIndicator()) {
 				var r2 = client.Execute(request);
 				var response = client.Execute<List<Session2>> (request);
 
@@ -145,7 +145,7 @@ namespace ArtekSoftware.Codemash
 				if (response != null && response.Data != null) {
 					//session = response.Data;
 				}
-			}
+			//}
 		}
 	}
 	

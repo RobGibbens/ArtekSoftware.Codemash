@@ -42,6 +42,7 @@
     <Compile Include="Session2.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="SessionsList.cs" />
+    <Compile Include="SessionsList2.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArtekSoftware.Conference.Common\ArtekSoftware.Conference.Common.csproj">

@@ -10,6 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>ArtekSoftware.Conference.Common</RootNamespace>
     <AssemblyName>ArtekSoftware.Conference.Common</AssemblyName>
+    <ReleaseVersion>0.25</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,7 +50,7 @@
     <Compile Include="Wrappers\Http\Impl\HttpWebResponseAdapter.cs" />
     <Compile Include="Wrappers\Http\Impl\HttpWebRequestFactory.cs" />
     <Compile Include="Wrappers\Http\Impl\HttpWebRequestMethod.cs" />
-    <Compile Include="Wrappers\Http\IHttpWebRequestFactory" />
+    <Compile Include="Wrappers\Http\IHttpWebRequestFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Wrappers\" />

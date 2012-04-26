@@ -1,48 +1,55 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Artek.Conference.RemoteData/RemoteSessionsRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/ViewControllers/SessionDetailViewControllerBase.cs">
     <Files>
-      <File FileName="Artek.Conference.RemoteData/RemoteSessionsRepository.cs" Line="85" Column="6" />
-      <File FileName="Artek.Conference.RemoteData/SessionsList.cs" Line="1" Column="1" />
+      <File FileName="Artek.Conference.RemoteData/RemoteSessionsRepository.cs" Line="81" Column="65" />
+      <File FileName="Artek.Conference.RemoteData/SessionsList.cs" Line="9" Column="2" />
       <File FileName="ArtekSoftware.Conference.RemoteData.Tests.Integration/Class12.cs" Line="17" Column="3" />
       <File FileName="ArtekSoftware.Conference.Common/TestFlightProxy.cs" Line="4" Column="33" />
       <File FileName="ArtekSoftware.Codemash.Tests/AddSessionToRemoteScheduleCommandTests.cs" Line="19" Column="9" />
+      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="140" Column="36" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" Line="19" Column="6" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SpeakerDialogViewController.cs" Line="20" Column="6" />
+      <File FileName="ArtekSoftware.Codemash/Model/Repositories/RemoteScheduledSessionsRepository.cs" Line="69" Column="7" />
+      <File FileName="ArtekSoftware.Codemash/Model/Repositories/RemoteSpeakersRepository.cs" Line="29" Column="6" />
+      <File FileName="ArtekSoftware.Codemash/Model/Repositories/RemoteTwitterRepository.cs" Line="21" Column="8" />
+      <File FileName="ArtekSoftware.Codemash/SpeakerBioViewController.cs" Line="20" Column="6" />
+      <File FileName="ArtekSoftware.Codemash/SpeakerBioLandscapeViewController.cs" Line="27" Column="51" />
+      <File FileName="ArtekSoftware.Codemash/iPhoneSpeakerBioViewController.cs" Line="26" Column="51" />
+      <File FileName="ArtekSoftware.Codemash/ViewControllers/SessionDetailViewControllerBase.cs" Line="66" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="ArtekSoftware.Codemash.Tests" expanded="True">
-            <Node name="References" expanded="True" />
+          <Node name="ArtekSoftware.Codemash.Tests" expanded="True" />
+          <Node name="ArtekSoftware.Conference.Common" expanded="True">
+            <Node name="Wrappers">
+              <Node name="Http">
+                <Option id="ShowVersionControlOverlays" value="True" />
+                <Option id="ShowAllFiles" value="True" />
+              </Node>
+            </Node>
           </Node>
           <Node name="ArtekSoftware.Conference.RemoteData" expanded="True">
-            <Node name="RemoteSessionsRepository.cs" selected="True" />
+            <Option id="ShowVersionControlOverlays" value="True" />
+            <Option id="ShowAllFiles" value="True" />
           </Node>
           <Node name="ArtekSoftware.Conference.RemoteData.Tests.Integration" expanded="True">
             <Node name="References" expanded="True" />
+          </Node>
+          <Node name="CodeMash" expanded="True">
+            <Node name="Model" expanded="True">
+              <Node name="Repositories" expanded="True" />
+            </Node>
+            <Node name="ViewControllers" expanded="True">
+              <Node name="DialogViewControllers" expanded="True" />
+              <Node name="SessionDetailViewControllerBase.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="ArtekSoftware.Conference.RemoteData.Tests.Integration" expanded="True">
-            <Node name="ArtekSoftware" expanded="True">
-              <Node name="Conference" expanded="True">
-                <Node name="RemoteData" expanded="True">
-                  <Node name="Tests" expanded="True">
-                    <Node name="Integration" expanded="True">
-                      <Node name="Class12" expanded="True">
-                        <Node name="sessions_should_return_valid_data" selected="True" />
-                      </Node>
-                    </Node>
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
@@ -50,6 +57,9 @@
           <Value>response.Content</Value>
           <Value>response.ErrorException</Value>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

@@ -16,7 +16,7 @@ namespace ArtekSoftware.Codemash
 		
 		public SessionDialogViewController () : base(null)
 		{
-			_networkStatusCheck = new NetworkStatusCheck();
+			//_networkStatusCheck = new NetworkStatusCheck();
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
 				this.Autorotate = false;
 			}
