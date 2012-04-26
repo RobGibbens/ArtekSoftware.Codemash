@@ -171,8 +171,6 @@
     <Compile Include="Data\CreateSchema.cs" />
     <Compile Include="Data\DatabaseMigrator.cs" />
     <Compile Include="Model\DTOs\Schedule.cs" />
-    <Compile Include="Model\DTOs\Session.cs" />
-    <Compile Include="Model\DTOs\SessionsList.cs" />
     <Compile Include="Model\DTOs\Speaker.cs" />
     <Compile Include="Model\DTOs\SpeakersList.cs" />
     <Compile Include="Model\Entities\RefreshEntity.cs" />
@@ -186,20 +184,17 @@
     <Compile Include="Model\Repositories\LocalSessionsRepository.cs" />
     <Compile Include="Model\Repositories\LocalSpeakersRepository.cs" />
     <Compile Include="Model\Repositories\RemoteScheduledSessionsRepository.cs" />
-    <Compile Include="Model\Repositories\RemoteSessionsRepository.cs" />
     <Compile Include="Model\Repositories\RemoteSpeakersRepository.cs" />
     <Compile Include="Model\Repositories\RemoteTwitterRepository.cs" />
     <Compile Include="UI\DialogMappers\ScheduledSessionsDialogMapper.cs" />
     <Compile Include="UI\DialogMappers\SessionsDialogMapper.cs" />
     <Compile Include="UI\DialogMappers\SpeakersDialogMapper.cs" />
     <Compile Include="UI\HLabel.cs" />
-    <Compile Include="UI\NetworkIndicator.cs" />
     <Compile Include="UI\RotatingSessionDetailViewController.cs" />
     <Compile Include="UI\RotatingSpeakerBioViewController.cs" />
     <Compile Include="UI\RotatingViewController.cs" />
     <Compile Include="UI\SessionEventCell.cs" />
     <Compile Include="UI\SpeakerEventCell.cs" />
-    <Compile Include="MoveToLibrary\Reachability.cs" />
     <Compile Include="SessionDetailLandscapeViewController.cs" />
     <Compile Include="SessionDetailLandscapeViewController.designer.cs">
       <DependentUpon>SessionDetailLandscapeViewController.cs</DependentUpon>
@@ -239,7 +234,6 @@
     <Compile Include="iPhoneMapViewController.designer.cs">
       <DependentUpon>iPhoneMapViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="MoveToLibrary\TestFlightProxy.cs" />
     <Compile Include="ViewControllers\MapKitViewController.cs" />
     <Compile Include="ViewControllers\MapLocationViewController.cs" />
     <Compile Include="MoveToLibrary\MapHelper.cs" />
@@ -254,7 +248,6 @@
     <Compile Include="MapFlipLandscapeViewController.designer.cs">
       <DependentUpon>MapFlipLandscapeViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="MoveToLibrary\NetworkStatusCheck.cs" />
     <Compile Include="Model\Commands\AddSessionToRemoteScheduleCommand.cs" />
     <Compile Include="Model\Commands\RemoveSessionFromRemoteScheduleCommand.cs" />
     <Compile Include="ViewControllers\SessionDetailViewControllerBase.cs" />
@@ -263,13 +256,12 @@
     <Compile Include="MoveToLibrary\CatnapBoostrapper.cs" />
     <Compile Include="MoveToLibrary\EntityMapper.cs" />
     <Compile Include="MoveToLibrary\DatabaseMigrationBootstrapper.cs" />
-    <Compile Include="MoveToLibrary\INavigation.cs" />
     <Compile Include="UI\Navigation.cs" />
-    <Compile Include="MoveToLibrary\IAnalytics.cs" />
     <Compile Include="MoveToLibrary\LocalyticsAnalytics.cs" />
     <Compile Include="MoveToLibrary\IDefaultDatabaseManager.cs" />
     <Compile Include="MoveToLibrary\DefaultDatabaseManager.cs" />
     <Compile Include="IServiceClient.cs" />
+    <Compile Include="MoveToLibrary\INavigation.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="RootViewController.xib" />
@@ -485,6 +477,14 @@
     <ProjectReference Include="..\Catnap\Catnap.csproj">
       <Project>{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}</Project>
       <Name>Catnap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArtekSoftware.Conference.Common\ArtekSoftware.Conference.Common.csproj">
+      <Project>{5FE38320-8D92-4337-9D94-DA30E18257A3}</Project>
+      <Name>ArtekSoftware.Conference.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Artek.Conference.RemoteData\ArtekSoftware.Conference.RemoteData.csproj">
+      <Project>{60E041D1-03BF-4985-90F6-F9E161EFD4F1}</Project>
+      <Name>ArtekSoftware.Conference.RemoteData</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

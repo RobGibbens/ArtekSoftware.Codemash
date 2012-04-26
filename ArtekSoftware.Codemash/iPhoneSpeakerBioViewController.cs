@@ -18,12 +18,12 @@ namespace ArtekSoftware.Codemash
 		public iPhoneSpeakerBioViewController (SpeakerEntity speaker) : base ("iPhoneSpeakerBioViewController", null)
 		{
 			_speaker = speaker;
-			_networkStatusCheck = new NetworkStatusCheck();
+			//_networkStatusCheck = new NetworkStatusCheck();
 		}
 		
 		public iPhoneSpeakerBioViewController () : base ("iPhoneSpeakerBioViewController", null)
 		{
-			_networkStatusCheck = new NetworkStatusCheck();
+			//_networkStatusCheck = new NetworkStatusCheck();
 		}
 		
 		public override void DidReceiveMemoryWarning ()

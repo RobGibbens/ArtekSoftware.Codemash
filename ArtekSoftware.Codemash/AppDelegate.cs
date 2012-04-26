@@ -5,6 +5,8 @@ using MonoTouch.UIKit;
 using Catnap;
 ////using MonoQueue;
 using Localytics;
+using RestSharp;
+using System.Collections.Generic;
 
 namespace ArtekSoftware.Codemash
 {
@@ -25,27 +27,29 @@ namespace ArtekSoftware.Codemash
 		{	
 			CurrentAppDelegate = this;
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
-			this.Navigation = new Navigation(window);
+			this.Navigation = new Navigation (window);
 			
-			this.Analytics = new LocalyticsAnalytics();
-			this.Analytics.Initialize();
+			this.Analytics = new LocalyticsAnalytics ();
+			this.Analytics.Initialize ();
 			this.Analytics.Log ("App launched");
 			
 			ITestFlightProxy testFlightProxy = new TestFlightProxy ();
 			testFlightProxy.TakeOff ();
-
 			
-			IDefaultDatabaseManager defaultDatabaseManager = new DefaultDatabaseManager(this.Analytics, testFlightProxy);
-			defaultDatabaseManager.CopyDefaultDatabase();
+			var x = new X ();
+			x.Y();
+			
+			IDefaultDatabaseManager defaultDatabaseManager = new DefaultDatabaseManager (this.Analytics, testFlightProxy);
+			defaultDatabaseManager.CopyDefaultDatabase ();
 			
 			var catnapBootstrapper = new CatnapBootstrapper (testFlightProxy);
-			catnapBootstrapper.Initialize();
+			catnapBootstrapper.Initialize ();
 			
 			var entityMapper = new EntityMapper ();
-			entityMapper.Mapper();
+			entityMapper.Mapper ();
 			
 			var databaseMigrationBootstrapper = new DatabaseMigrationBootstrapper ();
-			databaseMigrationBootstrapper.Migrate();
+			databaseMigrationBootstrapper.Migrate ();
 						
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
 				this.TabBar = new iPhoneTabBarController ();
@@ -107,7 +111,7 @@ namespace ArtekSoftware.Codemash
 		
 		private void CloseLocalyticsSession ()
 		{
-			this.Analytics.Close();
+			this.Analytics.Close ();
 		}	
 	
 	}
@@ -123,4 +127,26 @@ namespace ArtekSoftware.Codemash
 	class SubUploaderThread : UploaderThread
 	{
 	}
+	class X
+	{
+		public void Y ()
+		{
+			var client = new RestClient ();
+			client.BaseUrl = "http://conference.apphb.com/api/";
+			//http://conference.apphb.com/api/MobiDevDay-2012/sessions?format=json
+			var request = new RestRequest ();
+			request.Resource = "MobiDevDay-2012/sessions?format=json";
+			request.RequestFormat = DataFormat.Json;
+			//using (new NetworkIndicator()) {
+				var r2 = client.Execute(request);
+				var response = client.Execute<List<Session2>> (request);
+
+				var session = new Session2 ();
+				if (response != null && response.Data != null) {
+					//session = response.Data;
+				}
+			//}
+		}
+	}
+	
 }

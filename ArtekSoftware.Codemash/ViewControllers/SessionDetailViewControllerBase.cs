@@ -54,12 +54,12 @@ namespace ArtekSoftware.Codemash
 		public SessionDetailViewControllerBase (SessionEntity session, string nibName, NSBundle bundle) : base (nibName, bundle)
 		{
 			_session = session;
-			_networkStatusCheck = new NetworkStatusCheck ();
+			//_networkStatusCheck = new NetworkStatusCheck ();
 		}
 
 		public SessionDetailViewControllerBase (string nibName, NSBundle bundle) : base(nibName, bundle)
 		{	
-			_networkStatusCheck = new NetworkStatusCheck ();
+			//_networkStatusCheck = new NetworkStatusCheck ();
 		}
 		
 		public override void ViewDidLoad ()

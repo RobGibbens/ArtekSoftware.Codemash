@@ -17,7 +17,7 @@ namespace ArtekSoftware.Codemash
 		public SpeakerBioViewController (SpeakerEntity speaker) : base ("SpeakerBioViewController", null)
 		{
 			_speaker = speaker;
-			_networkStatusCheck = new NetworkStatusCheck();
+			//_networkStatusCheck = new NetworkStatusCheck();
 		}
 		
 		public UIToolbar Toolbar {

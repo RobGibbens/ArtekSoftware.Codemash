@@ -17,14 +17,14 @@ namespace ArtekSoftware.Codemash
 		public SpeakerBioLandscapeViewController () : base ("SpeakerBioLandscapeViewController", null)
 		{
 			Console.WriteLine("SpeakerBioLandscapeViewController.ctor");
-			_networkStatusCheck = new NetworkStatusCheck();
+			//_networkStatusCheck = new NetworkStatusCheck();
 		}
 		
 		public SpeakerBioLandscapeViewController (SpeakerEntity speaker) : base ("SpeakerBioLandscapeViewController", null)
 		{
 			Console.WriteLine("SpeakerBioLandscapeViewController.ctor - speaker");
 			_speaker = speaker;
-			_networkStatusCheck = new NetworkStatusCheck();
+			//_networkStatusCheck = new NetworkStatusCheck();
 		}		
 		
 		protected SpeakerEntity Speaker {

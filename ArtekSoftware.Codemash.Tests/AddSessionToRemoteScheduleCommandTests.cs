@@ -16,6 +16,7 @@ namespace ArtekSoftware.Codemash.Tests.AddSessionToRemoteScheduleCommandTests
 		{
 			var mock = new Mock<IRestClient>();
 			var x = mock.Object;
+			var y = new RestClient();
 		}
 	}
 }
