@@ -77,13 +77,13 @@ namespace ArtekSoftware.Codemash
 			var request = new RestRequest ();
 			request.Resource = "MobiDevDay-2012/sessions?format=json";
 			request.RequestFormat = DataFormat.Json;
-			using (new NetworkIndicator()) {
+			//using (new NetworkIndicator()) {
 				var response = _restClient.Execute<SessionsList2> (request);
 				sessions = new List<Session2> ();
 				if (response != null && response.Data != null && response.Data.Sessions != null) {
 					sessions = response.Data.Sessions.OrderBy (x => x.title.Trim ()).ToList ();
 				}
-			}
+			//}
 			
 			foreach (var session in sessions) {
 				session.title = session.title.Trim ();
@@ -106,13 +106,13 @@ namespace ArtekSoftware.Codemash
 			var request = new RestRequest ();
 			request.Resource = "rest/sessions";
 			request.RequestFormat = DataFormat.Json;
-			using (new NetworkIndicator()) {
+			//using (new NetworkIndicator()) {
 				var response = _restClient.Execute<SessionsList> (request);
 				sessions = new List<Session> ();
 				if (response != null && response.Data != null && response.Data.Sessions != null) {
 					sessions = response.Data.Sessions.OrderBy (x => x.Title.Trim ()).ToList ();
 				}
-			}
+			//}
 			
 			foreach (var session in sessions) {
 				session.Title = session.Title.Trim ();
@@ -133,13 +133,13 @@ namespace ArtekSoftware.Codemash
 			var request = new RestRequest ();
 			request.Resource = "rest/precompiler";
 			request.RequestFormat = DataFormat.Json;
-			using (new NetworkIndicator()) {
+			//using (new NetworkIndicator()) {
 				var response = _restClient.Execute<SessionsList> (request);
 				sessions = new List<Session> ();
 				if (response != null && response.Data != null && response.Data.Sessions != null) {
 					sessions = response.Data.Sessions.OrderBy (x => x.Title.Trim ()).ToList ();
 				}
-			}
+			//}
 			
 			foreach (var session in sessions) {
 				session.Title = session.Title.Trim ();
