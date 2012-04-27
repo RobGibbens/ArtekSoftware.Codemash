@@ -43,10 +43,10 @@ namespace RestSharp.Extensions
 			return HttpUtility.UrlDecode(input);
 		}
 
-        /// <summary>
-        /// Uses Uri.EscapeDataString() based on recommendations on MSDN
-        /// http://blogs.msdn.com/b/yangxind/archive/2006/11/09/don-t-use-net-system-uri-unescapedatastring-in-url-decoding.aspx
-        /// </summary>
+		/// <summary>
+		/// Uses Uri.EscapeDataString() based on recommendations on MSDN
+		/// http://blogs.msdn.com/b/yangxind/archive/2006/11/09/don-t-use-net-system-uri-unescapedatastring-in-url-decoding.aspx
+		/// </summary>
 		public static string UrlEncode(this string input)
 		{
 			return Uri.EscapeDataString(input);
@@ -101,9 +101,16 @@ namespace RestSharp.Extensions
 
 			input = input.RemoveSurroundingQuotes();
 
+			long unix;
+			if (Int64.TryParse(input, out unix))
+			{
+				var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+				return epoch.AddSeconds(unix);
+			}
+
 			if (input.Contains("/Date("))
 			{
-				return ExtractDate(input, @"\\/Date\((-?\d+)(-|\+)?([0-9]{4})?\)\\/", culture);
+				return ExtractDate(input, @"\\?/Date\((-?\d+)(-|\+)?([0-9]{4})?\)\\?/", culture);
 			}
 
 			if (input.Contains("new Date("))
@@ -297,6 +304,36 @@ namespace RestSharp.Extensions
 				"$1-$2"), @"[\s]", "-");
 		}
 
+		/// <summary>
+		/// Return possible variants of a name for name matching.
+		/// </summary>
+		/// <param name="name">String to convert</param>
+		/// <param name="culture">The culture to use for conversion</param>
+		/// <returns>IEnumerable&lt;string&gt;</returns>
+		public static IEnumerable<string> GetNameVariants(this string name, CultureInfo culture)
+		{
+			if (String.IsNullOrEmpty(name))
+				yield break;
 
+			yield return name;
+
+			// try camel cased name
+			yield return name.ToCamelCase(culture);
+
+			// try lower cased name
+			yield return name.ToLower(culture);
+
+			// try name with underscores
+			yield return name.AddUnderscores();
+
+			// try name with underscores with lower case
+			yield return name.AddUnderscores().ToLower(culture);
+
+			// try name with dashes
+			yield return name.AddDashes();
+
+			// try name with dashes with lower case
+			yield return name.AddDashes().ToLower(culture);
+		}
 	}
 }

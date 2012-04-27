@@ -6,7 +6,7 @@ using System.Linq;
 using Catnap;
 using Catnap.Find;
 using Catnap.Find.Conditions;
-using MonoQueue;
+////using MonoQueue;
 using MonoTouch.Dialog.Utilities;
 using MonoTouch.Foundation;
 using MonoTouch.Twitter;
@@ -54,12 +54,12 @@ namespace ArtekSoftware.Codemash
 		public SessionDetailViewControllerBase (SessionEntity session, string nibName, NSBundle bundle) : base (nibName, bundle)
 		{
 			_session = session;
-			_networkStatusCheck = new NetworkStatusCheck ();
+			//_networkStatusCheck = new NetworkStatusCheck ();
 		}
 
 		public SessionDetailViewControllerBase (string nibName, NSBundle bundle) : base(nibName, bundle)
 		{	
-			_networkStatusCheck = new NetworkStatusCheck ();
+			//_networkStatusCheck = new NetworkStatusCheck ();
 		}
 		
 		public override void ViewDidLoad ()

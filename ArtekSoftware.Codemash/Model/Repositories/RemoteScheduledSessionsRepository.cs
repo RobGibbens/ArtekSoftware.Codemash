@@ -1,5 +1,5 @@
 using RestSharp;
-using MonoQueue;
+////using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
@@ -25,14 +25,14 @@ namespace ArtekSoftware.Codemash
 				var request = new RestRequest ();
 				request.Resource = "CodeMash/" + userName;
 				request.RequestFormat = DataFormat.Json;
-				using (new NetworkIndicator()) {
+				//using (new NetworkIndicator()) {
 					var response = client.Execute<Schedule> (request);
 
 					schedule = new Schedule ();
 					if (response != null && response.Data != null) {
 						schedule = response.Data;
 					}
-				}
+				//}
 				testFlight.PassCheckpoint ("Finished RemoteScheduledSessionsRepository.GetSchedule");
 			
 				return schedule;
@@ -64,9 +64,9 @@ namespace ArtekSoftware.Codemash
 				request.AddParameter(new Parameter() { Name = "conferenceName", Type = ParameterType.UrlSegment, Value = conferenceName  });
 				request.RequestFormat = DataFormat.Json;
 				
-				using (new NetworkIndicator()) {
+				//using (new NetworkIndicator()) {
 					var response = client.Execute<Schedule> (request);
-				}
+				//}
 				testFlight.PassCheckpoint ("Finished RemoteScheduledSessionsRepository.Save");
 				
 			} else {

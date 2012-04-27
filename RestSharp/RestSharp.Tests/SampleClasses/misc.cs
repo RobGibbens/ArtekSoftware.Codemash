@@ -47,6 +47,8 @@ namespace RestSharp.Tests
 
 		public Order Order { get; set; }
 
+		public Disposition Disposition { get; set; }
+
 	}
 
 	public class PersonForJson
@@ -74,12 +76,20 @@ namespace RestSharp.Tests
 
 		public Order Order { get; set; }
 
+		public Disposition Disposition { get; set; }
 	}
 
 	public enum Order { 
 		First,
 		Second,
 		Third
+	}
+
+	public enum Disposition
+	{
+		Friendly,
+		SoSo,
+		SteerVeryClear
 	}
 
 	public class Friend
@@ -142,5 +152,27 @@ namespace RestSharp.Tests
 		public DateTimeOffset DateTimeOffset { get; set; }
 		public DateTimeOffset? NullableDateTimeOffsetWithNull { get; set; }
 		public DateTimeOffset? NullableDateTimeOffsetWithValue { get; set; }
+	}
+
+    public class TimeSpanTestStructure
+    {
+        public TimeSpan Tick { get; set; }
+        public TimeSpan Millisecond { get; set; }
+        public TimeSpan Second { get; set; }
+        public TimeSpan Minute { get; set; }
+        public TimeSpan Hour { get; set; }
+        public TimeSpan? NullableWithoutValue { get; set; }
+        public TimeSpan? NullableWithValue { get; set; }
+    }
+
+	public class JsonEnumsTestStructure
+	{
+		public Disposition Upper { get; set; }
+		public Disposition Lower { get; set; }
+		public Disposition CamelCased { get; set; }
+		public Disposition Underscores { get; set; }
+		public Disposition LowerUnderscores { get; set; }
+		public Disposition Dashes { get; set; }
+		public Disposition LowerDashes { get; set; }
 	}
 }

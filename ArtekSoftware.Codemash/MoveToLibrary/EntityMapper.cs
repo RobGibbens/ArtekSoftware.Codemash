@@ -5,7 +5,7 @@ using Catnap.Adapters;
 using Catnap.Common.Logging;
 using Catnap.Maps;
 using Catnap.Maps.Impl;
-using MonoQueue;
+//using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
@@ -13,8 +13,8 @@ namespace ArtekSoftware.Codemash
 	{
 		public void Mapper ()
 		{
-			var errorMessageEntity = new ErrorMessageEntity ();
-			var pendingMessageEntity = new PendingMessageEntity ();
+			//var errorMessageEntity = new ErrorMessageEntity ();
+			//var pendingMessageEntity = new PendingMessageEntity ();
 			
 			Log.Level = LogLevel.Off;
 			Domain.Configure
@@ -62,8 +62,9 @@ namespace ArtekSoftware.Codemash
                     .Map (new ValuePropertyMap<RemoteQueueEntity, string> (x => x.ConferenceName))
                     .Map (new ValuePropertyMap<RemoteQueueEntity, string> (x => x.UserName))
                     .Map (new ValuePropertyMap<RemoteQueueEntity, DateTime> (x => x.DateQueuedOn))
-                    .Map (new ValuePropertyMap<RemoteQueueEntity, string> (x => x.AddOrRemove)),
-					
+                    .Map (new ValuePropertyMap<RemoteQueueEntity, string> (x => x.AddOrRemove))
+				
+					/*
 				Map.Entity<ErrorMessageEntity> ()
         			.Table (errorMessageEntity.TableName)
                     .Map (new ValuePropertyMap<ErrorMessageEntity, string> (x => x.CreatedOnString))
@@ -76,7 +77,8 @@ namespace ArtekSoftware.Codemash
                     .Map (new ValuePropertyMap<PendingMessageEntity, string> (x => x.CreatedOnString))
                     .Map (new ValuePropertyMap<PendingMessageEntity, byte[]> (x => x.MessageContents))
                     .Map (new ValuePropertyMap<PendingMessageEntity, string> (x => x.MessageType))
-                    .Map (new ValuePropertyMap<PendingMessageEntity, int> (x => x.RetryCount))					
+                    .Map (new ValuePropertyMap<PendingMessageEntity, int> (x => x.RetryCount))		
+                    */			
             );
 		}
 	}

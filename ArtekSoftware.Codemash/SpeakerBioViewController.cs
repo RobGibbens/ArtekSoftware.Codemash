@@ -5,7 +5,7 @@ using System.Linq;
 using Catnap;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-using MonoQueue;
+////using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
@@ -17,7 +17,7 @@ namespace ArtekSoftware.Codemash
 		public SpeakerBioViewController (SpeakerEntity speaker) : base ("SpeakerBioViewController", null)
 		{
 			_speaker = speaker;
-			_networkStatusCheck = new NetworkStatusCheck();
+			//_networkStatusCheck = new NetworkStatusCheck();
 		}
 		
 		public UIToolbar Toolbar {

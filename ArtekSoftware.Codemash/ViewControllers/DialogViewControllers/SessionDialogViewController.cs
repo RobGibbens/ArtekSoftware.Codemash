@@ -4,7 +4,7 @@ using System.Linq;
 using MonoTouch.Dialog;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-using MonoQueue;
+////using MonoQueue;
 
 namespace ArtekSoftware.Codemash
 {
@@ -16,7 +16,7 @@ namespace ArtekSoftware.Codemash
 		
 		public SessionDialogViewController () : base(null)
 		{
-			_networkStatusCheck = new NetworkStatusCheck();
+			//_networkStatusCheck = new NetworkStatusCheck();
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
 				this.Autorotate = false;
 			}
