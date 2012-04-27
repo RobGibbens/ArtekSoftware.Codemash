@@ -33,6 +33,9 @@
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.103.0.0\lib\net35\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.3.6.9\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

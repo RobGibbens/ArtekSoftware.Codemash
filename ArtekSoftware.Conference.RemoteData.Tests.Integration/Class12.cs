@@ -8,7 +8,7 @@ using Should;
 namespace ArtekSoftware.Conference.RemoteData.Tests.Integration
 {
 	[TestFixture]
-	public class Class12
+	public class Tests
 	{
 		[TestFixtureSetUp]
 		public void Setup ()
@@ -24,7 +24,7 @@ namespace ArtekSoftware.Conference.RemoteData.Tests.Integration
 			//Assert.True(1 == 1);
 			
 			var repository = new RemoteSessionsRepository (testFlightProxy, restClient);
-			var sessions = repository.GetSessions2 (conferenceSlug);
+			var sessions = repository.GetSessions (conferenceSlug);
 			sessions.Count.ShouldEqual(7);
 		}
 	}
