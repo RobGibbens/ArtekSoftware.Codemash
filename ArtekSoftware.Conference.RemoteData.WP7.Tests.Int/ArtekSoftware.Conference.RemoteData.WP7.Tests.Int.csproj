@@ -54,8 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\ArtekSoftware.Conference.RemoteData.Tests.Integration\Class12.cs">
-      <Link>Class12.cs</Link>
+    <Compile Include="..\ArtekSoftware.Conference.RemoteData.Tests.Int\SessionsTests.cs">
+      <Link>SessionsTests.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

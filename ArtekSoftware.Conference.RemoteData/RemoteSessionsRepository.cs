@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using RestSharp;
 using ArtekSoftware.Conference.Common.Http;
 
@@ -31,14 +33,14 @@ namespace ArtekSoftware.Conference
 
       var request = new RestRequest
       {
-        Resource = conferenceSlug + "/sessions/" + sessionSlug + "?format=json",
+        Resource = conferenceSlug + "/sessions/" + sessionSlug,
         RequestFormat = DataFormat.Json,
       };
       var response = _restClient.Execute<Session>(request);
       Session session = null;
       if (response != null && response.Data != null)
       {
-        session = (Session) response.Data;
+        session = (Session)response.Data;
       }
       return session;
     }
@@ -51,7 +53,7 @@ namespace ArtekSoftware.Conference
 
       var request = new RestRequest
       {
-        Resource = conferenceSlug + "/sessions?format=json",
+        Resource = conferenceSlug + "/sessions",
         RequestFormat = DataFormat.Json,
       };
       var response = _restClient.Execute<List<Session>>(request);
@@ -75,7 +77,20 @@ namespace ArtekSoftware.Conference
 
     public void Save(string conferenceSlug, Session item)
     {
-      throw new System.NotImplementedException();
+      _restClient.BaseUrl = _remoteConfiguration.BaseUrl;
+
+      var request = new RestRequest
+      {
+        Resource = conferenceSlug + "/sessions",
+        RequestFormat = DataFormat.Json,
+        Method = Method.PUT
+      };
+
+      var response = _restClient.Execute(request);
+      if (response.StatusCode != HttpStatusCode.Created && response.StatusCode != HttpStatusCode.OK)
+      {
+        throw new Exception("Could not save session. " + response.StatusDescription + " " + response.Content);
+      }
     }
 
 
