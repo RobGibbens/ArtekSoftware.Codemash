@@ -1,5 +1,6 @@
 using RestSharp;
 ////using MonoQueue;
+using ArtekSoftware.Conference;
 
 namespace ArtekSoftware.Codemash
 {

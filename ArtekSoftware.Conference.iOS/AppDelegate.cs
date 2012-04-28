@@ -7,6 +7,7 @@ using Catnap;
 using Localytics;
 using RestSharp;
 using System.Collections.Generic;
+using ArtekSoftware.Conference;
 
 namespace ArtekSoftware.Codemash
 {
@@ -139,9 +140,9 @@ namespace ArtekSoftware.Codemash
 			request.RequestFormat = DataFormat.Json;
 			//using (new NetworkIndicator()) {
 				var r2 = client.Execute(request);
-				var response = client.Execute<List<Session2>> (request);
+				var response = client.Execute<List<ArtekSoftware.Conference.Session>> (request);
 
-				var session = new Session2 ();
+				var session = new ArtekSoftware.Conference.Session ();
 				if (response != null && response.Data != null) {
 					//session = response.Data;
 				}

@@ -6,6 +6,7 @@ using Catnap;
 using MonoTouch.Dialog;
 ////using MonoQueue;
 using RestSharp;
+using ArtekSoftware.Conference;
 
 namespace ArtekSoftware.Codemash
 {

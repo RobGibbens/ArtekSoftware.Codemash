@@ -482,7 +482,7 @@
       <Project>{5FE38320-8D92-4337-9D94-DA30E18257A3}</Project>
       <Name>ArtekSoftware.Conference.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Artek.Conference.RemoteData\ArtekSoftware.Conference.RemoteData.csproj">
+    <ProjectReference Include="..\ArtekSoftware.Conference.RemoteData\ArtekSoftware.Conference.RemoteData.csproj">
       <Project>{60E041D1-03BF-4985-90F6-F9E161EFD4F1}</Project>
       <Name>ArtekSoftware.Conference.RemoteData</Name>
     </ProjectReference>

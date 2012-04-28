@@ -7,12 +7,13 @@ using Catnap.Find;
 using Catnap.Find.Conditions;
 using Mono.Data.Sqlite;
 using System.Linq;
+using ArtekSoftware.Conference;
 
 namespace ArtekSoftware.Codemash
 {
 	public class SessionsCacheRepository
 	{
-		public void Cache (IList<Session> dtos)
+		public void Cache (IList<ArtekSoftware.Conference.Session> dtos)
 		{
 			var documents = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
 			string db = Path.Combine (documents, "codemash.db3");

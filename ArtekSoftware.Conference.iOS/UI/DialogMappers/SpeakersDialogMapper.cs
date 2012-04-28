@@ -4,6 +4,7 @@ using System.Linq;
 using Catnap;
 using MonoTouch.Dialog;
 ////using MonoQueue;
+using ArtekSoftware.Conference;
 
 namespace ArtekSoftware.Codemash
 {

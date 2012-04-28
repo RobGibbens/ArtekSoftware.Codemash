@@ -4,6 +4,7 @@ using System.Linq;
 using MonoTouch.Dialog;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using ArtekSoftware.Conference;
 
 namespace ArtekSoftware.Codemash
 {

@@ -6,6 +6,7 @@ using Catnap;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 ////using MonoQueue;
+using ArtekSoftware.Conference;
 
 namespace ArtekSoftware.Codemash
 {

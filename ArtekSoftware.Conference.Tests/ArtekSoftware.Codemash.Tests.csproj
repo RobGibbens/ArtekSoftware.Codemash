@@ -77,10 +77,6 @@
     <Compile Include="NetworkStatusCheckTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArtekSoftware.Codemash\CodeMash.csproj">
-      <Project>{827472B0-BD73-4BCF-BE8D-D0346D43212F}</Project>
-      <Name>CodeMash</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
@@ -88,6 +84,10 @@
     <ProjectReference Include="..\ArtekSoftware.Conference.Common\ArtekSoftware.Conference.Common.csproj">
       <Project>{5FE38320-8D92-4337-9D94-DA30E18257A3}</Project>
       <Name>ArtekSoftware.Conference.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArtekSoftware.Conference.iOS\CodeMash.csproj">
+      <Project>{827472B0-BD73-4BCF-BE8D-D0346D43212F}</Project>
+      <Name>CodeMash</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

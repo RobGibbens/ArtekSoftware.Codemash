@@ -1,3 +1,5 @@
+using ArtekSoftware.Conference;
+
 namespace ArtekSoftware.Codemash
 {
 	public class Speaker

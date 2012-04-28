@@ -39,10 +39,10 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Compile Include="RemoteSessionsRepository.cs" />
-    <Compile Include="Session2.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="SessionsList.cs" />
-    <Compile Include="SessionsList2.cs" />
+    <Compile Include="IRemoteRepository.cs" />
+    <Compile Include="Speaker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArtekSoftware.Conference.Common\ArtekSoftware.Conference.Common.csproj">

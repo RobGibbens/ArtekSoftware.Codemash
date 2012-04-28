@@ -1,21 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMash", "ArtekSoftware.Codemash\CodeMash.csproj", "{827472B0-BD73-4BCF-BE8D-D0346D43212F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catnap", "Catnap\Catnap.csproj", "{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Codemash.Tests", "ArtekSoftware.Codemash.Tests\ArtekSoftware.Codemash.Tests.csproj", "{EB337F32-D077-4EB8-B100-F19039CC1F75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSharp.MonoTouch", "RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj", "{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData", "Artek.Conference.RemoteData\ArtekSoftware.Conference.RemoteData.csproj", "{60E041D1-03BF-4985-90F6-F9E161EFD4F1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData.Tests.Unit", "Artek.Conference.RemoteData.Tests.Unit\ArtekSoftware.Conference.RemoteData.Tests.Unit.csproj", "{DE688BAF-A9C3-43F5-A4BB-5E919D2E9038}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.Common", "ArtekSoftware.Conference.Common\ArtekSoftware.Conference.Common.csproj", "{5FE38320-8D92-4337-9D94-DA30E18257A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData.Tests.Integration", "ArtekSoftware.Conference.RemoteData.Tests.Integration\ArtekSoftware.Conference.RemoteData.Tests.Integration.csproj", "{96818D99-EDEA-4207-BF20-0A5B6BBE3FB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData", "ArtekSoftware.Conference.RemoteData\ArtekSoftware.Conference.RemoteData.csproj", "{60E041D1-03BF-4985-90F6-F9E161EFD4F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData.Tests.Unit", "ArtekSoftware.Conference.RemoteData.Tests.Unit\ArtekSoftware.Conference.RemoteData.Tests.Unit.csproj", "{DE688BAF-A9C3-43F5-A4BB-5E919D2E9038}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData.Tests.Integration", "ArtekSoftware.Conference.RemoteData.Tests.Int\ArtekSoftware.Conference.RemoteData.Tests.Integration.csproj", "{96818D99-EDEA-4207-BF20-0A5B6BBE3FB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMash", "ArtekSoftware.Conference.iOS\CodeMash.csproj", "{827472B0-BD73-4BCF-BE8D-D0346D43212F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Codemash.Tests", "ArtekSoftware.Conference.Tests\ArtekSoftware.Codemash.Tests.csproj", "{EB337F32-D077-4EB8-B100-F19039CC1F75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +29,7 @@ Global
 		DEBUG MONO|Any CPU = DEBUG MONO|Any CPU
 		MONOTOUCH|Any CPU = MONOTOUCH|Any CPU
 		STATIC_ONLY NO_EXPRESSIONS|Any CPU = STATIC_ONLY NO_EXPRESSIONS|Any CPU
+		AppStore|iPhoneSimulator = AppStore|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5FE38320-8D92-4337-9D94-DA30E18257A3}.AdHoc|iPhone.ActiveCfg = Debug|Any CPU
@@ -77,14 +78,22 @@ Global
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.AdHoc|iPhoneSimulator.Build.0 = AdHoc|iPhoneSimulator
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
+		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
+		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.DEBUG MONO|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.DEBUG MONO|Any CPU.Build.0 = Debug|iPhoneSimulator
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.Debug|iPhone.Build.0 = Debug|iPhone
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.MONOTOUCH|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.MONOTOUCH|Any CPU.Build.0 = Debug|iPhoneSimulator
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.Release|iPhone.ActiveCfg = Release|iPhone
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.Release|iPhone.Build.0 = Release|iPhone
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{827472B0-BD73-4BCF-BE8D-D0346D43212F}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.Build.0 = Debug|iPhoneSimulator
 		{96818D99-EDEA-4207-BF20-0A5B6BBE3FB8}.AdHoc|iPhone.ActiveCfg = Debug|Any CPU
 		{96818D99-EDEA-4207-BF20-0A5B6BBE3FB8}.AdHoc|iPhone.Build.0 = Debug|Any CPU
 		{96818D99-EDEA-4207-BF20-0A5B6BBE3FB8}.AdHoc|iPhoneSimulator.ActiveCfg = Debug|Any CPU
@@ -165,17 +174,25 @@ Global
 		{EB337F32-D077-4EB8-B100-F19039CC1F75}.AdHoc|iPhoneSimulator.Build.0 = Debug|Any CPU
 		{EB337F32-D077-4EB8-B100-F19039CC1F75}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
 		{EB337F32-D077-4EB8-B100-F19039CC1F75}.AppStore|iPhone.Build.0 = Debug|Any CPU
+		{EB337F32-D077-4EB8-B100-F19039CC1F75}.AppStore|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{EB337F32-D077-4EB8-B100-F19039CC1F75}.AppStore|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{EB337F32-D077-4EB8-B100-F19039CC1F75}.DEBUG MONO|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB337F32-D077-4EB8-B100-F19039CC1F75}.DEBUG MONO|Any CPU.Build.0 = Debug|Any CPU
 		{EB337F32-D077-4EB8-B100-F19039CC1F75}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{EB337F32-D077-4EB8-B100-F19039CC1F75}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{EB337F32-D077-4EB8-B100-F19039CC1F75}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
 		{EB337F32-D077-4EB8-B100-F19039CC1F75}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{EB337F32-D077-4EB8-B100-F19039CC1F75}.MONOTOUCH|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB337F32-D077-4EB8-B100-F19039CC1F75}.MONOTOUCH|Any CPU.Build.0 = Debug|Any CPU
 		{EB337F32-D077-4EB8-B100-F19039CC1F75}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{EB337F32-D077-4EB8-B100-F19039CC1F75}.Release|iPhone.Build.0 = Release|Any CPU
 		{EB337F32-D077-4EB8-B100-F19039CC1F75}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{EB337F32-D077-4EB8-B100-F19039CC1F75}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{EB337F32-D077-4EB8-B100-F19039CC1F75}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB337F32-D077-4EB8-B100-F19039CC1F75}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ArtekSoftware.Codemash\CodeMash.csproj
+		StartupItem = Catnap\Catnap.csproj
 		version = 0.25
 	EndGlobalSection
 EndGlobal

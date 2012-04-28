@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Catnap.Adapters;
+using ArtekSoftware.Conference;
 
 namespace ArtekSoftware.Codemash
 {
