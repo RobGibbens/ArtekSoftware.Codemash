@@ -33,6 +33,12 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Ploeh.AutoFixture">
+      <HintPath>..\packages\AutoFixture.2.10.0\lib\Ploeh.AutoFixture.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.SemanticComparison">
+      <HintPath>..\packages\AutoFixture.2.10.0\lib\Ploeh.SemanticComparison.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.103.0.0\lib\net35\RestSharp.dll</HintPath>
     </Reference>

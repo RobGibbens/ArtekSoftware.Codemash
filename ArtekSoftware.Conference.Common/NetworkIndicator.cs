@@ -1,7 +1,7 @@
 //using System;
 //using MonoTouch.UIKit;
 
-//namespace ArtekSoftware.Codemash
+//namespace ArtekSoftware.Conference
 //{
 //    public class NetworkIndicator : IDisposable
 //    {

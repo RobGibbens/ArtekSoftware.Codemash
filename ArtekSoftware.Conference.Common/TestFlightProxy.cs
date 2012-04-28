@@ -1,7 +1,7 @@
 using System;
 //using MonoTouch.TestFlight;
 
-namespace ArtekSoftware.Codemash
+namespace ArtekSoftware.Conference
 {
 	public interface ITestFlightProxy
 	{

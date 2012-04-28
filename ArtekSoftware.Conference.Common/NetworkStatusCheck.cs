@@ -1,6 +1,6 @@
 using System;
 
-namespace ArtekSoftware.Codemash
+namespace ArtekSoftware.Conference
 {
 	[Serializable]
 	public enum NetworkStatus

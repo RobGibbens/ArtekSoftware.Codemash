@@ -1,47 +1,61 @@
 using System.Collections.Generic;
 using System.Linq;
 using RestSharp;
-using System.Net;
-using System;
-using System.IO;
-using System.Text;
 using ArtekSoftware.Conference.Common.Http;
-using RestSharp.Serializers;
 
-namespace ArtekSoftware.Codemash
+namespace ArtekSoftware.Conference
 {
-  public class RemoteSessionsRepository
+  public class RemoteSessionsRepository : IRemoteRepository<Session>
   {
     private readonly IHttpWebRequestFactory _httpWebRequestFactory = new HttpWebRequestFactory();
     private readonly IRestClient _restClient;
+    private readonly IRemoteConfiguration _remoteConfiguration;
     private readonly ITestFlightProxy _testFlightProxy;
 
-    public RemoteSessionsRepository(ITestFlightProxy testFlightProxy, IRestClient restClient)
+    public RemoteSessionsRepository(ITestFlightProxy testFlightProxy, IRestClient restClient, IRemoteConfiguration remoteConfiguration)
     {
       _testFlightProxy = testFlightProxy;
       _restClient = restClient;
+      _remoteConfiguration = remoteConfiguration;
     }
 
-    public RemoteSessionsRepository(ITestFlightProxy testFlightProxy, IRestClient restClient, IHttpWebRequestFactory httpWebRequestFactory)
-      : this(testFlightProxy, restClient)
+    public RemoteSessionsRepository(ITestFlightProxy testFlightProxy, IRestClient restClient, IRemoteConfiguration remoteConfiguration, IHttpWebRequestFactory httpWebRequestFactory)
+      : this(testFlightProxy, restClient, remoteConfiguration)
     {
       _httpWebRequestFactory = httpWebRequestFactory;
     }
 
-
-    public IList<Session2> GetSessions(string conferenceSlug)
+    public Session Get(string conferenceSlug, string sessionSlug)
     {
-      _testFlightProxy.PassCheckpoint("Started RemoteSessionsRepository.GetSessions");
-
-      _restClient.BaseUrl = "http://conference.apphb.com/api/";
+      _restClient.BaseUrl = _remoteConfiguration.BaseUrl;
 
       var request = new RestRequest
       {
-        Resource = "MobiDevDay-2012/sessions?format=json",
+        Resource = conferenceSlug + "/sessions/" + sessionSlug + "?format=json",
         RequestFormat = DataFormat.Json,
       };
-      var response = _restClient.Execute<List<Session2>>(request);
-      var sessions = new List<Session2>();
+      var response = _restClient.Execute<Session>(request);
+      Session session = null;
+      if (response != null && response.Data != null)
+      {
+        session = (Session) response.Data;
+      }
+      return session;
+    }
+
+    public IList<Session> Get(string conferenceSlug)
+    {
+      _testFlightProxy.PassCheckpoint("Started RemoteSessionsRepository.GetSessions");
+
+      _restClient.BaseUrl = _remoteConfiguration.BaseUrl;
+
+      var request = new RestRequest
+      {
+        Resource = conferenceSlug + "/sessions?format=json",
+        RequestFormat = DataFormat.Json,
+      };
+      var response = _restClient.Execute<List<Session>>(request);
+      var sessions = new List<Session>();
       if (response != null && response.Data != null)
       {
         sessions = response.Data.OrderBy(x => x.title.Trim()).ToList();
@@ -59,10 +73,15 @@ namespace ArtekSoftware.Codemash
 
     }
 
+    public void Save(string conferenceSlug, Session item)
+    {
+      throw new System.NotImplementedException();
+    }
 
-    //private IList<Session> GetRegularSessions ()
+
+    //private IList<SessionOld> GetRegularSessions ()
     //{
-    //  IList<Session> sessions;
+    //  IList<SessionOld> sessions;
     //  _testFlightProxy.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
 
 
@@ -73,7 +92,7 @@ namespace ArtekSoftware.Codemash
     //  request.RequestFormat = DataFormat.Json;
     //  //using (new NetworkIndicator()) {
     //    var response = _restClient.Execute<SessionsList> (request);
-    //    sessions = new List<Session> ();
+    //    sessions = new List<SessionOld> ();
     //    if (response != null && response.Data != null && response.Data.Sessions != null) {
     //      sessions = response.Data.Sessions.OrderBy (x => x.Title.Trim ()).ToList ();
     //    }
@@ -88,9 +107,9 @@ namespace ArtekSoftware.Codemash
     //  return sessions;
     //}
 
-    //private IList<Session> GetPrecompilerSessions ()
+    //private IList<SessionOld> GetPrecompilerSessions ()
     //{
-    //  IList<Session> sessions;
+    //  IList<SessionOld> sessions;
     //  _testFlightProxy.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
 
     //  _restClient.BaseUrl = "http://codemash.org";
@@ -100,7 +119,7 @@ namespace ArtekSoftware.Codemash
     //  request.RequestFormat = DataFormat.Json;
     //  //using (new NetworkIndicator()) {
     //    var response = _restClient.Execute<SessionsList> (request);
-    //    sessions = new List<Session> ();
+    //    sessions = new List<SessionOld> ();
     //    if (response != null && response.Data != null && response.Data.Sessions != null) {
     //      sessions = response.Data.Sessions.OrderBy (x => x.Title.Trim ()).ToList ();
     //    }
@@ -115,5 +134,13 @@ namespace ArtekSoftware.Codemash
     //  return sessions;
     //}		
 
+  }
+  public class RemoteConfiguration : IRemoteConfiguration
+  {
+    public string BaseUrl { get; set; }
+  }
+  public interface IRemoteConfiguration
+  {
+    string BaseUrl { get; set; }
   }
 }

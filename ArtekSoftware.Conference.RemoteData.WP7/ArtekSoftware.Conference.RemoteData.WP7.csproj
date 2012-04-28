@@ -39,26 +39,25 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Artek.Conference.RemoteData\RemoteSessionsRepository.cs">
+    <Compile Include="..\ArtekSoftware.Conference.RemoteData\IRemoteRepository.cs">
+      <Link>IRemoteRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\ArtekSoftware.Conference.RemoteData\RemoteSessionsRepository.cs">
       <Link>RemoteSessionsRepository.cs</Link>
     </Compile>
-    <Compile Include="..\Artek.Conference.RemoteData\Session.cs">
+    <Compile Include="..\ArtekSoftware.Conference.RemoteData\Session.cs">
       <Link>Session.cs</Link>
     </Compile>
-    <Compile Include="..\Artek.Conference.RemoteData\Session2.cs">
-      <Link>Session2.cs</Link>
-    </Compile>
-    <Compile Include="..\Artek.Conference.RemoteData\SessionsList.cs">
+    <Compile Include="..\ArtekSoftware.Conference.RemoteData\SessionsList.cs">
       <Link>SessionsList.cs</Link>
     </Compile>
-    <Compile Include="..\Artek.Conference.RemoteData\SessionsList2.cs">
-      <Link>SessionsList2.cs</Link>
+    <Compile Include="..\ArtekSoftware.Conference.RemoteData\Speaker.cs">
+      <Link>Speaker.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
