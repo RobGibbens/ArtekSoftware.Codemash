@@ -35,17 +35,17 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite">
-      <HintPath>..\packages\vici.coolstorage.sqlite\System.Data.SQLite.dll</HintPath>
+      <HintPath>..\..\..\packages\vici.coolstorage.sqlite\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Vici.CoolStorage">
-      <HintPath>..\packages\vici.coolstorage.1.5.0\lib\net35\Vici.CoolStorage.dll</HintPath>
+      <HintPath>..\..\..\packages\vici.coolstorage.1.5.0\lib\net35\Vici.CoolStorage.dll</HintPath>
     </Reference>
     <Reference Include="Vici.CoolStorage.SQLite">
-      <HintPath>..\packages\vici.coolstorage.sqlite\Vici.CoolStorage.SQLite.dll</HintPath>
+      <HintPath>..\..\..\packages\vici.coolstorage.sqlite\Vici.CoolStorage.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="Vici.Core">
-      <HintPath>..\packages\vici.core.1.0.0\lib\net35\Vici.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\vici.core.1.0.0\lib\net35\Vici.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
