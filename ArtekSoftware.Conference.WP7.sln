@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData.WP7.Tests.Int", "ArtekSoftware.Conference.RemoteData.WP7.Tests.Int\ArtekSoftware.Conference.RemoteData.WP7.Tests.Int.csproj", "{36AF85D9-9E6C-4746-93C0-3BD890B35045}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.LocalData.WP7", "ArtekSoftware.Conference.LocalData.WP7\ArtekSoftware.Conference.LocalData.WP7.csproj", "{8FE5D017-E3AB-4766-B4B4-4C0867074D07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9C223141-FEAE-4D10-A2F8-949A82DC67CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9C223141-FEAE-4D10-A2F8-949A82DC67CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C223141-FEAE-4D10-A2F8-949A82DC67CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
