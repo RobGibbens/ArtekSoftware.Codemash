@@ -1,6 +1,6 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Conference.iOS/Model/Repositories/LocalSessionsRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Conference.iOS/UI/DialogMappers/SessionsDialogMapper.cs">
     <Files>
       <File FileName="ArtekSoftware.Conference.Common/TestFlightProxy.cs" Line="4" Column="33" />
       <File FileName="ArtekSoftware.Conference.RemoteData/RemoteSessionsRepository.cs" Line="10" Column="48" />
@@ -12,7 +12,7 @@
       <File FileName="ArtekSoftware.Conference.iOS/Model/DTOs/Speaker.cs" Line="4" Column="2" />
       <File FileName="ArtekSoftware.Conference.RemoteData/SessionsList.cs" Line="3" Column="11" />
       <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/RemoteScheduledSessionsRepository.cs" Line="9" Column="22" />
-      <File FileName="ArtekSoftware.Conference.iOS/UI/DialogMappers/SessionsDialogMapper.cs" Line="17" Column="46" />
+      <File FileName="ArtekSoftware.Conference.iOS/UI/DialogMappers/SessionsDialogMapper.cs" Line="27" Column="8" />
       <File FileName="ArtekSoftware.Conference.iOS/UI/DialogMappers/SpeakersDialogMapper.cs" Line="15" Column="46" />
       <File FileName="ArtekSoftware.Conference.iOS/ViewControllers/SessionDetailViewControllerBase.cs" Line="52" Column="26" />
       <File FileName="ArtekSoftware.Conference.iOS/SpeakerBioViewController.cs" Line="16" Column="22" />
@@ -21,7 +21,16 @@
       <File FileName="ArtekSoftware.Conference.iOS/MoveToLibrary/DefaultDatabaseManager.cs" Line="10" Column="14" />
       <File FileName="ArtekSoftware.Conference.iOS/iPhoneSpeakerBioViewController.cs" Line="14" Column="54" />
       <File FileName="ArtekSoftware.Conference.iOS/ViewControllers/DialogViewControllers/ScheduleDialogViewController.cs" Line="52" Column="44" />
-      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/LocalSessionsRepository.cs" Line="21" Column="37" />
+      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/LocalSessionsRepository.cs" Line="25" Column="26" />
+      <File FileName="ArtekSoftware.Conference.iOS/MoveToLibrary/EntityMapper.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Conference.iOS/MoveToLibrary/IDefaultDatabaseManager.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/LocalQueueRepository.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/LocalRefreshRepository.cs" Line="21" Column="1" />
+      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/LocalScheduledSessionsRepository.cs" Line="9" Column="60" />
+      <File FileName="Catnap/Repository.cs" Line="10" Column="5" />
+      <File FileName="ArtekSoftware.Conference.iOS/Model/Entities/ScheduledSessionEntity.cs" Line="1" Column="1" />
+      <File FileName="ArtekSoftware.Conference.iOS/Model/Entities/SessionEntity.cs" Line="6" Column="1" />
+      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/LocalSpeakersRepository.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -33,6 +42,18 @@
           <Node name="ArtekSoftware.Conference.RemoteData">
             <Option id="ShowVersionControlOverlays" value="True" />
             <Option id="ShowAllFiles" value="True" />
+          </Node>
+          <Node name="Catnap" expanded="True" />
+          <Node name="CodeMash" expanded="True">
+            <Node name="Model" expanded="True">
+              <Node name="Repositories" expanded="True" />
+            </Node>
+            <Node name="MoveToLibrary" expanded="True" />
+            <Node name="UI" expanded="True">
+              <Node name="DialogMappers" expanded="True">
+                <Node name="SessionsDialogMapper.cs" selected="True" />
+              </Node>
+            </Node>
           </Node>
         </State>
       </Pad>
