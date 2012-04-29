@@ -1,15 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 11
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData.WP7", "ArtekSoftware.Conference.RemoteData.WP7\ArtekSoftware.Conference.RemoteData.WP7.csproj", "{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}"
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{BCB56B89-A101-453C-8DBC-6DA567A5A2C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.Common.WP7", "ArtekSoftware.Conference.Common.WP7\ArtekSoftware.Conference.Common.WP7.csproj", "{9C223141-FEAE-4D10-A2F8-949A82DC67CC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LocalData", "LocalData", "{DD172300-8A6A-496B-B08B-30B813E6AE9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData.WP7.Tests.Unit", "ArtekSoftware.Conference.RemoteData.WP7.Tests.Unit\ArtekSoftware.Conference.RemoteData.WP7.Tests.Unit.csproj", "{0510DF0A-1BCE-465D-93D4-9FA549C9FB27}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{408CBC57-9235-48CD-B2BF-46A66DC759DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData.WP7.Tests.Int", "ArtekSoftware.Conference.RemoteData.WP7.Tests.Int\ArtekSoftware.Conference.RemoteData.WP7.Tests.Int.csproj", "{36AF85D9-9E6C-4746-93C0-3BD890B35045}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RemoteData", "RemoteData", "{C0D83ED7-2886-454F-848E-BB229C9B9467}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.LocalData.WP7", "ArtekSoftware.Conference.LocalData.WP7\ArtekSoftware.Conference.LocalData.WP7.csproj", "{8FE5D017-E3AB-4766-B4B4-4C0867074D07}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D734B1D6-8F0A-430A-B6B8-8DB4B9C93153}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{66829B1E-A6A8-4D72-8AD0-CD4B0ED5C04C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.Common.WP7", "Common\ArtekSoftware.Conference.Common.WP7\ArtekSoftware.Conference.Common.WP7.csproj", "{9C223141-FEAE-4D10-A2F8-949A82DC67CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.LocalData.WP7", "LocalData\WP7\ArtekSoftware.Conference.LocalData.WP7\ArtekSoftware.Conference.LocalData.WP7.csproj", "{8FE5D017-E3AB-4766-B4B4-4C0867074D07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.LocalData.WP7.Tests.Int", "LocalData\WP7\ArtekSoftware.Conference.LocalData.WP7.Tests.Int\ArtekSoftware.Conference.LocalData.WP7.Tests.Int.csproj", "{04EB3E1A-B59A-42B5-BB5F-AEE6A8831288}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData.WP7", "RemoteData\WP7\ArtekSoftware.Conference.RemoteData.WP7\ArtekSoftware.Conference.RemoteData.WP7.csproj", "{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData.WP7.Tests.Int", "RemoteData\WP7\ArtekSoftware.Conference.RemoteData.WP7.Tests.Int\ArtekSoftware.Conference.RemoteData.WP7.Tests.Int.csproj", "{36AF85D9-9E6C-4746-93C0-3BD890B35045}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtekSoftware.Conference.RemoteData.WP7.Tests.Unit", "RemoteData\WP7\ArtekSoftware.Conference.RemoteData.WP7.Tests.Unit\ArtekSoftware.Conference.RemoteData.WP7.Tests.Unit.csproj", "{0510DF0A-1BCE-465D-93D4-9FA549C9FB27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,28 +31,44 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0510DF0A-1BCE-465D-93D4-9FA549C9FB27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0510DF0A-1BCE-465D-93D4-9FA549C9FB27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0510DF0A-1BCE-465D-93D4-9FA549C9FB27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0510DF0A-1BCE-465D-93D4-9FA549C9FB27}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36AF85D9-9E6C-4746-93C0-3BD890B35045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36AF85D9-9E6C-4746-93C0-3BD890B35045}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36AF85D9-9E6C-4746-93C0-3BD890B35045}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36AF85D9-9E6C-4746-93C0-3BD890B35045}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9C223141-FEAE-4D10-A2F8-949A82DC67CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9C223141-FEAE-4D10-A2F8-949A82DC67CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C223141-FEAE-4D10-A2F8-949A82DC67CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C223141-FEAE-4D10-A2F8-949A82DC67CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE5D017-E3AB-4766-B4B4-4C0867074D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04EB3E1A-B59A-42B5-BB5F-AEE6A8831288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04EB3E1A-B59A-42B5-BB5F-AEE6A8831288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04EB3E1A-B59A-42B5-BB5F-AEE6A8831288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04EB3E1A-B59A-42B5-BB5F-AEE6A8831288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36AF85D9-9E6C-4746-93C0-3BD890B35045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36AF85D9-9E6C-4746-93C0-3BD890B35045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36AF85D9-9E6C-4746-93C0-3BD890B35045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36AF85D9-9E6C-4746-93C0-3BD890B35045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0510DF0A-1BCE-465D-93D4-9FA549C9FB27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0510DF0A-1BCE-465D-93D4-9FA549C9FB27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0510DF0A-1BCE-465D-93D4-9FA549C9FB27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0510DF0A-1BCE-465D-93D4-9FA549C9FB27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9C223141-FEAE-4D10-A2F8-949A82DC67CC} = {BCB56B89-A101-453C-8DBC-6DA567A5A2C8}
+		{DD172300-8A6A-496B-B08B-30B813E6AE9F} = {408CBC57-9235-48CD-B2BF-46A66DC759DA}
+		{C0D83ED7-2886-454F-848E-BB229C9B9467} = {408CBC57-9235-48CD-B2BF-46A66DC759DA}
+		{D734B1D6-8F0A-430A-B6B8-8DB4B9C93153} = {DD172300-8A6A-496B-B08B-30B813E6AE9F}
+		{8FE5D017-E3AB-4766-B4B4-4C0867074D07} = {DD172300-8A6A-496B-B08B-30B813E6AE9F}
+		{66829B1E-A6A8-4D72-8AD0-CD4B0ED5C04C} = {C0D83ED7-2886-454F-848E-BB229C9B9467}
+		{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3} = {C0D83ED7-2886-454F-848E-BB229C9B9467}
+		{04EB3E1A-B59A-42B5-BB5F-AEE6A8831288} = {D734B1D6-8F0A-430A-B6B8-8DB4B9C93153}
+		{36AF85D9-9E6C-4746-93C0-3BD890B35045} = {66829B1E-A6A8-4D72-8AD0-CD4B0ED5C04C}
+		{0510DF0A-1BCE-465D-93D4-9FA549C9FB27} = {66829B1E-A6A8-4D72-8AD0-CD4B0ED5C04C}
 	EndGlobalSection
 EndGlobal
