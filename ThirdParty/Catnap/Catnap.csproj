@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Catnap</RootNamespace>
+    <AssemblyName>Catnap</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <ReleaseVersion>0.25</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\AppStore</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapters\BaseSqliteAdapter.cs" />
+    <Compile Include="Database\DbCommandSpec.cs" />
+    <Compile Include="Database\IDbAdapter.cs" />
+    <Compile Include="Database\IDbTypeConverter.cs" />
+    <Compile Include="Database\Parameter.cs" />
+    <Compile Include="Find\Conditions\And.cs" />
+    <Compile Include="Find\Conditions\ColumnCondition.cs" />
+    <Compile Include="Find\Condition.cs" />
+    <Compile Include="Find\Conditions\Criteria.cs" />
+    <Compile Include="Find\Conditions\Equal.cs" />
+    <Compile Include="Find\Conditions\GreaterThan.cs" />
+    <Compile Include="Find\Conditions\GreaterThanOrEqual.cs" />
+    <Compile Include="Find\Conditions\ICondition.cs" />
+    <Compile Include="Find\Conditions\ICriteria.cs" />
+    <Compile Include="Find\Conditions\Junction.cs" />
+    <Compile Include="Find\Conditions\LeftRightCondition.cs" />
+    <Compile Include="Find\Conditions\LessThan.cs" />
+    <Compile Include="Find\Conditions\LessThanOrEqual.cs" />
+    <Compile Include="Find\Conditions\NotEqual.cs" />
+    <Compile Include="Find\Conditions\Or.cs" />
+    <Compile Include="Logging\ConsoleLogger.cs" />
+    <Compile Include="Logging\FileLogger.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\Log.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Maps\IEntityMappable.cs" />
+    <Compile Include="Maps\Impl\BelongsToPropertyMap.cs" />
+    <Compile Include="Maps\Domain.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="EntityEqualityComaparer.cs" />
+    <Compile Include="Find\FindCommandBuilder.cs" />
+    <Compile Include="Maps\Impl\DomainMap.cs" />
+    <Compile Include="Maps\IDomainMap.cs" />
+    <Compile Include="Maps\Map.cs" />
+    <Compile Include="Migration\IDatabaseMigration.cs" />
+    <Compile Include="Migration\DatabaseMigratorUtility.cs" />
+    <Compile Include="Extensions\ExpressionExtensions.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="Maps\IEntityMap.cs" />
+    <Compile Include="Maps\IListPropertyMap.cs" />
+    <Compile Include="Maps\IPropertyMap.cs" />
+    <Compile Include="Maps\IPropertyMapWithColumn.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Maps\Impl\EntityMap.cs" />
+    <Compile Include="ISession.cs" />
+    <Compile Include="LazyList.cs" />
+    <Compile Include="Maps\Impl\ListPropertyMap.cs" />
+    <Compile Include="Find\PredicateBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Maps\Impl\BasePropertyMap.cs" />
+    <Compile Include="Adapters\SqliteAdapter.cs" />
+    <Compile Include="Adapters\SqliteTypeConverter.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="Session.cs" />
+    <Compile Include="SessionFactory.cs" />
+    <Compile Include="Find\DbCommandPredicate.cs" />
+    <Compile Include="UnitOfWork.cs" />
+    <Compile Include="Maps\Impl\ValuePropertyMap.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
