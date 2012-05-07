@@ -19,7 +19,8 @@ namespace ArtekSoftware.Conference.LocalData
                                           + "FacebookUrl VARCHAR, "
                                           + "Name VARCHAR, "
                                           + "FirstName VARCHAR, "
-                                          + "LastName VARCHAR"
+                                          + "LastName VARCHAR, "
+										  + "Biography VARCHAR"
                                           + ")";
 
     public string Id { get { return (string) GetField("Id"); } set { SetField("Id", value); } }
@@ -33,6 +34,7 @@ namespace ArtekSoftware.Conference.LocalData
     public string Name { get { return (string)GetField("Name"); } protected internal set { SetField("Name", value); } }
     public string FirstName { get { return (string)GetField("FirstName"); } set { SetField("FirstName", value); } }
     public string LastName { get { return (string)GetField("LastName"); } set { SetField("LastName", value); } }
+	public string Biography { get { return (string)GetField("Biography"); } set { SetField("Biography", value); } }
     //public IList<Guid> SessionsIds  { get { return (string)GetField("Slug"); } set { SetField("Slug", value); } }
   }
 }

@@ -5,6 +5,7 @@ using MonoTouch.CoreGraphics;
 using MonoTouch.Dialog;
 using MonoTouch.Dialog.Utilities;
 using MonoTouch.UIKit;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {
@@ -14,7 +15,7 @@ namespace ArtekSoftware.Codemash
 		{
 			this.Name = speaker.Name;
 			this.DateRoom = "";
-			this.TwitterName = speaker.TwitterHandle;
+			this.TwitterName = speaker.TwitterName;
 			this.Speaker = speaker;
 		}
 		
@@ -62,9 +63,9 @@ namespace ArtekSoftware.Codemash
 		
 		public void SetImageUrl ()
 		{
-			if (!string.IsNullOrWhiteSpace(this.Speaker.TwitterHandle))
+			if (!string.IsNullOrWhiteSpace(this.Speaker.TwitterName))
 			{
-				ImageUrl = "images/Profiles/" + this.Speaker.TwitterHandle.Replace ("@", "") + ".png";
+				ImageUrl = "images/Profiles/" + this.Speaker.TwitterName.Replace ("@", "") + ".png";
 			}	
 			
 			if (ImageUrl != string.Empty && File.Exists (ImageUrl)) {

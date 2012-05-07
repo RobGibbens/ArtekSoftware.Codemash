@@ -32,7 +32,8 @@ namespace ArtekSoftware.Conference.LocalData
     public DateTime Start { get { return (DateTime)GetField("Start"); } set { SetField("Start", value); } }
     public DateTime End { get { return (DateTime)GetField("End"); } set { SetField("End", value); } }
     public string Room { get { return (string)GetField("Room"); } set { SetField("Room", value); } }
-
+	public string ImageUrl { get { return (string)GetField("ImageUrl"); } set { SetField("ImageUrl", value); } }
+		
     //public List<string> Subjects { get { return (string)GetField("Name"); } set { SetField("Name", value); } }
     //public List<SpeakerEntity> Speakers { get { return (string)GetField("Name"); } set { SetField("Name", value); } }
 

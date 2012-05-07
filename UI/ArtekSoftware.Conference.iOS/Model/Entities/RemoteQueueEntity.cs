@@ -1,21 +1,21 @@
-using System;
-using Catnap;
-
-namespace ArtekSoftware.Codemash
-{
-	public class RemoteQueueEntity : Entity
-	{
-		public static string TableName = "RemoteQueue";
-		public static string CreateTableSql = @"CREATE TABLE " + TableName + " (Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, URI VARCHAR, DateQueuedOn VARCHAR, ConferenceName VARCHAR, UserName VARCHAR)";
-
-		public string URI { get; set; }
-
-		public DateTime DateQueuedOn { get; set; }
-
-		public string ConferenceName { get; set; }
-
-		public string UserName { get; set; }
-		
-		public string AddOrRemove {get;set;}
-	}
-}
+//using System;
+//using Catnap;
+//
+//namespace ArtekSoftware.Codemash
+//{
+//	public class RemoteQueueEntity : Entity
+//	{
+//		public static string TableName = "RemoteQueue";
+//		public static string CreateTableSql = @"CREATE TABLE " + TableName + " (Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, URI VARCHAR, DateQueuedOn VARCHAR, ConferenceName VARCHAR, UserName VARCHAR)";
+//
+//		public string URI { get; set; }
+//
+//		public DateTime DateQueuedOn { get; set; }
+//
+//		public string ConferenceName { get; set; }
+//
+//		public string UserName { get; set; }
+//		
+//		public string AddOrRemove {get;set;}
+//	}
+//}

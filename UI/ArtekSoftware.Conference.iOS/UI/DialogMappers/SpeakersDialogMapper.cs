@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Catnap;
+//using Catnap;
 using MonoTouch.Dialog;
 ////using MonoQueue;
 using ArtekSoftware.Conference;
+using ArtekSoftware.Conference.LocalData;
+using RestSharp;
+using ArtekSoftware.Conference.Data;
 
 namespace ArtekSoftware.Codemash
 {
@@ -19,59 +22,18 @@ namespace ArtekSoftware.Codemash
 		
 		public IEnumerable<SpeakerEntity> GetSpeakers (bool isRefresh)
 		{
-			IEnumerable<SpeakerEntity> speakers = null;
+			var testFlightProxy = new TestFlightProxy();
+			var restClient = new RestClient();
+			var remoteConfiguration = new RemoteConfiguration();
+			var remoteRepository = new RemoteSpeakersRepository(testFlightProxy, restClient, remoteConfiguration);
+			var networkStatusCheck = new NetworkStatusCheck();
 			
-			if (UnitOfWork.IsUnitOfWorkStarted ()) {
-				var localRepository = new LocalSpeakersRepository ();
-				int speakerCount = localRepository.Count ();
+			string conferenceSlug = AppDelegate.ConferenceSlug;
+			var repo = new SpeakerRepository(remoteRepository, networkStatusCheck, testFlightProxy, restClient, remoteConfiguration, conferenceSlug);
+			var entities = repo.GetEntities(isRefresh:false);
+
 			
-				if (speakerCount == 0 || isRefresh) {
-					
-					if (_networkStatusCheck.IsReachable ()) {
-						var remoteRepository = new RemoteSpeakersRepository ();
-						IList<Speaker> speakerDtos = remoteRepository.GetSpeakers ();
-						var cache = new SpeakersCacheRepository ();
-					cache.Cache (speakerDtos);
-					} else {
-						ModalDialog.Alert ("Network offline", "Cannot connect to the network");
-					}
-				}
-			
-				speakers = localRepository.Find ();
-				
-			} else {
-				bool shouldCache = false;
-				IList<Speaker> speakerDtos = null;
-				
-				using (UnitOfWork.Start()) {
-					var localRepository = new LocalSpeakersRepository ();
-					int speakerCount = localRepository.Count ();
-			
-					if (speakerCount == 0 || isRefresh) {
-						
-						if (_networkStatusCheck.IsReachable ()) {
-							var remoteRepository = new RemoteSpeakersRepository ();
-							speakerDtos = remoteRepository.GetSpeakers ();
-							shouldCache = true;
-						} else {
-							ModalDialog.Alert ("Network offline", "Cannot connect to the network");
-						}
-					}
-			
-				}
-				
-				if (shouldCache) {
-					var cache = new SpeakersCacheRepository ();
-					cache.Cache (speakerDtos);
-				}
-				
-				using (UnitOfWork.Start()) {
-					var localRepository = new LocalSpeakersRepository ();
-					speakers = localRepository.Find ();
-				}
-			}
-			
-			return speakers.OrderBy (x => x.Name).ToList ();
+			return entities;			
 		}
 		
 		public RootElement GetSpeakerDialog (IEnumerable<SpeakerEntity> speakers, List<string> sectionTitles)

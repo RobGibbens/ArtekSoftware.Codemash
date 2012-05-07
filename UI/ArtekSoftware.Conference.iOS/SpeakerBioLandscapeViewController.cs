@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Catnap;
+//using Catnap;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 ////using MonoQueue;
 using ArtekSoftware.Conference;
+using ArtekSoftware.Conference.LocalData;
+using RestSharp;
+using ArtekSoftware.Conference.Data;
 
 namespace ArtekSoftware.Codemash
 {
@@ -119,17 +122,17 @@ namespace ArtekSoftware.Codemash
 			this.View.AddSubview (bioLabel);
 			this.speakerBioLabel.Text = string.Empty;
 			
-			if (!string.IsNullOrWhiteSpace (speaker.BlogURL)) {
+			if (!string.IsNullOrWhiteSpace (speaker.BlogUrl)) {
 				this.speakerBlogImage.Hidden = false;
-				this.speakerBlogButton.SetTitle (speaker.BlogURL, UIControlState.Normal);
+				this.speakerBlogButton.SetTitle (speaker.BlogUrl, UIControlState.Normal);
 			} else {
 				this.speakerBlogImage.Hidden = true;
 				this.speakerBlogButton.SetTitle (string.Empty, UIControlState.Normal);
 			}
 			
-			if (!string.IsNullOrWhiteSpace (speaker.TwitterHandle)) {
+			if (!string.IsNullOrWhiteSpace (speaker.TwitterName)) {
 				this.speakerTwitterImage.Hidden = false;
-				this.speakerTwitterHandleButton.SetTitle (speaker.TwitterHandle, UIControlState.Normal);
+				this.speakerTwitterHandleButton.SetTitle (speaker.TwitterName, UIControlState.Normal);
 			} else {
 				this.speakerTwitterImage.Hidden = true;
 				this.speakerTwitterHandleButton.SetTitle (string.Empty, UIControlState.Normal);
@@ -142,8 +145,8 @@ namespace ArtekSoftware.Codemash
 			this.speakerSessionsTable.DataSource = new SpeakerBioLandscapeDataSource (sessions);
 			this.speakerSessionsTable.ReloadData ();
 			
-			if (!string.IsNullOrEmpty (speaker.TwitterHandle)) {
-				var profileImage = "images/Profiles/" + speaker.TwitterHandle.Replace ("@", "") + ".png";
+			if (!string.IsNullOrEmpty (speaker.TwitterName)) {
+				var profileImage = "images/Profiles/" + speaker.TwitterName.Replace ("@", "") + ".png";
 			
 				if (File.Exists (profileImage)) {
 					UIImage image = UIImage.FromFile (profileImage);
@@ -175,21 +178,20 @@ namespace ArtekSoftware.Codemash
 			}
 		}
 			
-		private List<SessionEntity> GetSessionsForSpeaker (SpeakerEntity speaker)
+		private IEnumerable<SessionEntity> GetSessionsForSpeaker (SpeakerEntity speaker)
 		{
-			List<SessionEntity> sessions = null;
+			var testFlightProxy = new TestFlightProxy();
+			var restClient = new RestClient();
+			var remoteConfiguration = new RemoteConfiguration();
+			var remoteRepository = new RemoteSessionsRepository(testFlightProxy, restClient, remoteConfiguration);
+			var networkStatusCheck = new NetworkStatusCheck();
 			
-			if (UnitOfWork.IsUnitOfWorkStarted ()) {
-				var repo = new LocalSessionsRepository ();
-				sessions = repo.GetForSpeaker (speaker.SpeakerURI);
-			} else {
-				using (UnitOfWork.Start()) {
-					var repo = new LocalSessionsRepository ();
-					sessions = repo.GetForSpeaker (speaker.SpeakerURI);
-				}
-			}
+			string conferenceSlug = AppDelegate.ConferenceSlug;
+			var repo = new SessionRepository(remoteRepository, networkStatusCheck, testFlightProxy, restClient, remoteConfiguration, conferenceSlug);
+			var entities = repo.GetEntities(isRefresh:false);
+			//TODO: Filter by speaker
 			
-			return sessions;
+			return entities;
 		}		
 	}
 
@@ -198,9 +200,9 @@ namespace ArtekSoftware.Codemash
 		private string _section1CellId;
 		private List<SessionEntity> _sessions;
 		
-		public SpeakerBioLandscapeDataSource (List<SessionEntity> sessions)
+		public SpeakerBioLandscapeDataSource (IEnumerable<SessionEntity> sessions)
 		{
-			_sessions = sessions;
+			_sessions = sessions.ToList();
 			_section1CellId = "cellid";
 
 		}
@@ -241,10 +243,10 @@ namespace ArtekSoftware.Codemash
 		private SpeakerBioLandscapeViewController _controller;
 		private List<SessionEntity> _sessions;
 
-		public SpeakerBioLandscapeDelegate (SpeakerBioLandscapeViewController controller, List<SessionEntity> sessions)
+		public SpeakerBioLandscapeDelegate (SpeakerBioLandscapeViewController controller, IEnumerable<SessionEntity> sessions)
 		{
 			_controller = controller;
-			_sessions = sessions;
+			_sessions = sessions.ToList();
 		}
 		
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)

@@ -6,6 +6,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 ////using MonoQueue;
 using ArtekSoftware.Conference;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {

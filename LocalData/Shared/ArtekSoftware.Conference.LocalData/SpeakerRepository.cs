@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace ArtekSoftware.Conference.LocalData
 {
-  public class SpeakerRepository : IRepository<SpeakerEntity>
+  public class LocalSpeakerRepository : IRepository<SpeakerEntity>
   {
     public void Save(SpeakerEntity entity)
     {

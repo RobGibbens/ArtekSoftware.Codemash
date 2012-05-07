@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Catnap;
-using Catnap.Find;
-using Catnap.Find.Conditions;
+//using Catnap;
+//using Catnap.Find;
+//using Catnap.Find.Conditions;
 using MonoTouch.Dialog.Utilities;
 using MonoTouch.Foundation;
 using MonoTouch.Twitter;
 using MonoTouch.UIKit;
 ////using MonoQueue;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {

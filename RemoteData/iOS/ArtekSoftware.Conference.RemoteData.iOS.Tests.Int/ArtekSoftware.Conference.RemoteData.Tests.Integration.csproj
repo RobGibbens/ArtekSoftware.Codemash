@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\mscorlib.dll</HintPath>
@@ -56,25 +56,30 @@
       <HintPath>..\..\..\..\..\Developer\MonoTouch\usr\lib\mono\2.1\System.Xml.Linq.dll</HintPath>
     </Reference>
     <Reference Include="Should">
-      <HintPath>..\packages\Should.1.1.12.0\lib\Should.dll</HintPath>
+      <HintPath>..\..\..\packages\Should.1.1.12.0\lib\Should.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture">
+      <HintPath>..\..\..\packages\AutoFixture.2.10.0\lib\Ploeh.AutoFixture.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
+    <ProjectReference Include="..\..\..\ThirdParty\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ArtekSoftware.Conference.Common\ArtekSoftware.Conference.Common.csproj">
-      <Project>{5FE38320-8D92-4337-9D94-DA30E18257A3}</Project>
-      <Name>ArtekSoftware.Conference.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ArtekSoftware.Conference.RemoteData\ArtekSoftware.Conference.RemoteData.csproj">
+    <ProjectReference Include="..\ArtekSoftware.Conference.RemoteData.iOS\ArtekSoftware.Conference.RemoteData.csproj">
       <Project>{60E041D1-03BF-4985-90F6-F9E161EFD4F1}</Project>
       <Name>ArtekSoftware.Conference.RemoteData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\ArtekSoftware.Conference.Common.iOS\ArtekSoftware.Conference.Common.csproj">
+      <Project>{5FE38320-8D92-4337-9D94-DA30E18257A3}</Project>
+      <Name>ArtekSoftware.Conference.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class12.cs" />
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.RemoteData.Tests.Int\SessionsTests.cs">
+      <Link>SessionsTests.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1300BF73-275F-4E3D-BABA-8093EF939154}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ArtekSoftware.Conference.Data</RootNamespace>
+    <AssemblyName>ArtekSoftware.Conference.Data</AssemblyName>
+    <ReleaseVersion>0.25</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
+    <Reference Include="Vici.CoolStorage.MT">
+      <HintPath>..\..\..\packages\vici.coolstorage.monotouch\Vici.CoolStorage.MT.dll</HintPath>
+    </Reference>
+    <Reference Include="Vici.Core.MT">
+      <HintPath>..\..\..\packages\vici.coolstorage.monotouch\Vici.Core.MT.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="SessionRepository.cs" />
+    <Compile Include="ScheduleRepository.cs" />
+    <Compile Include="SpeakerRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\LocalData\iOS\ArtekSoftware.Conference.LocalData.iOS\ArtekSoftware.Conference.LocalData.csproj">
+      <Project>{CAAB6EBF-F171-4229-8F74-03713388930E}</Project>
+      <Name>ArtekSoftware.Conference.LocalData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\ArtekSoftware.Conference.Common.iOS\ArtekSoftware.Conference.Common.csproj">
+      <Project>{5FE38320-8D92-4337-9D94-DA30E18257A3}</Project>
+      <Name>ArtekSoftware.Conference.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\RemoteData\iOS\ArtekSoftware.Conference.RemoteData.iOS\ArtekSoftware.Conference.RemoteData.csproj">
+      <Project>{60E041D1-03BF-4985-90F6-F9E161EFD4F1}</Project>
+      <Name>ArtekSoftware.Conference.RemoteData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ThirdParty\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
+      <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
+      <Name>RestSharp.MonoTouch</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

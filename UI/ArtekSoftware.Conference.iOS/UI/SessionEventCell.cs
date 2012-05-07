@@ -5,6 +5,7 @@ using MonoTouch.CoreGraphics;
 using MonoTouch.Dialog;
 using MonoTouch.Dialog.Utilities;
 using MonoTouch.UIKit;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {
@@ -13,8 +14,8 @@ namespace ArtekSoftware.Codemash
 		public SessionEventCell (SessionEntity session)
 		{
 			this.Title = session.Title;
-			this.DateRoom = session.StartDate.ToString ("h:mm tt") + " | " + session.Room;
-			this.Speaker = session.SpeakerName;
+			this.DateRoom = session.Start.ToString ("h:mm tt") + " | " + session.Room;
+			//TODO: this.Speaker = session.SpeakerName;
 			this.Session = session;
 			
 		}
@@ -82,27 +83,29 @@ namespace ArtekSoftware.Codemash
 		
 		void SetImageUrl ()
 		{
-			if (this.Session.Technology.ToLower () == ".net") {
-				ImageUrl = "images/Technologies/DotNetSmall2.png";
-			} else if (this.Session.Technology.ToLower () == "ruby") {
-				ImageUrl = "images/Technologies/RubySmall.png";
-			} else if (this.Session.Technology.ToLower () == "mobile") {
-				ImageUrl = "images/Technologies/mobile2Small.png";
-			} else if (this.Session.Technology.ToLower () == "javascript") {
-				ImageUrl = "images/Technologies/JavaScriptSmall.png";
-			} else if (this.Session.Technology.ToLower () == "design/ux") {
-				ImageUrl = "images/Technologies/DesignUX2Small.png";
-			} else if (this.Session.Technology.ToLower () == "java") {
-				ImageUrl = "images/Technologies/JavaSmall.png";
-			} else if (this.Session.Technology.ToLower () == "windows 8") {
-				ImageUrl = "images/Technologies/WindowsSmall.png";
-			} else if (this.Session.Technology.ToLower () == "other languages") {
-				ImageUrl = "images/Technologies/OtherLanguages2Small.png";
-			} else if (this.Session.Technology.ToLower () == "software process") {
-				ImageUrl = "images/Technologies/SoftwareProcess4Small.png";
-			} else {
-				ImageUrl = "images/Technologies/Other2.png";
-			}
+			//TODO: Set image url
+			ImageUrl = this.Session.ImageUrl;
+//			if (this.Session.ImageUrl.ToLower () == ".net") {
+//				ImageUrl = "images/Technologies/DotNetSmall2.png";
+//			} else if (this.Session.Technology.ToLower () == "ruby") {
+//				ImageUrl = "images/Technologies/RubySmall.png";
+//			} else if (this.Session.Technology.ToLower () == "mobile") {
+//				ImageUrl = "images/Technologies/mobile2Small.png";
+//			} else if (this.Session.Technology.ToLower () == "javascript") {
+//				ImageUrl = "images/Technologies/JavaScriptSmall.png";
+//			} else if (this.Session.Technology.ToLower () == "design/ux") {
+//				ImageUrl = "images/Technologies/DesignUX2Small.png";
+//			} else if (this.Session.Technology.ToLower () == "java") {
+//				ImageUrl = "images/Technologies/JavaSmall.png";
+//			} else if (this.Session.Technology.ToLower () == "windows 8") {
+//				ImageUrl = "images/Technologies/WindowsSmall.png";
+//			} else if (this.Session.Technology.ToLower () == "other languages") {
+//				ImageUrl = "images/Technologies/OtherLanguages2Small.png";
+//			} else if (this.Session.Technology.ToLower () == "software process") {
+//				ImageUrl = "images/Technologies/SoftwareProcess4Small.png";
+//			} else {
+//				ImageUrl = "images/Technologies/Other2.png";
+//			}
 		}
 
 		#region IElementSizing implementation

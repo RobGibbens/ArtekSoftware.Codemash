@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ABECED67-43DC-4AF4-81C3-AE78DCF2DA70}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ArtekSoftware.Conference.LocalData.iOS.Tests.Int</RootNamespace>
+    <AssemblyName>ArtekSoftware.Conference.LocalData.iOS.Tests.Int</AssemblyName>
+    <ReleaseVersion>0.25</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture">
+      <HintPath>..\..\..\packages\AutoFixture.2.10.0\lib\Ploeh.AutoFixture.dll</HintPath>
+    </Reference>
+    <Reference Include="Should">
+      <HintPath>..\..\..\packages\Should.1.1.12.0\lib\Should.dll</HintPath>
+    </Reference>
+    <Reference Include="Vici.CoolStorage.MT">
+      <HintPath>..\..\..\packages\vici.coolstorage.monotouch\Vici.CoolStorage.MT.dll</HintPath>
+    </Reference>
+    <Reference Include="Vici.Core.MT">
+      <HintPath>..\..\..\packages\vici.coolstorage.monotouch\Vici.Core.MT.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.LocalData.Tests.Int\SessionTests.cs">
+      <Link>SessionTests.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.LocalData.Tests.Int\SpeakerTests.cs">
+      <Link>SpeakerTests.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.LocalData.Tests.Int\TestBase.cs">
+      <Link>TestBase.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArtekSoftware.Conference.LocalData.iOS\ArtekSoftware.Conference.LocalData.csproj">
+      <Project>{CAAB6EBF-F171-4229-8F74-03713388930E}</Project>
+      <Name>ArtekSoftware.Conference.LocalData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\ArtekSoftware.Conference.Common.iOS\ArtekSoftware.Conference.Common.csproj">
+      <Project>{5FE38320-8D92-4337-9D94-DA30E18257A3}</Project>
+      <Name>ArtekSoftware.Conference.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

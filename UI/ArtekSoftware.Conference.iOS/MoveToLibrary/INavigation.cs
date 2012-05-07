@@ -1,4 +1,5 @@
 using System;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {

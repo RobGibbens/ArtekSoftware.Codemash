@@ -38,20 +38,34 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="RemoteSessionsRepository.cs" />
-    <Compile Include="Session.cs" />
-    <Compile Include="SessionsList.cs" />
-    <Compile Include="IRemoteRepository.cs" />
-    <Compile Include="Speaker.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ArtekSoftware.Conference.Common\ArtekSoftware.Conference.Common.csproj">
-      <Project>{5FE38320-8D92-4337-9D94-DA30E18257A3}</Project>
-      <Name>ArtekSoftware.Conference.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
+    <ProjectReference Include="..\..\..\ThirdParty\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\ArtekSoftware.Conference.Common.iOS\ArtekSoftware.Conference.Common.csproj">
+      <Project>{5FE38320-8D92-4337-9D94-DA30E18257A3}</Project>
+      <Name>ArtekSoftware.Conference.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.RemoteData\IRemoteRepository.cs">
+      <Link>IRemoteRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.RemoteData\RemoteSessionsRepository.cs">
+      <Link>RemoteSessionsRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.RemoteData\Session.cs">
+      <Link>Session.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.RemoteData\SessionsList.cs">
+      <Link>SessionsList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.RemoteData\Speaker.cs">
+      <Link>Speaker.cs</Link>
+    </Compile>
+    <Compile Include="Schedule.cs" />
+    <Compile Include="RemoteSpeakersRepository.cs" />
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.RemoteData\RemoteConfiguration.cs" />
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.RemoteData\IRemoteConfiguration.cs" />
   </ItemGroup>
 </Project>

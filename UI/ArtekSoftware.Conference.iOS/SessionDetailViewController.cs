@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Catnap;
-using Catnap.Find;
-using Catnap.Find.Conditions;
+//using Catnap;
+//using Catnap.Find;
+//using Catnap.Find.Conditions;
 using MonoTouch.Dialog.Utilities;
 using MonoTouch.Foundation;
 using MonoTouch.Twitter;
 using MonoTouch.UIKit;
 ////using MonoQueue;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {
@@ -248,10 +249,10 @@ namespace ArtekSoftware.Codemash
 //			this.sessionDifficultyLabel.Text = session.Difficulty;
 //			this.sessionRoomLabel.Text = session.Room;
 //			this.sessionSpeakerNameLabel.SetTitle (session.SpeakerName, UIControlState.Normal);
-//			if (session.StartDate == DateTime.MinValue) {
+//			if (session.Start == DateTime.MinValue) {
 //				this.sessionStartLabel.Text = "No date/time - Please Refresh";
 //			} else {
-//				this.sessionStartLabel.Text = session.StartDate.DayOfWeek + " " + session.StartDate.ToString ("h:mm tt");
+//				this.sessionStartLabel.Text = session.Start.DayOfWeek + " " + session.Start.ToString ("h:mm tt");
 //			}
 //			this.sessionTechnologyLabel.Text = session.Technology;
 //			
@@ -417,9 +418,9 @@ namespace ArtekSoftware.Codemash
 //
 //		protected void AddNotification (SessionEntity session)
 //		{	
-//			if (session != null && session.StartDate != DateTime.MinValue) {
+//			if (session != null && session.Start != DateTime.MinValue) {
 //				UILocalNotification notification = new UILocalNotification{
-//				  FireDate = session.StartDate.AddMinutes (-10),
+//				  FireDate = session.Start.AddMinutes (-10),
 //				  TimeZone = NSTimeZone.LocalTimeZone,
 //				  AlertBody = session.Title + " will start in 10 minutes in " + session.Room,
 //				  RepeatInterval = 0

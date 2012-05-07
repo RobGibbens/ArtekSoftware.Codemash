@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CAAB6EBF-F171-4229-8F74-03713388930E}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ArtekSoftware.Conference.LocalData</RootNamespace>
+    <AssemblyName>ArtekSoftware.Conference.LocalData</AssemblyName>
+    <ReleaseVersion>0.25</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
+    <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="Vici.CoolStorage.MT">
+      <HintPath>..\..\..\packages\vici.coolstorage.monotouch\Vici.CoolStorage.MT.dll</HintPath>
+    </Reference>
+    <Reference Include="Vici.Core.MT">
+      <HintPath>..\..\..\packages\vici.coolstorage.monotouch\Vici.Core.MT.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\ArtekSoftware.Conference.Common.iOS\ArtekSoftware.Conference.Common.csproj">
+      <Project>{5FE38320-8D92-4337-9D94-DA30E18257A3}</Project>
+      <Name>ArtekSoftware.Conference.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.LocalData\IRepository.cs">
+      <Link>Repositories\IRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.LocalData\SessionEntity.cs">
+      <Link>Entities\SessionEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.LocalData\SessionRepository.cs">
+      <Link>Repositories\SessionRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.LocalData\SpeakerEntity.cs">
+      <Link>Entities\SpeakerEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.LocalData\SpeakerRepository.cs">
+      <Link>Repositories\SpeakerRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.LocalData\Sqlite.cs">
+      <Link>Sqlite.cs</Link>
+    </Compile>
+    <Compile Include="Entities\ScheduledSessionEntity.cs" />
+    <Compile Include="Repositories\ScheduledSessionRepository.cs" />
+    <Compile Include="Entities\ScheduleEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+</Project>

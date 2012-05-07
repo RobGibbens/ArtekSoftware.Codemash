@@ -10,6 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Artek.Conference.RemoteData.Tests.Unit</RootNamespace>
     <AssemblyName>Artek.Conference.RemoteData.Tests.Unit</AssemblyName>
+    <ReleaseVersion>0.25</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,11 +47,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
+    <ProjectReference Include="..\..\..\ThirdParty\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ArtekSoftware.Conference.RemoteData\ArtekSoftware.Conference.RemoteData.csproj">
+    <ProjectReference Include="..\ArtekSoftware.Conference.RemoteData.iOS\ArtekSoftware.Conference.RemoteData.csproj">
       <Project>{60E041D1-03BF-4985-90F6-F9E161EFD4F1}</Project>
       <Name>ArtekSoftware.Conference.RemoteData</Name>
     </ProjectReference>

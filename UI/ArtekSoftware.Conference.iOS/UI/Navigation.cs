@@ -1,5 +1,6 @@
 using System;
 using MonoTouch.UIKit;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {
@@ -47,7 +48,7 @@ namespace ArtekSoftware.Codemash
 				}
 			}
 			
-			AppDelegate.CurrentAppDelegate.Analytics.Log ("Viewed session " + session.URI);
+			AppDelegate.CurrentAppDelegate.Analytics.Log ("Viewed session " + session.Slug);
 		}
 
 		public void SetSpeaker (SpeakerEntity speaker)
@@ -82,7 +83,7 @@ namespace ArtekSoftware.Codemash
 					}
 				}
 				
-				AppDelegate.CurrentAppDelegate.Analytics.Log ("Viewed speaker " + speaker.SpeakerURI);
+				AppDelegate.CurrentAppDelegate.Analytics.Log ("Viewed speaker " + speaker.Slug);
 				
 			}
 			

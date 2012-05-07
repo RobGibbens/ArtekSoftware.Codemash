@@ -1,5 +1,5 @@
 using System;
-using Catnap;
+//using Catnap;
 
 namespace ArtekSoftware.Codemash
 {
@@ -7,9 +7,9 @@ namespace ArtekSoftware.Codemash
 	{
 		public void Migrate ()
 		{
-			using (UnitOfWork.Start()) {
-				DatabaseMigrator.Execute ();
-			}		
+//			using (UnitOfWork.Start()) {
+//				DatabaseMigrator.Execute ();
+//			}		
 		}
 	}
 }

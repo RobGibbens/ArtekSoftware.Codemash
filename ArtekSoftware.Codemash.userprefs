@@ -1,64 +1,55 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Conference.iOS/UI/DialogMappers/SessionsDialogMapper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UI/ArtekSoftware.Conference.iOS/UI/DialogMappers/ScheduledSessionsDialogMapper.cs">
     <Files>
-      <File FileName="ArtekSoftware.Conference.Common/TestFlightProxy.cs" Line="4" Column="33" />
-      <File FileName="ArtekSoftware.Conference.RemoteData/RemoteSessionsRepository.cs" Line="10" Column="48" />
-      <File FileName="ArtekSoftware.Conference.RemoteData/Session.cs" Line="7" Column="23" />
-      <File FileName="ArtekSoftware.Conference.iOS/MoveToLibrary/LocalyticsAnalytics.cs" Line="11" Column="28" />
-      <File FileName="ArtekSoftware.Conference.iOS/AppDelegate.cs" Line="145" Column="52" />
-      <File FileName="ArtekSoftware.Conference.iOS/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" Line="16" Column="22" />
-      <File FileName="ArtekSoftware.Conference.iOS/ViewControllers/DialogViewControllers/SpeakerDialogViewController.cs" Line="17" Column="25" />
-      <File FileName="ArtekSoftware.Conference.iOS/Model/DTOs/Speaker.cs" Line="4" Column="2" />
-      <File FileName="ArtekSoftware.Conference.RemoteData/SessionsList.cs" Line="3" Column="11" />
-      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/RemoteScheduledSessionsRepository.cs" Line="9" Column="22" />
-      <File FileName="ArtekSoftware.Conference.iOS/UI/DialogMappers/SessionsDialogMapper.cs" Line="27" Column="8" />
-      <File FileName="ArtekSoftware.Conference.iOS/UI/DialogMappers/SpeakersDialogMapper.cs" Line="15" Column="46" />
-      <File FileName="ArtekSoftware.Conference.iOS/ViewControllers/SessionDetailViewControllerBase.cs" Line="52" Column="26" />
-      <File FileName="ArtekSoftware.Conference.iOS/SpeakerBioViewController.cs" Line="16" Column="22" />
-      <File FileName="ArtekSoftware.Conference.iOS/SpeakerBioLandscapeViewController.cs" Line="16" Column="20" />
-      <File FileName="ArtekSoftware.Conference.iOS/MoveToLibrary/CatnapBoostrapper.cs" Line="10" Column="10" />
-      <File FileName="ArtekSoftware.Conference.iOS/MoveToLibrary/DefaultDatabaseManager.cs" Line="10" Column="14" />
-      <File FileName="ArtekSoftware.Conference.iOS/iPhoneSpeakerBioViewController.cs" Line="14" Column="54" />
-      <File FileName="ArtekSoftware.Conference.iOS/ViewControllers/DialogViewControllers/ScheduleDialogViewController.cs" Line="52" Column="44" />
-      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/LocalSessionsRepository.cs" Line="25" Column="26" />
-      <File FileName="ArtekSoftware.Conference.iOS/MoveToLibrary/EntityMapper.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Conference.iOS/MoveToLibrary/IDefaultDatabaseManager.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/LocalQueueRepository.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/LocalRefreshRepository.cs" Line="21" Column="1" />
-      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/LocalScheduledSessionsRepository.cs" Line="9" Column="60" />
-      <File FileName="Catnap/Repository.cs" Line="10" Column="5" />
-      <File FileName="ArtekSoftware.Conference.iOS/Model/Entities/ScheduledSessionEntity.cs" Line="1" Column="1" />
-      <File FileName="ArtekSoftware.Conference.iOS/Model/Entities/SessionEntity.cs" Line="6" Column="1" />
-      <File FileName="ArtekSoftware.Conference.iOS/Model/Repositories/LocalSpeakersRepository.cs" Line="1" Column="1" />
+      <File FileName="UI/ArtekSoftware.Conference.iOS/UI/DialogMappers/SessionsDialogMapper.cs" Line="63" Column="9" />
+      <File FileName="UI/ArtekSoftware.Conference.iOS/ViewControllers/DialogViewControllers/ScheduleDialogViewController.cs" Line="84" Column="6" />
+      <File FileName="UI/ArtekSoftware.Conference.iOS/iPhoneSpeakerBioViewController.cs" Line="179" Column="1" />
+      <File FileName="Data/iOS/ArtekSoftware.Conference.Data/SessionRepository.cs" Line="1" Column="1" />
+      <File FileName="UI/ArtekSoftware.Conference.iOS/UI/DialogMappers/ScheduledSessionsDialogMapper.cs" Line="14" Column="4" />
+      <File FileName="UI/ArtekSoftware.Conference.iOS/SpeakerBioViewController.cs" Line="185" Column="33" />
+      <File FileName="Data/iOS/ArtekSoftware.Conference.Data/ScheduleRepository.cs" Line="46" Column="30" />
+      <File FileName="LocalData/Shared/ArtekSoftware.Conference.LocalData/SessionEntity.cs" Line="7" Column="63" />
+      <File FileName="LocalData/iOS/ArtekSoftware.Conference.LocalData.iOS/Entities/ScheduledSessionEntity.cs" Line="1" Column="1" />
+      <File FileName="LocalData/iOS/ArtekSoftware.Conference.LocalData.iOS/Entities/ScheduleEntity.cs" Line="7" Column="51" />
+      <File FileName="RemoteData/iOS/ArtekSoftware.Conference.RemoteData.iOS/Schedule.cs" Line="3" Column="12" />
+      <File FileName="RemoteData/Shared/ArtekSoftware.Conference.RemoteData/Session.cs" Line="5" Column="35" />
+      <File FileName="UI/ArtekSoftware.Conference.iOS/SpeakerBioLandscapeViewController.cs" Line="183" Column="1" />
+      <File FileName="UI/ArtekSoftware.Conference.iOS/UI/DialogMappers/SpeakersDialogMapper.cs" Line="28" Column="49" />
+      <File FileName="Data/iOS/ArtekSoftware.Conference.Data/SpeakerRepository.cs" Line="13" Column="32" />
+      <File FileName="RemoteData/Shared/ArtekSoftware.Conference.RemoteData/RemoteSessionsRepository.cs" Line="153" Column="2" />
+      <File FileName="RemoteData/iOS/ArtekSoftware.Conference.RemoteData.iOS/RemoteSpeakersRepository.cs" Line="64" Column="53" />
+      <File FileName="UI/ArtekSoftware.Conference.iOS/ViewControllers/SessionDetailViewControllerBase.cs" Line="186" Column="51" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="ArtekSoftware.Conference.Common">
-            <Option id="ShowVersionControlOverlays" value="True" />
-            <Option id="ShowAllFiles" value="True" />
+          <Node name="Common" expanded="True" />
+          <Node name="Data" expanded="True">
+            <Node name="ArtekSoftware.Conference.Data" expanded="True" />
           </Node>
-          <Node name="ArtekSoftware.Conference.RemoteData">
-            <Option id="ShowVersionControlOverlays" value="True" />
-            <Option id="ShowAllFiles" value="True" />
-          </Node>
-          <Node name="Catnap" expanded="True" />
-          <Node name="CodeMash" expanded="True">
-            <Node name="Model" expanded="True">
-              <Node name="Repositories" expanded="True" />
+          <Node name="LocalData" expanded="True">
+            <Node name="ArtekSoftware.Conference.LocalData" expanded="True">
+              <Node name="Entities" expanded="True" />
             </Node>
-            <Node name="MoveToLibrary" expanded="True" />
-            <Node name="UI" expanded="True">
-              <Node name="DialogMappers" expanded="True">
-                <Node name="SessionsDialogMapper.cs" selected="True" />
+          </Node>
+          <Node name="RemoteData" expanded="True">
+            <Node name="ArtekSoftware.Conference.RemoteData" expanded="True" />
+          </Node>
+          <Node name="UI" expanded="True">
+            <Node name="CodeMash" expanded="True">
+              <Node name="UI" expanded="True">
+                <Node name="DialogMappers" expanded="True">
+                  <Node name="ScheduledSessionsDialogMapper.cs" selected="True" />
+                </Node>
               </Node>
+              <Node name="ViewControllers" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
+        <State selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
@@ -109,6 +100,15 @@
       <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/ArtekSoftware.Conference.RemoteData.Tests.Integration/Class12.cs" line="27" />
       <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/Artek.Conference.RemoteData/RemoteSessionsRepository.cs" line="82" />
       <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/Artek.Conference.RemoteData/RemoteSessionsRepository.cs" line="88" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/LocalData/Shared/ArtekSoftware.Conference.LocalData.Tests.Int/SessionTests.cs" line="64" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/LocalData/Shared/ArtekSoftware.Conference.LocalData.Tests.Int/SessionTests.cs" line="14" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/LocalData/Shared/ArtekSoftware.Conference.LocalData.Tests.Int/TestBase.cs" line="14" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/LocalData/Shared/ArtekSoftware.Conference.LocalData.Tests.Int/TestBase.cs" line="16" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/LocalData/Shared/ArtekSoftware.Conference.LocalData.Tests.Int/TestBase.cs" line="21" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/UI/ArtekSoftware.Conference.iOS/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" line="88" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/UI/ArtekSoftware.Conference.iOS/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" line="42" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/UI/ArtekSoftware.Conference.iOS/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" line="51" />
+      <Breakpoint file="/Users/rgibbens/dev/ArtekSoftware.Codemash/UI/ArtekSoftware.Conference.iOS/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" line="91" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -5,6 +5,7 @@ using MonoTouch.Dialog;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using ArtekSoftware.Conference;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {
@@ -80,8 +81,8 @@ namespace ArtekSoftware.Codemash
 		{
 			int selectedRow = CalculateSelectedRow (indexPath, this.TableView);
 			ScheduledSessionEntity session = _sessions.ToList () [selectedRow];
-			AppDelegate.CurrentAppDelegate.Navigation.SetSession (session);
-			
+			//AppDelegate.CurrentAppDelegate.Navigation.SetSession (session);
+			//TODO : Raise event
 			base.Selected (indexPath);
 		}
 		

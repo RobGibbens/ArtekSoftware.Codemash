@@ -2,11 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Catnap;
+
+//using Catnap;
 using MonoTouch.Dialog;
+
 ////using MonoQueue;
 using RestSharp;
 using ArtekSoftware.Conference;
+using ArtekSoftware.Conference.LocalData;
+using ArtekSoftware.Conference.Data;
 
 namespace ArtekSoftware.Codemash
 {
@@ -21,61 +25,28 @@ namespace ArtekSoftware.Codemash
 
 		public IEnumerable<SessionEntity> GetSessions (bool isRefresh)
 		{
-			IEnumerable<SessionEntity> sessions = null;
-			bool shouldCache = false;
+			var testFlightProxy = new TestFlightProxy ();
+			var restClient = new RestClient ();
+			var remoteConfiguration = new RemoteConfiguration ();
+			var remoteRepository = new RemoteSessionsRepository (
+				testFlightProxy,
+				restClient,
+				remoteConfiguration
+			);
+			var networkStatusCheck = new NetworkStatusCheck ();
 			
-			if (UnitOfWork.IsUnitOfWorkStarted ()) {
-				var localRepository = new LocalSessionsRepository ();
-				int sessionCount = localRepository.Count ();
+			string conferenceSlug = AppDelegate.ConferenceSlug;
+			var repo = new SessionRepository (
+				remoteRepository,
+				networkStatusCheck,
+				testFlightProxy,
+				restClient,
+				remoteConfiguration,
+				conferenceSlug
+			);
+			var entities = repo.GetEntities (isRefresh: false);
 			
-				if (sessionCount == 0 || isRefresh) {
-
-					if (_networkStatusCheck.IsReachable ()) {
-						ITestFlightProxy testFlightProxy = new TestFlightProxy();
-						IRestClient restClient = new RestClient();
-						var remoteRepository = new RemoteSessionsRepository (testFlightProxy, restClient);
-						IList<Session> sessionDtos = remoteRepository.GetSessions ();
-						var cacheRepository = new SessionsCacheRepository ();
-						cacheRepository.Cache (sessionDtos);
-					} else {
-						ModalDialog.Alert ("Network offline", "Cannot connect to the network");
-					}
-				}
-			
-				sessions = localRepository.Find ();				
-			
-			} else {
-				IList<Session> sessionDtos = null;
-				
-				using (UnitOfWork.Start()) {
-					var localRepository = new LocalSessionsRepository ();
-					int sessionCount = localRepository.Count ();
-			
-					if (sessionCount == 0 || isRefresh) {
-						if (_networkStatusCheck.IsReachable ()) {
-							ITestFlightProxy testFlightProxy = new TestFlightProxy();
-							IRestClient restClient = new RestClient();
-							var remoteRepository = new RemoteSessionsRepository (testFlightProxy, restClient);
-							sessionDtos = remoteRepository.GetSessions ();
-							shouldCache = true;
-						} else {
-							ModalDialog.Alert ("Network offline", "Cannot connect to the network");
-						}
-					}
-				}
-				
-				if (shouldCache) {
-					var cacheRepository = new SessionsCacheRepository ();
-					cacheRepository.Cache (sessionDtos);
-				}
-				
-				using (UnitOfWork.Start()) {
-					var localRepository = new LocalSessionsRepository ();
-					sessions = localRepository.Find ();
-				}
-			}
-			
-			return sessions.OrderBy (x => x.StartDate).ToList ();
+			return entities;
 		}
 		
 		public RootElement GetSessionDialog (IEnumerable<SessionEntity> sessions)
@@ -84,14 +55,14 @@ namespace ArtekSoftware.Codemash
 			
 			var query = (
 		        from session in sessions
-		        group session by (session.StartDate) into sessionGroup
+		        group session by (session.Start) into sessionGroup
 		        select new { 
 							StartDate = sessionGroup.Key, 
 				           	SectionName = sessionGroup.Key.DayOfWeek + " " + sessionGroup.Key.ToString ("h:mm tt"),
 							Sessions = sessionGroup 
 							}
 					).
-		            OrderBy (letter => letter.StartDate);
+		            OrderBy (s => s.StartDate);
 
 			foreach (var sessionGroup in query) {
 				string sectionTitle;

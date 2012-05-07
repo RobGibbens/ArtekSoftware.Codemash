@@ -262,6 +262,10 @@
     <Compile Include="MoveToLibrary\DefaultDatabaseManager.cs" />
     <Compile Include="IServiceClient.cs" />
     <Compile Include="MoveToLibrary\INavigation.cs" />
+    <Compile Include="MoveToLibrary\NetworkStatusCheck.cs" />
+    <Compile Include="..\..\Common\ArtekSoftware.Conference.Common\Reachability.cs">
+      <Link>MoveToLibrary\Reachability.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="RootViewController.xib" />
@@ -470,21 +474,25 @@
     <Content Include="DefaultDatabase\codemash.db3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
+    <ProjectReference Include="..\..\ThirdParty\RestSharp\RestSharp.MonoTouch\RestSharp.MonoTouch.csproj">
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Catnap\Catnap.csproj">
-      <Project>{DAA3814A-CC0D-40F8-8DDD-EC00687BC1FA}</Project>
-      <Name>Catnap</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ArtekSoftware.Conference.Common\ArtekSoftware.Conference.Common.csproj">
+    <ProjectReference Include="..\..\Common\ArtekSoftware.Conference.Common.iOS\ArtekSoftware.Conference.Common.csproj">
       <Project>{5FE38320-8D92-4337-9D94-DA30E18257A3}</Project>
       <Name>ArtekSoftware.Conference.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ArtekSoftware.Conference.RemoteData\ArtekSoftware.Conference.RemoteData.csproj">
+    <ProjectReference Include="..\..\RemoteData\iOS\ArtekSoftware.Conference.RemoteData.iOS\ArtekSoftware.Conference.RemoteData.csproj">
       <Project>{60E041D1-03BF-4985-90F6-F9E161EFD4F1}</Project>
       <Name>ArtekSoftware.Conference.RemoteData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LocalData\iOS\ArtekSoftware.Conference.LocalData.iOS\ArtekSoftware.Conference.LocalData.csproj">
+      <Project>{CAAB6EBF-F171-4229-8F74-03713388930E}</Project>
+      <Name>ArtekSoftware.Conference.LocalData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\iOS\ArtekSoftware.Conference.Data\ArtekSoftware.Conference.Data.csproj">
+      <Project>{1300BF73-275F-4E3D-BABA-8093EF939154}</Project>
+      <Name>ArtekSoftware.Conference.Data</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

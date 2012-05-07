@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using Catnap;
-using Catnap.Find;
-using Catnap.Find.Conditions;
+//using Catnap;
+//using Catnap.Find;
+//using Catnap.Find.Conditions;
 ////using MonoQueue;
 using MonoTouch.Dialog.Utilities;
 using MonoTouch.Foundation;
 using MonoTouch.Twitter;
 using MonoTouch.UIKit;
 using ArtekSoftware.Conference;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {
@@ -129,9 +130,9 @@ namespace ArtekSoftware.Codemash
 		
 		protected void AddNotification (SessionEntity session)
 		{	
-			if (session != null && session.StartDate != DateTime.MinValue) {
+			if (session != null && session.Start != DateTime.MinValue) {
 				UILocalNotification notification = new UILocalNotification{
-				  FireDate = session.StartDate.AddMinutes (-10),
+				  FireDate = session.Start.AddMinutes (-10),
 				  TimeZone = NSTimeZone.LocalTimeZone,
 				  AlertBody = session.Title + " will start in 10 minutes in " + session.Room,
 				  RepeatInterval = 0
@@ -252,10 +253,10 @@ namespace ArtekSoftware.Codemash
 			
 			this.SessionRoomLabel.Text = session.Room;
 			this.SessionSpeakerNameButton.SetTitle (session.SpeakerName, UIControlState.Normal);
-			if (session.StartDate == DateTime.MinValue) {
+			if (session.Start == DateTime.MinValue) {
 				this.SessionStartLabel.Text = "No date/time - Please Refresh";
 			} else {
-				this.SessionStartLabel.Text = session.StartDate.DayOfWeek.ToString () + " " + session.StartDate.ToString ("h:mm tt");
+				this.SessionStartLabel.Text = session.Start.DayOfWeek.ToString () + " " + session.Start.ToString ("h:mm tt");
 			}
 			this.SessionTechnologyLabel.Text = session.Technology + " / " + session.Difficulty;
 			
@@ -338,27 +339,27 @@ namespace ArtekSoftware.Codemash
 		private void SetImageUrl ()
 		{
 			
-			if (_session.Technology.ToLower () == ".net") {
-				this.ImageUrl = this.TechImages.DotNet;
-			} else if (_session.Technology.ToLower () == "ruby") {
-				this.ImageUrl = this.TechImages.Ruby;
-			} else if (_session.Technology.ToLower () == "mobile") {
-				this.ImageUrl = this.TechImages.Mobile;
-			} else if (_session.Technology.ToLower () == "javascript") {
-				this.ImageUrl = this.TechImages.JavaScript;
-			} else if (_session.Technology.ToLower () == "design/ux") {
-				this.ImageUrl = this.TechImages.DesignUX;
-			} else if (_session.Technology.ToLower () == "java") {
-				this.ImageUrl = this.TechImages.Java;
-			} else if (_session.Technology.ToLower () == "windows 8") {
-				this.ImageUrl = this.TechImages.Windows;
-			} else if (_session.Technology.ToLower () == "other languages") {
-				this.ImageUrl = this.TechImages.OtherLanguages;
-			} else if (_session.Technology.ToLower () == "software process") {
-				this.ImageUrl = this.TechImages.SoftwareProcess;
-			} else {
-				this.ImageUrl = this.TechImages.Other;
-			}		
+//			if (_session.Technology.ToLower () == ".net") {
+//				this.ImageUrl = this.TechImages.DotNet;
+//			} else if (_session.Technology.ToLower () == "ruby") {
+//				this.ImageUrl = this.TechImages.Ruby;
+//			} else if (_session.Technology.ToLower () == "mobile") {
+//				this.ImageUrl = this.TechImages.Mobile;
+//			} else if (_session.Technology.ToLower () == "javascript") {
+//				this.ImageUrl = this.TechImages.JavaScript;
+//			} else if (_session.Technology.ToLower () == "design/ux") {
+//				this.ImageUrl = this.TechImages.DesignUX;
+//			} else if (_session.Technology.ToLower () == "java") {
+//				this.ImageUrl = this.TechImages.Java;
+//			} else if (_session.Technology.ToLower () == "windows 8") {
+//				this.ImageUrl = this.TechImages.Windows;
+//			} else if (_session.Technology.ToLower () == "other languages") {
+//				this.ImageUrl = this.TechImages.OtherLanguages;
+//			} else if (_session.Technology.ToLower () == "software process") {
+//				this.ImageUrl = this.TechImages.SoftwareProcess;
+//			} else {
+//				this.ImageUrl = this.TechImages.Other;
+//			}		
 		}
 
 		public void SetLocalImage (string url)

@@ -1,5 +1,7 @@
 using System.Linq;
 using MonoTouch.UIKit;
+using ArtekSoftware.Conference;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {

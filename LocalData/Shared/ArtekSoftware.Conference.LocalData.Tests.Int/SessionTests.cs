@@ -26,7 +26,7 @@ namespace ArtekSoftware.Conference.LocalData.WP7.Tests.Int
     public void should_be_able_to_get_existing_entity()
     {
       var entity = CreateEntity();
-      var repository = new SessionRepository();
+      var repository = new LocalSessionRepository();
       var session = repository.Get(entity.Slug);
       session.ShouldNotBeNull();
     }
@@ -34,7 +34,7 @@ namespace ArtekSoftware.Conference.LocalData.WP7.Tests.Int
     [Test]
     public void should_be_able_to_get_list_of_entities()
     {
-      var repository = new SessionRepository();
+      var repository = new LocalSessionRepository();
       var entities = repository.GetAll();
       entities.ShouldNotBeNull();
       entities.Count.ShouldBeInRange(1, int.MaxValue);
@@ -61,7 +61,7 @@ namespace ArtekSoftware.Conference.LocalData.WP7.Tests.Int
     
     private SessionEntity CreateEntity()
     {
-      var repository = new SessionRepository();
+      var repository = new LocalSessionRepository();
       var entity = Fixture.CreateAnonymous<SessionEntity>();
       repository.Save(entity);
 

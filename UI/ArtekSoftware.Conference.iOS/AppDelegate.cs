@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-using Catnap;
+//using Catnap;
 ////using MonoQueue;
 using Localytics;
 using RestSharp;
@@ -23,6 +23,7 @@ namespace ArtekSoftware.Codemash
 		private UIWindow window;
 		private TabBarControllerBase _tabBarController;
 		//private static IMessageBus _messageBus;
+		public static string ConferenceSlug { get { return "MobiDevDay-2012"; } }
 		
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{	
@@ -43,11 +44,11 @@ namespace ArtekSoftware.Codemash
 			IDefaultDatabaseManager defaultDatabaseManager = new DefaultDatabaseManager (this.Analytics, testFlightProxy);
 			defaultDatabaseManager.CopyDefaultDatabase ();
 			
-			var catnapBootstrapper = new CatnapBootstrapper (testFlightProxy);
-			catnapBootstrapper.Initialize ();
+//			var catnapBootstrapper = new CatnapBootstrapper (testFlightProxy);
+//			catnapBootstrapper.Initialize ();
 			
-			var entityMapper = new EntityMapper ();
-			entityMapper.Mapper ();
+//			var entityMapper = new EntityMapper ();
+//			entityMapper.Mapper ();
 			
 			var databaseMigrationBootstrapper = new DatabaseMigrationBootstrapper ();
 			databaseMigrationBootstrapper.Migrate ();

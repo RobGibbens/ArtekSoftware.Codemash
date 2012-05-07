@@ -40,10 +40,4 @@ namespace ArtekSoftware.Conference
     //        }
     //    }
 
-    //    private class ReachabilityStatus
-    //    {
-    //        public bool IsOnline;
-    //    }	
-    //}
 }
-

@@ -6,6 +6,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 ////using MonoQueue;
 using ArtekSoftware.Conference;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {
@@ -51,7 +52,7 @@ namespace ArtekSoftware.Codemash
 			testFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 3");
 			//Thread.Sleep (1000);
 			
-			_sessions = _sessions.OrderBy (x => x.StartDate);
+			_sessions = _sessions.OrderBy (x => x.Start);
 			testFlight.PassCheckpoint ("SessionDialogViewController.LoadData - 4");
 			//Thread.Sleep (500);
 			

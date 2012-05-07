@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Catnap;
+//using Catnap;
 using MonoTouch.Dialog;
+using ArtekSoftware.Conference.LocalData;
 
 namespace ArtekSoftware.Codemash
 {
@@ -21,7 +22,7 @@ namespace ArtekSoftware.Codemash
 				}
 			}
 			
-			return sessions.OrderBy (x => x.StartDate).ToList ();
+			return sessions.OrderBy (x => x.Start).ToList ();
 		}
 		
 		public RootElement GetScheduledSessionDialog (IEnumerable<ScheduledSessionEntity> sessions, bool isRefresh)
@@ -30,14 +31,14 @@ namespace ArtekSoftware.Codemash
 			
 			var query = (
 		        from session in sessions
-		        group session by (session.StartDate) into sessionGroup
+		        group session by (session.Start) into sessionGroup
 		        select new { 
 							StartDate = sessionGroup.Key, 
 				           	SectionName = sessionGroup.Key.DayOfWeek + " " + sessionGroup.Key.ToString("h:mm tt"),
 							Sessions = sessionGroup 
 							}
 					).
-		            OrderBy (letter => letter.StartDate);			
+		            OrderBy (letter => letter.Start);			
 			
 			foreach (var sessionGroup in query) {
 				string sectionTitle;

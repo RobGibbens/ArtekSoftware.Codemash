@@ -150,12 +150,4 @@ namespace ArtekSoftware.Conference
     //}		
 
   }
-  public class RemoteConfiguration : IRemoteConfiguration
-  {
-    public string BaseUrl  { get; set; }
-  }
-  public interface IRemoteConfiguration
-  {
-    string BaseUrl  { get; set; }
-  }
 }
