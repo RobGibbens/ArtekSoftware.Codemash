@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB4BC9C7-F160-466B-A43D-A533C574241F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ArtekSoftware.Conference.Data</RootNamespace>
+    <AssemblyName>ArtekSoftware.Conference.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\..\packages\RestSharp.103.0.0\lib\net35\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Vici.CoolStorage">
+      <HintPath>..\..\..\packages\vici.coolstorage.1.5.0\lib\net35\Vici.CoolStorage.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.Data\ScheduleRepository.cs">
+      <Link>ScheduleRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.Data\SessionRepository.cs">
+      <Link>SessionRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Shared\ArtekSoftware.Conference.Data\SpeakerRepository.cs">
+      <Link>SpeakerRepository.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\WP7\ArtekSoftware.Conference.Common\ArtekSoftware.Conference.Common.csproj">
+      <Project>{9C223141-FEAE-4D10-A2F8-949A82DC67CC}</Project>
+      <Name>ArtekSoftware.Conference.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\LocalData\WP7\ArtekSoftware.Conference.LocalData\ArtekSoftware.Conference.LocalData.csproj">
+      <Project>{8FE5D017-E3AB-4766-B4B4-4C0867074D07}</Project>
+      <Name>ArtekSoftware.Conference.LocalData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\RemoteData\WP7\ArtekSoftware.Conference.RemoteData\ArtekSoftware.Conference.RemoteData.csproj">
+      <Project>{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}</Project>
+      <Name>ArtekSoftware.Conference.RemoteData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

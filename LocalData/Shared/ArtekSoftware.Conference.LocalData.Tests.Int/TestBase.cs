@@ -3,7 +3,7 @@ using System.IO;
 using Ploeh.AutoFixture;
 using Vici.CoolStorage;
 
-namespace ArtekSoftware.Conference.LocalData.WP7.Tests.Int
+namespace ArtekSoftware.Conference.LocalData.Tests.Int
 {
   public class TestBase
   {

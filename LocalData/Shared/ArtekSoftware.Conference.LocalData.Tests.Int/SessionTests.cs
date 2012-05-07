@@ -3,7 +3,7 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 using Should;
 
-namespace ArtekSoftware.Conference.LocalData.WP7.Tests.Int
+namespace ArtekSoftware.Conference.LocalData.Tests.Int
 {
   [TestFixture]
   public class SessionTests : TestBase
