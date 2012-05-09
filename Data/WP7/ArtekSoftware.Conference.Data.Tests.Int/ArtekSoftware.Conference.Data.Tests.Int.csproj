@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,21 +45,49 @@
     <Reference Include="Ploeh.SemanticComparison">
       <HintPath>..\..\..\packages\AutoFixture.2.11.0\lib\Ploeh.SemanticComparison.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=102.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\RestSharp.103.0.0\lib\net35\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Should">
       <HintPath>..\..\..\packages\Should.1.1.12.0\lib\Should.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <HintPath>..\..\..\packages\vici.coolstorage.sqlite\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Vici.CoolStorage, Version=1.5.0.1172, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\vici.coolstorage.1.5.0\lib\net35\Vici.CoolStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="Vici.CoolStorage.SQLite, Version=1.5.0.1003, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\vici.coolstorage.sqlite\Vici.CoolStorage.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="Vici.Core">
+      <HintPath>..\..\..\packages\vici.core.1.0.0\lib\net35\Vici.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SpeakerRepositoryTests.cs" />
+    <Compile Include="SessionRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\WP7\ArtekSoftware.Conference.Common\ArtekSoftware.Conference.Common.csproj">
+      <Project>{9C223141-FEAE-4D10-A2F8-949A82DC67CC}</Project>
+      <Name>ArtekSoftware.Conference.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\LocalData\WP7\ArtekSoftware.Conference.LocalData\ArtekSoftware.Conference.LocalData.csproj">
+      <Project>{8FE5D017-E3AB-4766-B4B4-4C0867074D07}</Project>
+      <Name>ArtekSoftware.Conference.LocalData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\RemoteData\WP7\ArtekSoftware.Conference.RemoteData\ArtekSoftware.Conference.RemoteData.csproj">
+      <Project>{8A8A7CC8-56A7-4B53-8C45-3A6A7B09F7E3}</Project>
+      <Name>ArtekSoftware.Conference.RemoteData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ArtekSoftware.Conference.Data\ArtekSoftware.Conference.Data.csproj">
       <Project>{BB4BC9C7-F160-466B-A43D-A533C574241F}</Project>
       <Name>ArtekSoftware.Conference.Data</Name>

@@ -10,8 +10,8 @@ namespace ArtekSoftware.Conference.LocalData
 
     public static string CreateTableSql = @"CREATE TABLE IF NOT EXISTS " + TableName +
                                           " ("
-                                          + "Id VARCHAR PRIMARY KEY NOT NULL, "
-                                          + "Slug VARCHAR, " 
+                                          // + "Id VARCHAR PRIMARY KEY NOT NULL UNIQUE, "
+                                          + "Slug VARCHAR PRIMARY KEY NOT NULL UNIQUE, "
                                           + "ConferenceSlug VARCHAR, "
                                           + "Abstract VARCHAR, "
                                           + "Difficulty VARCHAR, "
@@ -22,8 +22,8 @@ namespace ArtekSoftware.Conference.LocalData
                                           + "Room VARCHAR"
                                           + ")";
 
-    public string Id { get { return (string)GetField("Id"); } set { SetField("Id", value); } }
-    public string Slug  { get { return (string)GetField("Slug"); } set { SetField("Slug", value); } }
+    //public string Id { get { return (string)GetField("Id"); } set { SetField("Id", value); } }
+    public string Slug { get { return (string)GetField("Slug"); } set { SetField("Slug", value); } }
     public string ConferenceSlug { get { return (string)GetField("ConferenceSlug"); } set { SetField("ConferenceSlug", value); } }
     public string Abstract { get { return (string)GetField("Abstract"); } set { SetField("Abstract", value); } }
     public string Difficulty { get { return (string)GetField("Difficulty"); } set { SetField("Difficulty", value); } }
@@ -32,8 +32,8 @@ namespace ArtekSoftware.Conference.LocalData
     public DateTime Start { get { return (DateTime)GetField("Start"); } set { SetField("Start", value); } }
     public DateTime End { get { return (DateTime)GetField("End"); } set { SetField("End", value); } }
     public string Room { get { return (string)GetField("Room"); } set { SetField("Room", value); } }
-	public string ImageUrl { get { return (string)GetField("ImageUrl"); } set { SetField("ImageUrl", value); } }
-		
+    public string ImageUrl { get { return (string)GetField("ImageUrl"); } set { SetField("ImageUrl", value); } }
+
     //public List<string> Subjects { get { return (string)GetField("Name"); } set { SetField("Name", value); } }
     //public List<SpeakerEntity> Speakers { get { return (string)GetField("Name"); } set { SetField("Name", value); } }
 

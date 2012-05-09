@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Vici.CoolStorage;
 
 namespace ArtekSoftware.Conference.LocalData
 {
@@ -30,6 +31,11 @@ namespace ArtekSoftware.Conference.LocalData
     {
       var entity = Get(slug);
       entity.Delete();
+    }
+
+    public void DeleteAll()
+    {
+      CSDatabase.ExecuteNonQuery("DELETE FROM " + SessionEntity.TableName);
     }
   }
 }

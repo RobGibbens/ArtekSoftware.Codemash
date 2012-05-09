@@ -31,15 +31,16 @@ namespace ArtekSoftware.Conference.Data
 		public IEnumerable<ScheduleEntity> GetEntities(bool isRefresh)
 		{
 			var count = ScheduleEntity.List().CountFast;
-
 			if (count == 0 || isRefresh) {
+        var entities = new List<ScheduleEntity>();
+
 				if (_networkStatusCheck.IsReachable ()) {
 
 					var dtos = _remoteRepository.Get (_conferenceSlug);
 					
 					if (dtos != null && dtos.Count > 0) {
 						//Map dtos to entities
-						//Save to _repository
+					  //Save to _repository
 					}
 				} else {
 					//TODO : Raise event?

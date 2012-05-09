@@ -9,8 +9,8 @@ namespace ArtekSoftware.Conference.LocalData
 
     public static string CreateTableSql = @"CREATE TABLE IF NOT EXISTS " + TableName +
                                           " ("
-                                          + "Id VARCHAR PRIMARY KEY NOT NULL, "
-                                          + "Slug VARCHAR, "
+                                          //+ "Id VARCHAR PRIMARY KEY NOT NULL UNIQUE, "
+                                          + "Slug VARCHAR PRIMARY KEY NOT NULL UNIQUE, "
                                           + "ConferenceSlug VARCHAR, "
                                           + "TwitterName VARCHAR, "
                                           + "BlogUrl VARCHAR, "
@@ -20,11 +20,11 @@ namespace ArtekSoftware.Conference.LocalData
                                           + "Name VARCHAR, "
                                           + "FirstName VARCHAR, "
                                           + "LastName VARCHAR, "
-										  + "Biography VARCHAR"
+                                          + "Description VARCHAR"
                                           + ")";
 
-    public string Id { get { return (string) GetField("Id"); } set { SetField("Id", value); } }
-    public string Slug  { get { return (string)GetField("Slug"); } set { SetField("Slug", value); } }
+    //public string Id { get { return (string)GetField("Id"); } set { SetField("Id", value); } }
+    public string Slug { get { return (string)GetField("Slug"); } set { SetField("Slug", value); } }
     public string ConferenceSlug { get { return (string)GetField("ConferenceSlug"); } set { SetField("ConferenceSlug", value); } }
     public string TwitterName { get { return (string)GetField("TwitterName"); } set { SetField("TwitterName", value); } }
     public string BlogUrl { get { return (string)GetField("BlogUrl"); } set { SetField("BlogUrl", value); } }
@@ -34,7 +34,7 @@ namespace ArtekSoftware.Conference.LocalData
     public string Name { get { return (string)GetField("Name"); } protected internal set { SetField("Name", value); } }
     public string FirstName { get { return (string)GetField("FirstName"); } set { SetField("FirstName", value); } }
     public string LastName { get { return (string)GetField("LastName"); } set { SetField("LastName", value); } }
-	public string Biography { get { return (string)GetField("Biography"); } set { SetField("Biography", value); } }
+    public string Description { get { return (string)GetField("Description"); } set { SetField("Description", value); } }
     //public IList<Guid> SessionsIds  { get { return (string)GetField("Slug"); } set { SetField("Slug", value); } }
   }
 }

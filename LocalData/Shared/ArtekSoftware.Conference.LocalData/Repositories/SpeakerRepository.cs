@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Vici.CoolStorage;
 
 namespace ArtekSoftware.Conference.LocalData
 {
@@ -6,7 +7,15 @@ namespace ArtekSoftware.Conference.LocalData
   {
     public void Save(SpeakerEntity entity)
     {
-      entity.Save();
+      if (!string.IsNullOrWhiteSpace(entity.Slug))
+      {
+        entity.Description = entity.Description.Replace("’", "''");
+        entity.Slug = entity.Slug.Replace("’", "''");
+        entity.Name = entity.Name.Replace("’", "''");
+        entity.LastName = entity.LastName.Replace("’", "''");
+        
+        entity.Save();
+      }
     }
 
     public SpeakerEntity Get(string slug)
@@ -30,6 +39,11 @@ namespace ArtekSoftware.Conference.LocalData
     {
       var entity = Get(slug);
       entity.Delete();
+    }
+
+    public void DeleteAll()
+    {
+      CSDatabase.ExecuteNonQuery("DELETE FROM " + SpeakerEntity.TableName);
     }
   }
 }

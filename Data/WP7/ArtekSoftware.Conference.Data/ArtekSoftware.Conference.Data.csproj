@@ -41,8 +41,11 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Vici.CoolStorage">
+    <Reference Include="Vici.CoolStorage, Version=1.5.0.1172, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\vici.coolstorage.1.5.0\lib\net35\Vici.CoolStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="Vici.Core">
+      <HintPath>..\..\..\packages\vici.core.1.0.0\lib\net35\Vici.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +58,7 @@
     <Compile Include="..\..\Shared\ArtekSoftware.Conference.Data\SpeakerRepository.cs">
       <Link>SpeakerRepository.cs</Link>
     </Compile>
+    <Compile Include="MapSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

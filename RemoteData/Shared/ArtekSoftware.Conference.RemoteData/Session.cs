@@ -6,6 +6,7 @@ namespace ArtekSoftware.Conference
 {
   public class Session
   {
+
     public Guid id { get; set; }
     public string conferenceSlug { get; set; }
     public string @abstract { get; set; }

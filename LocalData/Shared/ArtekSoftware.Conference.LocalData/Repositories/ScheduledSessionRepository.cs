@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Vici.CoolStorage;
 
 namespace ArtekSoftware.Conference.LocalData
 {
@@ -31,6 +32,11 @@ public class LocalScheduledSessionRepository : IRepository<ScheduledSessionEntit
     {
       var entity = Get(slug);
       entity.Delete();
+    }
+
+    public void DeleteAll()
+    {
+      CSDatabase.ExecuteNonQuery("DELETE FROM " + ScheduledSessionEntity.TableName);
     }
   }
 }

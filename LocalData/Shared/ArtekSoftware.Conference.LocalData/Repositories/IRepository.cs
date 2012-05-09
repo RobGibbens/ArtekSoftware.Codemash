@@ -9,5 +9,6 @@ namespace ArtekSoftware.Conference.LocalData
     IList<T> GetAll();
     void Delete(T entity);
     void Delete(string slug);
+    void DeleteAll();
   }
 }
