@@ -53,7 +53,18 @@ namespace Catnap.Maps.Impl
             }
             try
             {
-                value = session.ConvertFromDbType(value, propertyInfo.PropertyType);
+				if (propertyInfo.PropertyType == typeof(DateTime))
+				{
+					if (value != null && !string.IsNullOrWhiteSpace(value.ToString()))
+					{
+						string formatString = "yyyy-MM-dd H:mm";
+						value = DateTime.ParseExact(value.ToString(), formatString, null);
+					}
+				}
+				else
+				{
+                	value = session.ConvertFromDbType(value, propertyInfo.PropertyType);
+				}
             }
             catch (Exception ex)
             {

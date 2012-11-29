@@ -50,11 +50,12 @@ namespace ArtekSoftware.Codemash
 			using (var command = conn.CreateCommand()) {
 				foreach (var dto in dtos) {
 					command.CommandText = @"insert into " + SessionEntity.TableName + 
-												" (URI, Title, Abstract, Start, Room, Difficulty, SpeakerName, Technology, SpeakerURI) values (" + 
+												" (URI, Title, Abstract, Start, End, Room, Difficulty, SpeakerName, Technology, SpeakerURI) values (" + 
 														SafeString(dto.URI) + "," +
 														SafeString(dto.Title) + "," +
 														SafeString(dto.Abstract) + "," + 
 														SafeDate(dto.Start) + "," + 
+														SafeDate(dto.End) + "," + 
 														SafeString(dto.Room) + "," + 
 														SafeString(dto.Difficulty) + "," + 
 														SafeString(dto.SpeakerName) + "," + 

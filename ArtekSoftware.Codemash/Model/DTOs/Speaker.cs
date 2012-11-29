@@ -11,10 +11,12 @@ namespace ArtekSoftware.Codemash
 
 		public string Biography { get; set; }
 
-		public SessionsList Sessions { get; set; }
+		public List<string> Sessions { get; set; }
 
 		public string TwitterHandle { get; set; }
 
 		public string BlogURL { get; set; }
+
+		public string LookupId { get; set;}
 	}
 }

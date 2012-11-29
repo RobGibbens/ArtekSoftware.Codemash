@@ -30,23 +30,26 @@ namespace ArtekSoftware.Codemash
 
 		public IList<Session> GetSessions ()
 		{	
-			IList<Session> sessions;
+			IList<Session> sessions = new List<Session>();
 			//TestFlight.PassCheckpoint ("Started RemoteSessionsRepository.GetSessions");
 			
 			var client = new RestClient ();
-			client.BaseUrl = "http://codemash.org";
-			
+			//client.BaseUrl = "http://codemash.org";
+			client.BaseUrl = "http://rest.codemash.org";
 			var request = new RestRequest ();
-			request.Resource = "rest/sessions";
-			request.RequestFormat = DataFormat.Xml;
+			request.DateFormat = "yyyy-MM-ddTHH:mm:ssZ"; //2013-01-08 18:30
+			//request.Resource = "rest/sessions";
+			request.Resource = "api/sessions.json";
+			//request.RequestFormat = DataFormat.Xml;
+			request.RequestFormat = DataFormat.Json;
+			
 			using (new NetworkIndicator()) {
-				var response = client.Execute<SessionsList> (request);
-//			var asyncHandle = client.ExecuteAsync<SessionsList>(request, response2 => {
-//    			Console.WriteLine(response2.Data.Sessions.Count);
-//			});
-				sessions = new List<Session> ();
-				if (response != null && response.Data != null && response.Data.Sessions != null) {
-					sessions = response.Data.Sessions.OrderBy (x => x.Title.Trim ()).ToList ();
+				//var response = client.Execute<SessionsList> (request);
+				var response = client.Execute<List<Session>>(request);
+				if (response != null && response.Data != null) {
+					sessions = response.Data as List<Session>;
+
+					sessions = sessions.OrderBy (x => x.Title.Trim ()).ToList ();
 				}
 			}
 			
