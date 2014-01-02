@@ -70,8 +70,10 @@ namespace ArtekSoftware.Codemash
 		private void SetSessionBackground (UINavigationBar navigationBar)
 		{
 			var version = Convert.ToDecimal (UIDevice.CurrentDevice.SystemVersion.Split ('.').First ());
-			
-			if (version >= 5) {
+
+			if (version >= 7) {
+				navigationBar.SetBackgroundImage (UIImage.FromFile ("images/SessionsHeader3.png"), UIBarMetrics.Default);
+			} else if (version >= 5) {
 				navigationBar.SetBackgroundImage (UIImage.FromFile ("images/SessionsHeader2.png"), UIBarMetrics.Default);
 			} else {
 				navigationBar.InsertSubview (new UIImageView (UIImage.FromFile ("images/SessionsHeader2.png")), 0);

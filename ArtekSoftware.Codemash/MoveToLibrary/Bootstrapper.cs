@@ -1,14 +1,9 @@
 using System;
 using Catnap.Common.Logging;
-using Catnap.Database;
-using Catnap.Find;
 using Catnap.Maps;
 using Catnap.Adapters;
 using Catnap.Maps.Impl;
 using Catnap;
-using Catnap.Migration;
-using System.Collections.Generic;
-using System.Linq;
 using System.IO;
 //using MonoTouch.TestFlight;
 
@@ -82,8 +77,6 @@ namespace ArtekSoftware.Codemash
                     .Map (new ValuePropertyMap<RemoteQueueEntity, string> (x => x.UserName))
                     .Map (new ValuePropertyMap<RemoteQueueEntity, DateTime> (x => x.DateQueuedOn))
                     .Map (new ValuePropertyMap<RemoteQueueEntity, string> (x => x.AddOrRemove))
-					
-					
             );
 		}
 		

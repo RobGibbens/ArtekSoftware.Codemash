@@ -7,13 +7,17 @@
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>images/icon2.png</string>
+		<string>Icon-72@2x</string>
+		<string>Icon-76</string>
+		<string>Icon-76@2x</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.0.0</string>
+	<string>3.0.0</string>
 	<key>MinimumOSVersion</key>
-	<string>4.0</string>
+	<string>6.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
+		<integer>1</integer>
 		<integer>2</integer>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
@@ -23,5 +27,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleShortVersionString</key>
+	<string>3.0.0</string>
 </dict>
 </plist>

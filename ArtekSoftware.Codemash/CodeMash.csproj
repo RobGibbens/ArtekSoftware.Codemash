@@ -21,7 +21,8 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchDebug>True</MtouchDebug>
-    <MtouchI18n />
+    <MtouchI18n>
+    </MtouchI18n>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
@@ -33,7 +34,8 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
-    <MtouchI18n />
+    <MtouchI18n>
+    </MtouchI18n>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <MtouchUseLlvm>True</MtouchUseLlvm>
     <MtouchArch>ARMv6_ARMv7</MtouchArch>
@@ -49,8 +51,10 @@
     <ConsolePause>False</ConsolePause>
     <MtouchDebug>True</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <IpaPackageName />
-    <MtouchI18n />
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <MtouchArch>ARMv7</MtouchArch>
@@ -65,7 +69,8 @@
     <CodesignKey>iPhone Developer: Robert Gibbens (L8HT856S5P)</CodesignKey>
     <CodesignProvision>B738ED8D-38C2-4C10-927F-D1AB5A58ADA0</CodesignProvision>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
-    <MtouchI18n />
+    <MtouchI18n>
+    </MtouchI18n>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <MtouchUseLlvm>True</MtouchUseLlvm>
     <MtouchArch>ARMv6_ARMv7</MtouchArch>
@@ -76,7 +81,8 @@
     <OutputPath>bin\iPhoneSimulator\AdHoc</OutputPath>
     <WarningLevel>4</WarningLevel>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
-    <MtouchI18n />
+    <MtouchI18n>
+    </MtouchI18n>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
     <MtouchUseLlvm>True</MtouchUseLlvm>
     <MtouchArch>ARMv6_ARMv7</MtouchArch>
@@ -87,8 +93,10 @@
     <OutputPath>bin\iPhone\AdHoc</OutputPath>
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Distribution: Artek Software</CodesignKey>
-    <IpaPackageName />
-    <MtouchI18n />
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
     <CodesignProvision>2AC01A80-3C14-43F5-9024-62DDD1B7A9F8</CodesignProvision>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
     <AssemblyName>ArtekSoftwareCodemash</AssemblyName>
@@ -102,12 +110,15 @@
     <OutputPath>bin\iPhone\AppStore</OutputPath>
     <WarningLevel>4</WarningLevel>
     <AssemblyName>CodeMash</AssemblyName>
-    <CodesignKey>iPhone Distribution: Artek Software</CodesignKey>
+    <CodesignKey>iPhone Distribution: Artek Software (76NV47GX7S)</CodesignKey>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
-    <MtouchI18n />
-    <CodesignProvision>0D380D4D-DC04-46DF-B2A3-6FA529A6E86E</CodesignProvision>
+    <MtouchI18n>
+    </MtouchI18n>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
     <MtouchUseLlvm>True</MtouchUseLlvm>
-    <MtouchArch>ARMv6_ARMv7</MtouchArch>
+    <MtouchArch>ARMv7</MtouchArch>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -116,7 +127,8 @@
     <WarningLevel>4</WarningLevel>
     <AssemblyName>CodeMash</AssemblyName>
     <MtouchExtraArgs>-gcc_flags "-weak_framework Twitter" -aot "nimt-trampolines=512"</MtouchExtraArgs>
-    <MtouchI18n />
+    <MtouchI18n>
+    </MtouchI18n>
     <MtouchUseLlvm>True</MtouchUseLlvm>
     <MtouchArch>ARMv6_ARMv7</MtouchArch>
   </PropertyGroup>
@@ -134,7 +146,6 @@
     <None Include="images\Technologies\OtherLanguages.jpg" />
     <None Include="images\Technologies\SoftwareProcess3.jpg" />
     <None Include="images\Technologies\SoftwareProcess4.jpg" />
-    <None Include="images\.DS_Store" />
     <None Include="images\Profile.PNG" />
   </ItemGroup>
   <ItemGroup>
@@ -370,7 +381,9 @@
     <Content Include="images\codeMashSpeakerBioLandscape.png" />
     <Content Include="images\Default-Landscape.png" />
     <Content Include="images\Default-Portrait.png" />
-    <Content Include="images\FavoriteSession.png" />
+    <Content Include="images\FavoriteSession.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\FullCodeMashLogo.png" />
     <Content Include="images\glyphicons_042_group.png" />
     <Content Include="images\glyphicons_054_clock.png" />
@@ -413,7 +426,12 @@
     <Content Include="images\LoadingGif\Loading7.png" />
     <Content Include="images\LoadingGif\Loading8.png" />
     <Content Include="images\LoadingGif\Loading9.png" />
-    <Content Include="DefaultDatabase\codemash.db3" />
+    <Content Include="DefaultDatabase\codemash.db3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\FavoriteSession.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Catnap\Catnap.csproj">
@@ -428,5 +446,16 @@
       <Project>{E9A9D1C5-4E06-4D31-9809-A97188C70B2C}</Project>
       <Name>RestSharp.MonoTouch</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-72%402x.png" />
+    <BundleResource Include="Resources\Icon-76.png" />
+    <BundleResource Include="Resources\Icon-76%402x.png" />
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\Default-Landscape%402x.png" />
   </ItemGroup>
 </Project>

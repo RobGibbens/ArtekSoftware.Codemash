@@ -1,67 +1,39 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPadRetina.7.0" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ArtekSoftware.Codemash/AppDelegate.cs">
     <Files>
-      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="77" Column="4" />
-      <File FileName="ArtekSoftware.Codemash/Model/Repositories/RemoteSessionsRepository.cs" Line="51" Column="6" />
-      <File FileName="ArtekSoftware.Codemash/Model/DTOs/Session.cs" Line="14" Column="41" />
-      <File FileName="ArtekSoftware.Codemash/Model/DTOs/Speaker.cs" Line="12" Column="40" />
-      <File FileName="ArtekSoftware.Codemash/Model/Entities/SessionEntity.cs" Line="26" Column="39" />
-      <File FileName="ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" Line="58" Column="29" />
-      <File FileName="Catnap/Maps/Impl/BasePropertyMap.cs" Line="60" Column="45" />
-      <File FileName="Catnap/ISession.cs" Line="21" Column="6" />
-      <File FileName="ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" Line="58" Column="33" />
-      <File FileName="ArtekSoftware.Codemash/UI/DialogMappers/SpeakersDialogMapper.cs" Line="56" Column="1" />
-      <File FileName="ArtekSoftware.Codemash/Model/Repositories/RemoteSpeakersRepository.cs" Line="36" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/UI/SplitDelegate.cs" Line="28" Column="3" />
+      <File FileName="ArtekSoftware.Codemash/MoveToLibrary/Bootstrapper.cs" Line="20" Column="3" />
+      <File FileName="ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" Line="23" Column="42" />
+      <File FileName="ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" Line="23" Column="4" />
+      <File FileName="ArtekSoftware.Codemash/AppDelegate.cs" Line="56" Column="1" />
+      <File FileName="Catnap/Adapters/SqliteAdapter.cs" Line="11" Column="1" />
+      <File FileName="Catnap/Adapters/BaseSqliteAdapter.cs" Line="18" Column="1" />
+      <File FileName="Catnap/Migration/DatabaseMigratorUtility.cs" Line="15" Column="1" />
+      <File FileName="ArtekSoftware.Codemash/UI/TabBarController.cs" Line="57" Column="3" />
+      <File FileName="ArtekSoftware.Codemash/Info.plist" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Option id="ShowAllFiles" value="True" />
-          <Node name="Catnap" expanded="True">
-            <Node name="Maps" expanded="True">
-              <Node name="Impl" expanded="True" />
-            </Node>
-          </Node>
-          <Node name="CodeMash" expanded="True">
-            <Node name="Data" expanded="True" />
-            <Node name="DefaultDatabase" expanded="True">
-              <Node name="codemash.db3" selected="True" />
-            </Node>
-            <Node name="Model" expanded="True">
-              <Node name="DTOs" expanded="True" />
-              <Node name="Entities" expanded="True" />
-              <Node name="Repositories" expanded="True" />
-            </Node>
-            <Node name="UI" expanded="True">
-              <Node name="DialogMappers" expanded="True" />
-            </Node>
-            <Node name="ViewControllers" expanded="True">
-              <Node name="DialogViewControllers" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State selected="True" />
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" line="76" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" line="74" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/MonoTouch.Dialog/Utilities/Controls.cs" line="93" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/Catnap/Session.cs" line="71" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="114" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="108" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="131" />
-      <Breakpoint file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" line="160" />
-      <Breakpoint file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/DialogMappers/SessionsDialogMapper.cs" line="26" />
-      <Breakpoint file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/DialogMappers/SpeakersDialogMapper.cs" line="25" />
-      <Breakpoint file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/DialogMappers/SpeakersDialogMapper.cs" line="56" />
-      <Breakpoint file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSpeakersRepository.cs" line="13" />
-      <Breakpoint file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSpeakersRepository.cs" line="34" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" line="76" column="1" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/ViewControllers/DialogViewControllers/SessionDialogViewController.cs" line="74" column="1" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/MonoTouch.Dialog/Utilities/Controls.cs" line="93" column="1" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/Catnap/Session.cs" line="71" column="1" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="114" column="1" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="108" column="1" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="131" column="1" />
+      <Breakpoint enabled="false" file="/Users/gibbensr/Development/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" line="160" column="1" />
+      <Breakpoint enabled="false" file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/DialogMappers/SessionsDialogMapper.cs" line="26" column="1" />
+      <Breakpoint enabled="false" file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/DialogMappers/SpeakersDialogMapper.cs" line="25" column="1" />
+      <Breakpoint enabled="false" file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/UI/DialogMappers/SpeakersDialogMapper.cs" line="56" column="1" />
+      <Breakpoint enabled="false" file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSpeakersRepository.cs" line="13" column="1" />
+      <Breakpoint enabled="false" file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/RemoteSpeakersRepository.cs" line="34" column="1" />
+      <Breakpoint enabled="false" file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/MoveToLibrary/Bootstrapper.cs" line="25" column="48" />
+      <Breakpoint enabled="false" file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSpeakersRepository.cs" line="23" column="42" />
+      <Breakpoint enabled="false" file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/Model/Repositories/LocalSessionsRepository.cs" line="25" column="42" />
+      <Breakpoint enabled="false" file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/AppDelegate.cs" line="66" column="21" />
+      <Breakpoint file="/Users/rob/dev/ArtekSoftware.Codemash/ArtekSoftware.Codemash/AppDelegate.cs" line="56" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>

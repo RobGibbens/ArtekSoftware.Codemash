@@ -51,13 +51,13 @@ namespace ArtekSoftware.Codemash
 				this.TabBar,
 				detailViewController
 			};
-			
+
 			//Console.WriteLine("AppDelegate.FinishedLaunching - setting window.RootViewController");
-			
+
 			window.RootViewController = splitViewController;
 
 			window.MakeKeyAndVisible ();
-			
+
 			return true;
 		}
 	

@@ -158,13 +158,18 @@ namespace ArtekSoftware.Codemash
 		protected void SetAddToScheduleLabel ()
 		{
 			if (IsOnSchedule ()) {
+				var frame = this.addToScheduleLabel.Frame;
+				frame.Width = 142;
+				frame.X = 19;
+				this.addToScheduleLabel.Frame = frame;
 				this.addToScheduleLabel.Text = "Remove from schedule";
-				this.addToScheduleLabel.Frame.Width = 142;
-				this.addToScheduleLabel.Frame.X = 19;
 			} else {
 				this.addToScheduleLabel.Text = "Add to schedule";
-				this.addToScheduleLabel.Frame.Width = 98;
-				this.addToScheduleLabel.Frame.X = 36;
+
+				var frame = this.addToScheduleLabel.Frame;
+				frame.Width = 98;
+				frame.X = 36;
+				this.addToScheduleLabel.Frame = frame;
 			}
 		}
 		

@@ -12,7 +12,7 @@ namespace ArtekSoftware.Codemash
                                                  UIPopoverController pc)
 		{
 			//Console.WriteLine("SplitDelegate.WillHideViewController");
-			barButtonItem.Title = "CodeMash";
+			barButtonItem.Title = "Sessions";
       
 			var detailViewController = svc.ViewControllers [1] as ISubstitutableDetailViewController;
 
